@@ -1,1 +1,1 @@
-#Todos putos
+Todos putos menos Dario
