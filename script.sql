@@ -21,7 +21,7 @@ USE `symfony` ;
 -- Table `mydb`.`Materia`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `symfony`.`Materia` (
-  `idMateria` INT NOT NULL AUTO_INCREMENT,
+  `idMateria` INT AUTO_INCREMENT NOT NULL,
   `Nombre` VARCHAR(45) NOT NULL,
   `Codigo` VARCHAR(10) NOT NULL,
   `Coordinador` VARCHAR(45) NULL,
