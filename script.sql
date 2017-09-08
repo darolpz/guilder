@@ -38,12 +38,11 @@ CREATE TABLE IF NOT EXISTS `symfony`.`Comision` (
   `Numero` INT NOT NULL,
   `Profesor` VARCHAR(45) NULL,
   `Cuatrimestre` INT NOT NULL,
-  `Year` YEAR NOT NULL,
+  `Year` INT NOT NULL,
   PRIMARY KEY (`idComision`),
   INDEX `fk_Comision_Materia_idx` (`Materia` ASC),
   CONSTRAINT `fk_Comision_Materia`
-    FOREIGN KEY (`Materia`)
-    REFERENCES `mydb`.`Materia` (`idMateria`)
+    FOREIGN KEY (Materia) REFERENCES Materia(idMateria)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
