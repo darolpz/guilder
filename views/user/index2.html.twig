@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %} 
+
+{% block body %}
+    
+    <div id="contenido" >
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Lista de usuarios</h1>
+            </div>
+
+            <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Rol</th>
+                        <th>Comportamiento</th>
+                    </tr>
+                </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                        <td>{{ user.nombre }}</td>
+                        <td>{{ user.apellido }}</td>
+                        <td>{{ user.rol }}</td>
+                        <td>
+                            
+                            <ul>   
+                                <button class="btn btn-primary">
+                                    <a href="{{ path('user_show', { 'id': user.id }) }}"> <div class="bg-primary text-white">mostrar</div></a>           
+                                </button>
+                                    
+                                <button class="btn btn-primary">
+                                     <a href="{{ path('user_edit', { 'id': user.id }) }}"> <div class="bg-primary text-white">editar</div></a>
+                                </button>    
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+
+    <ul>
+        
+            <button class="btn btn-primary">
+                <a href="{{ path('user_new') }}"> <div class="bg-primary text-white">Crear un nuevo usuario</div></a>
+            </button>
+        
+    </ul>
+    
+{% endblock %}
