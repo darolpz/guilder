@@ -81,8 +81,8 @@ CREATE TABLE IF NOT EXISTS `symfony`.`Horario` (
   INDEX `fk_Horario_Dia1_idx` (`Dia` ASC),
   INDEX `fk_Horario_Comision1_idx` (`Comision` ASC),
   CONSTRAINT `fk_Horario_Dia1`
-    FOREIGN KEY (`Dia`)
-    REFERENCES `mydb`.`Dia` (`idDia`)
+    FOREIGN KEY (Dia)
+    REFERENCES Dia(idDia)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Horario_Comision1`
