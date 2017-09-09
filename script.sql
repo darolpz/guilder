@@ -86,8 +86,7 @@ CREATE TABLE IF NOT EXISTS `symfony`.`Horario` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Horario_Comision1`
-    FOREIGN KEY (`Comision`)
-    REFERENCES `mydb`.`Comision` (`idComision`)
+  FOREIGN KEY (Comision) REFERENCES Comision(idComision)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
