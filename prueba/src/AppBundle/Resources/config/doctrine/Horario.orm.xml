@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Horario" table="horario">
+    <indexes>
+      <index name="fk_Horario_Dia1_idx" columns="Dia"/>
+      <index name="fk_Horario_Comision1_idx" columns="Comision"/>
+    </indexes>
+    <id name="idhorario" type="integer" column="idHorario">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="inicio" type="time" column="Inicio" nullable="false"/>
+    <field name="fin" type="time" column="Fin" nullable="false"/>
+    <many-to-one field="comision" target-entity="Comision" fetch="LAZY">
+      <join-columns>
+        <join-column name="Comision" referenced-column-name="idComision"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="dia" target-entity="Dia" fetch="LAZY">
+      <join-columns>
+        <join-column name="Dia" referenced-column-name="idDia"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

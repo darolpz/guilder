@@ -1,0 +1,60 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Horario
+ *
+ * @ORM\Table(name="horario", indexes={@ORM\Index(name="fk_Horario_Dia1_idx", columns={"Dia"}), @ORM\Index(name="fk_Horario_Comision1_idx", columns={"Comision"})})
+ * @ORM\Entity
+ */
+class Horario
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Inicio", type="time", nullable=false)
+     */
+    private $inicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Fin", type="time", nullable=false)
+     */
+    private $fin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idHorario", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idhorario;
+
+    /**
+     * @var \AppBundle\Entity\Comision
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Comision")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Comision", referencedColumnName="idComision")
+     * })
+     */
+    private $comision;
+
+    /**
+     * @var \AppBundle\Entity\Dia
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dia")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Dia", referencedColumnName="idDia")
+     * })
+     */
+    private $dia;
+
+
+}
+

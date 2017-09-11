@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Comision</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Numero</th>
+                <td>{{ comision.numero }}</td>
+            </tr>
+            <tr>
+                <th>Profesor</th>
+                <td>{{ comision.profesor }}</td>
+            </tr>
+            <tr>
+                <th>Cuatrimestre</th>
+                <td>{{ comision.cuatrimestre }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ comision.year}}</td>
+            </tr>
+            <tr>
+                <th>Idcomision</th>
+                <td>{{ comision.idcomision }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('comision_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('comision_edit', { 'idcomision': comision.idcomision }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

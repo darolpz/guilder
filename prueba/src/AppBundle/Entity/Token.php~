@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Token
+ *
+ * @ORM\Table(name="token")
+ * @ORM\Entity
+ */
+class Token
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Creado", type="datetime", nullable=false)
+     */
+    private $creado = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Token", type="string", length=5, nullable=false)
+     */
+    private $token;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idToken", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idtoken;
+
+
+}
+

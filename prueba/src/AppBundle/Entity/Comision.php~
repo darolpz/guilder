@@ -1,0 +1,64 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Comision
+ *
+ * @ORM\Table(name="comision", indexes={@ORM\Index(name="fk_Comision_Materia_idx", columns={"Materia"})})
+ * @ORM\Entity
+ */
+class Comision
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Numero", type="integer", nullable=false)
+     */
+    private $numero;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Profesor", type="string", length=45, nullable=true)
+     */
+    private $profesor;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Cuatrimestre", type="integer", nullable=false)
+     */
+    private $cuatrimestre;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Year", type="date", nullable=false)
+     */
+    private $year;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idComision", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idcomision;
+
+    /**
+     * @var \AppBundle\Entity\Materia
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Materia")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Materia", referencedColumnName="idMateria")
+     * })
+     */
+    private $materia;
+
+
+}
+
