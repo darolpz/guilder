@@ -2,11 +2,11 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: symfony
+    database_name: proyecto
     database_user: root
-    database_password: null
+    database_password: root
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
-    secret: b3c5211148562616ef3d4cf6ea557984583c40ba
+    secret: cbab4368ebb22c253887db93af35bf7c54ce1a12
