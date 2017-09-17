@@ -80,7 +80,16 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      * })
      */
     private $rolrol;
-
+	
+	private $token;
+	public function setToken($token)
+	{
+		$this->token = $token;
+	}
+	public function getToken()
+	{
+		return $this->token;
+	}
 
 
     /**

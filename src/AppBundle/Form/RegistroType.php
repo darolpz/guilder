@@ -23,7 +23,7 @@ class RegistroType extends AbstractType
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
             ))
-        ;
+			->add('token', TextType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
