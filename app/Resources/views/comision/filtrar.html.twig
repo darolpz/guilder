@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+	
+	<table>
+        <thead>
+            <tr>
+                <th>Numero</th>
+                <th>Profesor</th>
+                <th>year</th>
+            </tr>
+        </thead>
+		 <tbody>
+    {% for comision in comisions %}
+	  <tr>
+        <td> {{ comision.numero }}</td>
+        <td> {{ comision.profesor }} </td>
+        <td> {{ comision.year }}</td>
+       
+      </tr>
+    {% endfor %}
+	 </tbody>
+	 </table>
+	
+    {% endblock %}
