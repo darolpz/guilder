@@ -6,12 +6,16 @@
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 	
+
 	<table>
         <thead>
             <tr>
                 <th>Numero</th>
                 <th>Profesor</th>
                 <th>year</th>
+				<th>dia</th>
+				<th>hora inicio</th>
+				<th>hora fin</th>
             </tr>
         </thead>
 		 <tbody>
@@ -20,9 +24,22 @@
         <td> {{ comision.numero }}</td>
         <td> {{ comision.profesor }} </td>
         <td> {{ comision.year }}</td>
-       
-      </tr>
-    {% endfor %}
+		
+		{% for horario in horarios%}
+			{%if comision.idcomision==horario.comisioncomision.idcomision%}
+				<td>{{horario.diadia}}<td>
+				<td>{{horario.inicio|date('H:i')}}<td>
+				<td>{{horario.fin|date('H:i')}}<td>
+				
+			{%endif %}
+		{% endfor %}
+       </tr>
+	   
+     {% endfor %}
+
+	
+	
+	
 	 </tbody>
 	 </table>
 	
