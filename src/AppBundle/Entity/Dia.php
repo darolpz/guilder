@@ -63,4 +63,8 @@ class Dia
     {
         return $this->iddia;
     }
+    
+    public function __toString() {
+        return $this->getNombre();
+    }
 }
