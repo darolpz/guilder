@@ -190,4 +190,8 @@ class Comision
     {
         return $this->materiamateria;
     }
+	 public function __toString()
+    {
+        return $this->getMateriamateria()->__toString(). " " . $this->getNumero();
+    }
 }

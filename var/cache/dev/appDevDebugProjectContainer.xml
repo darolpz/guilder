@@ -434,6 +434,9 @@
     <service id="AppBundle\Controller\DefaultController" class="AppBundle\Controller\DefaultController" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
+    <service id="AppBundle\Controller\HorarioController" class="AppBundle\Controller\HorarioController" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
     <service id="AppBundle\Controller\ModuloController" class="AppBundle\Controller\ModuloController" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
@@ -486,7 +489,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.429b6df6b6141cbd3e74c2b4c9051fcf"/>
+      <argument type="service" id="service_locator.43217fe9aef7d301c726ee29bfa0f8d8"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -654,7 +657,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>WC0k2haGIYdRjwRD8aYyOy</argument>
+      <argument>foiYXeiOVNRtKkuTVjUu5T</argument>
       <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -664,7 +667,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>WC0k2haGIYdRjwRD8aYyOy</argument>
+      <argument>foiYXeiOVNRtKkuTVjUu5T</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -2353,12 +2356,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>59c83c1e3bc168.82143234</argument>
+      <argument>59c83d515274c9.63052024</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>59c83c1e3bc168.82143234</argument>
+      <argument>59c83d515274c9.63052024</argument>
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -3376,6 +3379,8 @@
     <service id="abstract.instanceof.AppBundle\Controller\ComisionController" class="AppBundle\Controller\ComisionController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\DefaultController" class="AppBundle\Controller\DefaultController" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Controller\DefaultController" class="AppBundle\Controller\DefaultController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\HorarioController" class="AppBundle\Controller\HorarioController" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.AppBundle\Controller\HorarioController" class="AppBundle\Controller\HorarioController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\ModuloController" class="AppBundle\Controller\ModuloController" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Controller\ModuloController" class="AppBundle\Controller\ModuloController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\RegistrationController" class="AppBundle\Controller\RegistrationController" autowire="true" abstract="true"/>
@@ -3428,6 +3433,22 @@
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="passwordEncoder" type="service" id="security.user_password_encoder.generic" on-invalid="ignore"/>
+      </argument>
+    </service>
+    <service id="service_locator.100e7a2ac5ce21bed218e3bbf4c5c0bc" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
+    <service id="service_locator.a3c8287744c8dd502fae1a9741037ad9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="horario" type="service" id="autowired.AppBundle\Entity\Horario"/>
+      </argument>
+    </service>
+    <service id="service_locator.459ae54a46c9d25f1d610208a7b55e6c" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="horario" type="service" id="autowired.AppBundle\Entity\Horario"/>
       </argument>
     </service>
     <service id="service_locator.bdd8e859f7a2b336cad0cf69af88f6c4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -3484,13 +3505,16 @@
         <argument key="user" type="service" id="autowired.AppBundle\Entity\User"/>
       </argument>
     </service>
-    <service id="service_locator.429b6df6b6141cbd3e74c2b4c9051fcf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.43217fe9aef7d301c726ee29bfa0f8d8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="AppBundle\Controller\ComisionController:deleteAction" type="service" id="service_locator.5181ca2d28285ae33c9c275b67ea4668"/>
         <argument key="AppBundle\Controller\ComisionController:editAction" type="service" id="service_locator.5181ca2d28285ae33c9c275b67ea4668"/>
         <argument key="AppBundle\Controller\ComisionController:showAction" type="service" id="service_locator.ff6e6a03c014ea0212b01953b3f113e9"/>
         <argument key="AppBundle\Controller\DefaultController:registerAction" type="service" id="service_locator.ffb871a3769fc77520574db076704652"/>
+        <argument key="AppBundle\Controller\HorarioController:deleteAction" type="service" id="service_locator.459ae54a46c9d25f1d610208a7b55e6c"/>
+        <argument key="AppBundle\Controller\HorarioController:editAction" type="service" id="service_locator.459ae54a46c9d25f1d610208a7b55e6c"/>
+        <argument key="AppBundle\Controller\HorarioController:showAction" type="service" id="service_locator.a3c8287744c8dd502fae1a9741037ad9"/>
         <argument key="AppBundle\Controller\RegistrationController:registerAction" type="service" id="service_locator.80df18ae8c387e8bb5ce087a4a981040"/>
         <argument key="AppBundle\Controller\RolController:deleteAction" type="service" id="service_locator.e399f6dd964f41b5044b91a559e3ff92"/>
         <argument key="AppBundle\Controller\RolController:editAction" type="service" id="service_locator.e399f6dd964f41b5044b91a559e3ff92"/>
@@ -3504,6 +3528,9 @@
         <argument key="AppBundle\Controller\ComisionController::editAction" type="service" id="service_locator.5181ca2d28285ae33c9c275b67ea4668"/>
         <argument key="AppBundle\Controller\ComisionController::showAction" type="service" id="service_locator.ff6e6a03c014ea0212b01953b3f113e9"/>
         <argument key="AppBundle\Controller\DefaultController::registerAction" type="service" id="service_locator.ffb871a3769fc77520574db076704652"/>
+        <argument key="AppBundle\Controller\HorarioController::deleteAction" type="service" id="service_locator.459ae54a46c9d25f1d610208a7b55e6c"/>
+        <argument key="AppBundle\Controller\HorarioController::editAction" type="service" id="service_locator.459ae54a46c9d25f1d610208a7b55e6c"/>
+        <argument key="AppBundle\Controller\HorarioController::showAction" type="service" id="service_locator.a3c8287744c8dd502fae1a9741037ad9"/>
         <argument key="AppBundle\Controller\RegistrationController::registerAction" type="service" id="service_locator.80df18ae8c387e8bb5ce087a4a981040"/>
         <argument key="AppBundle\Controller\RolController::deleteAction" type="service" id="service_locator.e399f6dd964f41b5044b91a559e3ff92"/>
         <argument key="AppBundle\Controller\RolController::editAction" type="service" id="service_locator.e399f6dd964f41b5044b91a559e3ff92"/>
@@ -3705,6 +3732,7 @@
       </argument>
     </service>
     <service id="autowired.AppBundle\Entity\Comision" class="AppBundle\Entity\Comision" public="false" autowire="true"/>
+    <service id="autowired.AppBundle\Entity\Horario" class="AppBundle\Entity\Horario" public="false" autowire="true"/>
     <service id="autowired.AppBundle\Entity\Rol" class="AppBundle\Entity\Rol" public="false" autowire="true"/>
     <service id="autowired.AppBundle\Entity\Token" class="AppBundle\Entity\Token" public="false" autowire="true"/>
     <service id="autowired.AppBundle\Entity\User" class="AppBundle\Entity\User" public="false" autowire="true"/>
@@ -3737,7 +3765,7 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>7ZTmNLeoY9</argument>
       <argument>0</argument>
-      <argument>WC0k2haGIYdRjwRD8aYyOy</argument>
+      <argument>foiYXeiOVNRtKkuTVjUu5T</argument>
       <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -3745,7 +3773,7 @@
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>wMM9715sH0</argument>
       <argument>0</argument>
-      <argument>WC0k2haGIYdRjwRD8aYyOy</argument>
+      <argument>foiYXeiOVNRtKkuTVjUu5T</argument>
       <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -3753,7 +3781,7 @@
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>n9gePPQA67</argument>
       <argument>0</argument>
-      <argument>WC0k2haGIYdRjwRD8aYyOy</argument>
+      <argument>foiYXeiOVNRtKkuTVjUu5T</argument>
       <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -3761,7 +3789,7 @@
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>zX-n3LEvVK</argument>
       <argument>0</argument>
-      <argument>WC0k2haGIYdRjwRD8aYyOy</argument>
+      <argument>foiYXeiOVNRtKkuTVjUu5T</argument>
       <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
