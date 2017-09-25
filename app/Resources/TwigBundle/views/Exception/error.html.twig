@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="{{ _charset }}" />
+        <title>Error: {{ status_text }}</title>
+    </head>
+    <body>
+        <h1>Ocurrió un error</h1>
+        <h2>El servidor devolvió un "{{ status_code }} {{ status_text }}".</h2>
+
+        <div>
+            {% if status_code == 403 %}
+                <h2>Usted no tiene acceso a la página"</h2>
+            {% elseif status_code == 404 %}
+                <h2>La página no existe"</h2>
+            {% endif %}
+        </div>
+    </body>
+</html>
+
+{% endblock %}

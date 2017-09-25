@@ -1,0 +1,3 @@
+excel_homepage:
+    path:     /excel
+    defaults: { _controller: ExcelBundle:Default:index }
