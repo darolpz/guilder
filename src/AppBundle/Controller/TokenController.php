@@ -56,10 +56,8 @@ class TokenController extends Controller
 		}
 		while ($token == null);
 		$tokens = $em->getRepository('AppBundle:Token')->findAll();
-		$this->addFlash('token', $token->getToken());
-		return $this->render('token/index.html.twig', array(
-			'tokens' => $tokens,
-        ));
+		$this->addFlash('tokencreado', $token->getToken());
+		return $this->redirectToRoute('token_index');
 	}
 
    /**
@@ -76,6 +74,7 @@ class TokenController extends Controller
 			$em->remove($token);
 			$em->flush();
 		}
+		$this->addFlash('tokeneliminado', $token->getToken());
         return $this->redirectToRoute('token_index');
 	}
 }

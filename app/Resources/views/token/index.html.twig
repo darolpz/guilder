@@ -7,9 +7,14 @@
 
 <h1>Lista de tokens</h1>
 
-{% for message in app.flashes('token') %}
+{% for message in app.flashes('tokencreado') %}
 	<div class="alert alert-success">
-  <strong>Éxito</strong> El token ha sido creado con el código {{ message }}
+  <strong>Éxito</strong> El token ha sido creado con el código {{ message }}.
+    </div>
+{% endfor %}
+{% for message in app.flashes('tokeneliminado') %}
+	<div class="alert alert-danger">
+  El token ha sido eliminado.
     </div>
 {% endfor %}
 <div class="center-block" style="max-width:400px">

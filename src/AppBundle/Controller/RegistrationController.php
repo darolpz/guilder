@@ -29,29 +29,20 @@ class RegistrationController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) 
 		{
-
-			$codigo = $user->getToken(); // Devuelve el token que ingresó el usuario
-			$token = null;
 			$token = $em->getRepository('AppBundle:Token')->findBy(array('token' => $codigo));
-			if (count($token) != 0)
-			{
-				// Se encripta la contraseña del usuario, se lo guarda en la BD y se elimina el token utilizado
-				$password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
-				$user->setPassword($password);
-				$em->persist($user);
-				$em->remove($token[0]); // $token es un array de un elemento
-				$em->flush();
+			// Se encripta la contraseña del usuario, se lo guarda en la BD y se elimina el token utilizado
+			$password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+			$user->setPassword($password);
+			$em->persist($user);
+			$em->remove($token[0]); // $token es un array de un elemento
+			$em->flush();
+			// Esto logea al usuario luego de registrarlo exitosamente
+			$token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+			$this->get('security.token_storage')->setToken($token);
+			$this->get('session')->set('_security_main', serialize($token));
 				
-				// Esto logea al usuario luego de registrarlo exitosamente
-				$token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
-				$this->get('security.token_storage')->setToken($token);
-				$this->get('session')->set('_security_main', serialize($token));
-				
-				return $this->redirectToRoute('homepage');
-			}
-			// Error de token
-			return $this->render('registration/register.html.twig', array('form' => $form->createView()));
-        }
+			return $this->redirectToRoute('homepage');
+		}
 		// Error de usuario/contraseña
         return $this->render(
             'registration/register.html.twig',

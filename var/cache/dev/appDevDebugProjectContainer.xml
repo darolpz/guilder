@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <parameters>
-    <parameter key="kernel.root_dir">C:\xampp\htdocs\repo\app</parameter>
-    <parameter key="kernel.project_dir">C:\xampp\htdocs\repo</parameter>
+    <parameter key="kernel.root_dir">C:\Users\Erik\git\app</parameter>
+    <parameter key="kernel.project_dir">C:\Users\Erik\git</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
     <parameter key="kernel.name">app</parameter>
-    <parameter key="kernel.cache_dir">C:\xampp\htdocs\repo\var\cache\dev</parameter>
-    <parameter key="kernel.logs_dir">C:\xampp\htdocs\repo\var\logs</parameter>
+    <parameter key="kernel.cache_dir">C:\Users\Erik\git\var\cache\dev</parameter>
+    <parameter key="kernel.logs_dir">C:\Users\Erik\git\var\logs</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
@@ -27,72 +27,72 @@
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle</parameter>
         <parameter key="namespace">Symfony\Bundle\FrameworkBundle</parameter>
       </parameter>
       <parameter key="SecurityBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle</parameter>
         <parameter key="namespace">Symfony\Bundle\SecurityBundle</parameter>
       </parameter>
       <parameter key="TwigBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle</parameter>
         <parameter key="namespace">Symfony\Bundle\TwigBundle</parameter>
       </parameter>
       <parameter key="MonologBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\symfony\monolog-bundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\symfony\monolog-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\MonologBundle</parameter>
       </parameter>
       <parameter key="SwiftmailerBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\symfony\swiftmailer-bundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\symfony\swiftmailer-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\SwiftmailerBundle</parameter>
       </parameter>
       <parameter key="DoctrineBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\doctrine\doctrine-bundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\doctrine\doctrine-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\DoctrineBundle</parameter>
       </parameter>
       <parameter key="SensioFrameworkExtraBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\sensio\framework-extra-bundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\sensio\framework-extra-bundle</parameter>
         <parameter key="namespace">Sensio\Bundle\FrameworkExtraBundle</parameter>
       </parameter>
       <parameter key="AppBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\src\AppBundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\src\AppBundle</parameter>
         <parameter key="namespace">AppBundle</parameter>
       </parameter>
       <parameter key="LiuggioExcelBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\liuggio\ExcelBundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\liuggio\ExcelBundle</parameter>
         <parameter key="namespace">Liuggio\ExcelBundle</parameter>
       </parameter>
       <parameter key="DebugBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle</parameter>
         <parameter key="namespace">Symfony\Bundle\DebugBundle</parameter>
       </parameter>
       <parameter key="WebProfilerBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle</parameter>
         <parameter key="namespace">Symfony\Bundle\WebProfilerBundle</parameter>
       </parameter>
       <parameter key="SensioDistributionBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\sensio\distribution-bundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\sensio\distribution-bundle</parameter>
         <parameter key="namespace">Sensio\Bundle\DistributionBundle</parameter>
       </parameter>
       <parameter key="SensioGeneratorBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\sensio\generator-bundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\sensio\generator-bundle</parameter>
         <parameter key="namespace">Sensio\Bundle\GeneratorBundle</parameter>
       </parameter>
       <parameter key="WebServerBundle" type="collection">
         <parameter key="parent">null</parameter>
-        <parameter key="path">C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\WebServerBundle</parameter>
+        <parameter key="path">C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\WebServerBundle</parameter>
         <parameter key="namespace">Symfony\Bundle\WebServerBundle</parameter>
       </parameter>
     </parameter>
@@ -122,7 +122,7 @@
       <parameter key="cookie_httponly">true</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path">C:\xampp\htdocs\repo/var/sessions/dev</parameter>
+    <parameter key="session.save_path">C:\Users\Erik\git/var/sessions/dev</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="form.type_extension.csrf.enabled">true</parameter>
     <parameter key="form.type_extension.csrf.field_name">_token</parameter>
@@ -131,13 +131,13 @@
       <parameter>twig</parameter>
     </parameter>
     <parameter key="validator.mapping.cache.prefix"></parameter>
-    <parameter key="validator.mapping.cache.file">C:\xampp\htdocs\repo\var\cache\dev/validation.php</parameter>
+    <parameter key="validator.mapping.cache.file">C:\Users\Erik\git\var\cache\dev/validation.php</parameter>
     <parameter key="validator.translation_domain">validators</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
-    <parameter key="profiler.storage.dsn">file:C:\xampp\htdocs\repo\var\cache\dev/profiler</parameter>
+    <parameter key="profiler.storage.dsn">file:C:\Users\Erik\git\var\cache\dev/profiler</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
-    <parameter key="debug.container.dump">C:\xampp\htdocs\repo\var\cache\dev/appDevDebugProjectContainer.xml</parameter>
+    <parameter key="debug.container.dump">C:\Users\Erik\git\var\cache\dev/appDevDebugProjectContainer.xml</parameter>
     <parameter key="router.options.generator_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
     <parameter key="router.options.generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
     <parameter key="router.options.generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\PhpGeneratorDumper</parameter>
@@ -149,7 +149,7 @@
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
-    <parameter key="router.resource">C:\xampp\htdocs\repo/app/config/routing_dev.yml</parameter>
+    <parameter key="router.resource">C:\Users\Erik\git/app/config/routing_dev.yml</parameter>
     <parameter key="router.cache_class_prefix">appDevDebugProjectContainer</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
@@ -212,7 +212,7 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.local_domain">null</parameter>
-    <parameter key="swiftmailer.spool.default.memory.path">C:\xampp\htdocs\repo\var\cache\dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">C:\Users\Erik\git\var\cache\dev/swiftmailer/spool/default</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
@@ -331,7 +331,7 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">C:\xampp\htdocs\repo\var\cache\dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">C:\Users\Erik\git\var\cache\dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="sensio_framework_extra.view.guesser.class">Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser</parameter>
     <parameter key="sensio_framework_extra.controller.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener</parameter>
@@ -470,8 +470,16 @@
     <service id="AppBundle\Form\RolType" class="AppBundle\Form\RolType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="AppBundle\Form\TokenType" class="AppBundle\Form\TokenType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="AppBundle\Form\UserType" class="AppBundle\Form\UserType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
+    </service>
+    <service id="AppBundle\Validator\Constraints\TokenValido" class="AppBundle\Validator\Constraints\TokenValido" public="false" autowire="true" autoconfigure="true"/>
+    <service id="AppBundle\Validator\Constraints\TokenValidoValidator" class="AppBundle\Validator\Constraints\TokenValidoValidator" public="false" autowire="true" autoconfigure="true">
+      <tag name="validator.constraint_validator"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
@@ -517,10 +525,10 @@
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="controller_name_converter"/>
     </service>
-    <service id="2_b65a956d5222bd2ebeb9d137db4311b43099803d255079d066ae4faf6985816b" class="Symfony\Component\Config\Resource\SelfCheckingResourceChecker" public="false">
+    <service id="2_666df50acebd4d74ed4d222559d55f31aa0763d9e7c23ebaa7e1e08c91653d99" class="Symfony\Component\Config\Resource\SelfCheckingResourceChecker" public="false">
       <tag name="config_cache.resource_checker" priority="-990"/>
     </service>
-    <service id="1_b65a956d5222bd2ebeb9d137db4311b43099803d255079d066ae4faf6985816b" class="Symfony\Component\DependencyInjection\Config\ContainerParametersResourceChecker" public="false">
+    <service id="1_666df50acebd4d74ed4d222559d55f31aa0763d9e7c23ebaa7e1e08c91653d99" class="Symfony\Component\DependencyInjection\Config\ContainerParametersResourceChecker" public="false">
       <tag name="config_cache.resource_checker" priority="-980"/>
       <argument type="service" id="service_container"/>
     </service>
@@ -562,9 +570,9 @@
     <service id="filesystem" class="Symfony\Component\Filesystem\Filesystem"/>
     <service id="file_locator" class="Symfony\Component\HttpKernel\Config\FileLocator">
       <argument type="service" id="kernel"/>
-      <argument>C:\xampp\htdocs\repo\app/Resources</argument>
+      <argument>C:\Users\Erik\git\app/Resources</argument>
       <argument type="collection">
-        <argument>C:\xampp\htdocs\repo\app</argument>
+        <argument>C:\Users\Erik\git\app</argument>
       </argument>
     </service>
     <service id="uri_signer" class="Symfony\Component\HttpKernel\UriSigner">
@@ -572,8 +580,8 @@
     </service>
     <service id="config_cache_factory" class="Symfony\Component\Config\ResourceCheckerConfigCacheFactory">
       <argument type="iterator">
-        <argument type="service" id="1_b65a956d5222bd2ebeb9d137db4311b43099803d255079d066ae4faf6985816b"/>
-        <argument type="service" id="2_b65a956d5222bd2ebeb9d137db4311b43099803d255079d066ae4faf6985816b"/>
+        <argument type="service" id="1_666df50acebd4d74ed4d222559d55f31aa0763d9e7c23ebaa7e1e08c91653d99"/>
+        <argument type="service" id="2_666df50acebd4d74ed4d222559d55f31aa0763d9e7c23ebaa7e1e08c91653d99"/>
       </argument>
     </service>
     <service id="fragment.handler" class="Symfony\Component\HttpKernel\DependencyInjection\LazyLoadingFragmentHandler">
@@ -657,8 +665,8 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>foiYXeiOVNRtKkuTVjUu5T</argument>
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
+      <argument>k4Fzde8GZADH+T+STKuf0V</argument>
+      <argument>C:\Users\Erik\git\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -667,7 +675,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>foiYXeiOVNRtKkuTVjUu5T</argument>
+      <argument>k4Fzde8GZADH+T+STKuf0V</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -687,7 +695,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
+      <argument>C:\Users\Erik\git\var\cache\dev/pools</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -726,7 +734,7 @@
       <argument type="service" id="translator.selector"/>
     </service>
     <service id="translator.selector" class="Symfony\Component\Translation\MessageSelector" public="false"/>
-    <service id="1_589368ee09f5e5477ef4f7c090ddc97bb5307c251a6ac91008803374519ca88c" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="1_bb9cf78f980592da4b2bea26a0d7197b3ccb2fe8f0d9e073f06fd117c97d8b12" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="session" type="service" id="session" on-invalid="ignore"/>
@@ -756,23 +764,23 @@
     <service id="session.flash_bag" class="Symfony\Component\HttpFoundation\Session\Flash\FlashBag" public="false"/>
     <service id="session.attribute_bag" class="Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag" public="false"/>
     <service id="session.storage.mock_file" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage" public="false">
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/sessions</argument>
+      <argument>C:\Users\Erik\git\var\cache\dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
     <service id="session.handler.native_file" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler" public="false">
-      <argument>C:\xampp\htdocs\repo/var/sessions/dev</argument>
+      <argument>C:\Users\Erik\git/var/sessions/dev</argument>
     </service>
     <service id="session.handler.write_check" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\WriteCheckSessionHandler" public="false"/>
     <service id="session_listener" class="Symfony\Component\HttpKernel\EventListener\SessionListener">
       <tag name="kernel.event_subscriber"/>
-      <argument type="service" id="1_589368ee09f5e5477ef4f7c090ddc97bb5307c251a6ac91008803374519ca88c"/>
+      <argument type="service" id="1_bb9cf78f980592da4b2bea26a0d7197b3ccb2fe8f0d9e073f06fd117c97d8b12"/>
     </service>
     <service id="session.save_listener" class="Symfony\Component\HttpKernel\EventListener\SaveSessionListener">
       <tag name="kernel.event_subscriber"/>
     </service>
     <service id="form.resolved_type_factory" class="Symfony\Component\Form\Extension\DataCollector\Proxy\ResolvedTypeFactoryDataCollectorProxy">
-      <argument type="service" id="1_596170f4bf3b8f13f0892bef6f4e1d59e8a45ac1a44462a5858f7958d3bd3c19"/>
+      <argument type="service" id="1_0f82c42d5486170b353199c7dd77b8862121fceeff26864403829a0ad8d91ba6"/>
       <argument type="service" id="data_collector.form"/>
     </service>
     <service id="form.registry" class="Symfony\Component\Form\FormRegistry">
@@ -786,7 +794,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id="service_locator.4ea49b739d77d37949e1301575163661"/>
+      <argument type="service" id="service_locator.b325b0c92a3f74dc2b79ddb4d2f6f87d"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.http_foundation"/>
@@ -1019,12 +1027,12 @@
     <service id="templating.filename_parser" class="Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser"/>
     <service id="templating.locator" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator" public="false">
       <argument type="service" id="file_locator"/>
-      <argument>C:\xampp\htdocs\repo\var\cache\dev</argument>
+      <argument>C:\Users\Erik\git\var\cache\dev</argument>
     </service>
     <service id="templating.finder" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
       <argument type="service" id="kernel"/>
       <argument type="service" id="templating.filename_parser"/>
-      <argument>C:\xampp\htdocs\repo\app/Resources</argument>
+      <argument>C:\Users\Erik\git\app/Resources</argument>
     </service>
     <service id="templating.cache_warmer.template_paths" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer" public="false">
       <tag name="kernel.cache_warmer" priority="20"/>
@@ -1048,13 +1056,13 @@
         <argument type="service" id="monolog.logger.templating" on-invalid="ignore"/>
       </call>
     </service>
-    <service id="2_06746aee30fbf477e28cec89b116f055df0792fff551839d5aea4d4ff6189fab" class="Doctrine\Common\Cache\ApcCache" public="false">
+    <service id="2_c535d9cb2193e2415d269324a9283e5e0bb0c6cd52925c6f889a81e9b627185e" class="Doctrine\Common\Cache\ApcCache" public="false">
       <call method="setNamespace">
         <argument></argument>
       </call>
     </service>
-    <service id="1_06746aee30fbf477e28cec89b116f055df0792fff551839d5aea4d4ff6189fab" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/validation.php</argument>
+    <service id="1_c535d9cb2193e2415d269324a9283e5e0bb0c6cd52925c6f889a81e9b627185e" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
+      <argument>C:\Users\Erik\git\var\cache\dev/validation.php</argument>
       <argument type="service" id="cache.validator"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
@@ -1073,7 +1081,7 @@
       </call>
       <call method="addXmlMappings">
         <argument type="collection">
-          <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/config/validation.xml</argument>
+          <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/config/validation.xml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -1092,17 +1100,17 @@
     <service id="validator.mapping.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\ValidatorCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
       <argument type="service" id="validator.builder"/>
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/validation.php</argument>
+      <argument>C:\Users\Erik\git\var\cache\dev/validation.php</argument>
       <argument type="service" id="cache.validator"/>
     </service>
     <service id="validator.mapping.cache.symfony" class="Symfony\Component\Validator\Mapping\Cache\Psr6Cache" public="false">
-      <argument type="service" id="1_06746aee30fbf477e28cec89b116f055df0792fff551839d5aea4d4ff6189fab"/>
+      <argument type="service" id="1_c535d9cb2193e2415d269324a9283e5e0bb0c6cd52925c6f889a81e9b627185e"/>
     </service>
     <service id="validator.mapping.cache.doctrine.apc" class="Symfony\Component\Validator\Mapping\Cache\DoctrineCache" public="false">
-      <argument type="service" id="2_06746aee30fbf477e28cec89b116f055df0792fff551839d5aea4d4ff6189fab"/>
+      <argument type="service" id="2_c535d9cb2193e2415d269324a9283e5e0bb0c6cd52925c6f889a81e9b627185e"/>
     </service>
     <service id="validator.validator_factory" class="Symfony\Component\Validator\ContainerConstraintValidatorFactory" public="false">
-      <argument type="service" id="service_locator.39e66930232432ca5ba91e98fdd8a17b"/>
+      <argument type="service" id="service_locator.9738ba87e91f18cb252689e23306bb8d"/>
     </service>
     <service id="validator.expression" class="Symfony\Component\Validator\Constraints\ExpressionValidator">
       <tag name="validator.constraint_validator" alias="validator.expression"/>
@@ -1170,7 +1178,7 @@
       </call>
     </service>
     <service id="profiler.storage" class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
-      <argument>file:C:\xampp\htdocs\repo\var\cache\dev/profiler</argument>
+      <argument>file:C:\Users\Erik\git\var\cache\dev/profiler</argument>
     </service>
     <service id="profiler_listener" class="Symfony\Component\HttpKernel\EventListener\ProfilerListener">
       <tag name="kernel.event_subscriber"/>
@@ -1204,7 +1212,7 @@
       <tag name="data_collector" template="@WebProfiler/Collector/logger.html.twig" id="logger" priority="300"/>
       <tag name="monolog.logger" channel="profiler"/>
       <argument type="service" id="monolog.logger.profiler" on-invalid="ignore"/>
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/appDevDebugProjectContainer</argument>
+      <argument>C:\Users\Erik\git\var\cache\dev/appDevDebugProjectContainer</argument>
     </service>
     <service id="data_collector.time" class="Symfony\Component\HttpKernel\DataCollector\TimeDataCollector" public="false">
       <tag name="data_collector" template="@WebProfiler/Collector/time.html.twig" id="time" priority="330"/>
@@ -1241,7 +1249,7 @@
         <argument type="service" id="cache.annotations"/>
       </call>
     </service>
-    <service id="1_596170f4bf3b8f13f0892bef6f4e1d59e8a45ac1a44462a5858f7958d3bd3c19" class="Symfony\Component\Form\ResolvedFormTypeFactory" public="false"/>
+    <service id="1_0f82c42d5486170b353199c7dd77b8862121fceeff26864403829a0ad8d91ba6" class="Symfony\Component\Form\ResolvedFormTypeFactory" public="false"/>
     <service id="form.type_extension.form.data_collector" class="Symfony\Component\Form\Extension\DataCollector\Type\DataCollectorTypeExtension" public="false">
       <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
       <argument type="service" id="data_collector.form"/>
@@ -1278,7 +1286,7 @@
     <service id="debug.file_link_formatter" class="Symfony\Component\HttpKernel\Debug\FileLinkFormatter" public="false">
       <argument>null</argument>
       <argument type="service" id="request_stack" on-invalid="ignore"/>
-      <argument>C:\xampp\htdocs\repo</argument>
+      <argument>C:\Users\Erik\git</argument>
       <argument>/_profiler/open?file=%%f&amp;line=%%l#line%%l</argument>
     </service>
     <service id="debug.event_dispatcher" class="Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher">
@@ -1424,6 +1432,14 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service" id="debug.debug_handlers_listener"/>
+          <argument>configure</argument>
+        </argument>
+        <argument>2048</argument>
+      </call>
+      <call method="addListener">
+        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -1670,9 +1686,9 @@
     <service id="router.default" class="Symfony\Bundle\FrameworkBundle\Routing\Router" public="false">
       <tag name="monolog.logger" channel="router"/>
       <argument type="service" id="service_container"/>
-      <argument>C:\xampp\htdocs\repo/app/config/routing_dev.yml</argument>
+      <argument>C:\Users\Erik\git/app/config/routing_dev.yml</argument>
       <argument type="collection">
-        <argument key="cache_dir">C:\xampp\htdocs\repo\var\cache\dev</argument>
+        <argument key="cache_dir">C:\Users\Erik\git\var\cache\dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
         <argument key="generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
@@ -1710,13 +1726,13 @@
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
       <argument type="service" id="monolog.logger.request" on-invalid="ignore"/>
     </service>
-    <service id="3_43b1bc7497c311007f5e2a51adfacb75ad408529457be1b2df49c57503154b04" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/annotations.php</argument>
+    <service id="3_8ed300d6894206c3d1548ec4981c50d1220797adb1057365ff4b5c4547868336" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
+      <argument>C:\Users\Erik\git\var\cache\dev/annotations.php</argument>
       <argument type="service" id="cache.annotations"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
-    <service id="2_43b1bc7497c311007f5e2a51adfacb75ad408529457be1b2df49c57503154b04" class="Doctrine\Common\Cache\ArrayCache" public="false"/>
-    <service id="1_43b1bc7497c311007f5e2a51adfacb75ad408529457be1b2df49c57503154b04" class="Doctrine\Common\Annotations\AnnotationRegistry" public="false">
+    <service id="2_8ed300d6894206c3d1548ec4981c50d1220797adb1057365ff4b5c4547868336" class="Doctrine\Common\Cache\ArrayCache" public="false"/>
+    <service id="1_8ed300d6894206c3d1548ec4981c50d1220797adb1057365ff4b5c4547868336" class="Doctrine\Common\Annotations\AnnotationRegistry" public="false">
       <call method="registerLoader">
         <argument>class_exists</argument>
       </call>
@@ -1724,7 +1740,7 @@
     <service id="annotations.reader" class="Doctrine\Common\Annotations\AnnotationReader" public="false">
       <call method="addGlobalIgnoredName">
         <argument>required</argument>
-        <argument type="service" id="1_43b1bc7497c311007f5e2a51adfacb75ad408529457be1b2df49c57503154b04"/>
+        <argument type="service" id="1_8ed300d6894206c3d1548ec4981c50d1220797adb1057365ff4b5c4547868336"/>
       </call>
     </service>
     <service id="annotations.filesystem_cache" class="Doctrine\Common\Cache\FilesystemCache" public="false">
@@ -1733,11 +1749,11 @@
     <service id="annotations.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\AnnotationsCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
       <argument type="service" id="annotations.reader"/>
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/annotations.php</argument>
+      <argument>C:\Users\Erik\git\var\cache\dev/annotations.php</argument>
       <argument type="service" id="cache.annotations"/>
     </service>
     <service id="annotations.cache" class="Symfony\Component\Cache\DoctrineProvider" public="false">
-      <argument type="service" id="3_43b1bc7497c311007f5e2a51adfacb75ad408529457be1b2df49c57503154b04"/>
+      <argument type="service" id="3_8ed300d6894206c3d1548ec4981c50d1220797adb1057365ff4b5c4547868336"/>
     </service>
     <service id="security.authorization_checker" class="Symfony\Component\Security\Core\Authorization\AuthorizationChecker">
       <argument type="service" id="security.token_storage"/>
@@ -2356,12 +2372,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>59c83d515274c9.63052024</argument>
+      <argument>59c931650181f4.85956817</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>59c83d515274c9.63052024</argument>
+      <argument>59c931650181f4.85956817</argument>
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -2433,7 +2449,7 @@
           <argument>form_div_layout.html.twig</argument>
         </argument>
         <argument key="autoescape">name</argument>
-        <argument key="cache">C:\xampp\htdocs\repo\var\cache\dev/twig</argument>
+        <argument key="cache">C:\Users\Erik\git\var\cache\dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="paths" type="collection"/>
         <argument key="date" type="collection">
@@ -2534,7 +2550,7 @@
     </service>
     <service id="twig.template_iterator" class="Symfony\Bundle\TwigBundle\TemplateIterator" public="false">
       <argument type="service" id="kernel"/>
-      <argument>C:\xampp\htdocs\repo\app</argument>
+      <argument>C:\Users\Erik\git\app</argument>
       <argument type="collection"/>
     </service>
     <service id="twig.template_cache_warmer" class="Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheWarmer" public="false">
@@ -2544,44 +2560,44 @@
     </service>
     <service id="twig.loader.native_filesystem" class="Twig\Loader\FilesystemLoader" public="false">
       <argument type="collection"/>
-      <argument>C:\xampp\htdocs\repo</argument>
+      <argument>C:\Users\Erik\git</argument>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
         <argument>Security</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\app/Resources/TwigBundle/views</argument>
+        <argument>C:\Users\Erik\git\app/Resources/TwigBundle/views</argument>
         <argument>Twig</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
         <argument>Twig</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
         <argument>Swiftmailer</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\doctrine\doctrine-bundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\doctrine\doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\app/Resources/views</argument>
+        <argument>C:\Users\Erik\git\app/Resources/views</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form</argument>
       </call>
     </service>
     <service id="twig.loader.chain" class="Twig\Loader\ChainLoader" public="false"/>
@@ -2606,7 +2622,7 @@
     <service id="twig.extension.code" class="Symfony\Bridge\Twig\Extension\CodeExtension" public="false">
       <tag name="twig.extension"/>
       <argument type="service" id="debug.file_link_formatter" on-invalid="ignore"/>
-      <argument>C:\xampp\htdocs\repo\app</argument>
+      <argument>C:\Users\Erik\git\app</argument>
       <argument>UTF-8</argument>
     </service>
     <service id="twig.extension.routing" class="Symfony\Bridge\Twig\Extension\RoutingExtension" public="false">
@@ -2690,44 +2706,44 @@
       <tag name="twig.loader"/>
       <argument type="service" id="templating.locator"/>
       <argument type="service" id="templating.name_parser"/>
-      <argument>C:\xampp\htdocs\repo</argument>
+      <argument>C:\Users\Erik\git</argument>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
         <argument>Security</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\app/Resources/TwigBundle/views</argument>
+        <argument>C:\Users\Erik\git\app/Resources/TwigBundle/views</argument>
         <argument>Twig</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
         <argument>Twig</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
         <argument>Swiftmailer</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\doctrine\doctrine-bundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\doctrine\doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\app/Resources/views</argument>
+        <argument>C:\Users\Erik\git\app/Resources/views</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\repo\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form</argument>
+        <argument>C:\Users\Erik\git\vendor\symfony\symfony\src\Symfony\Bridge\Twig/Resources/views/Form</argument>
       </call>
     </service>
     <service id="templating.engine.twig" class="Symfony\Bundle\TwigBundle\TwigEngine" public="false">
@@ -2779,7 +2795,7 @@
     </service>
     <service id="monolog.processor.psr_log_message" class="Monolog\Processor\PsrLogMessageProcessor" public="false"/>
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
-      <argument>C:\xampp\htdocs\repo\var\logs/dev.log</argument>
+      <argument>C:\Users\Erik\git\var\logs/dev.log</argument>
       <argument>100</argument>
       <argument>true</argument>
       <argument>null</argument>
@@ -2798,9 +2814,9 @@
       <argument>100</argument>
       <argument>true</argument>
     </service>
-    <service id="3_1e221cd6962f7983b12e56dfa9c48e6a6ed70f5d4b9e3e51ab120ed3347028de" class="Swift_Transport_Esmtp_Auth_PlainAuthenticator" public="false"/>
-    <service id="2_1e221cd6962f7983b12e56dfa9c48e6a6ed70f5d4b9e3e51ab120ed3347028de" class="Swift_Transport_Esmtp_Auth_LoginAuthenticator" public="false"/>
-    <service id="1_1e221cd6962f7983b12e56dfa9c48e6a6ed70f5d4b9e3e51ab120ed3347028de" class="Swift_Transport_Esmtp_Auth_CramMd5Authenticator" public="false"/>
+    <service id="3_4ec820cb881eccea54ec1bea030d03a1fab002b9bcc6985f0548345c6a4da0a1" class="Swift_Transport_Esmtp_Auth_PlainAuthenticator" public="false"/>
+    <service id="2_4ec820cb881eccea54ec1bea030d03a1fab002b9bcc6985f0548345c6a4da0a1" class="Swift_Transport_Esmtp_Auth_LoginAuthenticator" public="false"/>
+    <service id="1_4ec820cb881eccea54ec1bea030d03a1fab002b9bcc6985f0548345c6a4da0a1" class="Swift_Transport_Esmtp_Auth_CramMd5Authenticator" public="false"/>
     <service id="swiftmailer.mailer.abstract" class="Swift_Mailer" abstract="true">
       <argument type="service" id="swiftmailer.transport"/>
     </service>
@@ -2817,9 +2833,9 @@
     </service>
     <service id="swiftmailer.transport.authhandler.abstract" class="Swift_Transport_Esmtp_AuthHandler" public="false" abstract="true">
       <argument type="collection">
-        <argument type="service" id="1_1e221cd6962f7983b12e56dfa9c48e6a6ed70f5d4b9e3e51ab120ed3347028de"/>
-        <argument type="service" id="2_1e221cd6962f7983b12e56dfa9c48e6a6ed70f5d4b9e3e51ab120ed3347028de"/>
-        <argument type="service" id="3_1e221cd6962f7983b12e56dfa9c48e6a6ed70f5d4b9e3e51ab120ed3347028de"/>
+        <argument type="service" id="1_4ec820cb881eccea54ec1bea030d03a1fab002b9bcc6985f0548345c6a4da0a1"/>
+        <argument type="service" id="2_4ec820cb881eccea54ec1bea030d03a1fab002b9bcc6985f0548345c6a4da0a1"/>
+        <argument type="service" id="3_4ec820cb881eccea54ec1bea030d03a1fab002b9bcc6985f0548345c6a4da0a1"/>
       </argument>
     </service>
     <service id="swiftmailer.transport.eventdispatcher.abstract" class="Swift_Events_SimpleEventDispatcher" public="false" abstract="true"/>
@@ -2831,7 +2847,7 @@
     <service id="swiftmailer.transport.smtp.abstract" class="Swift_Transport_EsmtpTransport" public="false" abstract="true"/>
     <service id="swiftmailer.transport.spool.abstract" class="Swift_Transport_SpoolTransport" public="false" abstract="true"/>
     <service id="swiftmailer.spool.file.abstract" class="Swift_FileSpool" public="false" abstract="true">
-      <argument>C:\xampp\htdocs\repo\app/../data/swiftmailer/spool</argument>
+      <argument>C:\Users\Erik\git\app/../data/swiftmailer/spool</argument>
     </service>
     <service id="swiftmailer.spool.memory.abstract" class="Swift_MemorySpool" public="false" abstract="true"/>
     <service id="swiftmailer.email_sender.listener" class="Symfony\Bundle\SwiftmailerBundle\EventListener\EmailSenderListener">
@@ -2846,9 +2862,9 @@
     <service id="swiftmailer.mailer.default.transport.eventdispatcher" class="Swift_Events_SimpleEventDispatcher" public="false"/>
     <service id="swiftmailer.mailer.default.transport.authhandler" class="Swift_Transport_Esmtp_AuthHandler" public="false">
       <argument type="collection">
-        <argument type="service" id="1_1e221cd6962f7983b12e56dfa9c48e6a6ed70f5d4b9e3e51ab120ed3347028de"/>
-        <argument type="service" id="2_1e221cd6962f7983b12e56dfa9c48e6a6ed70f5d4b9e3e51ab120ed3347028de"/>
-        <argument type="service" id="3_1e221cd6962f7983b12e56dfa9c48e6a6ed70f5d4b9e3e51ab120ed3347028de"/>
+        <argument type="service" id="1_4ec820cb881eccea54ec1bea030d03a1fab002b9bcc6985f0548345c6a4da0a1"/>
+        <argument type="service" id="2_4ec820cb881eccea54ec1bea030d03a1fab002b9bcc6985f0548345c6a4da0a1"/>
+        <argument type="service" id="3_4ec820cb881eccea54ec1bea030d03a1fab002b9bcc6985f0548345c6a4da0a1"/>
       </argument>
       <call method="setUsername">
         <argument>null</argument>
@@ -3060,7 +3076,7 @@
         <argument type="service" id="doctrine.orm.default_metadata_driver"/>
       </call>
       <call method="setProxyDir">
-        <argument>C:\xampp\htdocs\repo\var\cache\dev/doctrine/orm/Proxies</argument>
+        <argument>C:\Users\Erik\git\var\cache\dev/doctrine/orm/Proxies</argument>
       </call>
       <call method="setProxyNamespace">
         <argument>Proxies</argument>
@@ -3087,7 +3103,7 @@
     <service id="doctrine.orm.default_annotation_metadata_driver" class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
       <argument type="service" id="annotations.cached_reader"/>
       <argument type="collection">
-        <argument>C:\xampp\htdocs\repo\src\AppBundle\Entity</argument>
+        <argument>C:\Users\Erik\git\src\AppBundle\Entity</argument>
       </argument>
     </service>
     <service id="doctrine.orm.default_metadata_driver" class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
@@ -3098,17 +3114,17 @@
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_65974007be00677bfa1809ade39e993457e787af050d330ea0b1fe2c3505c0d1</argument>
+        <argument>sf2orm_default_0ddc98c375dd6420ebd9bbf0ad691136955f40db2a6ef3b79047f6abfc3e3b4d</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_result_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_65974007be00677bfa1809ade39e993457e787af050d330ea0b1fe2c3505c0d1</argument>
+        <argument>sf2orm_default_0ddc98c375dd6420ebd9bbf0ad691136955f40db2a6ef3b79047f6abfc3e3b4d</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_query_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_65974007be00677bfa1809ade39e993457e787af050d330ea0b1fe2c3505c0d1</argument>
+        <argument>sf2orm_default_0ddc98c375dd6420ebd9bbf0ad691136955f40db2a6ef3b79047f6abfc3e3b4d</argument>
       </call>
     </service>
     <service id="doctrine.orm.default_entity_listener_resolver" class="Doctrine\Bundle\DoctrineBundle\Mapping\ContainerAwareEntityListenerResolver">
@@ -3239,7 +3255,7 @@
         </argument>
       </call>
     </service>
-    <service id="2_15abeb335111472293c88af69cf03e239f2802e445eb24a35787d14ead11744f" class="Symfony\Component\VarDumper\Dumper\HtmlDumper" public="false">
+    <service id="2_ce836e20d436371fdddcdcb60ed051c682167fb61913b99acd3b4deba4ce8844" class="Symfony\Component\VarDumper\Dumper\HtmlDumper" public="false">
       <argument>null</argument>
       <argument>UTF-8</argument>
       <argument>1</argument>
@@ -3250,7 +3266,7 @@
         </argument>
       </call>
     </service>
-    <service id="1_15abeb335111472293c88af69cf03e239f2802e445eb24a35787d14ead11744f" class="Symfony\Bundle\WebProfilerBundle\Csp\NonceGenerator" public="false"/>
+    <service id="1_ce836e20d436371fdddcdcb60ed051c682167fb61913b99acd3b4deba4ce8844" class="Symfony\Bundle\WebProfilerBundle\Csp\NonceGenerator" public="false"/>
     <service id="web_profiler.controller.profiler" class="Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController">
       <argument type="service" id="router.default" on-invalid="null"/>
       <argument type="service" id="profiler" on-invalid="null"/>
@@ -3323,7 +3339,7 @@
       </argument>
       <argument>bottom</argument>
       <argument type="service" id="web_profiler.csp.handler"/>
-      <argument>C:\xampp\htdocs\repo</argument>
+      <argument>C:\Users\Erik\git</argument>
     </service>
     <service id="web_profiler.controller.router" class="Symfony\Bundle\WebProfilerBundle\Controller\RouterController">
       <argument type="service" id="profiler" on-invalid="null"/>
@@ -3336,11 +3352,11 @@
       <argument>true</argument>
     </service>
     <service id="web_profiler.csp.handler" class="Symfony\Bundle\WebProfilerBundle\Csp\ContentSecurityPolicyHandler" public="false">
-      <argument type="service" id="1_15abeb335111472293c88af69cf03e239f2802e445eb24a35787d14ead11744f"/>
+      <argument type="service" id="1_ce836e20d436371fdddcdcb60ed051c682167fb61913b99acd3b4deba4ce8844"/>
     </service>
     <service id="twig.extension.webprofiler" class="Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension" public="false">
       <tag name="twig.extension"/>
-      <argument type="service" id="2_15abeb335111472293c88af69cf03e239f2802e445eb24a35787d14ead11744f"/>
+      <argument type="service" id="2_ce836e20d436371fdddcdcb60ed051c682167fb61913b99acd3b4deba4ce8844"/>
     </service>
     <service id="web_profiler.debug_toolbar" class="Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener">
       <tag name="kernel.event_subscriber"/>
@@ -3359,12 +3375,12 @@
     </service>
     <service id="web_server.command.server_run" class="Symfony\Bundle\WebServerBundle\Command\ServerRunCommand" public="false">
       <tag name="console.command"/>
-      <argument>C:\xampp\htdocs\repo/public</argument>
+      <argument>C:\Users\Erik\git/public</argument>
       <argument>dev</argument>
     </service>
     <service id="web_server.command.server_start" class="Symfony\Bundle\WebServerBundle\Command\ServerStartCommand" public="false">
       <tag name="console.command"/>
-      <argument>C:\xampp\htdocs\repo/public</argument>
+      <argument>C:\Users\Erik\git/public</argument>
       <argument>dev</argument>
     </service>
     <service id="web_server.command.server_stop" class="Symfony\Bundle\WebServerBundle\Command\ServerStopCommand" public="false">
@@ -3403,8 +3419,12 @@
     <service id="abstract.instanceof.AppBundle\Form\RegistroType" class="AppBundle\Form\RegistroType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.AppBundle\Form\RolType" class="AppBundle\Form\RolType" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Form\RolType" class="AppBundle\Form\RolType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.AppBundle\Form\TokenType" class="AppBundle\Form\TokenType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.AppBundle\Form\TokenType" class="AppBundle\Form\TokenType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.AppBundle\Form\UserType" class="AppBundle\Form\UserType" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Form\UserType" class="AppBundle\Form\UserType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Validator\ConstraintValidatorInterface.0.AppBundle\Validator\Constraints\TokenValidoValidator" class="AppBundle\Validator\Constraints\TokenValidoValidator" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.AppBundle\Validator\Constraints\TokenValidoValidator" class="AppBundle\Validator\Constraints\TokenValidoValidator" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="service_locator.7cf49346aef5c207a75bef4dfd2d1131" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
@@ -3542,7 +3562,7 @@
         <argument key="AppBundle\Controller\UserController::showAction" type="service" id="service_locator.61c4bc70092b00e9393797dce8125338"/>
       </argument>
     </service>
-    <service id="service_locator.4ea49b739d77d37949e1301575163661" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.b325b0c92a3f74dc2b79ddb4d2f6f87d" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="AppBundle\Form\ComisionType" type="service" id="AppBundle\Form\ComisionType"/>
@@ -3550,6 +3570,7 @@
         <argument key="AppBundle\Form\HorarioType" type="service" id="AppBundle\Form\HorarioType"/>
         <argument key="AppBundle\Form\RegistroType" type="service" id="AppBundle\Form\RegistroType"/>
         <argument key="AppBundle\Form\RolType" type="service" id="AppBundle\Form\RolType"/>
+        <argument key="AppBundle\Form\TokenType" type="service" id="AppBundle\Form\TokenType"/>
         <argument key="AppBundle\Form\UserType" type="service" id="AppBundle\Form\UserType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
@@ -3736,9 +3757,10 @@
     <service id="autowired.AppBundle\Entity\Rol" class="AppBundle\Entity\Rol" public="false" autowire="true"/>
     <service id="autowired.AppBundle\Entity\Token" class="AppBundle\Entity\Token" public="false" autowire="true"/>
     <service id="autowired.AppBundle\Entity\User" class="AppBundle\Entity\User" public="false" autowire="true"/>
-    <service id="service_locator.39e66930232432ca5ba91e98fdd8a17b" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.9738ba87e91f18cb252689e23306bb8d" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="AppBundle\Validator\Constraints\TokenValidoValidator" type="service" id="AppBundle\Validator\Constraints\TokenValidoValidator"/>
         <argument key="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator" type="service" id="doctrine.orm.validator.unique"/>
         <argument key="Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator" type="service" id="security.validator.user_password"/>
         <argument key="Symfony\Component\Validator\Constraints\EmailValidator" type="service" id="validator.email"/>
@@ -3755,42 +3777,42 @@
       <argument>true</argument>
     </service>
     <service id="cache.app.recorder_inner" class="Symfony\Component\Cache\Adapter\FilesystemAdapter" public="false" lazy="true">
-      <argument>WqM-MiRwiX</argument>
+      <argument>ZshqZLkHli</argument>
       <argument>0</argument>
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
+      <argument>C:\Users\Erik\git\var\cache\dev/pools</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
     </service>
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
-      <argument>7ZTmNLeoY9</argument>
+      <argument>Y3qZzALGqD</argument>
       <argument>0</argument>
-      <argument>foiYXeiOVNRtKkuTVjUu5T</argument>
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
+      <argument>k4Fzde8GZADH+T+STKuf0V</argument>
+      <argument>C:\Users\Erik\git\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
-      <argument>wMM9715sH0</argument>
+      <argument>jlokieqmW3</argument>
       <argument>0</argument>
-      <argument>foiYXeiOVNRtKkuTVjUu5T</argument>
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
+      <argument>k4Fzde8GZADH+T+STKuf0V</argument>
+      <argument>C:\Users\Erik\git\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
-      <argument>n9gePPQA67</argument>
+      <argument>x37d05Z37+</argument>
       <argument>0</argument>
-      <argument>foiYXeiOVNRtKkuTVjUu5T</argument>
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
+      <argument>k4Fzde8GZADH+T+STKuf0V</argument>
+      <argument>C:\Users\Erik\git\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
-      <argument>zX-n3LEvVK</argument>
+      <argument>-aYCY0ybOy</argument>
       <argument>0</argument>
-      <argument>foiYXeiOVNRtKkuTVjUu5T</argument>
-      <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
+      <argument>k4Fzde8GZADH+T+STKuf0V</argument>
+      <argument>C:\Users\Erik\git\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -3891,7 +3913,7 @@
     <service id="console.command.symfony_bundle_webserverbundle_command_serverstopcommand" alias="web_server.command.server_stop"/>
     <service id="console.command.symfony_bundle_webserverbundle_command_serverstatuscommand" alias="web_server.command.server_status"/>
     <service id="twig.loader" alias="twig.loader.filesystem"/>
-    <service id="service_locator.b8d2046fb854cde05549fb309e1a80d2" alias="1_589368ee09f5e5477ef4f7c090ddc97bb5307c251a6ac91008803374519ca88c" public="false"/>
+    <service id="service_locator.b8d2046fb854cde05549fb309e1a80d2" alias="1_bb9cf78f980592da4b2bea26a0d7197b3ccb2fe8f0d9e073f06fd117c97d8b12" public="false"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher"/>
     <service id="controller_resolver" alias="debug.controller_resolver" public="false"/>
     <service id="argument_resolver" alias="debug.argument_resolver" public="false"/>
