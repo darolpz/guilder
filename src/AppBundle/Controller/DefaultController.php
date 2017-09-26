@@ -9,6 +9,12 @@ use AppBundle\Form\UserType;
 use AppBundle\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+use AppBundle\Entity\Comision;
+use AppBundle\Entity\Materia;
+use AppBundle\Entity\Horario;
+use AppBundle\Entity\Dia;
+
+use DateTime;
 class DefaultController extends Controller
 {
     /**
@@ -55,5 +61,66 @@ class DefaultController extends Controller
  
         return $this->redirectToRoute('homepage');
      }
- 
+     
+     /**
+     * @Route("/excel", name="excel")
+     */
+    public function excelAction()
+    {
+        $data = [];
+        $appPath = $this->container->getParameter('kernel.root_dir');
+        $file = realpath($appPath . '/../web/excelFiles/info2.xlsx');
+
+        $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject($file);
+        $sheet = $phpExcelObject->getActiveSheet()->toArray(null, true, true, true);
+
+        $em = $this->getDoctrine()->getManager();
+        $data['sheet'] = $sheet;
+        //READ EXCEL FILE CONTENT
+        foreach($sheet as $i=>$row) {
+        if($i !== 1) {
+
+            $comision = new Comision();
+            $materia = new Materia();
+            $horario = new Horario();
+            $dia = new Dia();
+            
+            $materia ->setCodigo($row['D']);
+            $bool = $em->getRepository('AppBundle:Materia')->findOneBy(array(
+               'codigo'=>$materia->getCodigo()
+               ));
+            if($bool!=NULL){
+            $materiaent = $em->getRepository('AppBundle:Materia')->findOneBy(array(
+               'codigo'=>$materia->getCodigo()
+               ));
+            $dia ->setNombre($row['K']);
+            $diaent = $em->getRepository('AppBundle:Dia')->findOneBy(array(
+               'nombre'=>$dia->getNombre()
+               ));
+            
+           
+            $comision ->setCuatrimestre($row['B']);
+            $comision ->setNumero($row['G']);
+            $comision ->setProfesor($row ['H']);
+            $comision ->setYear(2017);
+            
+            $inicio=new DateTime(date(" H:i", strtotime($row ['L'])));
+            $fin = new DateTime(date(" H:i", strtotime($row ['M'])));
+            $horario ->setInicio($inicio);
+            $horario ->setFin($fin);          
+            
+            $horario ->setComisioncomision($comision);
+            
+            $comision ->setMateriamateria($materiaent);
+            $horario ->setDiadia($diaent);
+            
+            $em->persist($comision);
+            $em->persist($horario);
+            $em->flush();
+            }
+            }
+        }
+        $data['obj'] = $phpExcelObject;
+        return $this->render('default/index.html.twig', ['data' => $data ] );
+    }
 }

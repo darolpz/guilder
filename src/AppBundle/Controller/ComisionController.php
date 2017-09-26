@@ -78,10 +78,9 @@ class ComisionController extends Controller
                ));
        $horarios=array();
        foreach($comisions as $comision){
-           $horario= $em->getRepository('AppBundle:Horario')->findOneBy(array(
-               'comisioncomision'=>$comision->getIdcomision()
-              
-           ));
+           $horario= $em->getRepository('AppBundle:Horario')->findBycomisioncomision(
+                   $comision->getIdcomision()   
+           );
            $horarios[]=$horario;
        }
        //por cada comision tengo que buscar todos los horarios que contengan esa comision y guardarlas en horarios
