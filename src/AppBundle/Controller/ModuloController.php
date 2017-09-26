@@ -17,8 +17,7 @@ class ModuloController extends Controller
 
         $horarios = $em->getRepository('AppBundle:Horario')->findAll();
         
-        return $this->render('modulo/modulo1.html.twig',array(
-            'horarios' => $horarios,
-        ), ['base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,]);
+        return $this->render('modulo/modulo1.html.twig',
+                ['base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,]);
     }
 }
