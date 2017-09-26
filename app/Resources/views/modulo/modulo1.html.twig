@@ -11,30 +11,41 @@
 
 <div class="container">
   <h2>Tabla de horarios</h2>
-  <p>Probando</p>            
-  <table class="table table-bordered">
+  <p>Probando</p>
+ 
+  <table width="450" class="table table-bordered" >
     <thead>
       <tr class="success">
+        <th>Horario</th>
         <th>Lunes</th>
         <th>Martes</th>
         <th>Miercoles</th>
         <th>Jueves</th>
         <th>Viernes</th>
-        <th>Sabados</th>
+        <th>Sabado</th>
       </tr>
     </thead>
     <tbody>
-        {% set contador = 5 %}
-        {% for contador in 0..5 %}
+{#  tabla      #}
+        {% set hora = 8 %}
+{#        {% set minutos = '00' %}#}
+        {% for contador in 0..14 %}
             <tr>
-                <td>Niky</td>
-                <td>Re</td>
-                <td>Piola</td>
-                <td>Piola</td>
-                <td>Piola</td>
-                <td>Piola</td>
+                <td class="success" scope="row" width="5" height="2">{{hora}}:00</td>
+                <td width="30"></td>
+                <td width="30"></td>
+                <td width="30"></td>
+                <td width="30"></td>
+                <td width="30"></td>
+                <td >{{contador}}</td>
             </tr>
-            
+            {% set hora=hora+1 %}
+{#            {% if minutos=='00' %}
+                {% set minutos = 30 %}
+            {% else %}
+                {% set minutos ='00' %}
+                {% set hora=hora+1 %}
+            {% endif %}#}
         {% endfor %}
     </tbody>
   </table>
