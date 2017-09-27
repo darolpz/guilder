@@ -11,7 +11,6 @@ class ModuloController extends Controller
     /**
      * @Route("/modulo1", name="modulo1")
      */
-<<<<<<< HEAD
     public function modulo1Action(Request $request)
     {
         // replace this example code with whatever you need
@@ -59,15 +58,5 @@ class ModuloController extends Controller
         return $this->render('modulo/modulo3.html.twig',[
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
-=======
-    public function indexAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $horarios = $em->getRepository('AppBundle:Horario')->findAll();
-        
-        return $this->render('modulo/modulo1.html.twig',
-                ['base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,]);
->>>>>>> 3edb84c83327028cb8b31cb8e542827775b7cdb1
     }
 }
