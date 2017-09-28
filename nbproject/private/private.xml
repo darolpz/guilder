@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/htdocs/Proyecto/src/AppBundle/Controller/ModuloController.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto/app/Resources/views/horario/edit.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Proyecto/app/Resources/views/horario/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Proyecto/src/AppBundle/Controller/UserController.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto/app/Resources/views/comision/filtrar.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Proyecto/app/Resources/views/modulo/modulo1.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Proyecto/app/Resources/views/horario/new.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Proyecto/app/Resources/views/base.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Proyecto/src/AppBundle/Controller/ComisionController.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto/src/AppBundle/Entity/Horario.php</file>
+        </group>
+    </open-files>
+</project-private>
