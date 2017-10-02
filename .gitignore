@@ -1,0 +1,13 @@
+Proyecto/.web-server-pid
+Proyecto/app/config/parameters.yml
+Proyecto/build/
+Proyecto/phpunit.xml
+Proyecto/var/*
+Proyecto/var/sessions
+Proyecto/var/sessions/*
+Proyecto/var/sessions/.gitkeep
+Proyecto/var/cache/dev
+Proyecto/var/cache
+Proyecto/vendor/
+Proyecto/nbproject
+

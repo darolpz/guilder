@@ -8,6 +8,8 @@
             <tr>
                 <th>Inicio</th>
                 <th>Fin</th>
+				<th>Materia</th>
+				<th>Profesor</th>
                 <th>Idhorario</th>
                 <th>Actions</th>
             </tr>
@@ -15,8 +17,10 @@
         <tbody>
         {% for horario in horarios %}
             <tr>
-                <td><a href="{{ path('horario_show', { 'idhorario': horario.idhorario }) }}">{{ horario.inicio }}</a></td>
-                <td>{% if horario.fin %}{{ horario.fin|date('H:i:s') }}{% endif %}</td>
+                <td>{{ horario.inicio|date('H:i') }}</a></td>
+                <td>{% if horario.fin %}{{ horario.fin|date('H:i') }}{% endif %}</td>
+				<td>{{horario.comisioncomision}}	</td>
+				<td>{{horario.comisioncomision.profesor}}	</td>
                 <td>{{ horario.idhorario }}</td>
                 <td>
                     <ul>

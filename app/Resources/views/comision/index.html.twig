@@ -6,6 +6,7 @@
     <table>
         <thead>
             <tr>
+				<th>Materia</th>
                 <th>Numero</th>
                 <th>Profesor</th>
                 <th>Cuatrimestre</th>
@@ -17,6 +18,7 @@
         <tbody>
         {% for comision in comisions %}
             <tr>
+				 <td>{{comision.materiamateria}} </td>
                 <td><a href="{{ path('comision_show', { 'idcomision': comision.idcomision }) }}">{{ comision.numero }}</a></td>
                 <td>{{ comision.profesor }}</td>
                 <td>{{ comision.cuatrimestre }}</td>

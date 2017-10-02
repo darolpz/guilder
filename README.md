@@ -1,7 +1,7 @@
 Instrucciones para correr la aplicación
 ====
 
-- Tener la base de datos configurada con usuario y contraseña root.
+- Tener la base de datos configurada con usuario y contraseña nula.
 - No tener un schema creado que se llame proyecto.
 - Correr el archivo Scripts BD
 - Correr el archivo Datos BD

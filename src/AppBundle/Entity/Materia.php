@@ -173,4 +173,9 @@ class Materia
     {
         return $this->carreracarrera;
     }
+    
+      public function __toString()
+    {
+        return $this->getNombre();
+    }
 }

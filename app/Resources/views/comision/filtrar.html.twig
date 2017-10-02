@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+	
+
+	<table border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
+        <thead>
+            <tr>
+                <th>Numero &nbsp</th>
+                <th>Profesor &nbsp</th>
+                <th>year &nbsp</th>
+				<th>dia &nbsp</th>
+				<th>hora inicio &nbsp</th>
+				<th>hora fin &nbsp</th>
+            </tr>
+        </thead>
+		 <tbody>
+    {% for comision in comisions %}
+	  <tr>
+        <td> {{ comision.numero }} &nbsp</td>
+        <td> {{ comision.profesor }} &nbsp </td>
+        <td> {{ comision.year }} &nbsp</td>
+		
+		
+
+		{% for x in horarios %}
+		{% set var =x|length %}	
+		
+		
+			{% for horario in x %}		
+				{% if comision.idcomision==horario.comisioncomision.idcomision %}
+
+					 <td>{{var}}</td>
+					<td>{{horario.diadia}}  &nbsp</td>
+					<td>{{horario.inicio|date('H:i')}} &nbsp</td>
+					<td>{{horario.fin|date('H:i')}} &nbsp</td> 
+				
+				
+				{% endif %}
+			{% endfor %}
+			
+			
+			
+			
+		{% endfor %}
+		
+		
+       </tr>
+	   
+     {% endfor %}
+
+	
+	
+	
+	 </tbody>
+	 </table>
+	
+    {% endblock %}
