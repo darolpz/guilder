@@ -10,4 +10,5 @@ Proyecto/var/cache/dev
 Proyecto/var/cache
 Proyecto/vendor/
 Proyecto/nbproject
-
+Proyecto/var/cache/dev/*
+Proyecto/var/logs/dev.log
