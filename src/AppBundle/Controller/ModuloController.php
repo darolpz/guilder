@@ -32,10 +32,38 @@ class ModuloController extends Controller
        $form->handleRequest($request);
        
        $em = $this->getDoctrine()->getManager();
-       $comisions = $em->getRepository('AppBundle:Comision')->findBy(array(
+       
+       if ($comision->getYear()==null){
+           
+           if($comision->getCuatrimestre()==null){
+               $comisions = $em->getRepository('AppBundle:Comision')->
+                       findBymateriamateria($comision->getMateriamateria());
+
+           }
+           
+           else{ 
+           $comisions = $em->getRepository('AppBundle:Comision')->findBy(array(
                'materiamateria'=>$comision->getMateriamateria(),
-               'year'=>$comision->getYear()
+               'cuatrimestre'=>$comision->getCuatrimestre()
                ));
+           }
+       }
+       else{
+           if($comision->getCuatrimestre()==null){
+            $comisions = $em->getRepository('AppBundle:Comision')->findBy(array(
+            'materiamateria'=>$comision->getMateriamateria(),
+            'year'=>$comision->getYear(),
+                ));
+           }
+           
+           else{
+            $comisions = $em->getRepository('AppBundle:Comision')->findBy(array(
+            'materiamateria'=>$comision->getMateriamateria(),
+            'year'=>$comision->getYear(),
+            'comision'=>$comision->getCuatrimestre()
+               ));
+           }
+       }
        $horarios=array();
        foreach($comisions as $comision){
            $horario= $em->getRepository('AppBundle:Horario')->findBycomisioncomision(
