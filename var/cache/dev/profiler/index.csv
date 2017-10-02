@@ -100,3 +100,15 @@ ca8585,127.0.0.1,GET,http://guilder/app_dev.php/modulo1,1506627293,,200
 e97bb4,127.0.0.1,GET,http://guilder/app_dev.php/,1506627587,,200
 b9b550,127.0.0.1,GET,http://guilder/app_dev.php/modulo2,1506627638,,200
 63da5a,127.0.0.1,GET,http://guilder/app_dev.php/modulo1,1506627644,,200
+847897,127.0.0.1,GET,http://guilder/app_dev.php/,1506892125,,200
+2574f6,127.0.0.1,GET,http://guilder/app_dev.php/,1506892130,,200
+96706b,127.0.0.1,GET,http://guilder/app_dev.php/modulo1,1506892135,,200
+ba0542,127.0.0.1,GET,http://guilder/app_dev.php/login,1506892153,,200
+185aef,127.0.0.1,POST,http://guilder/app_dev.php/login,1506892159,,302
+8f46d6,127.0.0.1,GET,http://guilder/app_dev.php/,1506892160,,200
+4a91d3,127.0.0.1,GET,http://guilder/app_dev.php/modulo1,1506892166,,200
+2fb9d0,127.0.0.1,GET,http://guilder/app_dev.php/modulo3,1506892167,,200
+008ad1,127.0.0.1,GET,http://guilder/app_dev.php/admin/,1506892177,,200
+af021d,127.0.0.1,GET,http://guilder/app_dev.php/,1506892179,,200
+558156,127.0.0.1,GET,http://guilder/app_dev.php/modulo1,1506892181,,200
+4fadd0,127.0.0.1,GET,http://guilder/app_dev.php/modulo3,1506892182,,200
