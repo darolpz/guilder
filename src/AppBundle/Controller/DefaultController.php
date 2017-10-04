@@ -69,7 +69,7 @@ class DefaultController extends Controller
     {
         $data = [];
         $appPath = $this->container->getParameter('kernel.root_dir');
-        $file = realpath($appPath . '/../web/excelFiles/info2.xlsx');
+        $file = realpath($appPath . '/../web/excelFiles/info1.xlsx');
 
         $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject($file);
         $sheet = $phpExcelObject->getActiveSheet()->toArray(null, true, true, true);
@@ -100,6 +100,7 @@ class DefaultController extends Controller
             
            
             $comision ->setCuatrimestre($row['B']);
+            //$comision ->setCuatrimestre(1);
             $comision ->setNumero($row['G']);
             $comision ->setProfesor($row ['H']);
             $comision ->setYear(2017);

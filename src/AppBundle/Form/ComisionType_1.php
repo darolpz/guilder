@@ -13,7 +13,13 @@ class ComisionType_1 extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('materiamateria')->add('year');
+        $builder->add('materiamateria')->add('year',null,array(
+            'required' => false,
+            'empty_data' => null)
+        )->add('cuatrimestre',null,array(
+                'required' => false,
+                'empty_data' => null)
+                );
     }
     
     /**
