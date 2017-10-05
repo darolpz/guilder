@@ -29,6 +29,11 @@ security:
         - { path: ^/logout$, allow_if: 'is_authenticated()' }
         - { path: ^/admin, role: ROLE_ADMIN }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/cuenta$, allow_if: 'is_authenticated()' }
+        - { path: ^/excel, role: ROLE_ADMIN }
+        - { path: ^/crearusuarios, role: ROLE_ADMIN }
+        - { path: ^/comision, role: ROLE_ADMIN }
+        - { path: ^/horario, role: ROLE_ADMIN }
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
