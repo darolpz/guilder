@@ -7,10 +7,63 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="timetablejs.css">
+<script src="timetable.min.js"></script>
 
 
+{#<body>#}
 
-<div class="container">
+    <div class="hero-unit">
+      <h1>Timetable.js demo</h1>
+      <p>Vanilla javascript plugin for building nice responsive timetables. More info on <a href="https://github.com/Grible/timetable.js" target="_blank">Github</a>.</p>
+    </div>
+
+    <div class="timetable"><aside><ul><li><span class="row-heading">Rotterdam</span></li><li><span class="row-heading">Madrid</span></li><li><span class="row-heading">Los Angeles</span></li><li><span class="row-heading">London</span></li><li><span class="row-heading">New York</span></li><li><span class="row-heading">Jakarta</span></li><li><span class="row-heading">Tokyo</span></li></ul></aside><section><time><header><ul><li><span class="time-label">09:00</span></li><li><span class="time-label">10:00</span></li><li><span class="time-label">11:00</span></li><li><span class="time-label">12:00</span></li><li><span class="time-label">13:00</span></li><li><span class="time-label">14:00</span></li><li><span class="time-label">15:00</span></li><li><span class="time-label">16:00</span></li><li><span class="time-label">17:00</span></li><li><span class="time-label">18:00</span></li><li><span class="time-label">19:00</span></li><li><span class="time-label">20:00</span></li><li><span class="time-label">21:00</span></li><li><span class="time-label">22:00</span></li><li><span class="time-label">23:00</span></li><li><span class="time-label">00:00</span></li><li><span class="time-label">01:00</span></li><li><span class="time-label">02:00</span></li></ul></header><ul class="room-timeline"><li><a title="Sightseeing" href="#" class="time-entry" style="width: 10.2941%; left: 10.2941%;"><small>Sightseeing</small></a></li><li><a title="Zumba" href="#" class="time-entry" style="width: 5.88235%; left: 17.6471%;"><small>Zumba</small></a><a title="Zumbu" href="#" class="time-entry" style="width: 8.82353%; left: 26.4706%;"><small>Zumbu</small></a></li><li><span title="Tokyo Hackathon Livestream" class="time-entry" style="width: 22.0588%; left: 20.5882%;"><small>Tokyo Hackathon Livestream</small></span></li><li><a title="Lasergaming" href="#" class="time-entry" style="width: 10.2941%; left: 51.4706%;"><small>Lasergaming</small></a></li><li><a title="All-you-can-eat grill" href="#" class="time-entry" style="width: 26.4706%; left: 70.5882%;"><small>All-you-can-eat grill</small></a></li><li><a title="Lunch" href="#" class="time-entry" style="width: 13.2353%; left: 2.94118%;"><small>Lunch</small></a></li><li><span title="Hackathon" class="time-entry" style="width: 50%; left: 14.7059%;"><small>Hackathon</small></span></li></ul></time></section></div>
+    
+    <script src="//www.google-analytics.com/analytics.js"></script><script src="scripts/timetable.min.js"></script>
+
+    <script>
+      var timetable = new Timetable();
+
+      timetable.setScope(9,2)
+
+      timetable.addLocations(['Rotterdam', 'Madrid', 'Los Angeles', 'London', 'New York', 'Jakarta', 'Tokyo']);
+
+      timetable.addEvent('Sightseeing', 'Rotterdam', new Date(2015,7,17,10,45), new Date(2015,7,17,12,30), '#');
+      timetable.addEvent('Zumba', 'Madrid', new Date(2015,7,17,12), new Date(2015,7,17,13), '#');
+      timetable.addEvent('Zumbu', 'Madrid', new Date(2015,7,17,13,30), new Date(2015,7,17,15), '#');
+      timetable.addEvent('Lasergaming', 'London', new Date(2015,7,17,17,45), new Date(2015,7,17,19,30), '#');
+      timetable.addEvent('All-you-can-eat grill', 'New York', new Date(2015,7,17,21), new Date(2015,7,18,1,30), '#');
+      timetable.addEvent('Hackathon', 'Tokyo', new Date(2015,7,17,11,30), new Date(2015,7,17,20)); // url is optional and is not used for this event
+      timetable.addEvent('Tokyo Hackathon Livestream', 'Los Angeles', new Date(2015,7,17,12,30), new Date(2015,7,17,16,15)); // url is optional and is not used for this event
+      timetable.addEvent('Lunch', 'Jakarta', new Date(2015,7,17,9,30), new Date(2015,7,17,11,45), '#');
+
+      var renderer = new Timetable.Renderer(timetable);
+      renderer.draw('.timetable');
+    </script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-37417680-5');ga('send','pageview');
+    </script>
+
+
+</body>
+
+
+{#<div class="timetable">
+    <aside><ul><li><span class="row-heading">Rotterdam</span></li><li><span class="row-heading">Madrid</span></li><li><span class="row-heading">Los Angeles</span></li><li><span class="row-heading">London</span></li><li><span class="row-heading">New York</span></li><li><span class="row-heading">Jakarta</span></li><li><span class="row-heading">Tokyo</span></li></ul></aside>
+    <section>
+        
+    </section>
+</div>#}
+
+{#<div class="container">
   <h2>Tabla de horarios</h2>
   <p>Probando</p>
  
@@ -27,7 +80,7 @@
       </tr>
     </thead>
     <tbody>
-{#  tabla      #}
+{#  tabla      
         {% set hora = 8 %}
         {% for contador in 0..14 %}
             <tr>
@@ -45,12 +98,12 @@
             {% else %}
                 {% set minutos ='00' %}
                 {% set hora=hora+1 %}
-            {% endif %}#}
+            {% endif %}
         {% endfor %}
     </tbody>
   </table>
-</div>
+</div>#}
 
-</body>
+{#</body>#}
 </html>
     {% endblock %}

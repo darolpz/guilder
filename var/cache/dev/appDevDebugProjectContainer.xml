@@ -665,8 +665,13 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
+<<<<<<< HEAD
+      <argument>CaZ30eMUOP1KWSovFKHsjc</argument>
+      <argument>C:\xampp\htdocs\Proyecto\var\cache\dev/pools</argument>
+=======
       <argument>nlNS76tZz93gi90q4WUiiC</argument>
       <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
+>>>>>>> a2da56a00a3586c0f0c3911923580b75611f1f37
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -675,7 +680,11 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
+<<<<<<< HEAD
+      <argument>CaZ30eMUOP1KWSovFKHsjc</argument>
+=======
       <argument>nlNS76tZz93gi90q4WUiiC</argument>
+>>>>>>> a2da56a00a3586c0f0c3911923580b75611f1f37
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -2364,12 +2373,20 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
+<<<<<<< HEAD
+      <argument>59d2751ac8a641.20789490</argument>
+=======
       <argument>59d2a03daeb965.47957581</argument>
+>>>>>>> a2da56a00a3586c0f0c3911923580b75611f1f37
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
+<<<<<<< HEAD
+      <argument>59d2751ac8a641.20789490</argument>
+=======
       <argument>59d2a03daeb965.47957581</argument>
+>>>>>>> a2da56a00a3586c0f0c3911923580b75611f1f37
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -3779,32 +3796,52 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>7ZTmNLeoY9</argument>
       <argument>0</argument>
+<<<<<<< HEAD
+      <argument>CaZ30eMUOP1KWSovFKHsjc</argument>
+      <argument>C:\xampp\htdocs\Proyecto\var\cache\dev/pools</argument>
+=======
       <argument>nlNS76tZz93gi90q4WUiiC</argument>
       <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
+>>>>>>> a2da56a00a3586c0f0c3911923580b75611f1f37
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>wMM9715sH0</argument>
       <argument>0</argument>
+<<<<<<< HEAD
+      <argument>CaZ30eMUOP1KWSovFKHsjc</argument>
+      <argument>C:\xampp\htdocs\Proyecto\var\cache\dev/pools</argument>
+=======
       <argument>nlNS76tZz93gi90q4WUiiC</argument>
       <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
+>>>>>>> a2da56a00a3586c0f0c3911923580b75611f1f37
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>n9gePPQA67</argument>
       <argument>0</argument>
+<<<<<<< HEAD
+      <argument>CaZ30eMUOP1KWSovFKHsjc</argument>
+      <argument>C:\xampp\htdocs\Proyecto\var\cache\dev/pools</argument>
+=======
       <argument>nlNS76tZz93gi90q4WUiiC</argument>
       <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
+>>>>>>> a2da56a00a3586c0f0c3911923580b75611f1f37
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>zX-n3LEvVK</argument>
       <argument>0</argument>
+<<<<<<< HEAD
+      <argument>CaZ30eMUOP1KWSovFKHsjc</argument>
+      <argument>C:\xampp\htdocs\Proyecto\var\cache\dev/pools</argument>
+=======
       <argument>nlNS76tZz93gi90q4WUiiC</argument>
       <argument>C:\xampp\htdocs\repo\var\cache\dev/pools</argument>
+>>>>>>> a2da56a00a3586c0f0c3911923580b75611f1f37
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
