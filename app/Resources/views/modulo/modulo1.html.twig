@@ -2,42 +2,165 @@
 
 {% block title %} Módulo 1 {% endblock %}
  {% block mod1 %}  <li class="active"><a href="{{ path('modulo1') }}"> Módulo 1</a></li> {% endblock %}
-   {% block extras %}<link rel="stylesheet" href="styles/timetablejs.css">
-	<script src="scripts/timetable.min.js"></script> {% endblock %}
+   {% block extras %}
+   <link rel="stylesheet" href="../styles/timetablejs.css">
+   <link rel="stylesheet" href="../styles/modulos.css">
+   <script src="../../scripts/timetable.min.js"></script>
+ {% endblock %}
 {% block body %}
 <h2> Esta es la página principal del módulo 1 </h2>
 
  <div class="hero-unit">
-      <h1>Timetable.js demo</h1>
-      <p>Vanilla javascript plugin for building nice responsive timetables. More info on <a href="https://github.com/Grible/timetable.js" target="_blank">Github</a>.</p>
+      <h1>Probando</h1>
     </div>
-
-    <div class="timetable"><aside><ul><li><span class="row-heading">Rotterdam</span></li><li><span class="row-heading">Madrid</span></li><li><span class="row-heading">Los Angeles</span></li><li><span class="row-heading">London</span></li><li><span class="row-heading">New York</span></li><li><span class="row-heading">Jakarta</span></li><li><span class="row-heading">Tokyo</span></li></ul></aside><section><time><header><ul><li><span class="time-label">09:00</span></li><li><span class="time-label">10:00</span></li><li><span class="time-label">11:00</span></li><li><span class="time-label">12:00</span></li><li><span class="time-label">13:00</span></li><li><span class="time-label">14:00</span></li><li><span class="time-label">15:00</span></li><li><span class="time-label">16:00</span></li><li><span class="time-label">17:00</span></li><li><span class="time-label">18:00</span></li><li><span class="time-label">19:00</span></li><li><span class="time-label">20:00</span></li><li><span class="time-label">21:00</span></li><li><span class="time-label">22:00</span></li><li><span class="time-label">23:00</span></li><li><span class="time-label">00:00</span></li><li><span class="time-label">01:00</span></li><li><span class="time-label">02:00</span></li></ul></header><ul class="room-timeline"><li><a title="Sightseeing" href="#" class="time-entry" style="width: 10.2941%; left: 10.2941%;"><small>Sightseeing</small></a></li><li><a title="Zumba" href="#" class="time-entry" style="width: 5.88235%; left: 17.6471%;"><small>Zumba</small></a><a title="Zumbu" href="#" class="time-entry" style="width: 8.82353%; left: 26.4706%;"><small>Zumbu</small></a></li><li><span title="Tokyo Hackathon Livestream" class="time-entry" style="width: 22.0588%; left: 20.5882%;"><small>Tokyo Hackathon Livestream</small></span></li><li><a title="Lasergaming" href="#" class="time-entry" style="width: 10.2941%; left: 51.4706%;"><small>Lasergaming</small></a></li><li><a title="All-you-can-eat grill" href="#" class="time-entry" style="width: 26.4706%; left: 70.5882%;"><small>All-you-can-eat grill</small></a></li><li><a title="Lunch" href="#" class="time-entry" style="width: 13.2353%; left: 2.94118%;"><small>Lunch</small></a></li><li><span title="Hackathon" class="time-entry" style="width: 50%; left: 14.7059%;"><small>Hackathon</small></span></li></ul></time></section></div>
+<div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Materias</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for materia in materias %}   
+                <tr class="active">
+                    <td>{{materia.nombre}}</td>
+                </tr>
+                {% endfor%}
+            </tbody>
+        </table>        
+        {#<table class="table">
+            <thead>
+                <tr>
+                    <th>Comisiones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for comision in comisiones %}   
+                <tr class="active">
+                    <td>{{comision.numero}}</td>
+                </tr>
+                {% endfor%}
+            </tbody>
+        </table>#}
+</div>
+            
+    <div class="timetable">
+        <aside>
+            <ul>
+                <li>
+                    <span class="row-heading">Lunes</span>
+                </li>
+                <li>
+                    <span class="row-heading">Martes</span></li><li>
+                    <span class="row-heading">Miercoles</span></li><li>
+                    <span class="row-heading">Jueves</span></li><li>
+                    <span class="row-heading">Viernes</span></li><li>
+                    <span class="row-heading">Sabado</span></li><li>
+        </aside>
+        <section>
+            <time>
+                <header>
+                    <ul>
+                        <li>
+                            <span class="time-label">08:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">09:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">10:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">11:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">12:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">13:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">14:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">15:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">16:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">17:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">18:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">19:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">20:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">21:00</span>
+                        </li>
+                        <li>
+                            <span class="time-label">22:00</span>
+                        </li>
+                    </ul>
+                </header>
+                <ul class="room-timeline">
+                    <li>
+                        <a title="Sightseeing" href="#" class="time-entry" style="width: 10.2941%; left: 10.2941%;">
+                            <small>Sightseeing</small></a>
+                    </li>
+                    <li>
+                        <a title="Zumba" href="#" class="time-entry" style="width: 5.88235%; left: 17.6471%;">
+                            <small>Zumba</small></a>
+                        <a title="Zumbu" href="#" class="time-entry" style="width: 8.82353%; left: 26.4706%;">
+                            <small>Zumbu</small></a>
+                    </li>
+                    <li>
+                        <span title="Tokyo Hackathon Livestream" class="time-entry" style="width: 22.0588%; left: 20.5882%;">
+                            <small>Tokyo Hackathon Livestream</small>
+                        </span>
+                    </li>
+                    <li>
+                        <a title="Lasergaming" href="#" class="time-entry" style="width: 10.2941%; left: 51.4706%;">
+                            <small>Lasergaming</small></a>
+                    </li>
+                    <li>
+                        <a title="All-you-can-eat grill" href="#" class="time-entry" style="width: 26.4706%; left: 70.5882%;">
+                            <small>All-you-can-eat grill</small>
+                        </a>
+                    </li>
+                    <li><a title="Lunch" href="#" class="time-entry" style="width: 13.2353%; left: 2.94118%;">
+                            <small>Lunch</small>
+                        </a>
+                    </li>
+                </ul>
+            </time>
+        </section>
+    </div>
     
-    <script src="//www.google-analytics.com/analytics.js"></script><script src="scripts/timetable.min.js"></script>
+    <script src="//www.google-analytics.com/analytics.js"></script><script src="../scripts/timetable.min.js"></script>
 
     <script>
       var timetable = new Timetable();
 
       timetable.setScope(9,2)
 
-      timetable.addLocations(['Rotterdam', 'Madrid', 'Los Angeles', 'London', 'New York', 'Jakarta', 'Tokyo']);
+      timetable.addLocations(['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']);
 
       timetable.addEvent('Sightseeing', 'Rotterdam', new Date(2015,7,17,10,45), new Date(2015,7,17,12,30), '#');
       timetable.addEvent('Zumba', 'Madrid', new Date(2015,7,17,12), new Date(2015,7,17,13), '#');
       timetable.addEvent('Zumbu', 'Madrid', new Date(2015,7,17,13,30), new Date(2015,7,17,15), '#');
       timetable.addEvent('Lasergaming', 'London', new Date(2015,7,17,17,45), new Date(2015,7,17,19,30), '#');
       timetable.addEvent('All-you-can-eat grill', 'New York', new Date(2015,7,17,21), new Date(2015,7,18,1,30), '#');
-      timetable.addEvent('Hackathon', 'Tokyo', new Date(2015,7,17,11,30), new Date(2015,7,17,20)); // url is optional and is not used for this event
       timetable.addEvent('Tokyo Hackathon Livestream', 'Los Angeles', new Date(2015,7,17,12,30), new Date(2015,7,17,16,15)); // url is optional and is not used for this event
       timetable.addEvent('Lunch', 'Jakarta', new Date(2015,7,17,9,30), new Date(2015,7,17,11,45), '#');
 
       var renderer = new Timetable.Renderer(timetable);
       renderer.draw('.timetable');
     </script>
-	
-
-
-
 
     {% endblock %}

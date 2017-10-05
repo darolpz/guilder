@@ -16,10 +16,16 @@ class ModuloController extends Controller
      */
     public function modulo1Action(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('modulo/modulo1.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        // Falta chequear el año y cuatrimestre
+        $em = $this->getDoctrine()->getManager();
+
+        $comisiones = $em->getRepository('AppBundle:Comision')->findAll();
+        $materias =$em ->getRepository ('AppBundle:Materia')->findAll();
+        
+        return $this->render('modulo/modulo1.html.twig', array(
+            'comisiones'=>$comisiones,
+            'materias'=>$materias,
+        ));
     }
     /**
      * @Route("/modulo2", name="modulo2")
