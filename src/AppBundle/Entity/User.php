@@ -30,6 +30,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @ORM\Column(name="password", type="string", length=64, nullable=false)
      */
+	 
     private $password;
 
     /**
@@ -86,6 +87,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
 	/**
      * @Assert\NotBlank
      * @Validacion\TokenValido
+	 
      */
 	private $token;
 	public function setToken($token)

@@ -124,4 +124,47 @@ class DefaultController extends Controller
         $data['obj'] = $phpExcelObject;
         return $this->render('default/index.html.twig', ['data' => $data ] );
     }
+		/**
+	* @Route("/cuenta", name="cuenta")
+	*/
+	public function cuentaAction(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$user = $this->getUser();
+		$deleteForm = $this->createDeleteForm($user);
+        $editForm = $this->createForm('AppBundle\Form\UserEditType', $user);
+		$editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->get('email')->isValid() && $editForm->get('legajo')->isValid() && $editForm->get('carreracarrera')->isValid()) {
+			$user->setEmail($editForm->get('email')->getData());
+			
+			$user->setLegajo($editForm->get('legajo')->getData());
+			$user->setCarreracarrera($editForm->get('carreracarrera')->getData());
+            $em->flush();
+
+            return $this->redirectToRoute('cuenta', array('iduser' => $user->getIduser()));
+        }
+        return $this->render('cuenta.html.twig', array(
+            'user' => $user,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+		
+	}
+	/**
+     * Creates a form to delete a user entity.
+     *
+     * @param User $user The user entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(User $user)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('user_delete', array('iduser' => $user->getIduser())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }
 }
+
