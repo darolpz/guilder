@@ -13,35 +13,79 @@
  <div class="hero-unit">
       <h1>Probando</h1>
     </div>
-<div class="container">
-        <table class="table">
+<div id="tablas" class="container">
+            {#  Tabla materias probando sin botones  #}
+        {#<table class="table" style="max-width:300px; border: 1px solid red;">
             <thead>
                 <tr>
                     <th>Materias</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="display: block; border: 1px solid green; height: 400px; overflow-y: scroll">
                 {% for materia in materias %}   
                 <tr class="active">
                     <td>{{materia.nombre}}</td>
                 </tr>
                 {% endfor%}
             </tbody>
-        </table>        
-        {#<table class="table">
-            <thead>
-                <tr>
-                    <th>Comisiones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for comision in comisiones %}   
-                <tr class="active">
-                    <td>{{comision.numero}}</td>
-                </tr>
+        </table>
+            
+        {#     Tabla de comisiones sin botones probando       
+        
+            
+        {#   Lista de botones de materias. Averiguar si se puede poner limite  
+        <div class="btn-group-vertical" role="group" aria-label="Button group with nested dropdown" >
+            {% for materia in materias %}
+                <button type="button" class="btn btn-secondary">{{materia.nombre}} </button>
+
                 {% endfor%}
-            </tbody>
-        </table>#}
+            
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+                </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#">Dropdown link</a>
+                <a class="dropdown-item" href="#">Dropdown link</a>
+            </div>
+        </div>
+    </div>#}
+        {#    Tabla 3  de materias con botones  #}
+        <div id="tablaMaterias">
+            <table class="table" style="max-width:300px; border: 1px solid red;">
+                <thead>
+                    <tr>
+                        <th>Materias</th>
+                    </tr>
+                </thead>
+                <tbody style="display: block; border: 1px solid green; height: 400px; overflow-y: scroll">
+                    {% for materia in materias %}   
+                    <tr class="active">
+                        <td><button type="button" onclick="mostrarComisiones(materia)" class="btn btn-secondary">{{materia.nombre}} </button></td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+        <div id="tablaComisiones">
+            <table class="table" id="comisiones" style="max-width:300px; border: 1px solid red;">
+                <thead>
+                    <tr>
+                        <th>Comisiones</th>
+                    </tr>
+                </thead>
+                <tbody style="display: block; border: 1px solid green; height: 400px; overflow-y: scroll">
+                    {% for horario in horarios %}   
+                    <tr class="active">
+                       {# <td> {{horario.inicio}} </td>
+                        <td> {{horario.fin}} </td>#}
+                        <td> {{horario.diadia}} </td>
+                        <td><button type="button" onclick="agregar('{{horario.comisioncomision}}')" class="btn btn-secondary">Añadir </button></td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
 </div>
             
     <div class="timetable">
@@ -50,12 +94,11 @@
                 <li>
                     <span class="row-heading">Lunes</span>
                 </li>
-                <li>
-                    <span class="row-heading">Martes</span></li><li>
-                    <span class="row-heading">Miercoles</span></li><li>
-                    <span class="row-heading">Jueves</span></li><li>
-                    <span class="row-heading">Viernes</span></li><li>
-                    <span class="row-heading">Sabado</span></li><li>
+                <li><span class="row-heading">Martes</span></li>
+                <li><span class="row-heading">Miercoles</span></li>
+                <li><span class="row-heading">Jueves</span></li>
+                <li><span class="row-heading">Viernes</span></li>
+                <li><span class="row-heading">Sabado</span></li>
         </aside>
         <section>
             <time>
@@ -109,34 +152,27 @@
                     </ul>
                 </header>
                 <ul class="room-timeline">
+                    {#<script>#}
                     <li>
                         <a title="Sightseeing" href="#" class="time-entry" style="width: 10.2941%; left: 10.2941%;">
                             <small>Sightseeing</small></a>
                     </li>
                     <li>
-                        <a title="Zumba" href="#" class="time-entry" style="width: 5.88235%; left: 17.6471%;">
-                            <small>Zumba</small></a>
-                        <a title="Zumbu" href="#" class="time-entry" style="width: 8.82353%; left: 26.4706%;">
-                            <small>Zumbu</small></a>
+                        
                     </li>
                     <li>
-                        <span title="Tokyo Hackathon Livestream" class="time-entry" style="width: 22.0588%; left: 20.5882%;">
-                            <small>Tokyo Hackathon Livestream</small>
-                        </span>
+                        
                     </li>
                     <li>
-                        <a title="Lasergaming" href="#" class="time-entry" style="width: 10.2941%; left: 51.4706%;">
-                            <small>Lasergaming</small></a>
+                        
                     </li>
+                    
+                    <li>    
+                    </li>
+                    
                     <li>
-                        <a title="All-you-can-eat grill" href="#" class="time-entry" style="width: 26.4706%; left: 70.5882%;">
-                            <small>All-you-can-eat grill</small>
-                        </a>
                     </li>
-                    <li><a title="Lunch" href="#" class="time-entry" style="width: 13.2353%; left: 2.94118%;">
-                            <small>Lunch</small>
-                        </a>
-                    </li>
+{#                    </script>#}
                 </ul>
             </time>
         </section>
@@ -147,20 +183,22 @@
     <script>
       var timetable = new Timetable();
 
-      timetable.setScope(9,2)
+      timetable.setScope(0,23)
 
       timetable.addLocations(['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']);
 
-      timetable.addEvent('Sightseeing', 'Rotterdam', new Date(2015,7,17,10,45), new Date(2015,7,17,12,30), '#');
-      timetable.addEvent('Zumba', 'Madrid', new Date(2015,7,17,12), new Date(2015,7,17,13), '#');
-      timetable.addEvent('Zumbu', 'Madrid', new Date(2015,7,17,13,30), new Date(2015,7,17,15), '#');
-      timetable.addEvent('Lasergaming', 'London', new Date(2015,7,17,17,45), new Date(2015,7,17,19,30), '#');
-      timetable.addEvent('All-you-can-eat grill', 'New York', new Date(2015,7,17,21), new Date(2015,7,18,1,30), '#');
-      timetable.addEvent('Tokyo Hackathon Livestream', 'Los Angeles', new Date(2015,7,17,12,30), new Date(2015,7,17,16,15)); // url is optional and is not used for this event
-      timetable.addEvent('Lunch', 'Jakarta', new Date(2015,7,17,9,30), new Date(2015,7,17,11,45), '#');
+      timetable.addEvent('Sightseeing', 'Rotterdam', new Date(2015,7,17,10,45), new Date(2015,7,17,12,30), '#'); //el url es opcional
 
       var renderer = new Timetable.Renderer(timetable);
       renderer.draw('.timetable');
+    </script>
+    <script type="text/javascript">
+        function agregar(comision){
+            timetable.addEvent(comision,'',new Date(2015,7,17,10,45),new Date(2015,7,17,12,30));
+        }
+        function mostrarComisiones(materia){
+            {#comisiones.#}
+        }  
     </script>
 
     {% endblock %}

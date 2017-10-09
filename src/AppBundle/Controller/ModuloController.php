@@ -19,11 +19,11 @@ class ModuloController extends Controller
         // Falta chequear el año y cuatrimestre
         $em = $this->getDoctrine()->getManager();
 
-        $comisiones = $em->getRepository('AppBundle:Comision')->findAll();
+        $horarios = $em->getRepository('AppBundle:Horario')->findAll();
         $materias =$em ->getRepository ('AppBundle:Materia')->findAll();
         
         return $this->render('modulo/modulo1.html.twig', array(
-            'comisiones'=>$comisiones,
+            'horarios'=>$horarios,
             'materias'=>$materias,
         ));
     }
