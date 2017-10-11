@@ -12,10 +12,7 @@
                 <thead>
                     <tr>
                         <th>Username</th>
-                        <th>Password</th>
-                        <th>Is activa</th>
-                        <th>Mail</th>
-                        <th>Legajo</th>
+                        <th>Rol</th>
                         <th>idUser</th>
                         <th>Actions</th>
                     </tr>
@@ -24,10 +21,7 @@
                 {% for user in users %}
                      <tr>
                 <td><a href="{{ path('user_show', { 'iduser': user.iduser }) }}">{{ user.username }}</a></td>
-                <td>{{ user.password }}</td>
-                <td>{% if user.isActive %}Yes{% else %}No{% endif %}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.legajo }}</td>
+                <td>{{ user.rolrol }}</td>
                 <td>{{ user.iduser }}</td>
                 <td>
                     
@@ -43,10 +37,10 @@
             </tbody>
     </table>
 
-    <ul>
+  {#  <ul>
         
             
             <a class="btn btn-primary" href="{{ path('user_new') }}" role="button">Crear un nuevo usuario</a> 
-    </ul>
+    </ul> #}
 
 {% endblock %}

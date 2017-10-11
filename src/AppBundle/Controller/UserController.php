@@ -27,17 +27,17 @@ class UserController extends Controller
 
         $users = $em->getRepository('AppBundle:User')->findAll();
 
-        return $this->render('user/portada.html.twig', array(
+        return $this->render('user/show.html.twig', array(
             'users' => $users,
         ));
     }
 
-    /**
+   /* /**
      * Creates a new user entity.
      *
      * @Route("/new", name="user_new")
      * @Method({"GET", "POST"})
-     */
+     
     public function newAction(Request $request)
     {
         $user = new User();
@@ -56,7 +56,7 @@ class UserController extends Controller
             'user' => $user,
             'form' => $form->createView(),
         ));
-    }
+    }*/
 
     /**
      * Finds and displays a user entity.
@@ -86,7 +86,7 @@ class UserController extends Controller
         $editForm = $this->createForm('AppBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if ($editForm->isSubmitted() &&  $editForm->get('rolrol')->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_edit', array('iduser' => $user->getIduser()));

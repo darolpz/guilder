@@ -1,48 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>User</h1>
+     <div id="contenido" >
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Lista de usuarios</h1>
+            </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Username</th>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>Isactive</th>
-                <td>{% if user.isActive %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Legajo</th>
-                <td>{{ user.legajo }}</td>
-            </tr>
-            <tr>
-                <th>Iduser</th>
+            <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Rol</th>
+                        <th>idUser</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            <tbody>
+                {% for user in users %}
+                     <tr>
+                <td><a href="{{ path('user_show', { 'iduser': user.iduser }) }}">{{ user.username }}</a></td>
+                <td>{{ user.rolrol }}</td>
                 <td>{{ user.iduser }}</td>
+                <td>
+                    
+                        
+                            <a class="btn btn-primary" href="{{ path('user_show', { 'iduser': user.iduser }) }}">show</a>
+                        
+                            <a class="btn btn-primary" href="{{ path('user_edit', { 'iduser': user.iduser }) }}">edit</a>
+                        
+                    
+                </td>
             </tr>
-        </tbody>
+                {% endfor %}
+            </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('user_edit', { 'iduser': user.iduser }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+   {#  <ul>
+        
+            
+            <a class="btn btn-primary" href="{{ path('user_new') }}" role="button">Crear un nuevo usuario</a> 
+    </ul> #}
+
 {% endblock %}
