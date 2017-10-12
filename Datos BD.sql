@@ -37,13 +37,10 @@ INSERT INTO materia (nombre, codigo, anio) values
 ("Administración de proyectos","I3019", 4),
 ("Lenguajes formales y automatas","I3020", 4),
 ("Programación en tiempo real","I3021", 4),
-("Optativa I","I3031", 4),
 ("Ingeniería ambiental","CI030", 4),
 
 ("Sistemas y organizaciones","I3023", 5),
 ("Legislación y ejercicio profesional","I3027", 5),
-("Optativa II","I3032", 5),
-("Optativa III","I3033", 5),
 ("Gestión de recursos humanos","CI031", 5),
 ("Gestión de la calidad,higiene y seguridad","CI035", 5),
 ("Economia","I3028", 5),
