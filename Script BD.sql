@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`materia` (
   `idmateria` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(80) NOT NULL,
   `codigo` VARCHAR(10) NOT NULL,
-  `anio` int(11) NOT NULL,
+  `anio` int(1) NOT NULL,
   `coordinador` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`idmateria`),
   UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC),
