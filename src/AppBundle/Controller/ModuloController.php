@@ -18,6 +18,10 @@ class ModuloController extends Controller
     {
         // Falta chequear el año y cuatrimestre
         $em = $this->getDoctrine()->getManager();
+        
+        $comision = new Comision();
+        $form = $this->createForm('AppBundle\Form\ComisionType_1', $comision);
+        $form->handleRequest($request);
 
         $horarios = $em->getRepository('AppBundle:Horario')->findAll();
         $materias =$em ->getRepository ('AppBundle:Materia')->findAll();

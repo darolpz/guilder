@@ -5,6 +5,8 @@
    {% block extras %}
    <link rel="stylesheet" href="../styles/timetablejs.css">
    <link rel="stylesheet" href="../styles/modulos.css">
+   
+   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
    <script src="../../scripts/timetable.min.js"></script>
  {% endblock %}
 {% block body %}
@@ -14,43 +16,8 @@
       <h1>Probando</h1>
     </div>
 <div id="tablas" class="container">
-            {#  Tabla materias probando sin botones  #}
-        {#<table class="table" style="max-width:300px; border: 1px solid red;">
-            <thead>
-                <tr>
-                    <th>Materias</th>
-                </tr>
-            </thead>
-            <tbody style="display: block; border: 1px solid green; height: 400px; overflow-y: scroll">
-                {% for materia in materias %}   
-                <tr class="active">
-                    <td>{{materia.nombre}}</td>
-                </tr>
-                {% endfor%}
-            </tbody>
-        </table>
-            
-        {#     Tabla de comisiones sin botones probando       
         
-            
-        {#   Lista de botones de materias. Averiguar si se puede poner limite  
-        <div class="btn-group-vertical" role="group" aria-label="Button group with nested dropdown" >
-            {% for materia in materias %}
-                <button type="button" class="btn btn-secondary">{{materia.nombre}} </button>
-
-                {% endfor%}
-            
-            <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-                </button>
-            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="#">Dropdown link</a>
-                <a class="dropdown-item" href="#">Dropdown link</a>
-            </div>
-        </div>
-    </div>#}
-        {#    Tabla 3  de materias con botones  #}
+        {#    Tabla de materias con botones  #}
         <div id="tablaMaterias">
             <table class="table" style="max-width:300px; border: 1px solid red;">
                 <thead>
@@ -58,31 +25,33 @@
                         <th>Materias</th>
                     </tr>
                 </thead>
-                <tbody style="display: block; border: 1px solid green; height: 400px; overflow-y: scroll">
+                <tbody id="bodyMaterias" style="display: block; border: 1px solid green; height: 400px; overflow-y: scroll">
                     {% for materia in materias %}   
                     <tr class="active">
-                        <td><button type="button" onclick="mostrarComisiones(materia)" class="btn btn-secondary">{{materia.nombre}} </button></td>
+                        <td>{{materia.nombre}}</td>
+                        <td><button id="btMateria" type="button" value="{{materia.codigo}}" class="btn btn-secondary">Añadir</button></td>
                     </tr>
                     {% endfor%}
                 </tbody>
             </table>
         </div>
         <div id="tablaComisiones">
-            <table class="table" id="comisiones" style="max-width:300px; border: 1px solid red;">
+            <table id="bodyComisiones" class="table" id="comisiones" style="max-width:300px; border: 1px solid red;">
                 <thead>
                     <tr>
                         <th>Comisiones</th>
                     </tr>
                 </thead>
                 <tbody style="display: block; border: 1px solid green; height: 400px; overflow-y: scroll">
-                    {% for horario in horarios %}   
+
+                    {# {% for horario in horarios %}
                     <tr class="active">
-                       {# <td> {{horario.inicio}} </td>
-                        <td> {{horario.fin}} </td>#}
+                       <td> {{horario.inicio}} </td>
+                        <td> {{horario.fin}} </td>
                         <td> {{horario.diadia}} </td>
                         <td><button type="button" onclick="agregar('{{horario.comisioncomision}}')" class="btn btn-secondary">Añadir </button></td>
                     </tr>
-                    {% endfor%}
+                    {% endfor%}#}
                 </tbody>
             </table>
         </div>
@@ -192,13 +161,13 @@
       var renderer = new Timetable.Renderer(timetable);
       renderer.draw('.timetable');
     </script>
-    <script type="text/javascript">
-        function agregar(comision){
-            timetable.addEvent(comision,'',new Date(2015,7,17,10,45),new Date(2015,7,17,12,30));
-        }
-        function mostrarComisiones(materia){
-            {#comisiones.#}
-        }  
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $("#btMateria").click(function(){
+           $("#bodyComisiones tr:last").after('<tr class="active"><td><button type="button" class="btn btn-secondary"> HOLA </button></td></tr>');
+           {#$("#tablaComisiones").append('<tr class="active"><td><button type="button" class="btn btn-secondary"> HOLA </button></td></tr>');#}
+        });
+        
     </script>
 
     {% endblock %}

@@ -27,6 +27,12 @@ class Materia
     private $codigo;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="anio", type="integer", nullable=false)
+     */
+    private $anio;
+    /**
      * @var string
      *
      * @ORM\Column(name="coordinador", type="string", length=45, nullable=true)
@@ -104,6 +110,30 @@ class Materia
     public function getCodigo()
     {
         return $this->codigo;
+    }
+    
+    /**
+     * Set anio
+     *
+     * @param integer $anio
+     *
+     * @return Materia
+     */
+    public function setAnio($anio)
+    {
+        $this->anio = $anio;
+
+        return $this;
+    }
+
+    /**
+     * Get anio
+     *
+     * @return integer
+     */
+    public function getAnio()
+    {
+        return $this->anio;
     }
 
     /**
