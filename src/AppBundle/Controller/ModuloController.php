@@ -99,10 +99,13 @@ class ModuloController extends Controller
      */
     public function modulo3Action(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('modulo/modulo3.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        $man = $this->getDoctrine()->getManager();
+        
+        $materias =$man ->getRepository ('AppBundle:Materia')->findAll();
+        
+        return $this->render('modulo/modulo3.html.twig', array(
+            'materias'=>$materias,
+        ));
     }
     /**
      * @Route("/resultados", name="resultados")

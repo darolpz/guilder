@@ -13,31 +13,41 @@
 <body>
     <form action="resultados" method="post">
         <div class="row">
-            <div class="col-md-offset-3 col-md-5">
+            <div class="container">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <span class="glyphicon glyphicon-question-sign"></span> ¿Qué materias piensa cursar?</h3>
                     </div>
-                    {% for materia in materias %}
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" value='{{materia.nombre}}' name='materia[]'>
-                                                {{materia.nombre}}
-                                            </input>
-                                        </label>
-                                    </div>
-
-                            </div>
+                    <div class="row container-fluid">
+                        <div class="row container-fluid">
+                            {%set i = 0%}
+                            {% set contador = 0 %}
+                            {%for i in 0..5%} 
+                                {% for materia in materias %}
+                                    {%if materia.anio == (contador)%}
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value='{{materia.nombre}}' name='materia[]'>
+                                                            {{materia.nombre}} ({{materia.anio}})
+                                                        </input>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                                {%set contador = contador +1%}
+                            {%endfor%}
                         </div>
-                    {% endfor %}
+                    </div>
                     <div class="panel-footer">
                         <button type="submit" name="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Seleccionar</button>
                     </div>
                 </div>
+                
             </div>
         </div>
     </form>
