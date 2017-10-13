@@ -109,18 +109,19 @@ class ModuloController extends Controller
      */
     public function resultadosEncAction(Request $request)
     {
-//        var_dump($_POST);
+        //Reviso que el botón submit haya sido apretado para que no me de valores nulos    
         if (isset($_POST['submit']))
         {
+            //HTML toma el nombre "materia[]" como un nombre más pero PHP lo toma con array
             $materias='';
             if(isset($_POST['materia']))
             {
+                //El implome me une valores de un array en 
                 $materias = implode(',', $_POST['materia']);
                 echo 'Seleccionaste las materias: '.implode(', ', $_POST['materia']);
             }
         }
         die();
-        // replace this example code with whatever you need
         return $this->render('modulo/modulo3.html.twig',[
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
