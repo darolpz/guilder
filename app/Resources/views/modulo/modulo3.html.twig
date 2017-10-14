@@ -23,22 +23,30 @@
                         <div class="row container-fluid">
                             {%set i = 0%}
                             {% set contador = 0 %}
-                            {%for i in 0..5%} 
-                                {% for materia in materias %}
-                                    {%if materia.anio == (contador)%}
-                                        <div class="col-md-4">
-                                            <div class="row">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" value='{{materia.nombre}}' name='materia[]'>
-                                                            {{materia.nombre}} ({{materia.anio}})
-                                                        </input>
-                                                    </label>
+                            {% set nombreAño = ['Materias optativas','Primer año','Segundo año','Tercer año','Cuarto año','Quinto año'] %}
+                            {%for i in 0..5%}
+                                <div class="">
+                                    <div class="panel-body">
+                                        <div class="panel-heading">
+                                            <h3 class="panel panel-primary">{{nombreAño[(contador)]}}</h3>
+                                        </div>
+                                        {% for materia in materias %}
+                                            {%if materia.anio == (contador)%}
+                                            <div class="col-md-4">
+                                                <div class="row">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value='{{materia.nombre}}' name='materia[]'>
+                                                                {{materia.nombre}}
+                                                            </input>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
                                 {%set contador = contador +1%}
                             {%endfor%}
                         </div>
