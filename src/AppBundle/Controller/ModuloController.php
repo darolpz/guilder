@@ -43,34 +43,35 @@ class ModuloController extends Controller
        
        $em = $this->getDoctrine()->getManager();
        
-       if ($comision->getYear()==null){
+       if ($comision->getYear()==null){//Caso 1,la comision no tiene año
            
-           if($comision->getCuatrimestre()==null){
+           if($comision->getCuatrimestre()==null){//no tiene año y no tiene cuatrimestre
                $comisions = $em->getRepository('AppBundle:Comision')->
                        findBymateriamateria($comision->getMateriamateria());
 
            }
            
-           else{ 
+           
+           else{//no tiene año pero tiene cuatrimestre
            $comisions = $em->getRepository('AppBundle:Comision')->findBy(array(
                'materiamateria'=>$comision->getMateriamateria(),
                'cuatrimestre'=>$comision->getCuatrimestre()
                ));
            }
        }
-       else{
-           if($comision->getCuatrimestre()==null){
+       else{            //caso 2,la tiene año
+           if($comision->getCuatrimestre()==null){//la comision tiene año pero no tiene acuatrimestre
             $comisions = $em->getRepository('AppBundle:Comision')->findBy(array(
             'materiamateria'=>$comision->getMateriamateria(),
             'year'=>$comision->getYear(),
                 ));
            }
            
-           else{
+           else{//la comision tiene año y cuatrimestre
             $comisions = $em->getRepository('AppBundle:Comision')->findBy(array(
             'materiamateria'=>$comision->getMateriamateria(),
             'year'=>$comision->getYear(),
-            'comision'=>$comision->getCuatrimestre()
+            'cuatrimestre'=>$comision->getCuatrimestre()
                ));
            }
        }
