@@ -2,85 +2,143 @@
 
 {% block title %} Güilder {% endblock %}
 {% block mod2 %} <li class="active">
-	<a href="{{ path('modulo2') }}"> Módulo 2</a>
-</li>{% endblock %}
-{% block extras %}<link rel="stylesheet" href="styles/timetablejs.css">
-	<script src="/../web/scripts/d3-min.js"></script>
-	<script src="/../web/scripts/moment-with-locales.min.js"></script>
-	<script src="/../web/scripts/timetable.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="styles/calendar-heatmap.css">
-		<script src="/../web/scripts/calendar-heatmap.js"></script>	{% endblock %}
+        <a href="{{ path('modulo2') }}"> Módulo 2</a>
+    </li>{% endblock %}
+    {% block extras %}
+        <link rel="stylesheet" href="{{asset('styles/timetablejs.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{asset('styles/calendar-heatmap.min.css')}}">
+        <script src="{{ asset('scripts/timetable.min.js') }}"></script>
+        <script src="{{ asset('js/jquery-3.2.1.min.js')}}"></script>
+        <script src="{{ asset('scripts/moment.js')}}" charset="utf-8"></script>
+        <script src="{{ asset('scripts/d3.min.js') }}"scripts charset="utf-8"></script>
+        
+        <script src="{{ asset('scripts/calendar-heatmap.min.js') }}"></script>      
+    {% endblock %}
     {% block body %}
 
-		<script src="/../web\scripts/timetable.min.js"></script>
 
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h1 class="panel-title">Materias historicas</h1>
-			</div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Materias historicas</h1>
+            </div>
+
             {{ form_start(form) }}
             {{ form_widget(form) }}
-			<input type="submit" value="Submit" />
+            <input id="ej" type="submit" value="Submit" />
             {{ form_end(form) }}
-			<div class="panel-body">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>Numero &nbsp</th>
-							<th>Profesor &nbsp</th>
-							<th>Año &nbsp</th>
-							<th>Cuatrimestre &nbsp</th>
-							<th>dia &nbsp</th>
-							<th>hora inicio &nbsp</th>
-							<th>hora fin &nbsp</th>
-						</tr>
-					</thead>
-					<tbody>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Numero &nbsp</th>
+                            <th>Profesor &nbsp</th>
+                            <th>Año &nbsp</th>
+                            <th>Cuatrimestre &nbsp</th>
+                            <th>dia &nbsp</th>
+                            <th>hora inicio &nbsp</th>
+                            <th>hora fin &nbsp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         {% for comision in comisions %}
-						<tr>
-							<td> {{ comision.numero }} &nbsp</td>
-							<td> {{ comision.profesor }} &nbsp </td>
-							<td> {{ comision.year }} &nbsp</td>
-							<td> {{ comision.cuatrimestre }} &nbsp</td>
+                            <tr>
+                                <td> {{ comision.numero }} &nbsp</td>
+                                <td> {{ comision.profesor }} &nbsp </td>
+                                <td> {{ comision.year }} &nbsp</td>
+                                <td> {{ comision.cuatrimestre }} &nbsp</td>
                                 {% for x in horarios %}
                                     {% set var =x|length %}	
                                     {% for horario in x %}		
                                         {% if comision.idcomision==horario.comisioncomision.idcomision %}
-							<td>{{horario.diadia}}  &nbsp</td>
-							<td>{{horario.inicio|date('H:i')}} &nbsp</td>
-							<td>{{horario.fin|date('H:i')}} &nbsp</td> 
+                                            <td>{{horario.diadia}}  &nbsp</td>
+                                            <td>{{horario.inicio|date('H:i')}} &nbsp</td>
+                                            <td>{{horario.fin|date('H:i')}} &nbsp</td> 
                                         {% endif %}
                                     {% endfor %}	
                                 {% endfor %}
-						</tr>	   
+                            </tr>	   
                         {% endfor %}
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<p> aasdasf</p>
-		<div class="timetable"/>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <p> aasdasf</p>
+        <div class="timetable"></div>
+        {% set variable = 'prueba' %} 
+        <script>
+            var timetable = new Timetable();
+            timetable.setScope(8, 22);
+            timetable.addLocations(['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']);
+            {% for comision in comisions %}
+                {% for x in horarios %}
+                    {% for horario in x %}		
+                        {% if comision.idcomision==horario.comisioncomision.idcomision %}
+            timetable.addEvent('{{comision.profesor}}', '{{horario.diadia}}',
+                            new Date(2015, 7, 17, '{{horario.inicio|date('H')}}', '{{horario.inicio|date('i')}}'),
+                            new Date(2015, 7, 17, '{{horario.fin|date('H')}}', '{{horario.fin|date('i')}}'));
+                        {% endif %}
+                    {% endfor %}  
+                {% endfor %}
+            {% endfor %}
+var renderer = new Timetable.Renderer(timetable);
+renderer.draw('.timetable');
+        </script>
 
-		<script src="scripts/timetable.min.js" ></script>
-    {% set variable = 'prueba' %} 
-		<script>     
-      var timetable = new Timetable();
-      timetable.setScope(8,22)
-      timetable.addLocations(['Lunes', 'Martes','Miercoles','Jueves','Viernes','Sabado']);
-      {% for comision in comisions %}
-        {% for x in horarios %}
-            {% for horario in x %}		
-                {% if comision.idcomision==horario.comisioncomision.idcomision %}
-                    timetable.addEvent('{{comision.profesor}}', '{{horario.diadia}}',
-                    new Date(2015,7,17,'{{horario.inicio|date('H')}}','{{horario.inicio|date('i')}}'), 
-                    new Date(2015,7,17,'{{horario.fin|date('H')}}','{{horario.fin|date('i')}}'));
-                {% endif %}
-            {% endfor %}  
-        {% endfor %}
-    {% endfor %}
-    var renderer = new Timetable.Renderer(timetable);
-    renderer.draw('.timetable');
-		</script>
 
+        <script>
+              $("#ej").on("click", function () {
+                  alert("ineficiente")
+              });
+        </script>
+        <calendar-heatmap data="example_data" color="'#ff0000'" overview="'year'" handler="print"></calendar-heatmap>      
+        <script>
+   
+    (
+          
+            function () {
+      // Initialize random data for the demo
+      var now = moment().endOf('day').toDate();
+      var time_ago = moment().startOf('day').subtract(10, 'year').toDate();
+      var example_data = d3.timeDays(time_ago, now).map(function (dateElement, index) {
+        return {
+          date: dateElement,
+          details: Array.apply(null, new Array(Math.floor(Math.random() * 15))).map(function(e, i, arr) {
+            return {
+              'name': 'Project ' + Math.round(Math.random() * 10),
+              'date': function () {
+                var projectDate = new Date(dateElement.getTime());
+                projectDate.setHours(Math.floor(Math.random() * 24))
+                projectDate.setMinutes(Math.floor(Math.random() * 60));
+                return projectDate;
+              }(),
+              'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600) * Math.round(Math.random() * (index / 365))
+            }
+          }),
+          init: function () {
+            this.total = this.details.reduce(function (prev, e) {
+              return prev + e.value;
+            }, 0);
+            return this;
+          }
+        }.init();
+      });
+
+      // Set custom color for the calendar heatmap
+      var color = '#cd2327';
+
+      // Set overview type (choices are year, month and day)
+      var overview = 'week';
+
+      // Handler function
+      var print = function (val) {
+        console.log(val);
+      };
+
+      // Initialize calendar heatmap
+      calendarHeatmap.init(example_data, color, overview, print);
+    })();
+  </script>
+        
+        
 
     {% endblock %}
