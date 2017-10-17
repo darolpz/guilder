@@ -69,7 +69,7 @@ class DefaultController extends Controller
     {
         $data = [];
         $appPath = $this->container->getParameter('kernel.root_dir');
-        $file = realpath($appPath . '/../web/excelFiles/info1.xlsx');
+        $file = realpath($appPath . '/../web/excelFiles/info.xlsx');
 
         $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject($file);
         $sheet = $phpExcelObject->getActiveSheet()->toArray(null, true, true, true);
