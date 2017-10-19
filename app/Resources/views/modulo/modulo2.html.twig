@@ -5,13 +5,11 @@
         <a href="{{ path('modulo2') }}"> Módulo 2</a>
     </li>{% endblock %}
     {% block extras %}
-        <link rel="stylesheet" href="{{asset('styles/timetablejs.css') }}">
         <link rel="stylesheet" type="text/css" href="{{asset('styles/calendar-heatmap.min.css')}}">
-        <script src="{{ asset('scripts/timetable.min.js') }}"></script>
         <script src="{{ asset('js/jquery-3.2.1.min.js')}}"></script>
         <script src="{{ asset('scripts/moment.js')}}" charset="utf-8"></script>
         <script src="{{ asset('scripts/d3.min.js')}}" charset="utf-8"></script>
-        
+
         <script src="{{ asset('scripts/calendar-heatmap.min.js') }}"></script>      
     {% endblock %}
     {% block body %}
@@ -63,82 +61,45 @@
             </div>
         </div>
         <p> aasdasf</p>
-        <div class="timetable"></div>
-        {% set variable = 'prueba' %} 
+
+
+
+
         <script>
-            var timetable = new Timetable();
-            timetable.setScope(8, 22);
-            timetable.addLocations(['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']);
-            {% for comision in comisions %}
-                {% for x in horarios %}
-                    {% for horario in x %}		
-                        {% if comision.idcomision==horario.comisioncomision.idcomision %}
-            timetable.addEvent('{{comision.profesor}}', '{{horario.diadia}}',
-                            new Date(2015, 7, 17, '{{horario.inicio|date('H')}}', '{{horario.inicio|date('i')}}'),
-                            new Date(2015, 7, 17, '{{horario.fin|date('H')}}', '{{horario.fin|date('i')}}'));
-                        {% endif %}
-                    {% endfor %}  
-                {% endfor %}
+            $("#ej").on("click", function () {
+                alert("ineficiente")
+            });
+        </script>  
+        <script>
+            var data = [{
+                    "date": "2016-01-01",
+                    "total": 17164,
+                    "details": [{% for dato in info %}
+                        {
+                            "name": '{{dato[0]}}',
+                            "date": "2016-01-01 {{dato[1]|date('H:i')}}",
+                            "value": '{{dato[2]}}'
+                        },
             {% endfor %}
-var renderer = new Timetable.Renderer(timetable);
-renderer.draw('.timetable');
-        </script>
+                        ]
+                    }]
+
+// Set custom color for the calendar heatmap
+                var color = '#cd2327';
+
+                // Set overview type (choices are year, month and day)
+                var overview = 'day';
+
+                // Handler function
+                var print = function (val) {
+                    console.log(val);
+                };
+
+                // Initialize calendar heatmap
+                calendarHeatmap.init(data, color, overview, print);
+
+            </script>
 
 
-        <script>
-              $("#ej").on("click", function () {
-                  alert("ineficiente")
-              });
-        </script>
-        <calendar-heatmap data="example_data" color="'#ff0000'" overview="'year'" handler="print"></calendar-heatmap>      
-        <script>
-   
-    (
-          
-            function () {
-      // Initialize random data for the demo
-      var now = moment().endOf('day').toDate();
-      var time_ago = moment().startOf('day').subtract(10, 'year').toDate();
-      var example_data = d3.timeDays(time_ago, now).map(function (dateElement, index) {
-        return {
-          date: dateElement,
-          details: Array.apply(null, new Array(Math.floor(Math.random() * 15))).map(function(e, i, arr) {
-            return {
-              'name': 'Project ' + Math.round(Math.random() * 10),
-              'date': function () {
-                var projectDate = new Date(dateElement.getTime());
-                projectDate.setHours(Math.floor(Math.random() * 24))
-                projectDate.setMinutes(Math.floor(Math.random() * 60));
-                return projectDate;
-              }(),
-              'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600) * Math.round(Math.random() * (index / 365))
-            }
-          }),
-          init: function () {
-            this.total = this.details.reduce(function (prev, e) {
-              return prev + e.value;
-            }, 0);
-            return this;
-          }
-        }.init();
-      });
 
-      // Set custom color for the calendar heatmap
-      var color = '#cd2327';
-
-      // Set overview type (choices are year, month and day)
-      var overview = 'week';
-
-      // Handler function
-      var print = function (val) {
-        console.log(val);
-      };
-
-      // Initialize calendar heatmap
-      calendarHeatmap.init(example_data, color, overview, print);
-    })();
-  </script>
-        
-        
-
-    {% endblock %}
+            {% endblock %}
