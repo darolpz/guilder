@@ -162,4 +162,17 @@ class Horario
     {
         return $this->diadia;
     }
+    
+    /**
+    * Restar Horas
+    * @return integer
+    */
+    public function RestarHoras(){
+        $hs = ($this->getFin()->format('H') - $this->getInicio()->format('H')) * 3600;
+        $min = ($this->getFin()->format('i') - $this->getInicio()->format('i')) * 60;
+        if ($min<0){
+            $min=$min*(-1);
+        }
+        return $hs + $min;
+    }
 }
