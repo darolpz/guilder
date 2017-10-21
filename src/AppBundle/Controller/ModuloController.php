@@ -130,4 +130,31 @@ class ModuloController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+    /**
+     * @Route("/agregar_comisiones", name="agregar_comisiones")
+     * @Method({"GET"})*/
+    
+    public function obtenerComisionesAction(Request $request){
+        
+        $codigo = $request->query->get('codigo');
+        $em = $this->getDoctrine()->getManager();
+        /*Busco las comisiones que concuerden con el id de la materia*/
+	$materia = $em->getRepository('AppBundle:Materia')
+		->findOneBycodigo($codigo);
+        $idMateria= $materia.getIdmateria();
+        $comisiones= $em->getRepository('AppBundle:Comision')
+                ->findBymateriamateria($idMateria);
+//	if ($comisiones.is){                        Si el array de comisiones esta vacio deberia enviar un error
+//            throw $this ->createNotFoundEsception(
+//            'No product found for id '.$id
+//            ); 
+//	}
+        /*Genero un json con las comisiones*/
+        
+        $jsonencoded = json_encode ($comisiones);
+//	$jsonencoded = json_encode ($comisiones, JSON_UNESCAPED_UNICODE);
+        return $jsonencoded;
+//         return new JsonResponse($comisiones);
+        
+    } 
 }
