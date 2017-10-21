@@ -13,3 +13,7 @@ Proyecto/nbproject
 Proyecto/var/cache/dev/*
 Proyecto/var/logs/dev.log
 Proyecto/app/config/parameters.yml
+var/
+nbproject/private/private.xml
+
+

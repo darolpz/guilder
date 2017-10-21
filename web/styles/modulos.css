@@ -8,17 +8,30 @@ and open the template in the editor.
     Author     : Usuario
 */
 table {
-  border: 2px solid #CCC;
+  border: 2px solid red;
   
 /*  padding-top: 50px;
   padding-right: 30px;
   padding-bottom: 50px;
   padding-left: 80px;*/
-  
-  padding: 1em;
-  margin: 1em 0 1em 4em;
-  width: 20px;
+ 
+  padding: 2em;
+  margin: 4em 0 4em 6em;
+  width: 300px;
   position: relative;
-  background-color: pink;
-  /*left: 50px;*/
+  background-color: tomato;
+  left: 50px;
 }
+#tablas {
+float: left;
+width: 1000px;
+}
+
+#tablaMaterias, #tablaComisiones {
+float: left;
+}
+
+#tablaMaterias table, #tablaComisiones table {
+text-align: left;
+}
+

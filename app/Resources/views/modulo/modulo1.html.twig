@@ -15,17 +15,18 @@
  <div class="hero-unit">
       <h1 id="encabezado">¡Organiza tu cursada!</h1>
     </div>
+<div class="container" >
 <div id="tablas" class="container">
         
         {#    Tabla de materias con botones  #}
         <div id="tablaMaterias">
-            <table class="table" style="max-width:300px; border: 1px solid green;">
+            <table class="table" style="max-width:300px;">
                 <thead>
                     <tr>
                         <th>Materias</th>
                     </tr>
                 </thead>
-                <tbody id="bodyMaterias" style="display: block;{# border: 1px solid green;#} height: 400px; overflow-y: scroll">
+                <tbody id="bodyMaterias" style="display: block; height: 400px; overflow-y: scroll">
                     {% for materia in materias %}   
                     <tr class="active" >
                         <td>{{materia.nombre}}</td>
@@ -36,20 +37,20 @@
             </table>
         </div>
         <div id="tablaComisiones">
-            <table id="bodyComisiones" class="table" style="max-width:300px; border: 1px solid green;">
+            <table id="bodyComisiones" class="table" style="max-width:300px;">
                 <thead>
                     <tr>
                         <th>Comisiones</th>
                     </tr>
                 </thead>
-                <tbody style="display: block; {#border: 1px solid green;#} height: 400px; overflow-y: scroll">
+                <tbody style="display: block; height: 400px; overflow-y: scroll">
 
                 </tbody>
             </table>
         </div>
 </div>
             
-    <div class="timetable">
+    <div class="timetable" style="float: bottom">
         <aside>
             <ul>
                 <li>
@@ -115,8 +116,8 @@
                 <ul class="room-timeline">
                     {#<script>#}
                     <li>
-                        <a title="Sightseeing" href="#" class="time-entry" style="width: 10.2941%; left: 10.2941%;">
-                            <small>Sightseeing</small></a>
+                        {#<a title="Sightseeing" href="#" class="time-entry" style="width: 10.2941%; left: 10.2941%;">
+                            <small>Sightseeing</small></a>#}
                     </li>
                     <li>
                         
@@ -138,17 +139,19 @@
             </time>
         </section>
     </div>
+                </div>
+                
     
     <script src="//www.google-analytics.com/analytics.js"></script><script src="../scripts/timetable.min.js"></script>
 
     <script>
       var timetable = new Timetable();
 
-      timetable.setScope(0,23)
+      timetable.setScope(8,22)
 
       timetable.addLocations(['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']);
 
-      timetable.addEvent('Sightseeing', 'Rotterdam', new Date(2015,7,17,10,45), new Date(2015,7,17,12,30), '#'); //el url es opcional
+      //timetable.addEvent('Sightseeing', 'Rotterdam', new Date(2015,7,17,10,45), new Date(2015,7,17,12,30), '#'); el url es opcional
 
       var renderer = new Timetable.Renderer(timetable);
       renderer.draw('.timetable');
@@ -182,6 +185,7 @@
                     alert("Error :(");
                     }
                 });
+                $("#encabezado").html("¡Organiza tu cursada!");
                 {#$.getJSON('{{path('AppBundle_ModuloController_agregar_comisiones')}}',{codigo: $(this).val()},function(){
                     $("#bodyComisiones tr:last").after('<tr class="active"><td><button type="button" class="btn btn-secondary"> HOLA </button></td></tr>');
                 },"json");
