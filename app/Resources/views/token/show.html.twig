@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Token</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Creado</th>
+                <td>{% if token.creado %}{{ token.creado|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Token</th>
+                <td>{{ token.token }}</td>
+            </tr>
+            <tr>
+                <th>Idtoken</th>
+                <td>{{ token.idtoken }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('token_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

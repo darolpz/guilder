@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Güilder {% endblock %}
+{% block mod2 %} <li class="active">
+        <a href="{{ path('modulo2') }}"> Módulo 2</a>
+    </li>{% endblock %}
+    {% block extras %}
+        <link rel="stylesheet" type="text/css" href="{{asset('styles/calendar-heatmap.min.css')}}">
+        <script src="{{ asset('js/jquery-3.2.1.min.js')}}"></script>
+        <script src="{{ asset('scripts/moment.js')}}" charset="utf-8"></script>
+        <script src="{{ asset('scripts/d3.min.js')}}" charset="utf-8"></script>
+
+        <script src="{{ asset('scripts/calendar-heatmap.min.js') }}"></script>      
+    {% endblock %}
+    {% block body %}
+
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Materias historicas</h1>
+            </div>
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input id="ej" type="submit" value="Submit" />
+            {{ form_end(form) }}
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Numero &nbsp</th>
+                            <th>Profesor &nbsp</th>
+                            <th>Año &nbsp</th>
+                            <th>Cuatrimestre &nbsp</th>
+                            <th>dia &nbsp</th>
+                            <th>hora inicio &nbsp</th>
+                            <th>hora fin &nbsp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for comision in comisions %}
+                            <tr>
+                                <td> {{ comision.numero }} &nbsp</td>
+                                <td> {{ comision.profesor }} &nbsp </td>
+                                <td> {{ comision.year }} &nbsp</td>
+                                <td> {{ comision.cuatrimestre }} &nbsp</td>
+                                {% for x in horarios %}
+                                    {% set var =x|length %}	
+                                    {% for horario in x %}		
+                                        {% if comision.idcomision==horario.comisioncomision.idcomision %}
+                                            <td>{{horario.diadia}}  &nbsp</td>
+                                            <td>{{horario.inicio|date('H:i')}} &nbsp</td>
+                                            <td>{{horario.fin|date('H:i')}} &nbsp</td> 
+                                        {% endif %}
+                                    {% endfor %}	
+                                {% endfor %}
+                            </tr>	   
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <p> aasdasf</p>
+
+
+
+
+        <script>
+            $("#ej").on("click", function () {
+                alert("ineficiente")
+            });
+        </script>  
+        <script>
+            var data = [{
+                    "date": "2016-01-01",
+                    "total": 17164,
+                    "details": [{% for dato in info %}
+                        {
+                            "name": '{{dato[0]}}',
+                            "date": "2016-01-01 {{dato[1]|date('H:i')}}",
+                            "value": '{{dato[2]}}'
+                        },
+            {% endfor %}
+                        ]
+                    }]
+
+// Set custom color for the calendar heatmap
+                var color = '#cd2327';
+
+                // Set overview type (choices are year, month and day)
+                var overview = 'day';
+
+                // Handler function
+                var print = function (val) {
+                    console.log(val);
+                };
+
+                // Initialize calendar heatmap
+                calendarHeatmap.init(data, color, overview, print);
+
+            </script>
+
+
+
+            {% endblock %}

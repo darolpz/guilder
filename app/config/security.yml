@@ -1,0 +1,45 @@
+security:
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        database:
+                entity:
+                    class: AppBundle:User
+                    property: username
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login 
+            logout:
+                path: /logout
+                target: /
+    access_control:
+        - { path: ^/login$, allow_if: 'is_anonymous()' }
+        - { path: ^/register$, allow_if: 'is_anonymous()' }
+        - { path: ^/logout$, allow_if: 'is_authenticated()' }
+        - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/cuenta$, allow_if: 'is_authenticated()' }
+        - { path: ^/excel, role: ROLE_ADMIN }
+        - { path: ^/crearusuarios, role: ROLE_ADMIN }
+        - { path: ^/comision, role: ROLE_ADMIN }
+        - { path: ^/horario, role: ROLE_ADMIN }
+            # activate different ways to authenticate
+
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            #form_login: ~
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER

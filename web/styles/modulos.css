@@ -1,0 +1,37 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05/10/2017, 13:38:16
+    Author     : Usuario
+*/
+table {
+  border: 2px solid red;
+  
+/*  padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 80px;*/
+ 
+  padding: 2em;
+  margin: 4em 0 4em 6em;
+  width: 300px;
+  position: relative;
+  background-color: tomato;
+  left: 50px;
+}
+#tablas {
+float: left;
+width: 1000px;
+}
+
+#tablaMaterias, #tablaComisiones {
+float: left;
+}
+
+#tablaMaterias table, #tablaComisiones table {
+text-align: left;
+}
+
