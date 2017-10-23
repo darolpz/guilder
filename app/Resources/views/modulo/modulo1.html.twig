@@ -3,10 +3,9 @@
 {% block title %} Módulo 1 {% endblock %}
  {% block mod1 %}  <li class="active"><a href="{{ path('modulo1') }}"> Módulo 1</a></li> {% endblock %}
    {% block extras %}
+   {{parent()}}
    <link rel="stylesheet" href="../styles/timetablejs.css">
    <link rel="stylesheet" href="../styles/modulos.css" type="text/css" >
-   
-   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
    <script src="../../scripts/timetable.min.js"></script>
  {% endblock %}
 {% block body %}
@@ -157,7 +156,7 @@
       renderer.draw('.timetable');
     </script>
     {% block javascripts %}
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    
     <script>
 {#        $("#btMateria").click(function(){
            $("#bodyComisiones tr:last").after('<tr class="active"><td><button type="button" class="btn btn-secondary"> HOLA </button></td></tr>');
