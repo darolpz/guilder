@@ -1,7 +1,8 @@
 /.web-server-pid
-/app/config/parameters.yml
+#/app/config/parameters.yml
 /build/
 /phpunit.xml
+#/phpunit.xml.dist
 /var/*
 !/var/cache
 /var/cache/*
@@ -15,6 +16,5 @@ nbproject/
 /var/sessions/*
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
-/vendor/
+#/vendor/
 /web/bundles/
-
