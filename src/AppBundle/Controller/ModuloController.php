@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Comision;
 use AppBundle\Entity\Horario;
+use Symfony\Component\HttpFoundation\Response;
 
 class ModuloController extends Controller {
 
@@ -137,13 +138,13 @@ class ModuloController extends Controller {
     public function obtenerComisionesAction(Request $request){
         
         $codigo = $request->query->get('codigo');
-        $em = $this->getDoctrine()->getManager();
+        //$em = $this->getDoctrine()->getManager();
         /*Busco las comisiones que concuerden con el id de la materia*/
-	$materia = $em->getRepository('AppBundle:Materia')
-		->findOneBycodigo($codigo);
-        $idMateria= $materia.getIdmateria();
-        $comisiones= $em->getRepository('AppBundle:Comision')
-                ->findBymateriamateria($idMateria);
+	    //$materia = $em->getRepository('AppBundle:Materia')
+		//->findOneBycodigo($codigo);
+        //$idMateria= $materia.getIdmateria();
+        //$comisiones= $em->getRepository('AppBundle:Comision')
+        //        ->findBymateriamateria($idMateria);
 //	if ($comisiones.is){                        Si el array de comisiones esta vacio deberia enviar un error
 //            throw $this ->createNotFoundEsception(
 //            'No product found for id '.$id
@@ -151,10 +152,22 @@ class ModuloController extends Controller {
 //	}
         /*Genero un json con las comisiones*/
         
-        $jsonencoded = json_encode ($comisiones);
+        //$jsonencoded = json_encode ($comisiones);
 //	$jsonencoded = json_encode ($comisiones, JSON_UNESCAPED_UNICODE);
-        return $jsonencoded;
-//         return new JsonResponse($comisiones);
-        
+        //return $jsonencoded;
+//       return new JsonResponse($comisiones);
+        //$codigo = json_decode($request->getContent());
+        $response = new Response(
+			'Content',
+			Response::HTTP_OK,
+			array('conten-Type', 'text/html')
+		);
+		
+		$jsondata = json_encode($codigo);
+		
+		$response->setContent($jsondata);
+		
+		return $response->send();
+		//echo $response;
     } 
 }

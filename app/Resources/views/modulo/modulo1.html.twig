@@ -158,32 +158,12 @@
     {% block javascripts %}
     
     <script>
-{#        $("#btMateria").click(function(){
-           $("#bodyComisiones tr:last").after('<tr class="active"><td><button type="button" class="btn btn-secondary"> HOLA </button></td></tr>');
-           {#$("#tablaComisiones").append('<tr class="active"><td><button type="button" class="btn btn-secondary"> HOLA </button></td></tr>');
-        });#}
-            {#$("#bodyMaterias").children().click(function(){#}
+
             $("#btMateria").click(function(){
-                var parametros = {
-                "codigo" : $(this).val()
-                };
-                $.ajax({
-                    data:parametros,
-                    type : 'GET',
-                    dataType: "json",
-                    url: "{{ path('agregar_comisiones') }}",
-                    beforeSend: function () {
-                        $("#encabezado").html("Procesando, espere por favor...");
-                    },
-                    success: function(data){
-                        
-                        $("#bodyComisiones tr:last").after('<tr class="active"><td><button type="button" class="btn btn-secondary"> HOLA </button></td></tr>');
-                        
-                    },
-                    error: function (request, status, errorThrown) {
-                    alert("Error :(");
-                    }
-                });
+				var param = $(this).val();
+				$.get("{{url('agregar_comisiones')}}", {codigo:param} , function(mydata){
+					alert(mydata);
+				});
                 $("#encabezado").html("¡Organiza tu cursada!");
                 {#$.getJSON('{{path('AppBundle_ModuloController_agregar_comisiones')}}',{codigo: $(this).val()},function(){
                     $("#bodyComisiones tr:last").after('<tr class="active"><td><button type="button" class="btn btn-secondary"> HOLA </button></td></tr>');

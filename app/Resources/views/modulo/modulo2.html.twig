@@ -14,7 +14,7 @@
     {% endblock %}
     {% block body %}
 
-        <div class="container">
+        <div class="container" id="contenedor">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h1 class="panel-title">Materias historicas</h1>
@@ -80,6 +80,8 @@
                     </table>
                 </div>
             </div>
+			
+			
         </div>
 
         <script>
@@ -137,7 +139,10 @@
             </script>
 <script>
     $('#unid').hide();
-</script>
+	$(document).ready(funtion(){
+		$( '.calendar-heatmap').prependTo("#contenedor");		
+	});
+	</script>
 
 
             {% endblock %}
