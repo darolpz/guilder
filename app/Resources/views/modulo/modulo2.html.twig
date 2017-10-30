@@ -80,8 +80,8 @@
                     </table>
                 </div>
             </div>
-			
-			
+
+
         </div>
 
         <script>
@@ -111,40 +111,36 @@
                             "value": 0},
                         {"name": "Sábado",
                             "date": "2016-01-01 0:0:0",
-                            "value": 0},                      
-                            {% for dato in info %}
-                        {
-                            "name": '{{dato[0]}}',
-                            "date": "2016-01-01 {{dato[1]|date('H:i')}}",
-                            "value": '{{dato[2]}}'
-                        },
+                            "value": 0},
+            {% for dato in info %}
+                            {
+                                "name": '{{dato[0]}}',
+                                "date": "2016-01-01 {{dato[1]|date('H:i')}}",
+                                "value": '{{dato[2]}}'
+                            },
             {% endfor %}
                         ]
                     }]
 
                 // Set custom color for the calendar heatmap
                 var color = '#234acd';
-
                 // Set overview type (choices are year, month and day)
                 var overview = 'day';
-
                 // Handler function
                 var print = function (val) {
                     console.log(val);
                 };
-
                 // Initialize calendar heatmap
                 calendarHeatmap.init(data, color, overview, print);
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('.calendar-heatmap').appendTo("#contenedor");
 
-            </script>
-<script>
-    $('#unid').hide();
-	$(document).ready(funtion(){
-		$( '.calendar-heatmap').prependTo("#contenedor");		
-	});
-	</script>
+            });
+        </script>
 
 
-            {% endblock %}
-            
-            
+
+    {% endblock %}
+
