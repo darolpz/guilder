@@ -385,7 +385,7 @@ INSERT INTO `comision` (`idcomision`,`numero`,`profesor`,`cuatrimestre`,`year`,`
 INSERT INTO `comision` (`idcomision`,`numero`,`profesor`,`cuatrimestre`,`year`,`materia_idmateria`) VALUES (380,1,'OSIO, Jorge Rafael',2,2017,86);
 INSERT INTO `comision` (`idcomision`,`numero`,`profesor`,`cuatrimestre`,`year`,`materia_idmateria`) VALUES (381,1,'ENCINAS, Diego Omar',2,2017,87);
 INSERT INTO `comision` (`idcomision`,`numero`,`profesor`,`cuatrimestre`,`year`,`materia_idmateria`) VALUES (382,1,'ENCINAS, Diego Omar',2,2017,87);
-INSERT INTO `comision` (`idcomision`,`numero`,`profesor`,`cuatrimestre`,`year`,`materia_idmateria`) VALUES (383,1,'KUNYSZ, Eduardo',2,2017,103);
+INSERT INTO `comision` (`idcomision`,`numero`,`profesor`,`cuatrimestre`,`year`,`materia_idmateria`) VALUES (383,1,'KUNYSZ, Eduardo',2,2017,100);
 INSERT INTO `comision` (`idcomision`,`numero`,`profesor`,`cuatrimestre`,`year`,`materia_idmateria`) VALUES (384,1,'NAPOLITANO, Sergio Alejandro',2,2017,100);
 INSERT INTO `comision` (`idcomision`,`numero`,`profesor`,`cuatrimestre`,`year`,`materia_idmateria`) VALUES (385,1,'GONZALEZ, Sebastián Martin',2,2017,99);
 INSERT INTO `comision` (`idcomision`,`numero`,`profesor`,`cuatrimestre`,`year`,`materia_idmateria`) VALUES (386,1,'GONZALEZ, Sebastián Martin',2,2017,99);
