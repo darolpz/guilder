@@ -189,7 +189,40 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8;
 
+-- -----------------------------------------------------
+-- Table `proyecto`.`encuestaUsuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`encuestaUsuario` (
+	`encuesta_idEncuesta` INT(11) NOT NULL AUTO_INCREMENT,
+    `usuario_idUsuario` INT(11) NOT NULL AUTO_INCREMENT,
+    INDEX `fk_encuesta_idEncuesta_idx` (`encuesta_idEncuesta` ASC),
+    INDEX `fk_usuario_idUsuario` (`usuario_idUsuario` ASC),
+	CONSTRAINT `usuario_idUsuario`
+		FOREIGN KEY(`usuario_idUsuario`)
+        REFERENCES `proyecto`.`user`(`iduser`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+	CONSTRAINT `encuesta_idEncuesta`
+		FOREIGN KEY(`encuesta_idEncuesta`)
+		REFERENCES `proyecto`.`encuesta`(`idEncuesta`)
+		ON DELETE NO ACTION
+        ON UPDATE NO ACTION
+);
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`encuesta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`encuesta` (
+	`materias` VARCHAR(50) NOT NULL,
+    `idEncuesta` INT(11) NOT NULL AUTO_INCREMENT,
+    `fecha` DATETIME NOT NULL,
+    `idTurno` INT(1) NOT NULL,
+    `idHorario` INT(11) NOT NULL,
+    
+    PRIMARY KEY(`idEncuesta`)
+);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
