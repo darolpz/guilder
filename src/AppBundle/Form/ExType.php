@@ -5,33 +5,25 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class ComisionType_2 extends AbstractType
+class ExType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('year');
+        $builder->add('attachment', FileType::class)->add('year');
     }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Comision'
-        ));
-    }
+
 
     /**
      * {@inheritdoc}
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_comision';
+        return 'excelfile';
     }
 
 
