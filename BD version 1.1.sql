@@ -84,8 +84,10 @@ ENGINE = InnoDB;
 -- Table `proyecto`.`encuestaUsuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `proyecto`.`encuestaUsuario` (
+  `idEncuestaUsuario` INT(11) NOT NULL AUTO_INCREMENT,
   `idEncuesta` INT(11) NOT NULL,
   `idUsuario` INT(11) NOT NULL,
+  PRIMARY KEY(`idEncuestaUsuario`),
   INDEX `idUsuario_idx` (`idUsuario` ASC),
   INDEX `idEncuesta_idx` (`idEncuesta` ASC),
   CONSTRAINT `idUsuario`
