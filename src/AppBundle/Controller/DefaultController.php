@@ -68,11 +68,6 @@ class DefaultController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function excelAction(Request $request) {
-
-
-
-
-
         $form = $this->createForm('AppBundle\Form\ExType');
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -80,21 +75,23 @@ class DefaultController extends Controller {
             $file = $form['attachment']->getData();
             $year = $form['year']->getData();
             $file->move($dir, $file->getClientOriginalName());
-            
-            $file2=$dir.'/'.$file->getClientOriginalName();
+
+            $file2 = $dir . '/' . $file->getClientOriginalName();
             $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject($file2);
             $sheet = $phpExcelObject->getActiveSheet()->toArray(null, true, true, true);
             $em = $this->getDoctrine()->getManager();
             $data['sheet'] = $sheet;
             foreach ($sheet as $i => $row) {
-                if ($i !== 1) {
-
+                if ($i == 1) {
+                    $headings = $row;
+                } else {
+                    $row = array_combine($headings, $row);
                     $comision = new Comision();
                     $materia = new Materia();
                     $horario = new Horario();
                     $dia = new Dia();
 
-                    $materia->setCodigo($row['D']);
+                    $materia->setCodigo($row['Código']);
                     $bool = $em->getRepository('AppBundle:Materia')->findOneBy(array(
                         'codigo' => $materia->getCodigo()
                     ));
@@ -102,24 +99,20 @@ class DefaultController extends Controller {
                         $materiaent = $em->getRepository('AppBundle:Materia')->findOneBy(array(
                             'codigo' => $materia->getCodigo()
                         ));
-                        $dia->setNombre($row['K']);
-                        $diaent = $em->getRepository('AppBundle:Dia')->findOneBy(array(
-                            'nombre' => $dia->getNombre()
-                        ));
-
-
-                        $comision->setCuatrimestre($row['B']);
-                        $comision->setNumero($row['G']);
-                        $comision->setProfesor($row ['H']);
+                        $dia->setNombre($row['Día']);
+                        $diaent = $em->getRepository('AppBundle:Dia')->findOneBynombre($dia->getNombre()
+                        );
+                        $comision->setCuatrimestre($row['Cuatrimestre']);
+                        $comision->setNumero($row['Comisión']);
+                        $comision->setProfesor($row ['Docente']);
                         $comision->setYear($year);
 
-                        $inicio = new DateTime(date(" H:i", strtotime($row ['L'])));
-                        $fin = new DateTime(date(" H:i", strtotime($row ['M'])));
+                        $inicio = new DateTime(date(" H:i", strtotime($row ['Hora Inicio'])));
+                        $fin = new DateTime(date(" H:i", strtotime($row ['Hora Final'])));
                         $horario->setInicio($inicio);
                         $horario->setFin($fin);
 
                         $horario->setComisioncomision($comision);
-
                         $comision->setMateriamateria($materiaent);
                         $horario->setDiadia($diaent);
 
@@ -129,9 +122,9 @@ class DefaultController extends Controller {
                     }
                 }
             }
-             return $this->render('default/Uploadok.html.twig',array(
-                 'data'=> $data)
-             );
+            return $this->render('default/Uploadok.html.twig', array(
+                        'data' => $data)
+            );
         }
         return $this->render('default/UploadExcel.html.twig', array(
                     'form' => $form->createView(),
