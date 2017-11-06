@@ -138,36 +138,28 @@ class ModuloController extends Controller {
     public function obtenerComisionesAction(Request $request){
         
         $codigo = $request->query->get('codigo');
-        //$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         /*Busco las comisiones que concuerden con el id de la materia*/
-	    //$materia = $em->getRepository('AppBundle:Materia')
-		//->findOneBycodigo($codigo);
-        //$idMateria= $materia.getIdmateria();
-        //$comisiones= $em->getRepository('AppBundle:Comision')
-        //        ->findBymateriamateria($idMateria);
-//	if ($comisiones.is){                        Si el array de comisiones esta vacio deberia enviar un error
-//            throw $this ->createNotFoundEsception(
-//            'No product found for id '.$id
-//            ); 
-//	}
-        /*Genero un json con las comisiones*/
+	$materia = $em->getRepository('AppBundle:Materia')
+                ->findOneBycodigo($codigo);
+        $idMateria= $materia->getIdmateria();
         
-        //$jsonencoded = json_encode ($comisiones);
-//	$jsonencoded = json_encode ($comisiones, JSON_UNESCAPED_UNICODE);
-        //return $jsonencoded;
-//       return new JsonResponse($comisiones);
-        //$codigo = json_decode($request->getContent());
+        $comisiones= $em->getRepository('AppBundle:Comision')
+                ->findBymateriamateria($idMateria);
+        	
+        /*Genero un json con las comisiones*/
+        $jsondata = json_encode ($materia);
+        
         $response = new Response(
 			'Content',
 			Response::HTTP_OK,
 			array('conten-Type', 'text/html')
 		);
 		
-		$jsondata = json_encode($codigo);
+//	$jsondata = json_encode($codigo);
 		
-		$response->setContent($jsondata);
-		
-		return $response->send();
-		//echo $response;
+	$response->setContent($jsondata);
+	
+	return $response->send();
     } 
 }

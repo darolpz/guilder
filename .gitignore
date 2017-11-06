@@ -14,6 +14,6 @@ Proyecto/var/cache/dev/*
 Proyecto/var/logs/dev.log
 Proyecto/app/config/parameters.yml
 var/
+nbproject/
 nbproject/private/private.xml
-
 

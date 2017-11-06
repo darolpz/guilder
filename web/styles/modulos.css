@@ -8,18 +8,18 @@ and open the template in the editor.
     Author     : Usuario
 */
 table {
-  border: 2px solid red;
+  border: 2px steelblue;
   
 /*  padding-top: 50px;
   padding-right: 30px;
   padding-bottom: 50px;
   padding-left: 80px;*/
  
-  padding: 2em;
-  margin: 4em 0 4em 6em;
-  width: 300px;
+/*  padding: 2em;*/
+  margin: 4em 4em 4em 7em;
+  width: 500px;
   position: relative;
-  background-color: tomato;
+  background-color: cornflowerblue;
   left: 50px;
 }
 #tablas {
