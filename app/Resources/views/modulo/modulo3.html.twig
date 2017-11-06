@@ -6,55 +6,67 @@
   {{parent()}}
   {% endblock %}
 {% block body %}
-<h2>Módulo 3 - Encuestas</h2>
-
+<h2>Módulo 3 - Encuestas</h2>    
     <form action="resultados" method="post">
-        <div class="row">
-            <div class="container">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            <span class="glyphicon glyphicon-question-sign"></span> ¿Qué materias piensa cursar el próximo cuatrimestre?</h3>
-                    </div>
-                    <div class="row container-fluid">
+            <div class="row">
+                <div class="container">
+                    <div class="panel panel-primary">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <span class="glyphicon glyphicon-question-sign"></span> ¿Qué materias piensa cursar el próximo cuatrimestre?
+                            </h3>
+                        </div>
                         <div class="row container-fluid">
-                            {%set i = 0%}
-                            {% set contador = 0 %}
-                            {% set nombreAño = ['Materias optativas','Primer año','Segundo año','Tercer año','Cuarto año','Quinto año'] %}
-                            {%for i in 0..5%}
-                                <div class="">
-                                    <div class="panel-body">
-                                        <div class="panel-heading">
-                                            <h3 class="panel panel-primary">{{nombreAño[(contador)]}}</h3>
-                                        </div>
-                                        {% for materia in materias %}
-                                            {%if materia.anio == (contador)%}
-                                            <div class="col-md-4">
-                                                <div class="row">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value='{{materia.nombre}}' name='materia[]'>
-                                                                {{materia.nombre}}
-                                                            </input>
-                                                        </label>
+                            <div class="row container-fluid">
+                                {%set i = 0%}
+                                {% set contador = 0 %}
+                                {% set nombreAño = ['Materias optativas','Primer año','Segundo año','Tercer año','Cuarto año','Quinto año'] %}
+                                {%for i in 0..5%}
+                                    <div class="">
+                                        <div class="panel-body">
+                                            <div class="panel-heading">
+                                                <h3 class="panel panel-primary">{{nombreAño[(contador)]}}</h3>
+                                            </div>
+                                            {% for materia in materias %}
+                                                {%if materia.anio == (contador)%}
+                                                <div class="col-md-4">
+                                                    <div class="row">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" value='{{materia.codigo}}' name='materia[]'>
+                                                                    {{materia.nombre}}
+                                                                </input>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            {% endif %}
-                                        {% endfor %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
                                     </div>
-                                </div>
-                                {%set contador = contador +1%}
-                            {%endfor%}
+                                    {%set contador = contador +1%}
+                                {%endfor%}
+                            </div>
+                        </div>
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-secondary active">
+                                <input type="radio" name="turno" value=1 autocomplete="off"> Turno mañana
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="turno" value=2 autocomplete="off"> Turno tarde
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="turno" value=3 autocomplete="off"> Turno noche
+                            </label>
+                        </div>
+                            
+                        <div class="panel-footer">
+                            <button type="submit" name="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Seleccionar</button>
                         </div>
                     </div>
-                    <div class="panel-footer">
-                        <button type="submit" name="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Seleccionar</button>
-                    </div>
                 </div>
-                
             </div>
-        </div>
+        </div>      
     </form>
-
 {% endblock %}

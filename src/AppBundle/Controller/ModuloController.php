@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Comision;
 use AppBundle\Entity\Horario;
+use AppBundle\Entity\Encuesta;
+use AppBundle\Entity\Encuestausuario;
 use Symfony\Component\HttpFoundation\Response;
 
 class ModuloController extends Controller {
@@ -115,20 +117,43 @@ class ModuloController extends Controller {
      * @Route("/resultados", name="resultados")
      */
     public function resultadosEncAction(Request $request) {
+        
+        //Defino hora local como la de Buenos Aires.
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
+        //Obtengo esa hora local y la guardo en una variable
+        $fechaActual = date_default_timezone_get();
+        //Creo una nueva entidad de la encuesta 
+        $encuesta = new Encuesta();
         //Reviso que el botón submit haya sido apretado para que no me de valores nulos    
         if (isset($_POST['submit'])) {
-            //HTML toma el nombre "materia[]" como un nombre más pero PHP lo toma con array
-            $materias = '';
             if (isset($_POST['materia'])) {
-                //El implome me une valores de un array en 
-                $materias = implode(',', $_POST['materia']);
-                echo 'Seleccionaste las materias: ' . implode(', ', $_POST['materia']);
+                $encuesta->setMaterias(implode(',', $_POST['materia']));
+                echo 'Seleccionaste las materias: ' . implode(', ',$_POST['materia']);
+            }
+            if (isset($_POST['turno'])){
+                $encuesta->setIdTurno($_POST['turno']);
             }
         }
+        //Creo un objetivo DateTime con la variable que contiene la hora local
+        $encuesta->setFecha(new \DateTime($fechaActual));
+        
+        $mane = $this->getDoctrine()->getEntityManager();
+        //Marca la entidad como persistente, todavia no ingresa los datos a la BD
+        $mane->persist($encuesta);
+        //Guardo los cambios (hago un "push")
+        $mane->flush();
+        
+        //$encUsuario = new Encuestausuario();
+        //$id = $encuesta->getIdencuesta();
+        //$encUsuario->setIdencuesta($id);
+        //$encUsuario->setIdusuario(12);
+        //$mane->persist($encUsuario);
+        //$mane->flush();
+        
         die();
-        return $this->render('modulo/modulo3.html.twig', [
-                    'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
-        ]);
+        //return $this->render('modulo/modulo3.html.twig', [
+        //            'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
+        //]);
     }
 
     /**
