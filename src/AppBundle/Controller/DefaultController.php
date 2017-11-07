@@ -71,12 +71,12 @@ class DefaultController extends Controller {
         $form = $this->createForm('AppBundle\Form\ExType');
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $dir = 'C:\xampp\htdocs\repo\web\uploads';
+            $path=realpath($request->server->get('DOCUMENT_ROOT').$request->getBasePath().'\uploads');
             $file = $form['attachment']->getData();
             $year = $form['year']->getData();
-            $file->move($dir, $file->getClientOriginalName());
+            $file->move($path, $file->getClientOriginalName());
 
-            $file2 = $dir . '/' . $file->getClientOriginalName();
+            $file2 = $path.'/'.$file->getClientOriginalName();
             $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject($file2);
             $sheet = $phpExcelObject->getActiveSheet()->toArray(null, true, true, true);
             $em = $this->getDoctrine()->getManager();
@@ -107,7 +107,7 @@ class DefaultController extends Controller {
                         $comision->setProfesor($row ['Docente']);
                         $comision->setYear($year);
 
-                        $inicio = new DateTime(date(" H:i", strtotime($row ['Hora Inicio'])));
+                        $inicio = new DateTime(date(" H:i", strtotime($row['Hora Inicio'])));
                         $fin = new DateTime(date(" H:i", strtotime($row ['Hora Final'])));
                         $horario->setInicio($inicio);
                         $horario->setFin($fin);
