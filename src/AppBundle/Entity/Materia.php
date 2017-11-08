@@ -206,6 +206,11 @@ class Materia
     
       public function __toString()
     {
+          if($this->getNombre() ==Null){
+              return 'la puta madre';
+          }
+          else{
         return $this->getNombre();
+          }
     }
 }

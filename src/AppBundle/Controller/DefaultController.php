@@ -90,6 +90,8 @@ class DefaultController extends Controller {
                     $materia = new Materia();
                     $horario = new Horario();
                     $dia = new Dia();
+                    $prueba=array();
+ //                   $prueba=$headings;
 
                     $materia->setCodigo($row['Código']);
                     $bool = $em->getRepository('AppBundle:Materia')->findOneBy(array(
@@ -99,12 +101,13 @@ class DefaultController extends Controller {
                         $materiaent = $em->getRepository('AppBundle:Materia')->findOneBy(array(
                             'codigo' => $materia->getCodigo()
                         ));
-                        $dia->setNombre($row['Día']);
-                        $diaent = $em->getRepository('AppBundle:Dia')->findOneBynombre($dia->getNombre()
-                        );
+                        $dia->setNombre($row['Día']);                                       //evidentemente el error viene aca
+                        $diaent = $em->getRepository('AppBundle:Dia')->findOneBy(array(
+                                'nombre' =>$dia->getNombre()
+                        ));
                         $comision->setCuatrimestre($row['Cuatrimestre']);
                         $comision->setNumero($row['Comisión']);
-                        $comision->setProfesor($row ['Docente']);
+                        $comision->setProfesor($row['Docente']);
                         $comision->setYear($year);
 
                         $inicio = new DateTime(date(" H:i", strtotime($row['Hora Inicio'])));
@@ -118,12 +121,16 @@ class DefaultController extends Controller {
 
                         $em->persist($comision);
                         $em->persist($horario);
+                        
                         $em->flush();
+                        $prueba[]=$comision;
                     }
+                        
                 }
             }
             return $this->render('default/Uploadok.html.twig', array(
-                        'data' => $data)
+                        'data' => $data,
+                        'prueba'=>$prueba,)
             );
         }
         return $this->render('default/UploadExcel.html.twig', array(

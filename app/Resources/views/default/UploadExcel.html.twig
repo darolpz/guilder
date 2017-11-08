@@ -25,7 +25,8 @@
                     <label for="excelfile_attachment" class="required">Archivo excel</label>
                     <input type="file" class="file" id="excelfile_attachment" name="excelfile[attachment]" required="required" />
                 </div>
-                <input type="hidden" id="excelfile__token" name="excelfile[_token]" value="CV3kmODxjIOCxzF5YtQUkh9xoYwMK4hX8SI_aCwT1G0" />
+                {{ form_row(form._token) }}
+                
             </div>
         </form>
 
