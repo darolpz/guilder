@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="materia")
  * @ORM\Entity
  */
-class Materia
-{
+class Materia {
+
     /**
      * @var string
      *
@@ -32,6 +32,7 @@ class Materia
      * @ORM\Column(name="anio", type="integer", nullable=false)
      */
     private $anio;
+
     /**
      * @var string
      *
@@ -58,11 +59,9 @@ class Materia
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->carreracarrera = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Set nombre
@@ -71,8 +70,7 @@ class Materia
      *
      * @return Materia
      */
-    public function setNombre($nombre)
-    {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
 
         return $this;
@@ -83,8 +81,7 @@ class Materia
      *
      * @return string
      */
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
     }
 
@@ -95,8 +92,7 @@ class Materia
      *
      * @return Materia
      */
-    public function setCodigo($codigo)
-    {
+    public function setCodigo($codigo) {
         $this->codigo = $codigo;
 
         return $this;
@@ -107,11 +103,10 @@ class Materia
      *
      * @return string
      */
-    public function getCodigo()
-    {
+    public function getCodigo() {
         return $this->codigo;
     }
-    
+
     /**
      * Set anio
      *
@@ -119,8 +114,7 @@ class Materia
      *
      * @return Materia
      */
-    public function setAnio($anio)
-    {
+    public function setAnio($anio) {
         $this->anio = $anio;
 
         return $this;
@@ -131,8 +125,7 @@ class Materia
      *
      * @return integer
      */
-    public function getAnio()
-    {
+    public function getAnio() {
         return $this->anio;
     }
 
@@ -143,8 +136,7 @@ class Materia
      *
      * @return Materia
      */
-    public function setCoordinador($coordinador)
-    {
+    public function setCoordinador($coordinador) {
         $this->coordinador = $coordinador;
 
         return $this;
@@ -155,8 +147,7 @@ class Materia
      *
      * @return string
      */
-    public function getCoordinador()
-    {
+    public function getCoordinador() {
         return $this->coordinador;
     }
 
@@ -165,8 +156,7 @@ class Materia
      *
      * @return integer
      */
-    public function getIdmateria()
-    {
+    public function getIdmateria() {
         return $this->idmateria;
     }
 
@@ -177,8 +167,7 @@ class Materia
      *
      * @return Materia
      */
-    public function addCarreracarrera(\AppBundle\Entity\Carrera $carreracarrera)
-    {
+    public function addCarreracarrera(\AppBundle\Entity\Carrera $carreracarrera) {
         $this->carreracarrera[] = $carreracarrera;
 
         return $this;
@@ -189,8 +178,7 @@ class Materia
      *
      * @param \AppBundle\Entity\Carrera $carreracarrera
      */
-    public function removeCarreracarrera(\AppBundle\Entity\Carrera $carreracarrera)
-    {
+    public function removeCarreracarrera(\AppBundle\Entity\Carrera $carreracarrera) {
         $this->carreracarrera->removeElement($carreracarrera);
     }
 
@@ -199,18 +187,12 @@ class Materia
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCarreracarrera()
-    {
+    public function getCarreracarrera() {
         return $this->carreracarrera;
     }
-    
-      public function __toString()
-    {
-          if($this->getNombre() ==Null){
-              return 'la puta madre';
-          }
-          else{
+
+    public function __toString() {
         return $this->getNombre();
-          }
     }
+
 }

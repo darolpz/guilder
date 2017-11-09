@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="dia")
  * @ORM\Entity
  */
-class Dia
-{
+class Dia {
+
     /**
      * @var string
      *
@@ -28,8 +28,6 @@ class Dia
      */
     private $iddia;
 
-
-
     /**
      * Set nombre
      *
@@ -37,8 +35,7 @@ class Dia
      *
      * @return Dia
      */
-    public function setNombre($nombre)
-    {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
 
         return $this;
@@ -49,8 +46,7 @@ class Dia
      *
      * @return string
      */
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
     }
 
@@ -59,17 +55,13 @@ class Dia
      *
      * @return integer
      */
-    public function getIddia()
-    {
+    public function getIddia() {
         return $this->iddia;
     }
-    
+
     public function __toString() {
-                  if($this->getNombre() ==Null){
-              return 'la puta madre';
-          }
-          else{
+
         return $this->getNombre();
-          }
     }
+
 }

@@ -90,9 +90,6 @@ class DefaultController extends Controller {
                     $materia = new Materia();
                     $horario = new Horario();
                     $dia = new Dia();
-                    $prueba = array();
-                    //                   $prueba=$headings;
-
                     $materia->setCodigo($row['Código']);
                     $bool = $em->getRepository('AppBundle:Materia')->findOneBy(array(
                         'codigo' => $materia->getCodigo()
@@ -109,27 +106,22 @@ class DefaultController extends Controller {
                         $comision->setNumero($row['Comisión']);
                         $comision->setProfesor($row['Docente']);
                         $comision->setYear($year);
-
                         $inicio = new DateTime(date(" H:i", strtotime($row['Hora Inicio'])));
                         $fin = new DateTime(date(" H:i", strtotime($row ['Hora Final'])));
                         $horario->setInicio($inicio);
                         $horario->setFin($fin);
-
                         $horario->setComisioncomision($comision);
                         $comision->setMateriamateria($materiaent);
                         $horario->setDiadia($diaent);
-
                         $em->persist($comision);
                         $em->persist($horario);
-
                         $em->flush();
-                        $prueba[] = $comision;
                     }
                 }
             }
             return $this->render('default/Uploadok.html.twig', array(
                         'data' => $data,
-                        'prueba' => $prueba,)
+                            )
             );
         }
         return $this->render('default/UploadExcel.html.twig', array(
