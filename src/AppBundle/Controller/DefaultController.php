@@ -71,12 +71,12 @@ class DefaultController extends Controller {
         $form = $this->createForm('AppBundle\Form\ExType');
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $path=realpath($request->server->get('DOCUMENT_ROOT').$request->getBasePath().'\uploads');
+            $path = realpath($request->server->get('DOCUMENT_ROOT') . $request->getBasePath() . '\uploads');
             $file = $form['attachment']->getData();
             $year = $form['year']->getData();
             $file->move($path, $file->getClientOriginalName());
 
-            $file2 = $path.'/'.$file->getClientOriginalName();
+            $file2 = $path . '/' . $file->getClientOriginalName();
             $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject($file2);
             $sheet = $phpExcelObject->getActiveSheet()->toArray(null, true, true, true);
             $em = $this->getDoctrine()->getManager();
@@ -90,8 +90,8 @@ class DefaultController extends Controller {
                     $materia = new Materia();
                     $horario = new Horario();
                     $dia = new Dia();
-                    $prueba=array();
- //                   $prueba=$headings;
+                    $prueba = array();
+                    //                   $prueba=$headings;
 
                     $materia->setCodigo($row['Código']);
                     $bool = $em->getRepository('AppBundle:Materia')->findOneBy(array(
@@ -101,9 +101,9 @@ class DefaultController extends Controller {
                         $materiaent = $em->getRepository('AppBundle:Materia')->findOneBy(array(
                             'codigo' => $materia->getCodigo()
                         ));
-                        $dia->setNombre($row['Día']);                                       //evidentemente el error viene aca
+                        $dia->setNombre($row['Dia']);                                       //evidentemente el error viene aca
                         $diaent = $em->getRepository('AppBundle:Dia')->findOneBy(array(
-                                'nombre' =>$dia->getNombre()
+                            'nombre' => $dia->getNombre()
                         ));
                         $comision->setCuatrimestre($row['Cuatrimestre']);
                         $comision->setNumero($row['Comisión']);
@@ -121,16 +121,15 @@ class DefaultController extends Controller {
 
                         $em->persist($comision);
                         $em->persist($horario);
-                        
+
                         $em->flush();
-                        $prueba[]=$comision;
+                        $prueba[] = $comision;
                     }
-                        
                 }
             }
             return $this->render('default/Uploadok.html.twig', array(
                         'data' => $data,
-                        'prueba'=>$prueba,)
+                        'prueba' => $prueba,)
             );
         }
         return $this->render('default/UploadExcel.html.twig', array(
