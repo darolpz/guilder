@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Güilder - Módulo 3{% endblock %}
+  {% block mod3 %} <li class="active"><a href="{{ path('modulo3B') }}"> Módulo 3</a></li>{% endblock %}
+  {% block extras %}
+  {{parent()}}
+  {% endblock %}
+{% block body %}
+<div class="row">
+    <div class="col-m-12">
+        <h1>&nbsp;</h1>
+    </div>
+</div>
+
+
+{#{% set arregloMaterias = ['Ea']%}
+{% for mat in materiasElegidas %}
+   {% for M in listaMat %}
+       {% if mat == M.codigo %}
+         {% set arregloMaterias = arregloMaterias |merge(M.nombre) %}
+       {% endif %}
+    {% endfor %}
+{% endfor %}
+#}
+
+<form action="encuesta2" method="post">
+    <div class="row">
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-question-sign"></span> ¿En que turno va a cursar las materias elegidas?
+                    </h3>
+                </div>
+                <div class="row container-fluid">
+                    <div class="row container-fluid">
+                        <div class="panel-body">
+                            {% for X in materiasElegidas %}
+                                <div class="panel-heading">
+                                    <h3 class="panel panel-primary">Materia: {{X}}</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <label>
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-secondary active">
+                                                    <input type="radio" name="turno" value=1 autocomplete="off"> Turno mañana
+                                                </label>
+                                                <label class="btn btn-secondary">
+                                                    <input type="radio" name="turno" value=2 autocomplete="off"> Turno tarde
+                                                </label>
+                                                <label class="btn btn-secondary">
+                                                    <input type="radio" name="turno" value=3 autocomplete="off"> Turno noche
+                                                </label>
+                                            </div>
+                                        </label>  
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <h3>BOTON</h3>
+                </div>
+            </div>
+        </div>
+    </div>    
+</form>
+
+
+{% endblock %}
