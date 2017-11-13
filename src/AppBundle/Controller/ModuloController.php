@@ -171,9 +171,20 @@ class ModuloController extends Controller {
         
         $comisiones= $em->getRepository('AppBundle:Comision')
                 ->findBymateriamateria($idMateria);
-        	
+        $comiArray= array();
+        foreach ($comisiones as $c){
+            $comision = array(); 
+            $comision[]=$c->getProfesor();
+            $comision[]=$c->getNumero();
+            $horario=$em->getRepository('AppBundle:Horario')
+                    ->findOneByComisioncomision($c);
+            $comision[]=$horario->getInicio();
+            $comision[]=$horario->getFin();
+            $comision[]=$horario->getDiadia()->getNombre();
+            $comiArray[]=$comision;
+        }
         /*Genero un json con las comisiones*/
-        $jsondata = json_encode ($materia);
+        $jsondata = json_encode ($comiArray);
         
         $response = new Response(
 			'Content',
