@@ -112,36 +112,46 @@ class ModuloController extends Controller {
                     'materias' => $materias,
         ));
     }
-
+    
     /**
-     * @Route("/resultados", name="resultados")
+     * @Route("/modulo3B", name="modulo3B")
      */
-    public function resultadosEncAction(Request $request) {
+    public function modulo3BAction(Request $request) {
+        //$man = $this->getDoctrine()->getManager();
+
+        //$materias = $man->getRepository('AppBundle:Materia')->findAll();
+
+        return $this->render('modulo/modulo3B.html.twig', array(
+                    'materias' => $materias,
+        ));
+    }
+    
+    /**
+     * @Route("/encuesta1", name="encuesta1")
+     */
+    public function encuesta1Action(Request $request) {
         
-        //Defino hora local como la de Buenos Aires.
-        date_default_timezone_set('America/Argentina/Buenos_Aires');
-        //Obtengo esa hora local y la guardo en una variable
-        $fechaActual = date_default_timezone_get();
-        //Creo una nueva entidad de la encuesta 
-        $encuesta = new Encuesta();
-        //Reviso que el botón submit haya sido apretado para que no me de valores nulos    
+        
+        //Reviso que el botón submit haya sido apretado para que no me de valores nulos
         if (isset($_POST['submit'])) {
             if (isset($_POST['materia'])) {
-                $encuesta->setMaterias(implode(',', $_POST['materia']));
-                echo 'Seleccionaste las materias: ' . implode(', ',$_POST['materia']);
+                $listaMaterias = [$_POST['materia']]; //Aca no pasa bien los datos al array
+                //$encuesta->setMaterias(implode(',', $_POST['materia']));
+                //echo 'Seleccionaste las materias: ' . implode(', ',$_POST['materia']);
             }
-            if (isset($_POST['turno'])){
-                $encuesta->setIdTurno($_POST['turno']);
-            }
+            //if (isset($_POST['turno'])){
+            //    $encuesta->setIdTurno($_POST['turno']);
+            //}
+            
         }
         //Creo un objetivo DateTime con la variable que contiene la hora local
-        $encuesta->setFecha(new \DateTime($fechaActual));
+        //$encuesta->setFecha(new \DateTime($fechaActual));
         
-        $mane = $this->getDoctrine()->getEntityManager();
+        //$mane = $this->getDoctrine()->getEntityManager();
         //Marca la entidad como persistente, todavia no ingresa los datos a la BD
-        $mane->persist($encuesta);
+        //$mane->persist($encuesta);
         //Guardo los cambios (hago un "push")
-        $mane->flush();
+        //$mane->flush();
         
         //$encUsuario = new Encuestausuario();
         //$id = $encuesta->getIdencuesta();
@@ -149,16 +159,45 @@ class ModuloController extends Controller {
         //$encUsuario->setIdusuario(12);
         //$mane->persist($encUsuario);
         //$mane->flush();
+        $materiasSeleccionadas = []; //EN REVISION
+        for($X = 0; $X <= count($listaMaterias); $X++)
+        {
+            $em = $this->getDoctrine()->getEntityManager();
+            $mat = $em->getRepository('AppBundle:Materia')->findOneBycodigo($_POST['materia'][$X]);
+            $nombreMateria = $mat->getNombre(); //Obtengo el nombre de la materia
+            array_push($materiasSeleccionadas, $nombreMateria);
+            //$materiasSeleccionadas = array('materiasSeleccionadas' => $nombreMateria);
+        }
+       
         
-        die();
-        //return $this->render('modulo/modulo3.html.twig', [
-        //            'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
-        //]);
+        return $this->render('modulo/modulo3B.html.twig', array(
+            'arregloMaterias' => $_POST['materia'], 'materiasElegidas' => $materiasSeleccionadas
+        ));
+    }
+    
+    /**
+     * @Route("/encuesta2", name="encuesta2")
+     */
+    public function encuesta2Action(Request $request) {
+        
+        //Defino hora local como la de Buenos Aires.
+        //date_default_timezone_set('America/Argentina/Buenos_Aires');
+        //Obtengo esa hora local y la guardo en una variable
+        //$fechaActual = date_default_timezone_get();
+        //Creo una nueva entidad de la encuesta 
+        //$encuesta = new Encuesta();
+        
+        if (isset($_POST['submit'])) {
+            if (isset($_POST['turno'])){
+            //   $encuesta->setIdTurno($_POST['turno']);
+            }       
+        }
     }
 
     /**
      * @Route("/agregar_comisiones", name="agregar_comisiones")
-     * @Method({"GET"})*/
+     * @Method({"GET"})
+     */
     
     public function obtenerComisionesAction(Request $request){
         
