@@ -12,17 +12,6 @@
     </div>
 </div>
 
-
-{#{% set arregloMaterias = ['Ea']%}
-{% for mat in materiasElegidas %}
-   {% for M in listaMat %}
-       {% if mat == M.codigo %}
-         {% set arregloMaterias = arregloMaterias |merge(M.nombre) %}
-       {% endif %}
-    {% endfor %}
-{% endfor %}
-#}
-
 <form action="encuesta2" method="post">
     <div class="row">
         <div class="container">
@@ -35,7 +24,7 @@
                 <div class="row container-fluid">
                     <div class="row container-fluid">
                         <div class="panel-body">
-                            {% for X in materiasElegidas %}
+                            {% for X in nombresMaterias %}
                                 <div class="panel-heading">
                                     <h3 class="panel panel-primary">Materia: {{X}}</h3>
                                 </div>
@@ -61,7 +50,11 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <h3>BOTON</h3>
+                    <h3>
+                        <button type="submit" name="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Seleccionar</button>
+                        {{ dump(nombresMaterias) }}
+                        {{ dump(codigosMaterias) }}
+                    </h3>
                 </div>
             </div>
         </div>

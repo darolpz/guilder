@@ -117,13 +117,8 @@ class ModuloController extends Controller {
      * @Route("/modulo3B", name="modulo3B")
      */
     public function modulo3BAction(Request $request) {
-        //$man = $this->getDoctrine()->getManager();
-
-        //$materias = $man->getRepository('AppBundle:Materia')->findAll();
-
-        return $this->render('modulo/modulo3B.html.twig', array(
-                    'materias' => $materias,
-        ));
+        
+        return $this->render('modulo/modulo3B.html.twig');
     }
     
     /**
@@ -131,18 +126,44 @@ class ModuloController extends Controller {
      */
     public function encuesta1Action(Request $request) {
         
-        
         //Reviso que el botón submit haya sido apretado para que no me de valores nulos
         if (isset($_POST['submit'])) {
             if (isset($_POST['materia'])) {
-                $listaMaterias = [$_POST['materia']]; //Aca no pasa bien los datos al array
-                //$encuesta->setMaterias(implode(',', $_POST['materia']));
-                //echo 'Seleccionaste las materias: ' . implode(', ',$_POST['materia']);
+                $listaMaterias = $_POST['materia'];
             }
             //if (isset($_POST['turno'])){
             //    $encuesta->setIdTurno($_POST['turno']);
             //}
-            
+        }
+        $materiasSeleccionadas = array();
+        $em = $this->getDoctrine()->getEntityManager();
+        for($X = 0; $X < count($listaMaterias); $X++)
+        {
+            $mat = $em->getRepository('AppBundle:Materia')->findOneBycodigo($listaMaterias[$X]);
+            $nombreMateria = $mat->getNombre(); 
+            array_push($materiasSeleccionadas, $nombreMateria);
+        }
+        return $this->render('modulo/modulo3B.html.twig', array(
+            'codigosMaterias' => $_POST['materia'], 'nombresMaterias' => $materiasSeleccionadas
+        ));
+    }
+    
+    /**
+     * @Route("/encuesta2", name="encuesta2")
+     */
+    public function encuesta2Action(Request $request) {
+        
+        //Defino hora local como la de Buenos Aires.
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
+        //Obtengo esa hora local y la guardo en una variable
+        $fechaActual = date_default_timezone_get();
+        //Creo una nueva entidad de la encuesta 
+        //$encuesta = new Encuesta();
+        
+        if (isset($_POST['submit'])) {
+            if (isset($_POST['turno'])){
+            //   $encuesta->setIdTurno($_POST['turno']);
+            }       
         }
         //Creo un objetivo DateTime con la variable que contiene la hora local
         //$encuesta->setFecha(new \DateTime($fechaActual));
@@ -159,39 +180,8 @@ class ModuloController extends Controller {
         //$encUsuario->setIdusuario(12);
         //$mane->persist($encUsuario);
         //$mane->flush();
-        $materiasSeleccionadas = []; //EN REVISION
-        for($X = 0; $X <= count($listaMaterias); $X++)
-        {
-            $em = $this->getDoctrine()->getEntityManager();
-            $mat = $em->getRepository('AppBundle:Materia')->findOneBycodigo($_POST['materia'][$X]);
-            $nombreMateria = $mat->getNombre(); //Obtengo el nombre de la materia
-            array_push($materiasSeleccionadas, $nombreMateria);
-            //$materiasSeleccionadas = array('materiasSeleccionadas' => $nombreMateria);
-        }
-       
+        return $this->render('default/index.html.twig');
         
-        return $this->render('modulo/modulo3B.html.twig', array(
-            'arregloMaterias' => $_POST['materia'], 'materiasElegidas' => $materiasSeleccionadas
-        ));
-    }
-    
-    /**
-     * @Route("/encuesta2", name="encuesta2")
-     */
-    public function encuesta2Action(Request $request) {
-        
-        //Defino hora local como la de Buenos Aires.
-        //date_default_timezone_set('America/Argentina/Buenos_Aires');
-        //Obtengo esa hora local y la guardo en una variable
-        //$fechaActual = date_default_timezone_get();
-        //Creo una nueva entidad de la encuesta 
-        //$encuesta = new Encuesta();
-        
-        if (isset($_POST['submit'])) {
-            if (isset($_POST['turno'])){
-            //   $encuesta->setIdTurno($_POST['turno']);
-            }       
-        }
     }
 
     /**
