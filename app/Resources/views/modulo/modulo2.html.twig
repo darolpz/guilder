@@ -139,9 +139,13 @@
                 calendarHeatmap.init(data, color, overview, print);
         </script>
         <script>
+            var reload = 0;
             $(document).ready(function () {
                 $('.calendar-heatmap').appendTo("#panel");
-
+                if (reload = 0) {
+                    location.reload();
+                    reload++;
+                }
             });
         </script>
         <div class="row">
