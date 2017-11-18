@@ -38,22 +38,23 @@
                 <div>
                     <table>
                         <tr>
-                            <th>Materia</th>
-                            <th>Año</th>
-                            <th>Cuatrimestre</th>
+                            <th><label for="appbundle_comision_materiamateria">Materia</label></th>
+                            <th><label for="appbundle_comision_year">Año</label></th>
+                            <th><label for="appbundle_comision_cuatrimestre">Cuatrimestre</label></th>
                         </tr>
                         <tr>
-                            {{ form_start(form) }}
-                            <td>{{ form_widget(form.materiamateria) }}&nbsp</td>
-                            <td>{{ form_widget(form.year) }}&nbsp</td>
-                            <td>{{ form_widget(form.cuatrimestre)}}&nbsp</td>
-                        </tr>
+                        <form name="appbundle_comision" method="post">
+                            <td><select class="form-control " id="appbundle_comision_materiamateria" name="appbundle_comision[materiamateria]"><option value=""></option><option value="53">Taller de Ingeniería</option><option value="54">Problemas de la Historia Argentina</option><option value="55">Sistemas de Representación</option><option value="56">Matemática</option><option value="57">Taller de Lectura y Escritura</option><option value="58">Prácticas Culturales</option><option value="59">Fundamentos de Informática</option><option value="60">Matemática I</option><option value="61">Matemática II</option><option value="62">Algoritmos y Programación</option><option value="63">Organización y Arquitectura de Computadoras</option><option value="64">Sistemas Operativos I</option><option value="65">Física I</option><option value="66">Matemática III</option><option value="67">CTEDyA</option><option value="68">Base de Datos I</option><option value="69">Redes de Computadoras I</option><option value="70">Física II</option><option value="71">Metodologías de Programación I</option><option value="72">Información y Comunicaciones</option><option value="73">Ingeniería de Software I</option><option value="74">Redes de Computadras II</option><option value="75">Probabilidad y Estadística</option><option value="76">Proyecto Software</option><option value="77">Química General</option><option value="78">Metodologías de Programación II</option><option value="79">Seguridad de la Información</option><option value="80">Base de Datos II</option><option value="81">Ingeniería en Software II</option><option value="82">Sistemas Operativos II</option><option value="83">Seguridad en Aplicaciones</option><option value="84">Aplicaciones Móviles</option><option value="85">Administración de Proyectos</option><option value="86">Lenguajes Formales y Autómatas</option><option value="87">Programación en Tiempo Real</option><option value="88">Ingeniería Ambiental</option><option value="89">Sistemas y Organizaciones</option><option value="90">Legislación y Ejercicio Profesional de la Informática</option><option value="91">Gestión de Recursos Humanos</option><option value="92">Gestión de Calidad, Higiene y Seguridad</option><option value="93">Economía</option><option value="94">Práctica Profesional Supervisada</option><option value="95">Gobierno de IT y Auditoría de SI</option><option value="96">Datawarehouse y Bussiness Intelligence</option><option value="97">Gobierno Electrónico</option><option value="98">Aplicación Java sobre web</option><option value="99">Bioinformática</option><option value="100">Sistemas Distribuidos</option><option value="101">Tráfico en Redes</option></select>&nbsp</td>
+                            <td><input class="form-control" type="number" id="appbundle_comision_year" name="appbundle_comision[year]" />&nbsp</td>
+                            <td><input class="form-control" type="number" id="appbundle_comision_cuatrimestre" name="appbundle_comision[cuatrimestre]" />&nbsp</td>
+                            </tr>
 
                     </table>
                     <input id="ej" class="btn btn-primary" type="submit" value="Submit" />
-
+                    {{ form_row(form._token) }}
+                    </form>
                 </div>
-                {{form_end(form)}}
+
                 <div class="panel-body">
                     <table class="table table-striped">
                         <thead>
