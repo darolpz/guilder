@@ -22,22 +22,13 @@
            placeholder="usuario" required autofocus>
     <label for="password">Password:</label>
     <input type="password" id="password" name="_password" class="form-control" placeholder="contraseña" required>
-    <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>
     <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">aceptar</button>
     {#
         If you want to control the URL the user
         is redirected to on success (more details below)
         <input type="hidden" name="_target_path" value="/account" />
     #}
-
-  <a href="#" class="forgot-password">
-                ¿Olvidaste la contraseña?<br/>
-            </a>
-    <a href="#" class="forgot-password">
+    <a href="{{ path('user_registration') }}">
                 Registrarse
             </a>
 </form>
