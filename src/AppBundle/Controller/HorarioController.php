@@ -48,7 +48,7 @@ class HorarioController extends Controller
             $em->persist($horario);
             $em->flush();
 
-            return $this->redirectToRoute('horario_show', array('idhorario' => $horario->getIdhorario()));
+            return $this->redirectToRoute('horario_edit', array('idhorario' => $horario->getIdhorario()));
         }
 
         return $this->render('horario/new.html.twig', array(
@@ -63,7 +63,7 @@ class HorarioController extends Controller
      * @Route("/{idhorario}", name="horario_show")
      * @Method("GET")
      */
-    public function showAction(Horario $horario)
+   /* public function showAction(Horario $horario)
     {
         $deleteForm = $this->createDeleteForm($horario);
 
@@ -71,7 +71,7 @@ class HorarioController extends Controller
             'horario' => $horario,
             'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Displays a form to edit an existing horario entity.

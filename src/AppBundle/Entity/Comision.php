@@ -192,6 +192,6 @@ class Comision
     }
 	 public function __toString()
     {
-        return $this->getMateriamateria()->__toString(). " " . $this->getNumero();
-    }
+        return $this->getMateriamateria()->__toString(). " - Comisión " . $this->getNumero(). " - " . $this->getCuatrimestre() . "º cuatrimestre" . " " . $this->getYear();
+	}
 }

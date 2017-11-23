@@ -27,7 +27,7 @@ class UserController extends Controller
 
         $users = $em->getRepository('AppBundle:User')->findAll();
 
-        return $this->render('user/show.html.twig', array(
+        return $this->render('user/index.html.twig', array(
             'users' => $users,
         ));
     }
@@ -64,7 +64,7 @@ class UserController extends Controller
      * @Route("/{iduser}", name="user_show")
      * @Method("GET")
      */
-    public function showAction(User $user)
+   /* public function showAction(User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
 
@@ -73,6 +73,7 @@ class UserController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+	*/
 
     /**
      * Displays a form to edit an existing user entity.

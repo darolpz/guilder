@@ -49,7 +49,7 @@ class ComisionController extends Controller
             $em->persist($comision);
             $em->flush();
 
-            return $this->redirectToRoute('comision_show', array('idcomision' => $comision->getIdcomision()));
+            return $this->redirectToRoute('comision_edit', array('idcomision' => $comision->getIdcomision()));
         }
 
         return $this->render('comision/new.html.twig', array(

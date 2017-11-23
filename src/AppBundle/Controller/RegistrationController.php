@@ -29,7 +29,7 @@ class RegistrationController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) 
 		{
-			$token = $em->getRepository('AppBundle:Token')->findBy(array('token' => $codigo));
+			$token = $em->getRepository('AppBundle:Token')->findBy(array('token' => $user->getToken()));
 			// Se encripta la contraseña del usuario, se lo guarda en la BD y se elimina el token utilizado
 			$password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
 			$user->setPassword($password);

@@ -1,47 +1,56 @@
 {% extends 'base.html.twig' %}
-
+{% block title %} Sección de comisiones{% endblock %}
 {% block body %}
-    <h1>Comisions list</h1>
 
-    <table>
+<div class="row">
+    <div class="col-m-12">
+        <h1>&nbsp;</h1>
+     </div>
+</div>
+
+
+<div class="container">
+     <div id="contenido" >
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Comisiones</h1>
+            </div>
+			
+<div class="panel-body">
+
+<center><a class="btn btn-success" href="{{ path('comision_new') }}">Crear nueva comisión</a></center>
+            <table class="table table-striped">
+
+
         <thead>
             <tr>
 				<th>Materia</th>
                 <th>Numero</th>
                 <th>Profesor</th>
                 <th>Cuatrimestre</th>
-                <th>Year</th>
-                <th>Idcomision</th>
-                <th>Actions</th>
+                <th>Año</th>
+                <th>ID</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for comision in comisions %}
             <tr>
 				 <td>{{comision.materiamateria}} </td>
-                <td><a href="{{ path('comision_show', { 'idcomision': comision.idcomision }) }}">{{ comision.numero }}</a></td>
+                <td><!--<a href="{{ path('comision_show', { 'idcomision': comision.idcomision }) }}">-->{{ comision.numero }}</a></td>
                 <td>{{ comision.profesor }}</td>
                 <td>{{ comision.cuatrimestre }}</td>
                 <td>{{ comision.year }}</td>
                 <td>{{ comision.idcomision }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('comision_show', { 'idcomision': comision.idcomision }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('comision_edit', { 'idcomision': comision.idcomision }) }}">edit</a>
-                        </li>
-                    </ul>
+				<a class="btn btn-primary" href="{{ path('comision_edit', { 'idcomision': comision.idcomision }) }}">Editar</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('comision_new') }}">Create a new comision</a>
-        </li>
-    </ul>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}

@@ -1,47 +1,58 @@
 {% extends 'base.html.twig' %}
-
+{% block title %} Sección de usuarios{% endblock %}
 {% block body %}
-    <h1>Users list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Isactive</th>
-                <th>Email</th>
-                <th>Legajo</th>
-                <th>Iduser</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td><a href="{{ path('user_show', { 'iduser': user.iduser }) }}">{{ user.username }}</a></td>
-                <td>{{ user.password }}</td>
-                <td>{% if user.isActive %}Yes{% else %}No{% endif %}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.legajo }}</td>
+
+<div class="row">
+    <div class="col-m-12">
+        <h1>&nbsp;</h1>
+     </div>
+</div>
+
+<div class="container">
+     <div id="contenido" >
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Lista de usuarios</h1>
+            </div>
+
+            <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre de usuario</th>
+                        <th>Rol</th>
+                        <th>ID</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+            <tbody>
+                {% for user in users %}
+                     <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.rolrol }}</td>
                 <td>{{ user.iduser }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('user_show', { 'iduser': user.iduser }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('user_edit', { 'iduser': user.iduser }) }}">edit</a>
-                        </li>
-                    </ul>
+                    
+                       
+                        
+                            <a class="btn btn-primary" href="{{ path('user_edit', { 'iduser': user.iduser }) }}">Editar</a>
+                        
+                    
                 </td>
             </tr>
-        {% endfor %}
-        </tbody>
+                {% endfor %}
+            </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('user_new') }}">Create a new user</a>
-        </li>
-    </ul>
+   {#  <ul>
+        
+            
+            <a class="btn btn-primary" href="{{ path('user_new') }}" role="button">Crear un nuevo usuario</a> 
+    </ul> #}
+
+</div>
+</div>
+</div>
+</div>
 {% endblock %}

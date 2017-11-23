@@ -29,6 +29,10 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=64, nullable=false)
+	 * @Assert\Length(
+	 *     min = 4,
+	 *     minMessage = "La password deberia tener al menos 4 caracteres"
+	 * )
      */
 	 
     private $password;
@@ -281,7 +285,13 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     {
         return $this->username;
     }
-
+	/**
+     * @var string
+	 * @Assert\Length(
+	 *     min = 4,
+	 *     minMessage = "La password deberia tener al menos 4 caracteres"
+	 * )
+     */
     private $plainPassword;
     public function getPlainPassword()
     {

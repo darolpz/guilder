@@ -1,21 +1,47 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} Información de usuario {% endblock %}
 {% block body %}
-    <h1>User: {{ user.username }} edit</h1>
 
+<div class="row">
+    <div class="col-m-12">
+        <h1>&nbsp;</h1>
+     </div>
+</div>
+
+
+
+	
+<div class="container">
+
+     <div id="contenido" >
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Rol de usuario</h1>
+            </div>
+			
+<div class="panel-body">
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+	<p><center><h2>{{ user.username }}</h2></center></p>
+	<center>{{ form_errors(edit_form) }}</center>
+	<center>
+	<div>
+        <p>{{ form_label(edit_form.rolrol, 'Rol:') }}</p>
+        <p>{{ form_errors(edit_form.rolrol) }}</p>
+        <p>{{ form_widget(edit_form.rolrol) }}</p>
+	</div></center>
+	{{ form_row(edit_form._token) }}
+	
+        <p><center><input type="submit" class="btn btn-success" value="Actualizar rol"></center></p>
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
-        </li>
-        <li>
+			<p><center><a class="btn btn-primary" href="{{ path('user_index') }}" role="button" >Volver a la lista de usuarios</a></center></p>
+
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <p><center><input type="submit" class="btn btn-danger" value="Eliminar cuenta"></center></p>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}

@@ -1,21 +1,68 @@
 {% extends 'base.html.twig' %}
+{% block title %} Editar comisión {% endblock %}
 
 {% block body %}
-    <h1>Comision edit</h1>
+
+
+<div class="row">
+    <div class="col-m-12">
+        <h1>&nbsp;</h1>
+     </div>
+</div>
+<div class="container">
+
+     <div id="contenido" >
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Información de comisión</h1>
+            </div>
+<div class="panel-body">
+
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+	
+<center>
 
-    <ul>
-        <li>
-            <a href="{{ path('comision_index') }}">Back to the list</a>
-        </li>
-        <li>
+<div>
+        <p>{{ form_label(edit_form.numero, 'Número:') }}
+         <p>{{ form_errors(edit_form.numero) }}</p>
+        <p> {{ form_widget(edit_form.numero) }}</p>
+</div>
+
+<div>
+        <p>{{ form_label(edit_form.profesor, 'Profesor:') }}</p>
+         <p>{{ form_errors(edit_form.profesor) }} </p>
+         <p>{{ form_widget(edit_form.profesor) }}</p>
+</div>
+<div>
+        <p>{{ form_label(edit_form.cuatrimestre, 'Cuatrimestre:') }}
+         <p>{{ form_errors(edit_form.cuatrimestre) }}</p>
+        <p> {{ form_widget(edit_form.cuatrimestre) }}</p>
+</div>
+<div>
+        <p>{{ form_label(edit_form.year, 'Año:') }}
+         <p>{{ form_errors(edit_form.year) }}</p>
+        <p> {{ form_widget(edit_form.year) }}</p>
+</div>
+
+<div>
+        <p>{{ form_label(edit_form.materiamateria, 'Materia:') }}
+         <p>{{ form_errors(edit_form.materiamateria) }}</p>
+        <p> {{ form_widget(edit_form.materiamateria) }}</p>
+</div>
+
+
+</center>
+
+        <p><center><input type="submit" class="btn btn-success" value="Actualizar comisión"></center></p>
+		  {{ form_end(edit_form) }}
+			<p><center><a class="btn btn-primary" href="{{ path('comision_index') }}" role="button" >Volver a la lista</a></center></p>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <p><center><input type="submit" class="btn btn-danger" value="Eliminar comisión"></center></p>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+			
+</div>
+</div>
+</div>
+</div>
 {% endblock %}

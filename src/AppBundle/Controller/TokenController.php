@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use DateTime;
 
 /**
  * Token controller.
@@ -47,7 +48,10 @@ class TokenController extends Controller
 			if (count($em->getRepository('AppBundle:Token')->findBy(array('token' => $random))) == 0)
 			{
 				 $token = new Token();
-				 $token->setCreado(null); // Se inserta la fecha de creación nula y MySQL se encarga de colocarla
+				 $dia = new DateTime();
+				 $dia->format('Y-m-d H:i:s');
+				 $dia->getTimestamp();
+				 $token->setCreado($dia);
 				 $token->setToken($random);
 				 $em->persist($token);
 				 $em->flush();
