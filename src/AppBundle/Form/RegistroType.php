@@ -28,8 +28,10 @@ class RegistroType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults(array
+		(
             'data_class' => User::class,
-        ));
+			'csrf_protection' => false,
+        )	);
     }
 }

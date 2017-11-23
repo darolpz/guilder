@@ -1,17 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Horarios list</h1>
+{% block title %} Sección de horarios{% endblock %}
 
-    <table>
+{% block body %}
+
+<div class="row">
+    <div class="col-m-12">
+        <h1>&nbsp;</h1>
+     </div>
+</div>
+<div class="container">
+     <div id="contenido" >
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Horarios</h1>
+            </div>
+
+<div class="panel-body">
+<center><a class="btn btn-success" href="{{ path('horario_new') }}">Crear nuevo horario</a></center>
+            <table class="table table-striped">
         <thead>
             <tr>
                 <th>Inicio</th>
                 <th>Fin</th>
 				<th>Materia</th>
 				<th>Profesor</th>
-                <th>Idhorario</th>
-                <th>Actions</th>
+                <th>ID</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -23,23 +38,16 @@
 				<td>{{horario.comisioncomision.profesor}}	</td>
                 <td>{{ horario.idhorario }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('horario_show', { 'idhorario': horario.idhorario }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('horario_edit', { 'idhorario': horario.idhorario }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-primary" href="{{ path('horario_edit', { 'idhorario': horario.idhorario }) }}">Editar</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+            
 
-    <ul>
-        <li>
-            <a href="{{ path('horario_new') }}">Create a new horario</a>
-        </li>
-    </ul>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}

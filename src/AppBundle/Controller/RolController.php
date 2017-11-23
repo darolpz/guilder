@@ -20,7 +20,7 @@ class RolController extends Controller
      * @Route("/", name="rol_index")
      * @Method("GET")
      */
-    public function indexAction()
+   /* public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -29,7 +29,7 @@ class RolController extends Controller
         return $this->render('rol/index.html.twig', array(
             'rols' => $rols,
         ));
-    }
+    }*/
 
     /**
      * Creates a new rol entity.
@@ -37,7 +37,7 @@ class RolController extends Controller
      * @Route("/new", name="rol_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    /*public function newAction(Request $request)
     {
         $rol = new Rol();
         $form = $this->createForm('AppBundle\Form\RolType', $rol);
@@ -55,7 +55,7 @@ class RolController extends Controller
             'rol' => $rol,
             'form' => $form->createView(),
         ));
-    }
+    }*/
 
     /**
      * Finds and displays a rol entity.
@@ -63,7 +63,7 @@ class RolController extends Controller
      * @Route("/{idrol}", name="rol_show")
      * @Method("GET")
      */
-    public function showAction(Rol $rol)
+   /* public function showAction(Rol $rol)
     {
         $deleteForm = $this->createDeleteForm($rol);
 
@@ -71,7 +71,7 @@ class RolController extends Controller
             'rol' => $rol,
             'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Displays a form to edit an existing rol entity.
@@ -79,7 +79,7 @@ class RolController extends Controller
      * @Route("/{idrol}/edit", name="rol_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Rol $rol)
+   /* public function editAction(Request $request, Rol $rol)
     {
         $deleteForm = $this->createDeleteForm($rol);
         $editForm = $this->createForm('AppBundle\Form\RolType', $rol);
@@ -96,7 +96,7 @@ class RolController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Deletes a rol entity.
@@ -104,7 +104,7 @@ class RolController extends Controller
      * @Route("/{idrol}", name="rol_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Rol $rol)
+   /* public function deleteAction(Request $request, Rol $rol)
     {
         $form = $this->createDeleteForm($rol);
         $form->handleRequest($request);
@@ -116,7 +116,7 @@ class RolController extends Controller
         }
 
         return $this->redirectToRoute('rol_index');
-    }
+    }*/
 
     /**
      * Creates a form to delete a rol entity.
@@ -125,12 +125,12 @@ class RolController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Rol $rol)
+   /* private function createDeleteForm(Rol $rol)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('rol_delete', array('idrol' => $rol->getIdrol())))
             ->setMethod('DELETE')
             ->getForm()
         ;
-    }
+    }*/
 }

@@ -1,35 +1,44 @@
 {% extends 'base.html.twig' %}
 
-
+{% block title %} Sección de tokens {% endblock %}
 
 {% block body %}
+<div class="row">
+    <div class="col-m-12">
+        <h1>&nbsp;</h1>
+     </div>
+</div>
+<div class="container">
 
-
-<h1>Lista de tokens</h1>
+     <div id="contenido" >
+<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Lista de tokens</h1>
+            </div>
 
 {% for message in app.flashes('tokencreado') %}
 	<div class="alert alert-success">
-  <strong>Éxito</strong> El token ha sido creado con el código {{ message }}.
+  <center> El token ha sido creado con el código {{ message }}.</center>
     </div>
 {% endfor %}
 {% for message in app.flashes('tokeneliminado') %}
 	<div class="alert alert-danger">
-  El token ha sido eliminado.
+  <center>El token ha sido eliminado.</center>
     </div>
 {% endfor %}
-<div class="center-block" style="max-width:400px">
-	<a href="{{ path('token_new') }}" class="btn btn-success btn-lg">
-	<span class="glyphicon glyphicon-plus"></span> Crear nuevo token 
-	</a>
-</div>
 
-	
-	<table class="table table-bordered">
+
+
+<div class="panel-body">
+	<center><a href="{{ path('token_new') }}" class="btn btn-success">Crear nuevo token 
+	</a></center>
+     <table class="table table-striped">
+
     <thead>
       <tr>
-        <th><p class="text-center">Token</p></th>
-        <th><p class="text-center">Fecha de creación</p></th>
-        <th><p class="text-center">Acciones</p></th>
+        <th><p>Token</p></th>
+        <th><p>Fecha de creación</p></th>
+        <th><p>Acciones</p></th>
       </tr>
     </thead>
     <tbody>
@@ -37,13 +46,15 @@
             <tr>
 				<td>{{ token.token }}</td>
                 <td>{{ token.creado|date('Y-m-d H:i') }}</td>
-				<td><a href="{{ path('token_delete', { 'idtoken': token.idtoken }) }}" class="btn"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
+				<td><a href="{{ path('token_delete', { 'idtoken': token.idtoken }) }}" class="btn btn-danger"> Eliminar</a></td>
             </tr>
         {% endfor %}
     </tbody>
   </table>
 	
 
-
-    
+    </div>
+	    </div>
+    </div>
+</div>
 {% endblock %}
