@@ -160,17 +160,26 @@
     <script>
 
             $("#bodyMaterias").find("button").click(function(){
-				var param = $(this).val();
-                                {# Realizo un get utilizando AJAX enviando como parametro el codigo de la materia #}
-				$.get("{{url('agregar_comisiones')}}", {codigo:param} , function(mydata){
-                                    console.log(mydata);
-                                    var content = JSON.parse(mydata); /*No andaría funcando.*/
-                                    console.log(mydata);
-                                    alert(content);
-                                    $("#bodyComisiones tr:last").after('<tr class="active"><td><button type="button" class="btn btn-secondary"> HOLA </button></td></tr>');
-				});
+                var param = $(this).val();
+                {# Realizo un get utilizando AJAX enviando como parametro el codigo de la materia #}
+                $.get("{{url('agregar_comisiones')}}", {codigo:param} , function(mydata){
+                    console.log(mydata);
+                    var arrayPrueba= mydata.split("[");
+                    console.log("----------------------");
+                    arrayPrueba.splice(0,1);
+                    arrayPrueba.splice(0,1);
+                    console.log(arrayPrueba[0]);
+                    
+                    for (com in mydata){
+                        $("#bodyComisiones tr:last").after('<tr> class="active” <td>'+
+        		com[0].numero +'</td><td>'+ com[0].profesor+'</td><td>'+com[0].nombre+'</td><td>'+com[0].inicio+
+                        '</td><td>'+ com[0].fin+'</td><td><button type="button" class="btn btn-secondary"> Agregar </button></td></tr>');
+                    }
+
+                    $("#bodyComisiones tr:last").after('<tr class="active"><td><button type="button" class="btn btn-secondary"> HOLA </button></td></tr>');
+                });
                 $("#encabezado").html("¡Organiza tu cursada!");
-            })
+            });
         
     </script>
     {#{% endblock %}#}

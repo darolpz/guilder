@@ -25,11 +25,9 @@ class ModuloController extends Controller {
         $form = $this->createForm('AppBundle\Form\ComisionType_1', $comision);
         $form->handleRequest($request);
 
-        $horarios = $em->getRepository('AppBundle:Horario')->findAll();
         $materias = $em->getRepository('AppBundle:Materia')->findAll();
 
         return $this->render('modulo/modulo1.html.twig', array(
-                    'horarios' => $horarios,
                     'materias' => $materias,
         ));
     }
@@ -212,6 +210,8 @@ class ModuloController extends Controller {
                 ->findBymateriamateria($idMateria);
         $comiArray= array();
         foreach ($comisiones as $c){
+            /*Para cada comision del array $comisiones recupero los datos relevantes para el usuario
+            Estos datos se añaden a un array temporal y luego se añaden al array $comiArray */
             $comision = array(); 
             $comision[]=$c->getProfesor();
             $comision[]=$c->getNumero();
@@ -224,7 +224,6 @@ class ModuloController extends Controller {
         }
         /*Genero un json con las comisiones*/
         $jsondata = json_encode ($comiArray);
-        
         $response = new Response(
 			'Content',
 			Response::HTTP_OK,
