@@ -212,7 +212,7 @@ class ModuloController extends Controller {
             $comision[]=$horario->getDiadia()->getNombre();
             $comiArray[]=$comision;
         }
-        /*Genero un json con las comisiones*/
+        /*Genero un json con las comisiones. El JSON no esta validado. ¿Por qué? */
         $jsondata = json_encode ($comiArray);
         $response = new Response(
 			'Content',
@@ -220,10 +220,8 @@ class ModuloController extends Controller {
 			array('conten-Type', 'text/html')
 		);
 		
-//	$jsondata = json_encode($codigo);
-		
 	$response->setContent($jsondata);
 	
-	return $response->send();
+	return $response;
     } 
 }

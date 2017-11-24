@@ -19,7 +19,7 @@
         
         {#    Tabla de materias con botones  #}
         <div id="tablaMaterias">
-            <table class="table" style="max-width:300px;">
+            <table class="table table-striped" style="max-width:300px;">
                 <thead>
                     <tr>
                         <th>Materias</th>
@@ -36,13 +36,18 @@
             </table>
         </div>
         <div id="tablaComisiones">
-            <table id="bodyComisiones" class="table" style="max-width:300px;">
+            <table id="bodyComisiones" class="table table-striped" style="max-width:300px;">
                 <thead>
                     <tr>
-                        <th>Comisiones</th>
+                        <th scope="col">Comision</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Desde</th>
+                        <th scope="col">Hasta</th>
+                        <th scope="col">Día</th>
                     </tr>
                 </thead>
-                <tbody style="display: block; height: 400px; overflow-y: scroll">
+                <tbody style="display: block; height: 400px; ">
 
                 </tbody>
             </table>
@@ -144,48 +149,55 @@
     <script src="//www.google-analytics.com/analytics.js"></script><script src="../scripts/timetable.min.js"></script>
 
     <script>
-      var timetable = new Timetable();
+        var timetable = new Timetable();
 
-      timetable.setScope(8,22)
+        timetable.setScope(8,22)
 
-      timetable.addLocations(['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']);
+        timetable.addLocations(['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']);
 
-      //timetable.addEvent('Sightseeing', 'Rotterdam', new Date(2015,7,17,10,45), new Date(2015,7,17,12,30), '#'); el url es opcional
-
-      var renderer = new Timetable.Renderer(timetable);
-      renderer.draw('.timetable');
+        //timetable.addEvent('Sightseeing', 'Rotterdam', new Date(2015,7,17,10,45), new Date(2015,7,17,12,30), '#'); el url es opcional
+        
+        var renderer = new Timetable.Renderer(timetable);
+        renderer.draw('.timetable');
     </script>
     {#{% block javascripts %}#}
     
     <script>
+        $("#bodyMaterias").find("button").click(function(){
+            var param = $(this).val();
+            {# Realizo un get utilizando AJAX enviando como parametro el codigo de la materia #}
+            $.get("{{url('agregar_comisiones')}}",{codigo:param} ,  function(mydata){
 
-            $("#bodyMaterias").find("button").click(function(){
-                var param = $(this).val();
-                {# Realizo un get utilizando AJAX enviando como parametro el codigo de la materia #}
-                $.get("{{url('agregar_comisiones')}}", {codigo:param} , function(mydata){
-                    console.log(mydata);
-                    var arrayPrueba= mydata.split("[");
-                    console.log("----------------------");
-                    arrayPrueba.splice(0,1);
-                    arrayPrueba.splice(0,1);
-                    console.log(arrayPrueba[0]);
-                    
-                    for (com in mydata){
-                        $("#bodyComisiones tr:last").after('<tr> class="active” <td>'+
-        		com[0].numero +'</td><td>'+ com[0].profesor+'</td><td>'+com[0].nombre+'</td><td>'+com[0].inicio+
-                        '</td><td>'+ com[0].fin+'</td><td><button type="button" class="btn btn-secondary"> Agregar </button></td></tr>');
-                    }
-
-                    $("#bodyComisiones tr:last").after('<tr class="active"><td><button type="button" class="btn btn-secondary"> HOLA </button></td></tr>');
-                });
-                $("#encabezado").html("¡Organiza tu cursada!");
+                var arrayCom= mydata.split("[");
+                arrayCom.splice(0,2);
+                console.log("----------------------");
+                eliminaFilas();
+                arrayCom.forEach(function(datos){
+                    console.log(datos);
+                    var arrayDatos= datos.split(",");
+                    var horaIni= (arrayDatos[3]).slice(19,25);
+                    var horaFin= arrayDatos[6].slice(19,25);
+                    console.log(arrayDatos);
+                    $("#bodyComisiones tr:last").after('<tr> class="active” <th scope="row">'+
+                    arrayDatos[2]+'</td><td>'+ arrayDatos[0].slice(1,arrayDatos[9].length-1)+
+                    '</td><td>'+arrayDatos[1].slice(1,arrayDatos[9].length-1)+'</td><td>'+ horaIni+
+                    '</td><td>'+ horaFin+'</td><td>'+arrayDatos[9].slice(1,arrayDatos[9].length-2)+
+                    '</td><td><button type="button" class="btn btn-secondary" onClick="agregarTimeTable('+param+')"> Agregar </button></td></tr>');
+                })
             });
-        
+        });
+
     </script>
-    {#{% endblock %}#}
-						<div class="row">
-                        <div class="col-m-12">
-                            <h6>&nbsp;</h6>
-                        </div>
-                    </div>
+    <script>
+    function eliminaFilas(){
+        /*Borra todas las filas excepto la primera*/
+        $('#bodyComisiones tr:not(:first-child)').remove();
+        }
+    </script>
+    <script>
+        function agregarTimeTable(codigo){
+            console.log("Funca");
+            timetable.addEvent(codigo, 'Martes',new Date(2015,7,17,'8:00'), new Date(2015,7,17, '11:00'));
+        }
+    </script>
 {% endblock %}
