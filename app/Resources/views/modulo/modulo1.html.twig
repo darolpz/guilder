@@ -40,14 +40,13 @@
                 <thead>
                     <tr>
                         <th scope="col">Comision</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Nombre</th>
+                        <th scope="col">Profesor</th>
                         <th scope="col">Desde</th>
                         <th scope="col">Hasta</th>
                         <th scope="col">Día</th>
                     </tr>
                 </thead>
-                <tbody style="display: block; height: 400px; ">
+                <tbody style="display: block;">
 
                 </tbody>
             </table>
@@ -163,26 +162,22 @@
     {#{% block javascripts %}#}
     
     <script>
+        var comisiones;
         $("#bodyMaterias").find("button").click(function(){
             var param = $(this).val();
             {# Realizo un get utilizando AJAX enviando como parametro el codigo de la materia #}
             $.get("{{url('agregar_comisiones')}}",{codigo:param} ,  function(mydata){
-
-                var arrayCom= mydata.split("[");
-                arrayCom.splice(0,2);
+                comisiones=$.parseJSON(mydata);
                 console.log("----------------------");
+                console.log(comisiones);
                 eliminaFilas();
-                arrayCom.forEach(function(datos){
-                    console.log(datos);
-                    var arrayDatos= datos.split(",");
-                    var horaIni= (arrayDatos[3]).slice(19,25);
-                    var horaFin= arrayDatos[6].slice(19,25);
-                    console.log(arrayDatos);
+                
+                comisiones.forEach(function(datos){
                     $("#bodyComisiones tr:last").after('<tr> class="active” <th scope="row">'+
-                    arrayDatos[2]+'</td><td>'+ arrayDatos[0].slice(1,arrayDatos[9].length-1)+
-                    '</td><td>'+arrayDatos[1].slice(1,arrayDatos[9].length-1)+'</td><td>'+ horaIni+
-                    '</td><td>'+ horaFin+'</td><td>'+arrayDatos[9].slice(1,arrayDatos[9].length-2)+
-                    '</td><td><button type="button" class="btn btn-secondary" onClick="agregarTimeTable('+param+')"> Agregar </button></td></tr>');
+                    datos[1]+'</td><td>'+ datos[0]+
+                    '</td><td>'+ datos[2]+':'+datos[3]+
+                    '</td><td>'+ datos[4]+':'+datos[5]+'</td><td>'+datos[6]+
+                    '</td><td><button type="button" class="btn btn-secondary" onClick="agregarTimeTable('+datos[1]+')"> Agregar </button></td></tr>');
                 })
             });
         });
@@ -195,9 +190,18 @@
         }
     </script>
     <script>
-        function agregarTimeTable(codigo){
+        function agregarTimeTable(nComi){
             console.log("Funca");
-            timetable.addEvent(codigo, 'Martes',new Date(2015,7,17,'8:00'), new Date(2015,7,17, '11:00'));
-        }
+            comisiones.forEach(function(com){
+                console.log(com[1]);
+                if (nComi==com[1]){
+                    console.log("Entro");
+                    timetable.addEvent(nComi, com[6],new Date(2015,7,17,com[2], com[3]), new Date(2015,7,17,com[4],com[5]));
+                };
+            });
+        var renderer = new Timetable.Renderer(timetable);
+        renderer.draw('.timetable');
+            
+        };
     </script>
 {% endblock %}

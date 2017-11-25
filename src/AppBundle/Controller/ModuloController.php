@@ -207,8 +207,10 @@ class ModuloController extends Controller {
             $comision[]=$c->getNumero();
             $horario=$em->getRepository('AppBundle:Horario')
                     ->findOneByComisioncomision($c);
-            $comision[]=$horario->getInicio();
-            $comision[]=$horario->getFin();
+            $comision[]=$horario->getInicio()->format('H');
+            $comision[]=$horario->getInicio()->format('i');
+            $comision[]=$horario->getFin()->format('H');
+            $comision[]=$horario->getFin()->format('i');
             $comision[]=$horario->getDiadia()->getNombre();
             $comiArray[]=$comision;
         }
