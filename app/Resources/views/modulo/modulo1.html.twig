@@ -19,35 +19,38 @@
         
         {#    Tabla de materias con botones  #}
         <div id="tablaMaterias">
-            <table class="table table-striped" style="max-width:300px;">
-                <thead>
+            <table class="table table-striped" >
+                <thead style="background-color: cornflowerblue;">
                     <tr>
-                        <th>Materias</th>
+                        <th scope="col">Materias</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody id="bodyMaterias" style="display: block; height: 400px; overflow-y: scroll">
+                <tbody id="bodyMaterias">
                     {% for materia in materias %}   
-                    <tr class="active" >
+                    <tr class="table-light" >
                         <td>{{materia.nombre}}</td>
-                        <td><button id="btMateria" type="button" value="{{materia.codigo}}" class="btn btn-secondary">Añadir</button></td>
+                        <td><button id="btMateria" type="button" value="{{materia.codigo}}"  class="btn btn-secondary">Añadir</button></td>
                     </tr>
                     {% endfor%}
                 </tbody>
             </table>
         </div>
         <div id="tablaComisiones">
-            <table id="bodyComisiones" class="table table-striped" style="max-width:300px;">
-                <thead>
+            <table id="bodyComisiones" class="table table-striped" >
+                <thead style="background-color: cornflowerblue;">
                     <tr>
                         <th scope="col">Comision</th>
                         <th scope="col">Profesor</th>
                         <th scope="col">Desde</th>
                         <th scope="col">Hasta</th>
                         <th scope="col">Día</th>
+                        <th scope="col"></th>
+                        
                     </tr>
                 </thead>
-                <tbody style="display: block;">
-
+                <tbody>
+                    <tr><td><td/><td><td/><td><td/></tr>
                 </tbody>
             </table>
         </div>
@@ -60,10 +63,10 @@
                     <span class="row-heading">Lunes</span>
                 </li>
                 <li><span class="row-heading">Martes</span></li>
-                <li><span class="row-heading">Miercoles</span></li>
+                <li><span class="row-heading">Miércoles</span></li>
                 <li><span class="row-heading">Jueves</span></li>
                 <li><span class="row-heading">Viernes</span></li>
-                <li><span class="row-heading">Sabado</span></li>
+                <li><span class="row-heading">Sábado</span></li>
         </aside>
         <section>
             <time>
@@ -149,17 +152,12 @@
 
     <script>
         var timetable = new Timetable();
-
-        timetable.setScope(8,22)
-
-        timetable.addLocations(['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']);
-
-        //timetable.addEvent('Sightseeing', 'Rotterdam', new Date(2015,7,17,10,45), new Date(2015,7,17,12,30), '#'); el url es opcional
-        
+        timetable.setScope(8,22);
+        timetable.addLocations(['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']);
         var renderer = new Timetable.Renderer(timetable);
         renderer.draw('.timetable');
     </script>
-    {#{% block javascripts %}#}
+
     
     <script>
         var comisiones;
@@ -168,12 +166,13 @@
             {# Realizo un get utilizando AJAX enviando como parametro el codigo de la materia #}
             $.get("{{url('agregar_comisiones')}}",{codigo:param} ,  function(mydata){
                 comisiones=$.parseJSON(mydata);
-                console.log("----------------------");
-                console.log(comisiones);
-                eliminaFilas();
+                {# Remuevo todas las filas menos la cabecera #}
+                $('#bodyComisiones tr:not(:first-child)').remove();
                 
                 comisiones.forEach(function(datos){
-                    $("#bodyComisiones tr:last").after('<tr> class="active” <th scope="row">'+
+                    console.log(datos);
+                    {# Por cada comision muestros los datos relevantes accediendo al JSON #}
+                    $("#bodyComisiones tr:last").after('<tr> class="table-light" <th scope="row">'+
                     datos[1]+'</td><td>'+ datos[0]+
                     '</td><td>'+ datos[2]+':'+datos[3]+
                     '</td><td>'+ datos[4]+':'+datos[5]+'</td><td>'+datos[6]+
@@ -184,24 +183,15 @@
 
     </script>
     <script>
-    function eliminaFilas(){
-        /*Borra todas las filas excepto la primera*/
-        $('#bodyComisiones tr:not(:first-child)').remove();
-        }
-    </script>
-    <script>
         function agregarTimeTable(nComi){
-            console.log("Funca");
+            {# Busco en el JSON todas las comisiones que sean iguales a nComi y las añado al timetable #}
             comisiones.forEach(function(com){
-                console.log(com[1]);
                 if (nComi==com[1]){
-                    console.log("Entro");
-                    timetable.addEvent(nComi, com[6],new Date(2015,7,17,com[2], com[3]), new Date(2015,7,17,com[4],com[5]));
+                    timetable.addEvent(com[7], com[6],new Date(2015,7,17,com[2], com[3]), new Date(2015,7,17,com[4],com[5]));
                 };
             });
-        var renderer = new Timetable.Renderer(timetable);
-        renderer.draw('.timetable');
-            
+        renderer = new Timetable.Renderer(timetable);
+        renderer.draw('.timetable'); 
         };
     </script>
 {% endblock %}

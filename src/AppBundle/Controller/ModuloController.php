@@ -195,7 +195,6 @@ class ModuloController extends Controller {
 	$materia = $em->getRepository('AppBundle:Materia')
                 ->findOneBycodigo($codigo);
         $idMateria= $materia->getIdmateria();
-        
         $comisiones= $em->getRepository('AppBundle:Comision')
                 ->findBymateriamateria($idMateria);
         $comiArray= array();
@@ -212,6 +211,7 @@ class ModuloController extends Controller {
             $comision[]=$horario->getFin()->format('H');
             $comision[]=$horario->getFin()->format('i');
             $comision[]=$horario->getDiadia()->getNombre();
+            $comision[]=$materia->getNombre(); /*Buscar una mejor manera de pasar esta información*/
             $comiArray[]=$comision;
         }
         /*Genero un json con las comisiones. El JSON no esta validado. ¿Por qué? */
@@ -221,9 +221,7 @@ class ModuloController extends Controller {
 			Response::HTTP_OK,
 			array('conten-Type', 'text/html')
 		);
-		
 	$response->setContent($jsondata);
-	
 	return $response;
     } 
 }

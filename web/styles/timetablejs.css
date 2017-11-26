@@ -17,7 +17,7 @@
     width:25%;
     padding:0!important;
     margin-top:46px;
-    border-right:5px solid transparent
+    border-right:5px solid transparent;
 }
 .timetable aside li{
     padding:0 15px;
@@ -35,14 +35,17 @@
 }
 .timetable ul{
     list-style-type:none;
-    margin:0
+    margin:0;
+    background-color: whitesmoke;
+    
 }
 .timetable aside li,.timetable time li{height:46px}
 .timetable section{
     width:75%;
     padding:0!important;
     overflow-x:scroll;
-    -webkit-overflow-scrolling:touch
+    -webkit-overflow-scrolling:touch;
+    background-color: whitesmoke;
 }
 .timetable section time{
     white-space:nowrap;
@@ -63,18 +66,26 @@
     overflow:visible;
     width:0;
     line-height:46px;
-    display:inline-block;position:relative
+    display:inline-block;
+    position:relative;
+    
 }
 .timetable section header li:not(:last-of-type){
-    width:96px
+    width:96px;
 }
 .timetable section header li 
 .time-label{
     display:block;
     position:absolute;
-    left:0}
+    left:0;
+    
+}
 .timetable section header li:not(:first-of-type) 
-.time-label{transform:translateX(-50%)}
+.time-label{
+    transform:translateX(-50%);
+/*    font-size: 10pt;*/
+    font-weight: 600;
+}
 .timetable section header li:last-of-type 
 .time-label{transform:translateX(-100%)}@media only screen and (max-width:960px){.timetable aside{width:40%}.timetable section{width:60%}}
 .timetable ul.room-timeline{

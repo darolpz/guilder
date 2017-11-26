@@ -9,28 +9,33 @@ and open the template in the editor.
 */
 table {
   border: 2px steelblue;
-  
-/*  padding-top: 50px;
-  padding-right: 30px;
-  padding-bottom: 50px;
-  padding-left: 80px;*/
- 
-/*  padding: 2em;*/
-  margin: 4em 4em 4em 7em;
-  width: 500px;
+  width: 1000px;
   position: relative;
-  background-color: cornflowerblue;
-  left: 50px;
+  background-color: whitesmoke;
+  max-width:1000px;
+  overflow-y: auto;
+  height:500px;
+  display: block !important;
 }
-#tablas {
-float: left;
-}
-
 #tablaMaterias, #tablaComisiones {
-float: left;
+    display: table;
 }
 
-#tablaMaterias table, #tablaComisiones table {
-text-align: left;
+#tablaMaterias{
+    float: left;
+}
+#tablaComisiones{
+    float:right;
+}
+
+#tablaMaterias table{
+    text-align: left;
+/*    left: 50px;*/
+    /*margin: 4em 4em 4em 1em;*/
+}
+#tablaComisiones table{
+    text-align: right;
+    /*right: 50px;*/
+    /*margin: 4em 4em 4em 1em;*/
 }
 
