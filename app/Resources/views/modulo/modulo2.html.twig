@@ -133,10 +133,7 @@
             var reload = 0;
             $(document).ready(function () {
                 $('.calendar-heatmap').appendTo("#panel");
-                if (reload = 0) {
-                    location.reload();
-                    reload++;
-                }
+                $( window ).resize();
             });
         </script>
         <div class="row">
