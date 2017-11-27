@@ -41,7 +41,99 @@ class Materiaelegida
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idmateriaelegida;
+    
+    
+    /**
+     * Set nombremateria
+     *
+     * @param string $nombremateria
+     *
+     * @return Materiaelegida
+     */
+    public function setNombremateria($nombremateria) {
+        $this->nombremateria = $nombremateria;
 
+        return $this;
+    }
+
+    /**
+     * Get nombremateria
+     *
+     * @return string
+     */
+    public function getNombremateria() {
+        return $this->nombremateria;
+    }
+    
+    /**
+     * Set codigomateria
+     *
+     * @param integer $codigomateria
+     *
+     * @return Materiaelegida
+     */
+    public function setCodigomateria($codigomateria) {
+        $this->codigomateria = $codigomateria;
+
+        return $this;
+    }
+
+    /**
+     * Get codigomateria
+     *
+     * @return integer
+     */
+    public function getCodigomateria() {
+        return $this->codigomateria;
+    }
+    
+    /**
+     * Set turno
+     *
+     * @param integer $turno
+     *
+     * @return Materiaelegida
+     */
+    public function setTurno($turno) {
+        $this->turno = $turno;
+
+        return $this;
+    }
+
+    /**
+     * Get turno
+     *
+     * @return integer
+     */
+    public function getTurno() {
+        return $this->turno;
+    }
+    
+    /**
+     * Set idmateriaelegida
+     *
+     * @param integer $idmateriaelegida
+     *
+     * @return integer
+     */
+    public function setIdmateriaelegida($idmateriaelegida) {
+        $this->idmateriaelegida = $idmateriaelegida;
+
+        return $this;
+    }
+
+    /**
+     * Get idmateriaelegida
+     *
+     * @return integer
+     */
+    public function getIdmateriaelegida() {
+        return $this->idmateriaelegida;
+    }
+    
+    
+    
+    
 
 }
 

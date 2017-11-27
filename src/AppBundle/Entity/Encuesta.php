@@ -7,18 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Encuesta
  *
- * @ORM\Table(name="encuesta")
+ * @ORM\Table(name="encuesta", indexes={@ORM\Index(name="idOpcion_idx", columns={"idOpcion"})})
  * @ORM\Entity
  */
 class Encuesta
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="materias", type="string", length=50, nullable=false)
-     */
-    private $materias;
-
     /**
      * @var \DateTime
      *
@@ -29,44 +22,21 @@ class Encuesta
     /**
      * @var integer
      *
-     * @ORM\Column(name="idTurno", type="integer", nullable=false)
-     */
-    private $idturno;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="idEncuesta", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idencuesta;
 
-
-
     /**
-     * Set materias
+     * @var \AppBundle\Entity\Materiaelegida
      *
-     * @param string $materias
-     *
-     * @return Encuesta
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Materiaelegida")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idOpcion", referencedColumnName="idmateriaElegida")
+     * })
      */
-    public function setMaterias($materias)
-    {
-        $this->materias = $materias;
-    
-        return $this;
-    }
-
-    /**
-     * Get materias
-     *
-     * @return string
-     */
-    public function getMaterias()
-    {
-        return $this->materias;
-    }
+    private $idopcion;
 
     /**
      * Set fecha
@@ -75,10 +45,9 @@ class Encuesta
      *
      * @return Encuesta
      */
-    public function setFecha($fecha)
-    {
+    public function setFecha($fecha) {
         $this->fecha = $fecha;
-    
+
         return $this;
     }
 
@@ -87,42 +56,31 @@ class Encuesta
      *
      * @return \DateTime
      */
-    public function getFecha()
-    {
+    public function getFecha() {
         return $this->fecha;
     }
-
+    
     /**
-     * Set idturno
+     * Set idopcion
      *
-     * @param integer $idturno
+     * @param \AppBundle\Entity\Materiaelegida $idopcion
      *
      * @return Encuesta
      */
-    public function setIdturno($idturno)
-    {
-        $this->idturno = $idturno;
-    
+    public function setIdopcion($idopcion) {
+        $this->idopcion = $idopcion;
+
         return $this;
     }
 
     /**
-     * Get idturno
+     * Get idopcion
      *
-     * @return integer
+     * @return \AppBundle\Entity\Materiaelegida
      */
-    public function getIdturno()
-    {
-        return $this->idturno;
+    public function getIdopcion() {
+        return $this->idopcion;
     }
-
-    /**
-     * Get idencuesta
-     *
-     * @return integer
-     */
-    public function getIdencuesta()
-    {
-        return $this->idencuesta;
-    }
+    
 }
+

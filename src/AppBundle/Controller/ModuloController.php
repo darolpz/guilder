@@ -10,6 +10,7 @@ use AppBundle\Entity\Comision;
 use AppBundle\Entity\Horario;
 use AppBundle\Entity\Encuesta;
 use AppBundle\Entity\Encuestausuario;
+use AppBundle\Entity\Materiaelegida;
 use Symfony\Component\HttpFoundation\Response;
 
 class ModuloController extends Controller {
@@ -129,9 +130,6 @@ class ModuloController extends Controller {
             if (isset($_POST['materia'])) {
                 $listaMaterias = $_POST['materia'];
             }
-            //if (isset($_POST['turno'])){
-            //    $encuesta->setIdTurno($_POST['turno']);
-            //}
         }
         $materiasSeleccionadas = array();
         $em = $this->getDoctrine()->getEntityManager();
@@ -141,6 +139,7 @@ class ModuloController extends Controller {
             $nombreMateria = $mat->getNombre(); 
             array_push($materiasSeleccionadas, $nombreMateria);
         }
+        
         return $this->render('modulo/modulo3B.html.twig', array(
             'codigosMaterias' => $_POST['materia'], 'nombresMaterias' => $materiasSeleccionadas
         ));
@@ -150,37 +149,60 @@ class ModuloController extends Controller {
      * @Route("/encuesta2", name="encuesta2")
      */
     public function encuesta2Action(Request $request) {
+        if (isset($_POST['submit'])) {
+            if (isset($_POST['turno'])){
+                $datosRecibidos = $_POST['turno'];
+            }      
+        }
+        var_dump($_POST['turno']);
+        var_dump($datosRecibidos);
+        $turnosElegidos = array();
+        $materiasElegidas = array();
+        //Recibo los datos como "IC002,1" entonces lo corto por la coma y separo codigo y turno.
+        for($X = 0; $X < count($datosRecibidos); $X++)
+        {
+            $auxiliar = preg_split('~,~', $datosRecibidos[$X]);
+            array_push($materiasElegidas, $auxiliar[0]);
+            array_push($turnosElegidos, $auxiliar[1]);
+        }
+        //var_dump($datosRecibidos);
+        //var_dump($turnosElegidos);
+        //var_dump($materiasElegidas);
         
+        $materia = new Materiaelegida();
+        $mane = $this->getDoctrine()->getEntityManager();      
+        
+        $encuesta = new Encuesta();
         //Defino hora local como la de Buenos Aires.
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         //Obtengo esa hora local y la guardo en una variable
         $fechaActual = date_default_timezone_get();
-        //Creo una nueva entidad de la encuesta 
-        //$encuesta = new Encuesta();
         
-        if (isset($_POST['submit'])) {
-            if (isset($_POST['turno'])){
-            //   $encuesta->setIdTurno($_POST['turno']);
-            }       
+        //$user = $this->get('security.token_storage')->getToken()->getUser()->getIduser();
+        //$user->getUsername();
+        //var_dump($user);
+        //die();
+        
+        //echo count($materiasElegidas);
+        for($A = 0; $A < count($materiasElegidas); $A++) // EN REVISIÓN, SOLAMENTE SE QUEDA CON EL ULTIMO ELEMENTO DEL ARREGLO
+        {
+            $materia->setcodigoMateria($materiasElegidas[$A]);
+            $materia->setTurno($turnosElegidos[$A]);
+            $materia->setnombreMateria(null);
+            $mane->persist($materia);
+            $mane->flush();
+            //$encuesta->setFecha($fechaActual);
+            //$encuesta->setIdopcion($materia->getIdmateriaelegida());
+            // ^ ESPERA RECIBIR ALGO DEL OBJETO MATERIA PARA LA IDOPCION Y RECIBE UN INT (EL GET DEVUELVE ESO)
+            //$mane->persist($encuesta);
+            //$mane->flush();            
         }
-        //Creo un objetivo DateTime con la variable que contiene la hora local
-        //$encuesta->setFecha(new \DateTime($fechaActual));
         
-        //$mane = $this->getDoctrine()->getEntityManager();
-        //Marca la entidad como persistente, todavia no ingresa los datos a la BD
-        //$mane->persist($encuesta);
-        //Guardo los cambios (hago un "push")
-        //$mane->flush();
-        
-        //$encUsuario = new Encuestausuario();
-        //$id = $encuesta->getIdencuesta();
-        //$encUsuario->setIdencuesta($id);
-        //$encUsuario->setIdusuario(12);
-        //$mane->persist($encUsuario);
-        //$mane->flush();
-        return $this->render('default/index.html.twig');
-        
+        //die();
+              
+        return $this->redirectToRoute('homepage');        
     }
+
 
     /**
      * @Route("/agregar_comisiones", name="agregar_comisiones")

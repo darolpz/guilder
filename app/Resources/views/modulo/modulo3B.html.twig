@@ -24,6 +24,7 @@
                 <div class="row container-fluid">
                     <div class="row container-fluid">
                         <div class="panel-body">
+                            {% set contador = 0 %}
                             {% for X in nombresMaterias %}
                                 <div class="panel-heading">
                                     <h3 class="panel panel-primary">Materia: {{X}}</h3>
@@ -33,18 +34,19 @@
                                         <label>
                                             <div class="btn-group" data-toggle="buttons">
                                                 <label class="btn btn-secondary active">
-                                                    <input type="radio" name="turno" value=1 autocomplete="off"> Turno mañana
+                                                    <input type="radio" name="turno[{{contador}}]" value={{codigosMaterias[contador]~',1'}} autocomplete="off" checked='checked'> Turno mañana
                                                 </label>
                                                 <label class="btn btn-secondary">
-                                                    <input type="radio" name="turno" value=2 autocomplete="off"> Turno tarde
+                                                    <input type="radio" name="turno[{{contador}}]" value={{codigosMaterias[contador]~',2'}} autocomplete="off"> Turno tarde
                                                 </label>
                                                 <label class="btn btn-secondary">
-                                                    <input type="radio" name="turno" value=3 autocomplete="off"> Turno noche
+                                                    <input type="radio" name="turno[{{contador}}]" value={{codigosMaterias[contador]~',3'}} autocomplete="off"> Turno noche
                                                 </label>
                                             </div>
                                         </label>  
                                     </div>
                                 </div>
+                                {%set contador = contador +1%}
                             {% endfor %}
                         </div>
                     </div>
