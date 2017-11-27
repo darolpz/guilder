@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="comision", indexes={@ORM\Index(name="fk_comision_materia1_idx", columns={"materia_idmateria"})})
  * @ORM\Entity
  */
-class Comision
-{
+class Comision {
+
     /**
      * @var integer
      *
@@ -59,8 +59,6 @@ class Comision
      */
     private $materiamateria;
 
-
-
     /**
      * Set numero
      *
@@ -68,8 +66,7 @@ class Comision
      *
      * @return Comision
      */
-    public function setNumero($numero)
-    {
+    public function setNumero($numero) {
         $this->numero = $numero;
 
         return $this;
@@ -80,8 +77,7 @@ class Comision
      *
      * @return integer
      */
-    public function getNumero()
-    {
+    public function getNumero() {
         return $this->numero;
     }
 
@@ -92,8 +88,7 @@ class Comision
      *
      * @return Comision
      */
-    public function setProfesor($profesor)
-    {
+    public function setProfesor($profesor) {
         $this->profesor = $profesor;
 
         return $this;
@@ -104,8 +99,7 @@ class Comision
      *
      * @return string
      */
-    public function getProfesor()
-    {
+    public function getProfesor() {
         return $this->profesor;
     }
 
@@ -116,8 +110,7 @@ class Comision
      *
      * @return Comision
      */
-    public function setCuatrimestre($cuatrimestre)
-    {
+    public function setCuatrimestre($cuatrimestre) {
         $this->cuatrimestre = $cuatrimestre;
 
         return $this;
@@ -128,8 +121,7 @@ class Comision
      *
      * @return integer
      */
-    public function getCuatrimestre()
-    {
+    public function getCuatrimestre() {
         return $this->cuatrimestre;
     }
 
@@ -140,8 +132,7 @@ class Comision
      *
      * @return Comision
      */
-    public function setYear($year)
-    {
+    public function setYear($year) {
         $this->year = $year;
 
         return $this;
@@ -152,8 +143,7 @@ class Comision
      *
      * @return integer
      */
-    public function getYear()
-    {
+    public function getYear() {
         return $this->year;
     }
 
@@ -162,8 +152,7 @@ class Comision
      *
      * @return integer
      */
-    public function getIdcomision()
-    {
+    public function getIdcomision() {
         return $this->idcomision;
     }
 
@@ -174,8 +163,7 @@ class Comision
      *
      * @return Comision
      */
-    public function setMateriamateria(\AppBundle\Entity\Materia $materiamateria = null)
-    {
+    public function setMateriamateria(\AppBundle\Entity\Materia $materiamateria = null) {
         $this->materiamateria = $materiamateria;
 
         return $this;
@@ -186,12 +174,23 @@ class Comision
      *
      * @return \AppBundle\Entity\Materia
      */
-    public function getMateriamateria()
-    {
+    public function getMateriamateria() {
         return $this->materiamateria;
     }
-	 public function __toString()
-    {
-        return $this->getMateriamateria()->__toString(). " - Comisión " . $this->getNumero(). " - " . $this->getCuatrimestre() . "º cuatrimestre" . " " . $this->getYear();
-	}
+
+    public function __toString() {
+        return $this->getMateriamateria()->__toString() . " - Comisión " . $this->getNumero() . " - " . $this->getCuatrimestre() . "º cuatrimestre" . " " . $this->getYear();
+    }
+
+    public function toArray() {
+        return $array = [
+            'numero' => $this->getNumero(),
+            'profesor' => $this->getProfesor(),
+            'year' => $this->getYear(),
+            'cuatrimestre' => $this->getCuatrimestre(),
+            'materia' => $this->getMateriamateria()->__toString(),
+            'id' => $this->getIdcomision(),
+        ];
+    }
+
 }

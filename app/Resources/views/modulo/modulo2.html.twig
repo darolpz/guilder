@@ -27,7 +27,7 @@
                 <div class="panel-heading">
                     <h1 class="panel-title">Materias historicas</h1>
                 </div> 
-                
+
                 <div class="panel-body">
                     <form name="appbundle_comision" method="post">
                         <table>
@@ -45,7 +45,7 @@
                         <input id="ej" class="btn btn-primary" type="submit" value="Submit" />
                         {{ form_row(form._token) }}
                     </form>
-                    
+
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -59,23 +59,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for comision in comisions %}
+
+                            {% for comision in comis %}
                                 <tr>
                                     <th scope="row"> {{ comision.numero }} &nbsp</td>
                                     <td> {{ comision.profesor }} &nbsp </td>
                                     <td> {{ comision.year }} &nbsp</td>
                                     <td> {{ comision.cuatrimestre }} &nbsp</td>
-                                    {% for x in horarios %}
-                                        {% set var =x|length %}	
-                                        {% for horario in x %}		
-                                            {% if comision.idcomision==horario.comisioncomision.idcomision %}
-                                                <td>{{horario.diadia}}  &nbsp</td>
-                                                <td>{{horario.inicio|date('H:i')}} &nbsp</td>
-                                                <td>{{horario.fin|date('H:i')}} &nbsp</td> 
-                                            {% endif %}
-                                        {% endfor %}	
-                                    {% endfor %}
-                                </tr>	   
+                                    <td> {{comision.dia}}  &nbsp</td>
+                                    <td> {{comision.inicio}} &nbsp</td>
+                                    <td> {{comision.fin}} &nbsp</td> 
+                                </tr>
+
                             {% endfor %}
                         </tbody>
                     </table>
@@ -107,13 +102,12 @@
                             "value": 0},
                         {"name": "Sábado",
                             "date": "2016-01-01 0:0:0",
-                            "value": 0},
-            {% for dato in info %}
-                            {
-                                "name": '{{dato[0]}}',
-                                "date": "2016-01-01 {{dato[1]|date('H:i')}}",
-                                "value": '{{dato[2]}}'
-                            },
+                            "value": 0},{% for comision in comis %}
+                        {
+                            "name": '{{comision.dia}}',
+                            "date": "2016-01-01 {{comision.inicio}}",
+                            "value": '{{comision.segundos}}'
+                        },
             {% endfor %}
                         ]
                     }]
@@ -128,20 +122,20 @@
                 };
                 // Initialize calendar heatmap
                 calendarHeatmap.init(data, color, overview, print);
-        </script>
-        <script>
-            var reload = 0;
-            $(document).ready(function () {
-                $('.calendar-heatmap').appendTo("#panel");
-                $( window ).resize();
-            });
-        </script>
-        <div class="row">
-            <div class="col-m-12">
-                <h1>&nbsp;</h1>
+            </script>
+            <script>
+                var reload = 0;
+                $(document).ready(function () {
+                    $('.calendar-heatmap').appendTo("#panel");
+                    $(window).resize();
+                });
+            </script>
+            <div class="row">
+                <div class="col-m-12">
+                    <h1>&nbsp;</h1>
+                </div>
             </div>
-        </div>
 
 
-    {% endblock %}
+            {% endblock %}
 

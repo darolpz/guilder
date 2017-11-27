@@ -163,16 +163,27 @@ class Horario
         return $this->diadia;
     }
     
+    public function toArray(){
+        return $array=[
+            'dia' => $this->getDiadia()->__toString(),
+            'inicio' => $this->getInicio(),
+            'fin' => $this->getFin(),
+            'segundos' => $this->restarHoras(),
+            
+            
+        ];
+    }
+    
     /**
     * Restar Horas
     * @return integer
     */
-    public function RestarHoras(){
-        $hs = ($this->getFin()->format('H') - $this->getInicio()->format('H')) * 3600;
-        $min = ($this->getFin()->format('i') - $this->getInicio()->format('i')) * 60;
-        if ($min<0){
-            $min=$min*(-1);
-        }
-        return $hs + $min;
+    public function restarHoras(){
+        
+        $hs = ($this->getFin()->format('H') - $this->getInicio()->format('H'))*60;
+        $min = ($this->getFin()->format('i') - $this->getInicio()->format('i'));
+        $segundos = ($hs+$min)*60;
+
+        return $segundos;
     }
 }

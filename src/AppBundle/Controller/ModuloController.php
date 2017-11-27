@@ -69,32 +69,33 @@ class ModuloController extends Controller {
             }
         }
         $horarios = array();
-        foreach ($comisions as $comision) {
-            $horario = $em->getRepository('AppBundle:Horario')->findBycomisioncomision(
+        
+        foreach ($comisions as $comision){ 
+            $horario = $em->getRepository('AppBundle:Horario')->findOneBycomisioncomision(
                     $comision->getIdcomision()
             );
             $horarios[] = $horario;
         }
-        //por cada comision tengo que buscar todos los horarios que contengan esa comision y guardarlas en horarios
-        //podria crear un arreglo que contenga una comision y sus horarios y con un if solucionar el tema de muchos horarios
-        //recorrer todas las comisiones y por cada una agregar a un arreglo grande un arreglo de la comision mas sus horarios  
-        $datos = array();
-        if ($form->isSubmitted()) {
-            foreach ($horarios as $x) {
-                foreach ($x as $horario) {
-                    $data = array();
-                    $data[] = $horario->getDiadia();
-                    $data[] = $horario->getInicio();
-                    $data[] = $horario->RestarHoras();
-                    $datos[] = $data;
-                }
-            }
+        $comis = array();
+        //creo un arreglo d forma de obtener todos los datos de la comision en un solo array
+        for ($i = 0; $i < sizeof($comisions); $i++) {
+            $array =[
+                'numero' => $comisions[$i]->getNumero(),
+                'profesor' => $comisions[$i]->getProfesor(),
+                'year' => $comisions[$i]->getYear(),
+                'cuatrimestre' => $comisions[$i]->getCuatrimestre(),
+                'materia' => $comisions[$i]->getMateriamateria()->__toString(),
+                'dia' => $horarios[$i]->getDiadia()->__toString(),
+                'inicio' => date_format($horarios[$i]->getInicio(),'H:i'),
+                'fin' => date_format($horarios[$i]->getFin(),'H:i'),
+                'segundos' => $horarios[$i]->restarHoras(),
+                
+            ];
+            $comis[] = $array;
         }
 
         return $this->render('modulo/modulo2.html.twig', array(
-                    'comisions' => $comisions,
-                    'horarios' => $horarios,
-                    'info' => $datos,
+                    'comis' => $comis,
                     'form' => $form->createView(),
         ));
     }
