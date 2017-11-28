@@ -79,7 +79,7 @@ class ApiController extends Controller
             $comis[] = $array;
         }
         
-        $json = json_encode($comis);
+        $json = json_encode($comis,  JSON_UNESCAPED_UNICODE);
 
 
 

@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Güilder {% endblock %}
+{% block title %} Güilder - Historial{% endblock %}
 {% block mod2 %} <li class="active">
-        <a href="{{ path('modulo2') }}"> Módulo 2</a>
+        <a href="{{ path('modulo2') }}"> Historial Horarios</a>
     </li>{% endblock %}
     {% block extras %}
         {{ parent() }}
@@ -19,7 +19,7 @@
                 <h1>&nbsp;</h1>
             </div>
             <div class="hero-unit">
-                <h1 id="encabezado">Modulo 2</h1>
+                <h1 id="encabezado">Historial de oferta Horaria</h1>
             </div>
         </div>
         <div class="container" id="contenedor">
@@ -130,11 +130,7 @@
                     $(window).resize();
                 });
             </script>
-            <div class="row">
-                <div class="col-m-12">
-                    <h1>&nbsp;</h1>
-                </div>
-            </div>
+            
 
 
             {% endblock %}

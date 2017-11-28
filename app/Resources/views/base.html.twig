@@ -38,12 +38,31 @@
                 
                 background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
             }*/
-            body {
-                height: 100%;
-                
-                background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+            * {
+              box-sizing: border-box;
             }
-
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+                display: flex;
+                flex-wrap: wrap;
+                min-height: 100vh;
+                background-repeat: no-repeat;
+                /*background-image: linear-gradient(rgb(104, 147, 162), rgb(12, 97, 33));*/
+                background: rgba(179,220,237,1);
+                background: -moz-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+                background: -webkit-gradient(left top, right top, color-stop(0%, rgba(179,220,237,1)), color-stop(50%, rgba(41,184,229,1)), color-stop(100%, rgba(188,224,238,1)));
+                background: -webkit-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+                background: -o-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+                background: -ms-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+                background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee', GradientType=1 );
+                Copy text
+            }
+            .panel-primary{
+                text-align: left;
+            }
             .card-container.card {
                 max-width: 350px;
                 padding: 40px 40px;
@@ -175,21 +194,34 @@
             }
             #header{
                 top: 0;
-                width: 84.55%;
+                width: 100%;
                 position:fixed;
                 z-index: 100;
             }
 
 
             #footer {
-                /*background-color:aqua;*/
-                background-color:darkkhaki;
-                    
-                    
-                bottom:0px;
+                 background: rgba(212,228,239,1);
+                background: -moz-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+                background: -webkit-gradient(left top, right top, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
+                background: -webkit-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+                background: -o-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+                background: -ms-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+                background: linear-gradient(to right, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
                 text-align:center;
-                    
-                width:100%;
+                border-radius: 27px 27px 0px 0px;
+                -moz-border-radius: 27px 27px 0px 0px;
+                -webkit-border-radius: 27px 27px 0px 0px;
+                border: 0px solid #000000;
+                padding: 1em;
+                -webkit-box-shadow: 11px -8px 77px -10px rgba(0,0,0,0.75);
+                -moz-box-shadow: 11px -8px 77px -10px rgba(0,0,0,0.75);
+                box-shadow: 11px -8px 77px -10px rgba(0,0,0,0.75);
+                width: 83.6%;
+                margin-left: 8.2%;
+                margin-right: 8.2%;
+                align-self: flex-end;
             }   
             #contenido {
                 height:100%;
@@ -232,11 +264,16 @@
 
             .carousel-inner img {
                 width: 100%;
-                max-height: 300px;
+                height: 100%;
+                max-height: 420px;
             }
 
             .carousel-inner{
-             height: 500px;
+                height: 420px;
+                border-radius: 27px 27px 27px 27px;
+                -moz-border-radius: 27px 27px 27px 27px;
+                -webkit-border-radius: 27px 27px 27px 27px;
+                border: 0px solid #000000;
             }
 
             .carousel-control.left
@@ -248,19 +285,22 @@
                 background: none;
             }
 
-
             .carousel-caption
             {
-                position: absolute;
+                position:absolute;
                 right: 0;
                 bottom: 0;
                 left: 0;
+                top:60%;
                 z-index: 10;
-                padding-top: 20px;
+                padding-top: 5px;
                 padding-bottom: 20px;
                 color: #fff;
                 text-align: center;
                 background: rgba(0,0,0,0.4);
+            }
+            .carousel-indicators{
+                bottom: 0.25%;
             }
            
         </style>
@@ -275,11 +315,7 @@
                     <div class="row">
                         <div class="col-md-12 text-center"> 
                         <!--<div class="col-md-12 col-md-offset-1 text-center">-->
-                            <nav class="navbar-wrapper">
-     
-                            <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
-                                <div class="navbar navbar-inverse" >
-                                    <div class="navbar-inner" >
+                            <nav class="navbar navbar-inverse align-items-center transparent navbar-fixed-top navbar-toggleable-sm bg-color">
                                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
@@ -290,9 +326,9 @@
                                         <div class="collapse navbar-collapse" id="myNavbar">
                                             <ul class="nav navbar-nav">
                                                 {% block inicio %}<li><a href="{{ path('homepage') }}"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>{% endblock %}
-                                                {% block mod1 %}  <li><a href="{{ path('modulo1') }}"> Módulo 1</a></li> {% endblock %}
-                                                {% block mod2 %} <li><a href="{{ path('modulo2') }}"> Módulo 2</a></li>{% endblock %}
-                                                {% block mod3 %} <li><a href="{{ path('modulo3') }}"> Módulo 3</a></li>{% endblock %}
+                                                {% block mod1 %}  <li><a href="{{ path('modulo1') }}"> Organizar Cursada</a></li> {% endblock %}
+                                                {% block mod2 %} <li><a href="{{ path('modulo2') }}"> Historial Horarios</a></li>{% endblock %}
+                                                {% block mod3 %} <li><a href="{{ path('modulo3') }}"> Encuesta</a></li>{% endblock %}
                                                 {% if is_granted('ROLE_ADMIN') %}
                                                 <li class="dropdown">
                                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administración
@@ -301,8 +337,8 @@
                                                         <li><a href="{{ path('comision_index') }}">Comisiones</a></li>
                                                         <li><a href="{{ path('horario_index') }}">Horarios</a></li>
                                                         <li><a href="{{ path('token_index') }}">Tokens</a></li>
-														<li><a href="{{ path('user_index') }}">Usuarios</a></li>
-														<li><a href="{{ path('excel') }}">Carga de excels</a></li>
+                                                        <li><a href="{{ path('user_index') }}">Usuarios</a></li>
+                                                    <li><a href="{{ path('excel') }}">Carga de comisiones</a></li>
                                                     </ul>
                                                 </li>
 
@@ -318,8 +354,7 @@
                                                 {% endif %}
                                             </ul>
                                         </div>
-                                    </div>
-                                </div>
+                                 
                             </nav>
                         </div>
                     </div>
@@ -335,6 +370,9 @@
                 
 
             {% endblock %}
+
+
+            </div>
             <div id="footer">
                     <div class="row">
                         <div class="col-md-4 col-md-offset-4">
@@ -349,12 +387,35 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-4 text-right">
-                            <a href="#"><i> <font size="3" align="right">Acerca de</font></i></a>
+                        <div class="col-md-2 col-md-offset-2 text-center">
+						
+                            <a data-toggle="modal" data-target="#Acercade" role="button"><i> <font size="3" align="right">Acerca de</font></i></a>
+							
                         </div>
                     </div> 
                 </div>
-            </div>
+            
         </body>
+         <!-- Modal -->
+                <div class="modal fade" id="Acercade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Güilder</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p align="center">Güilder es una aplicación desarrollada por estudiantes y para estudiantes, con esta aplicación buscamos ofrecerles a los estudiantes las mejores alternativas de horarios posibles para anotarse en el cuatrimestre que se avecina, esto permitirá tener una mejor visualización y organización de su calendario universitario. Permitiendo brindar a los alumnos la posibilidad de elegir sus preferencias respecto a horarios de futuras cursadas, esto en un futuro podría ser de mucho interés para la universidad logrando que la información alojada en la bases de datos de la esta aplicación sea tomada en cuenta para determinar horarios y comisiones de próximos cuatrimestres.
+									Al tratarse de una aplicación para ayudar a todos los alumnos cualquier sugerencia o aporte que tengas será bienvenido, así que te invito a que dejes tu opinión enviandonos tu comentario.
+								</p> 
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
     </html>
