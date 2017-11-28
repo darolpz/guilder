@@ -1,5 +1,6 @@
 .timetable{
-    box-sizing:border-box
+    box-sizing:border-box;
+    background-color: whitesmoke;
 }
 .timetable::after{
     clear:both;
@@ -25,13 +26,13 @@
     line-height:46px
 }
 .timetable aside li:not(:last-of-type){border-bottom:1px solid #fff}
-.timetable aside 
-.row-heading{
+.timetable aside .row-heading{
     display:inline-block;
     max-width:100%;
     overflow:hidden;
     text-overflow:ellipsis;
-    white-space:nowrap;word-wrap:normal
+    white-space:nowrap;word-wrap:normal;
+    font-size: x-large;
 }
 .timetable ul{
     list-style-type:none;
@@ -39,7 +40,9 @@
     background-color: whitesmoke;
     
 }
-.timetable aside li,.timetable time li{height:46px}
+.timetable aside li,.timetable time li{
+    height:46px;
+}
 .timetable section{
     width:75%;
     padding:0!important;
@@ -62,12 +65,13 @@
 }
 .timetable section header li{
     display:inline-block;
-    font-size:1rem;
+    font-size:1.7rem;
     overflow:visible;
     width:0;
     line-height:46px;
     display:inline-block;
     position:relative;
+    font-weight: bold;
     
 }
 .timetable section header li:not(:last-of-type){
@@ -120,7 +124,8 @@
     overflow:hidden;
     color:#fff;
     border:1px solid #2e63f4;
-    transform-style:preserve-3d
+    transform-style:preserve-3d;
+    font-size: large;
 }
 .timetable .time-entry small{
     position:relative;
