@@ -20,7 +20,8 @@
 {#        <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>#}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
+     
+        
         {% endblock %}
         {% block extras %} 
     	<script src="{{ asset('js/jquery-3.2.1.min.js')}}"></script>
@@ -310,6 +311,8 @@
         
         <body > 
             {% block header %}
+                               
+                
             <div class="container">
                 <div id="header">
                     <div class="row">
@@ -359,19 +362,31 @@
                         </div>
                     </div>
                 </div>
-                
-
+                                
             {% endblock %} {% block body %}
-
-                <!-->Esto se reemplaza con los body de cada pagina
-                <-->
-
+            
             {% endblock %} {% block javascripts %}
                 
 
+            <!--Esto deberia verse debajo del header y arriba de la vista, como en cabecera como
+            cuando te salta cualquier error-->
+            <div class="container">
+                <div class="col-md-11">
+                    <!-- El primero es un mensaje de success (verde) y el segundo de alert (rojo). Ambos de Bootstrap  -->
+                    {% for mensaje in app.session.flashbag().get('good') %}
+                        <div class="alert alert-success">{{mensaje}}</div>
+                    {%endfor%}
+                    {% for mensaje in app.session.flashbag().get('error') %}
+                        <div class="alert alert-danger">{{mensaje}}</div>
+                    {%endfor%}
+                </div>
+            </div>
+                
             {% endblock %}
+             
+            
 
-
+                
             </div>
             <div id="footer">
                     <div class="row">

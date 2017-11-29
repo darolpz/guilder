@@ -12,9 +12,17 @@ use AppBundle\Entity\Encuesta;
 use AppBundle\Entity\Encuestausuario;
 use AppBundle\Entity\Materiaelegida;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HTTPFoundation\Session\Session;
+
 
 class ModuloController extends Controller {
 
+    private $session;
+    
+    public function __construct() {
+        $this->session = new Session();
+    }
+       
     /**
      * @Route("/modulo1", name="modulo1")
      */
@@ -130,20 +138,33 @@ class ModuloController extends Controller {
         if (isset($_POST['submit'])) {
             if (isset($_POST['materia'])) {
                 $listaMaterias = $_POST['materia'];
+                $materiasSeleccionadas = array();
+                $em = $this->getDoctrine()->getEntityManager();
+                for($X = 0; $X < count($listaMaterias); $X++)
+                {
+                    $mat = $em->getRepository('AppBundle:Materia')->findOneBycodigo($listaMaterias[$X]);
+                    $nombreMateria = $mat->getNombre(); 
+                    array_push($materiasSeleccionadas, $nombreMateria);
+                }
+                return $this->render('modulo/modulo3B.html.twig', array(
+                    'codigosMaterias' => $_POST['materia'], 'nombresMaterias' => $materiasSeleccionadas
+                ));
+            }
+            else
+            {
+                $estado = 'Porfavor seleccione alguna opción.';
+                $this->session->getFlashBag()->add("error",$estado);
+                return $this->redirectToRoute('modulo3');  
             }
         }
-        $materiasSeleccionadas = array();
-        $em = $this->getDoctrine()->getEntityManager();
-        for($X = 0; $X < count($listaMaterias); $X++)
+        else
         {
-            $mat = $em->getRepository('AppBundle:Materia')->findOneBycodigo($listaMaterias[$X]);
-            $nombreMateria = $mat->getNombre(); 
-            array_push($materiasSeleccionadas, $nombreMateria);
+            $estado = 'Sucedió un error inesperado, porfavor complete nuevamente la encuesta.';
+            $this->session->getFlashBag()->add("error",$estado);
+            return $this->redirectToRoute('modulo3');  
         }
-        
-        return $this->render('modulo/modulo3B.html.twig', array(
-            'codigosMaterias' => $_POST['materia'], 'nombresMaterias' => $materiasSeleccionadas
-        ));
+
+       
     }
     
     /**
@@ -153,51 +174,76 @@ class ModuloController extends Controller {
         if (isset($_POST['submit'])) {
             if (isset($_POST['turno'])){
                 $datosRecibidos = $_POST['turno'];
-            }      
+                $turnosElegidos = array();
+                $materiasElegidas = array();
+                //Recibo los datos como "IC002,1", entonces lo corto por la coma y separo codigo y turno.
+                for($X = 0; $X < count($datosRecibidos); $X++)
+                {
+                    $auxiliar = preg_split('~,~', $datosRecibidos[$X]);
+                    array_push($materiasElegidas, $auxiliar[0]);
+                    array_push($turnosElegidos, $auxiliar[1]);
+                }
+
+                $materia = new Materiaelegida();
+                $mane = $this->getDoctrine()->getEntityManager();      
+
+                //$user = $this->get('security.token_storage')->getToken()->getUser()->getIduser();
+                //$user->getUsername();
+                //var_dump($user);
+                //die();
+
+                $asignaturas = array();
+                for($A = 0; $A < count($materiasElegidas); $A++)
+                {
+                    $materia = new Materiaelegida();
+                    $materia->setcodigoMateria($materiasElegidas[$A]);
+                    $materia->setTurno($turnosElegidos[$A]);
+                    $materia->setnombreMateria(null);
+                    // Luego de crear las materias las guardo en un array
+                    array_push($asignaturas, $materia);           
+                }
+
+                $encuesta = new Encuesta();
+                //Defino hora local como la de Buenos Aires.
+                date_default_timezone_set('America/Argentina/Buenos_Aires');
+                //Obtengo esa hora local y la guardo en una variable
+                $fechaActual = date_default_timezone_get();
+
+                //Recorro el array que contiene los objetos materias y los inyecto a la BD
+                foreach($asignaturas as $una)
+                {
+                    $mane->persist($una);
+                    $push = $mane->flush();
+
+                    if($push != null)
+                    {
+                        $estado = 'Eror, falló la encuesta. Porfavor ingrese las opciones de nuevo.';
+                        $this->session->getFlashBag()->add("error",$estado);
+                        return $this->redirectToRoute('modulo3');
+                    }
+                    if($push == null)
+                    {
+                        $estado = 'Se completo la encuesta correctamente.';
+                        $this->session->getFlashBag()->add("good",$estado);
+                        return $this->redirectToRoute('homepage');  
+                    }
+                }
+            }
+            else
+                {
+                    $estado = 'Debe seleccionar algún turno, porfavor complete la encuesta nuevamente.';
+                    $this->session->getFlashBag()->add("error",$estado);
+                    return $this->redirectToRoute('modulo3');  
+                }
+        }
+        else
+        {
+            $estado = 'Sucedió un error inesperado, porfavor complete la encuesta nuevamente.';
+            $this->session->getFlashBag()->add("error",$estado);
+            return $this->render('modulo3B');  
         }
 
-        $turnosElegidos = array();
-        $materiasElegidas = array();
-        //Recibo los datos como "IC002,1" entonces lo corto por la coma y separo codigo y turno.
-        for($X = 0; $X < count($datosRecibidos); $X++)
-        {
-            $auxiliar = preg_split('~,~', $datosRecibidos[$X]);
-            array_push($materiasElegidas, $auxiliar[0]);
-            array_push($turnosElegidos, $auxiliar[1]);
-        }
         
-        $materia = new Materiaelegida();
-        $mane = $this->getDoctrine()->getEntityManager();      
-              
-        //$user = $this->get('security.token_storage')->getToken()->getUser()->getIduser();
-        //$user->getUsername();
-        //var_dump($user);
-        //die();
-        
-        //echo count($materiasElegidas);
-        $asignaturas = array();
-        for($A = 0; $A < count($materiasElegidas); $A++)
-        {
-            $materia = new Materiaelegida();
-            $materia->setcodigoMateria($materiasElegidas[$A]);
-            $materia->setTurno($turnosElegidos[$A]);
-            $materia->setnombreMateria(null);
-            // Luego de crear las materias las guardo en un array
-            array_push($asignaturas, $materia);           
-        }
-        
-        $encuesta = new Encuesta();
-        //Defino hora local como la de Buenos Aires.
-        date_default_timezone_set('America/Argentina/Buenos_Aires');
-        //Obtengo esa hora local y la guardo en una variable
-        $fechaActual = date_default_timezone_get();
-        
-        //Recorro el array con los objetos materias y los inyecto a la BD
-        foreach($asignaturas as $una)
-        {
-            $mane->persist($una);
-            $mane->flush();
-        }
         /*foreach($asignaturas as $A)
         {
             $encuesta->setFecha($fechaActual);
@@ -207,7 +253,7 @@ class ModuloController extends Controller {
             $mane->flush();
         }
         */
-        
+        die();
         return $this->redirectToRoute('homepage');        
     }
     
