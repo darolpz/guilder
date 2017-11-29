@@ -1,6 +1,7 @@
 .timetable{
     box-sizing:border-box;
     background-color: whitesmoke;
+    float: bottom;
 }
 .timetable::after{
     clear:both;

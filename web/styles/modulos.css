@@ -38,4 +38,12 @@ table {
     /*right: 50px;*/
     /*margin: 4em 4em 4em 1em;*/
 }
-
+h1{
+    font-family: -webkit-body;
+    font-weight: 600;
+}
+thead{
+    background-color: cornflowerblue;
+    font-family: -webkit-body;
+    font-size: 18px;
+}
