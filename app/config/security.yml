@@ -28,6 +28,10 @@ security:
         - { path: ^/register, allow_if: 'is_anonymous()' }
         - { path: ^/logout, allow_if: 'is_authenticated()' }
         - { path: ^/cuenta, role: ROLE_USER, methods: [GET, POST] }
+        - { path: ^/modulo3, role: ROLE_USER, methods: [GET, POST] }
+        - { path: ^/modulo3B, role: ROLE_USER, methods: [GET, POST] }
+        - { path: ^/encuesta1, role: ROLE_USER, methods: [GET, POST] }
+        - { path: ^/encuesta2, role: ROLE_USER, methods: [GET, POST] }
         - { path: ^/crearusuarios, role: ROLE_ADMIN }
         - { path: ^/comision, role: ROLE_ADMIN }
         - { path: ^/horario, role: ROLE_ADMIN }

@@ -212,24 +212,6 @@ class ModuloController extends Controller {
     }
     
     /**
-     * @Route("/ingresarMaterias", name="ingresarMaterias")
-     * @Method({"GET"})
-     */
-    public function ingresarMateriaAction(int $posicion,array $materiasElegidas,array $turnosElegidos)
-    {
-        $materia = new Materiaelegida();
-        $mane = $this->getDoctrine()->getEntityManager();
-        
-        $materia->setcodigoMateria($materiasElegidas[$posicion]);
-        $materia->setTurno($turnosElegidos[$posicion]);
-        $materia->setnombreMateria(null);
-        $mane->persist($materia);
-        $mane->flush();
-        
-        return var_dump($materia->getTurno());
-    }
-
-    /**
      * @Route("/agregar_comisiones", name="agregar_comisiones")
      * @Method({"GET"})
      */
