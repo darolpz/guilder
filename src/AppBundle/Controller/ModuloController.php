@@ -155,8 +155,7 @@ class ModuloController extends Controller {
                 $datosRecibidos = $_POST['turno'];
             }      
         }
-        var_dump($_POST['turno']);
-        var_dump($datosRecibidos);
+
         $turnosElegidos = array();
         $materiasElegidas = array();
         //Recibo los datos como "IC002,1" entonces lo corto por la coma y separo codigo y turno.
@@ -166,12 +165,26 @@ class ModuloController extends Controller {
             array_push($materiasElegidas, $auxiliar[0]);
             array_push($turnosElegidos, $auxiliar[1]);
         }
-        //var_dump($datosRecibidos);
-        //var_dump($turnosElegidos);
-        //var_dump($materiasElegidas);
         
         $materia = new Materiaelegida();
         $mane = $this->getDoctrine()->getEntityManager();      
+              
+        //$user = $this->get('security.token_storage')->getToken()->getUser()->getIduser();
+        //$user->getUsername();
+        //var_dump($user);
+        //die();
+        
+        //echo count($materiasElegidas);
+        $asignaturas = array();
+        for($A = 0; $A < count($materiasElegidas); $A++)
+        {
+            $materia = new Materiaelegida();
+            $materia->setcodigoMateria($materiasElegidas[$A]);
+            $materia->setTurno($turnosElegidos[$A]);
+            $materia->setnombreMateria(null);
+            // Luego de crear las materias las guardo en un array
+            array_push($asignaturas, $materia);           
+        }
         
         $encuesta = new Encuesta();
         //Defino hora local como la de Buenos Aires.
@@ -179,37 +192,47 @@ class ModuloController extends Controller {
         //Obtengo esa hora local y la guardo en una variable
         $fechaActual = date_default_timezone_get();
         
-        //$user = $this->get('security.token_storage')->getToken()->getUser()->getIduser();
-        //$user->getUsername();
-        //var_dump($user);
-        //die();
-        
-        //echo count($materiasElegidas);
-        for($A = 0; $A < count($materiasElegidas); $A++) // EN REVISIÓN, SOLAMENTE SE QUEDA CON EL ULTIMO ELEMENTO DEL ARREGLO
+        //Recorro el array con los objetos materias y los inyecto a la BD
+        foreach($asignaturas as $una)
         {
-            $materia->setcodigoMateria($materiasElegidas[$A]);
-            $materia->setTurno($turnosElegidos[$A]);
-            $materia->setnombreMateria(null);
-            $mane->persist($materia);
+            $mane->persist($una);
             $mane->flush();
-            //$encuesta->setFecha($fechaActual);
-            //$encuesta->setIdopcion($materia->getIdmateriaelegida());
-            // ^ ESPERA RECIBIR ALGO DEL OBJETO MATERIA PARA LA IDOPCION Y RECIBE UN INT (EL GET DEVUELVE ESO)
-            //$mane->persist($encuesta);
-            //$mane->flush();            
         }
+        /*foreach($asignaturas as $A)
+        {
+            $encuesta->setFecha($fechaActual);
+            $id = $A->getIdmateriaelegida();
+            $encuesta->setIdopcion($id);
+            $mane->persist($encuesta);
+            $mane->flush();
+        }
+        */
         
-        //die();
-              
         return $this->redirectToRoute('homepage');        
     }
-
+    
+    /**
+     * @Route("/ingresarMaterias", name="ingresarMaterias")
+     * @Method({"GET"})
+     */
+    public function ingresarMateriaAction(int $posicion,array $materiasElegidas,array $turnosElegidos)
+    {
+        $materia = new Materiaelegida();
+        $mane = $this->getDoctrine()->getEntityManager();
+        
+        $materia->setcodigoMateria($materiasElegidas[$posicion]);
+        $materia->setTurno($turnosElegidos[$posicion]);
+        $materia->setnombreMateria(null);
+        $mane->persist($materia);
+        $mane->flush();
+        
+        return var_dump($materia->getTurno());
+    }
 
     /**
      * @Route("/agregar_comisiones", name="agregar_comisiones")
      * @Method({"GET"})
      */
-    
     public function obtenerComisionesAction(Request $request){
         
         $codigo = $request->query->get('codigo');
