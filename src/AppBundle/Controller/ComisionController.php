@@ -57,47 +57,6 @@ class ComisionController extends Controller
             'form' => $form->createView(),
         ));
     }
-    
-    
-       /**
-     * Show all comision entities.
-     *
-     * @Route("/filtrar", name="comision_filtrar")
-     * @Method({"GET", "POST"})
-     */
-    
-    public function filtrarAction(Request $request)
-    {
-       $comision = new Comision();
-       $form = $this->createForm('AppBundle\Form\ComisionType_1', $comision);
-       $form->handleRequest($request);
-       
-       $em = $this->getDoctrine()->getManager();
-       $comisions = $em->getRepository('AppBundle:Comision')->findBy(array(
-               'materiamateria'=>$comision->getMateriamateria(),
-               'year'=>$comision->getYear()
-               ));
-       $horarios=array();
-       foreach($comisions as $comision){
-           $horario= $em->getRepository('AppBundle:Horario')->findBycomisioncomision(
-                   $comision->getIdcomision()   
-           );
-           $horarios[]=$horario;
-       }
-       //por cada comision tengo que buscar todos los horarios que contengan esa comision y guardarlas en horarios
-       //podria crear un arreglo que contenga una comision y sus horarios y con un if solucionar el tema de muchos horarios
-       
-       //recorrer todas las comisiones y por cada una agregar a un arreglo grande un arreglo de la comision mas sus horarios  
-             
-           
-    
-        return $this->render('comision/filtrar.html.twig', array(
-            'comisions' => $comisions,
-            'horarios' => $horarios,
-            'form' => $form->createView(),
-        ));
-    }
-    
 
     /**
      * Finds and displays a comision entity.
