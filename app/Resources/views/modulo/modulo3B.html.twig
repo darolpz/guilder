@@ -33,13 +33,13 @@
                                     <div class="row">
                                         <label>
                                             <div class="btn-group" data-toggle="buttons">
-                                                <label class="btn btn-secondary active">
+                                                <label class="btn btn-primary notActive">
                                                     <input type="radio" name="turno[{{contador}}]" value={{codigosMaterias[contador]~',1'}} autocomplete="off"> Turno mañana
                                                 </label>
-                                                <label class="btn btn-secondary">
+                                                <label class="btn btn-primary notActive">
                                                     <input type="radio" name="turno[{{contador}}]" value={{codigosMaterias[contador]~',2'}} autocomplete="off"> Turno tarde
                                                 </label>
-                                                <label class="btn btn-secondary">
+                                                <label class="btn btn-primary notActive">
                                                     <input type="radio" name="turno[{{contador}}]" value={{codigosMaterias[contador]~',3'}} autocomplete="off"> Turno noche
                                                 </label>
                                             </div>
@@ -54,8 +54,6 @@
                 <div class="panel-footer">
                     <h3>
                         <button type="submit" name="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Seleccionar</button>
-                        {{ dump(nombresMaterias) }}
-                        {{ dump(codigosMaterias) }}
                     </h3>
                 </div>
             </div>

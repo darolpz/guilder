@@ -9,7 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Comision;
 use AppBundle\Entity\Horario;
 use AppBundle\Entity\Encuesta;
-use AppBundle\Entity\Encuestausuario;
 use AppBundle\Entity\Materiaelegida;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HTTPFoundation\Session\Session;
@@ -153,112 +152,112 @@ class ModuloController extends Controller {
      * @Route("/encuesta1", name="encuesta1")
      */
     public function encuesta1Action(Request $request) {
-
+        
         //Reviso que el botón submit haya sido apretado para que no me de valores nulos
         if (isset($_POST['submit'])) {
             if (isset($_POST['materia'])) {
                 $listaMaterias = $_POST['materia'];
                 $materiasSeleccionadas = array();
                 $em = $this->getDoctrine()->getEntityManager();
-                for ($X = 0; $X < count($listaMaterias); $X++) {
+                for($X = 0; $X < count($listaMaterias); $X++)
+                {
                     $mat = $em->getRepository('AppBundle:Materia')->findOneBycodigo($listaMaterias[$X]);
-                    $nombreMateria = $mat->getNombre();
+                    $nombreMateria = $mat->getNombre(); 
                     array_push($materiasSeleccionadas, $nombreMateria);
                 }
                 return $this->render('modulo/modulo3B.html.twig', array(
-                            'codigosMaterias' => $_POST['materia'], 'nombresMaterias' => $materiasSeleccionadas
+                    'codigosMaterias' => $_POST['materia'], 'nombresMaterias' => $materiasSeleccionadas
                 ));
-            } else {
-                $estado = 'Porfavor seleccione alguna opción.';
-                $this->session->getFlashBag()->add("error", $estado);
-                return $this->redirectToRoute('modulo3');
             }
-        } else {
-            $estado = 'Sucedió un error inesperado, porfavor complete nuevamente la encuesta.';
-            $this->session->getFlashBag()->add("error", $estado);
-            return $this->redirectToRoute('modulo3');
+            else
+            {
+                $estado = 'Porfavor seleccione alguna opción.';
+                $this->session->getFlashBag()->add("error",$estado);
+                return $this->redirectToRoute('modulo3');  
+            }
         }
+        else
+        {
+            $estado = 'Sucedió un error inesperado, porfavor complete nuevamente la encuesta.';
+            $this->session->getFlashBag()->add("error",$estado);
+            return $this->redirectToRoute('modulo3');  
+        }      
     }
-
+    
     /**
      * @Route("/encuesta2", name="encuesta2")
      */
     public function encuesta2Action(Request $request) {
         if (isset($_POST['submit'])) {
-            if (isset($_POST['turno'])) {
+            if (isset($_POST['turno'])){
                 $datosRecibidos = $_POST['turno'];
                 $turnosElegidos = array();
                 $materiasElegidas = array();
                 //Recibo los datos como "IC002,1", entonces lo corto por la coma y separo codigo y turno.
-                for ($X = 0; $X < count($datosRecibidos); $X++) {
+                for($X = 0; $X < count($datosRecibidos); $X++)
+                {
                     $auxiliar = preg_split('~,~', $datosRecibidos[$X]);
                     array_push($materiasElegidas, $auxiliar[0]);
                     array_push($turnosElegidos, $auxiliar[1]);
                 }
-
-                $materia = new Materiaelegida();
-                $mane = $this->getDoctrine()->getEntityManager();
-
-                //$user = $this->get('security.token_storage')->getToken()->getUser()->getIduser();
-                //$user->getUsername();
-                //var_dump($user);
-                //die();
-
-                $asignaturas = array();
-                for ($A = 0; $A < count($materiasElegidas); $A++) {
-                    $materia = new Materiaelegida();
-                    $materia->setcodigoMateria($materiasElegidas[$A]);
-                    $materia->setTurno($turnosElegidos[$A]);
-                    $materia->setnombreMateria(null);
-                    // Luego de crear las materias las guardo en un array
-                    array_push($asignaturas, $materia);
+                
+                $mane = $this->getDoctrine()->getEntityManager();      
+                
+                $materias = array();
+                foreach($materiasElegidas as $X)
+                {
+                    //Busco las materias por su codigo para pasarselas a la Encuesta
+                    $mat = $mane->getRepository('AppBundle:Materia')->findOneByCodigo($X);
+                    array_push($materias, $mat);
                 }
-
-                $encuesta = new Encuesta();
+                
                 //Defino hora local como la de Buenos Aires.
                 date_default_timezone_set('America/Argentina/Buenos_Aires');
                 //Obtengo esa hora local y la guardo en una variable
                 $fechaActual = date_default_timezone_get();
+                
+                $encuestas = array();
+                for($A = 0; $A < count($materias); $A++)
+                {
+                    $encuesta = new Encuesta();
+                    $encuesta->setFecha(new \DateTime($fechaActual));
+                    $encuesta->setIdmateriaelegida($materias[$A]);
+                    $encuesta->setTurno($turnosElegidos[$A]);
+                    array_push($encuestas, $encuesta);           
+                }              
 
-                //Recorro el array que contiene los objetos materias y los inyecto a la BD
-                foreach ($asignaturas as $una) {
+                foreach($encuestas as $una)
+                {
+                    //Hago commit y push de las Encuestas creadas
                     $mane->persist($una);
                     $push = $mane->flush();
-
-                    if ($push != null) {
+                    if($push != null)
+                    {
                         $estado = 'Eror, falló la encuesta. Porfavor ingrese las opciones de nuevo.';
-                        $this->session->getFlashBag()->add("error", $estado);
+                        $this->session->getFlashBag()->add("error",$estado);
                         return $this->redirectToRoute('modulo3');
                     }
-                    if ($push == null) {
-                        $estado = 'Se completo la encuesta correctamente.';
-                        $this->session->getFlashBag()->add("good", $estado);
-                        return $this->redirectToRoute('homepage');
+                    if($push == null)
+                    {  
+                        $estado = 'Se completó la encuesta correctamente.';
+                        $this->session->getFlashBag()->add("good",$estado);
+                        return $this->redirectToRoute('homepage'); 
                     }
-                }
-            } else {
-                $estado = 'Debe seleccionar algún turno, porfavor complete la encuesta nuevamente.';
-                $this->session->getFlashBag()->add("error", $estado);
-                return $this->redirectToRoute('modulo3');
+                }               
             }
-        } else {
-            $estado = 'Sucedió un error inesperado, porfavor complete la encuesta nuevamente.';
-            $this->session->getFlashBag()->add("error", $estado);
-            return $this->render('modulo3B');
+            else
+                {
+                    $estado = 'Debe seleccionar algún turno, porfavor complete la encuesta nuevamente.';
+                    $this->session->getFlashBag()->add("error",$estado);
+                    return $this->redirectToRoute('modulo3');  
+                }
         }
-
-
-        /* foreach($asignaturas as $A)
-          {
-          $encuesta->setFecha($fechaActual);
-          $id = $A->getIdmateriaelegida();
-          $encuesta->setIdopcion($id);
-          $mane->persist($encuesta);
-          $mane->flush();
-          }
-         */
-        die();
-        return $this->redirectToRoute('homepage');
+        else
+        {
+            $estado = 'Sucedió un error inesperado, porfavor complete la encuesta nuevamente.';
+            $this->session->getFlashBag()->add("error",$estado);
+            return $this->redirectToRoute('modulo3');  
+        }       
     }
 
     /**
