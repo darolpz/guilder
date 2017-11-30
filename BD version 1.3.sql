@@ -5,17 +5,45 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema proyecto
--- -----------------------------------------------------
-
--- -----------------------------------------------------
 -- Schema proyecto
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `proyecto` DEFAULT CHARACTER SET utf8 ;
 USE `proyecto` ;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`materia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`materia` (
+  `idmateria` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(80) NOT NULL,
+  `codigo` VARCHAR(10) NOT NULL,
+  `coordinador` VARCHAR(45) NULL DEFAULT NULL,
+  `anio` INT(1) NOT NULL,
+  PRIMARY KEY (`idmateria`),
+  UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC),
+  UNIQUE INDEX `codigo_UNIQUE` (`codigo` ASC))
+ENGINE = InnoDB
+AUTO_INCREMENT = 53
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`encuesta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`encuesta` (
+  `idencuesta` INT(11) NOT NULL,
+  `idMateriaElegida` INT(11) NOT NULL,
+  `fecha` DATETIME NOT NULL,
+  `turno` INT(1) NOT NULL,
+  PRIMARY KEY (`idencuesta`),
+  INDEX `idMateriaElegida_idx` (`idMateriaElegida` ASC),
+  CONSTRAINT `idMateriaElegida`
+    FOREIGN KEY (`idMateriaElegida`)
+    REFERENCES `proyecto`.`materia` (`idmateria`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 
 -- -----------------------------------------------------
 -- Table `proyecto`.`carrera`
@@ -27,23 +55,6 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`carrera` (
   UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC))
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `proyecto`.`materia`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `proyecto`.`materia` (
-  `idmateria` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(80) NOT NULL,
-  `codigo` VARCHAR(10) NOT NULL,
-  `anio` int(1) NOT NULL,
-  `coordinador` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`idmateria`),
-  UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC),
-  UNIQUE INDEX `codigo_UNIQUE` (`codigo` ASC))
-ENGINE = InnoDB
-AUTO_INCREMENT = 53
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -189,40 +200,7 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8;
 
--- -----------------------------------------------------
--- Table `proyecto`.`encuestaUsuario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `proyecto`.`encuestaUsuario` (
-	`encuesta_idEncuesta` INT(11) NOT NULL AUTO_INCREMENT,
-    `usuario_idUsuario` INT(11) NOT NULL AUTO_INCREMENT,
-    INDEX `fk_encuesta_idEncuesta_idx` (`encuesta_idEncuesta` ASC),
-    INDEX `fk_usuario_idUsuario` (`usuario_idUsuario` ASC),
-	CONSTRAINT `usuario_idUsuario`
-		FOREIGN KEY(`usuario_idUsuario`)
-        REFERENCES `proyecto`.`user`(`iduser`)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION,
-	CONSTRAINT `encuesta_idEncuesta`
-		FOREIGN KEY(`encuesta_idEncuesta`)
-		REFERENCES `proyecto`.`encuesta`(`idEncuesta`)
-		ON DELETE NO ACTION
-        ON UPDATE NO ACTION
-);
-
--- -----------------------------------------------------
--- Table `proyecto`.`encuesta`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `proyecto`.`encuesta` (
-	`materias` VARCHAR(50) NOT NULL,
-    `idEncuesta` INT(11) NOT NULL AUTO_INCREMENT,
-    `fecha` DATETIME NOT NULL,
-    `idTurno` INT(1) NOT NULL,
-    `idHorario` INT(11) NOT NULL,
-    
-    PRIMARY KEY(`idEncuesta`)
-);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
