@@ -225,25 +225,27 @@ class ModuloController extends Controller {
                     $encuesta->setTurno($turnosElegidos[$A]);
                     array_push($encuestas, $encuesta);           
                 }              
-
+                
+                
                 foreach($encuestas as $una)
                 {
                     //Hago commit y push de las Encuestas creadas
                     $mane->persist($una);
                     $push = $mane->flush();
-                    if($push != null)
+                }  
+                if($push != null)
                     {
                         $estado = 'Eror, falló la encuesta. Porfavor ingrese las opciones de nuevo.';
                         $this->session->getFlashBag()->add("error",$estado);
                         return $this->redirectToRoute('modulo3');
                     }
-                    if($push == null)
-                    {  
-                        $estado = 'Se completó la encuesta correctamente.';
-                        $this->session->getFlashBag()->add("good",$estado);
-                        return $this->redirectToRoute('homepage'); 
-                    }
-                }               
+                if($push == null)
+                {  
+                    $estado = 'Se completó la encuesta correctamente.';
+                    $this->session->getFlashBag()->add("good",$estado);
+                    return $this->redirectToRoute('homepage'); 
+                }
+                
             }
             else
                 {
