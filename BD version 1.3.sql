@@ -31,7 +31,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `proyecto`.`encuesta`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `proyecto`.`encuesta` (
-  `idencuesta` INT(11) NOT NULL,
+  `idencuesta` INT(11) NOT NULL AUTO_INCREMENT,
   `idMateriaElegida` INT(11) NOT NULL,
   `fecha` DATETIME NOT NULL,
   `turno` INT(1) NOT NULL,
