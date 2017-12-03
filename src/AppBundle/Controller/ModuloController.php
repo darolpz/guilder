@@ -41,90 +41,12 @@ class ModuloController extends Controller {
 
     /**
      * @Route("/modulo2", name="modulo2")
-     *  @Method({"GET", "POST"})
+     *  @Method({"GET"})
      */
     public function modulo2Action(Request $request) {
-        $comision = new Comision();
-        $form = $this->createForm('AppBundle\Form\ComisionType_1', $comision);
-        $form->handleRequest($request);
-        $comis = array();
-        $em = $this->getDoctrine()->getManager();
-        if ($form->isSubmitted()) {
-            if ($comision->getCuatrimestre() == 1 or $comision->getCuatrimestre() == 2 or $comision->getCuatrimestre() == NULL) {
-                if (($comision->getYear() >= 2011 and $comision->getYear() <= 2017) or $comision->getYear() == NULL) {
-                    if ($comision->getYear() == null) {//Caso 1,la comision no tiene año
-                        if ($comision->getCuatrimestre() == null) {//no tiene año y no tiene cuatrimestre
-                            $comisions = $em->getRepository('AppBundle:Comision')->
-                                    findBymateriamateria($comision->getMateriamateria());
-                        } else {//no tiene año pero tiene cuatrimestre
-                            $comisions = $em->getRepository('AppBundle:Comision')->findBy(array(
-                                'materiamateria' => $comision->getMateriamateria(),
-                                'cuatrimestre' => $comision->getCuatrimestre()
-                            ));
-                        }
-                    } else {            //caso 2,la tiene año
-                        if ($comision->getCuatrimestre() == null) {//la comision tiene año pero no tiene acuatrimestre
-                            $comisions = $em->getRepository('AppBundle:Comision')->findBy(array(
-                                'materiamateria' => $comision->getMateriamateria(),
-                                'year' => $comision->getYear(),
-                            ));
-                        } else {//la comision tiene año y cuatrimestre
-                            $comisions = $em->getRepository('AppBundle:Comision')->findBy(array(
-                                'materiamateria' => $comision->getMateriamateria(),
-                                'year' => $comision->getYear(),
-                                'cuatrimestre' => $comision->getCuatrimestre()
-                            ));
-                        }
-                    }
-                    if (sizeof($comisions) == 0) {
-                        $estado = 'No hay infoormacion sobre la materia solicitada en este periodo de tiempo';
-                        $this->session->getFlashBag()->add("error", $estado);
-                    }
-                    $horarios = array();
 
-                    foreach ($comisions as $comision) {
-                        $horario = $em->getRepository('AppBundle:Horario')->findOneBycomisioncomision(
-                                $comision->getIdcomision()
-                        );
-                        $horarios[] = $horario;
-                    }
-
-                    //creo un arreglo d forma de obtener todos los datos de la comision en un solo array
-                    for ($i = 0; $i < sizeof($comisions); $i++) {
-                        $array = [
-                            'numero' => $comisions[$i]->getNumero(),
-                            'profesor' => $comisions[$i]->getProfesor(),
-                            'year' => $comisions[$i]->getYear(),
-                            'cuatrimestre' => $comisions[$i]->getCuatrimestre(),
-                            'materia' => $comisions[$i]->getMateriamateria()->__toString(),
-                            'dia' => $horarios[$i]->getDiadia()->__toString(),
-                            'inicio' => date_format($horarios[$i]->getInicio(), 'H:i'),
-                            'fin' => date_format($horarios[$i]->getFin(), 'H:i'),
-                            'segundos' => $horarios[$i]->restarHoras(),
-                        ];
-                        $comis[] = $array;
-                    }
-
-                    return $this->render('modulo/modulo2.html.twig', array(
-                                'comis' => $comis,
-                                'form' => $form->createView(),
-                    ));
-                } else {
-                    $estado = 'El año ingresado es invalido';
-                    $this->session->getFlashBag()->add("error", $estado);
-                    return $this->redirectToRoute('modulo2');
-                }
-            } else {
-                $estado = 'El numero de cuatrimestre es invalido';
-                $this->session->getFlashBag()->add("error", $estado);
-                return $this->redirectToRoute('modulo2');
-            }
-        } else {
-            return $this->render('modulo/modulo2.html.twig', array(
-                        'comis' => $comis,
-                        'form' => $form->createView(),
-            ));
-        }
+            return $this->render('modulo/modulo2.html.twig');
+        
     }
 
     /**

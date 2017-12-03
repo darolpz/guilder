@@ -11,25 +11,25 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Comision;
 use AppBundle\Entity\Horario;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HTTPFoundation\Session\Session;
+
 /**
  * Admin controller.
  *
  * @Route("api")
  */
-class ApiController extends Controller
-{
+class ApiController extends Controller {
+
     /**
      * @Route("/m2", name="m2")
      * @Method({"GET" ,"POST"})
      */
     public function Apim2Action(Request $request) {
-        $respuesta = $request->request->get('appbundle_comision');
 
-        $materia = $respuesta['materiamateria'];
-        $year = $respuesta['year'];
-        $cuatri = $respuesta['cuatrimestre'];
+        $materia = $request->request->get('materia');
+        $year = $request->request->get('year');
+        $cuatri = $request->request->get('cuatri');
         $em = $this->getDoctrine()->getManager();
-
         if ($year == null) {//Caso 1,la comision no tiene año
             if ($cuatri == null) {//no tiene año y no tiene cuatrimestre
                 $comisions = $em->getRepository('AppBundle:Comision')->
@@ -61,28 +61,29 @@ class ApiController extends Controller
             );
             $horarios[] = $horario;
         }
-        
-        $comis=array();
-        for($i= 0;$i<sizeof($comisions);$i++){
-            $array =[
+
+        $comis = array();
+        for ($i = 0; $i < sizeof($comisions); $i++) {
+            $array = [
                 'numero' => $comisions[$i]->getNumero(),
                 'profesor' => $comisions[$i]->getProfesor(),
                 'year' => $comisions[$i]->getYear(),
                 'cuatrimestre' => $comisions[$i]->getCuatrimestre(),
                 'materia' => $comisions[$i]->getMateriamateria()->__toString(),
                 'dia' => $horarios[$i]->getDiadia()->__toString(),
-                'inicio' => date_format($horarios[$i]->getInicio(),'H:i'),
-                'fin' => date_format($horarios[$i]->getFin(),'H:i'),
+                'inicio' => date_format($horarios[$i]->getInicio(), 'H:i'),
+                'fin' => date_format($horarios[$i]->getFin(), 'H:i'),
                 'segundos' => $horarios[$i]->restarHoras(),
-                
             ];
             $comis[] = $array;
         }
-        
-        $json = json_encode($comis,  JSON_UNESCAPED_UNICODE);
+
+
+        $json = json_encode($comis, JSON_UNESCAPED_UNICODE);
 
 
 
         return new Response($json);
     }
+
 }
