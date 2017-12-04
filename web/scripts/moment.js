@@ -3467,6 +3467,11 @@
         this.hours(23).subtract(1, 'ms');
         return this;
     }
+    
+    function setHours(h){
+        this.hours(h);
+        return this;
+    }
 
     function valueOf() {
         return this._d.valueOf() - ((this._offset || 0) * 60000);
@@ -3866,6 +3871,7 @@
     proto.unix = unix;
     proto.valueOf = valueOf;
     proto.creationData = creationData;
+    proto.setHours = setHours;
 
 // Year
     proto.year = getSetYear;

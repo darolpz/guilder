@@ -18,8 +18,8 @@ var calendarHeatmap = {
     /**
      * Initialize
      */
-    init: function (data, color, overview, handler) {
-
+    init: function (data, color, overview, handler, int1, int2) {
+        
         // Set calendar data
         calendarHeatmap.data = data;
 
@@ -150,7 +150,8 @@ var calendarHeatmap = {
         calendarHeatmap.history[calendarHeatmap.history.length - 1] !== calendarHeatmap.overview && calendarHeatmap.history.push(calendarHeatmap.overview), Object.keys(calendarHeatmap.selected).length || (calendarHeatmap.selected = calendarHeatmap.data[calendarHeatmap.data.length - 1]);
         var a = calendarHeatmap.selected.summary.map(function (a) {
             return a.name
-        }), e = d3.scaleBand().rangeRound([calendarHeatmap.settings.label_padding, calendarHeatmap.settings.height]).domain(a), t = d3.scaleTime().range([2 * calendarHeatmap.settings.label_padding, calendarHeatmap.settings.width]).domain([moment(calendarHeatmap.selected.date).startOf("day"), moment(calendarHeatmap.selected.date).endOf("day")]);
+        }),// e = d3.scaleBand().rangeRound([calendarHeatmap.settings.label_padding, calendarHeatmap.settings.height]).domain(a), t = d3.scaleTime().range([2 * calendarHeatmap.settings.label_padding, calendarHeatmap.settings.width]).domain([moment(calendarHeatmap.selected.date).startOf("day"), moment(calendarHeatmap.selected.date).endOf("day")]);
+        e = d3.scaleBand().rangeRound([calendarHeatmap.settings.label_padding, calendarHeatmap.settings.height]).domain(a), t = d3.scaleTime().range([2 * calendarHeatmap.settings.label_padding, calendarHeatmap.settings.width]).domain([moment(calendarHeatmap.selected.date).setHours(int1), moment(calendarHeatmap.selected.date).setHours(int2+1)]);
         calendarHeatmap.items.selectAll(".item-block").remove(), calendarHeatmap.items.selectAll(".item-block").data(calendarHeatmap.selected.details).enter().append("rect").attr("class", "item item-block").attr("x", function (a) {
             return t(moment(a.date))
         }).attr("y", function (a) {
@@ -179,7 +180,9 @@ var calendarHeatmap = {
         }, function () {
             calendarHeatmap.in_transition = !1
         });
-        var n = d3.timeHours(moment(calendarHeatmap.selected.date).startOf("day"), moment(calendarHeatmap.selected.date).endOf("day")), r = d3.scaleTime().range([2 * calendarHeatmap.settings.label_padding, calendarHeatmap.settings.width]).domain([0, n.length]);
+        //var n = d3.timeHours(moment(calendarHeatmap.selected.date).startOf("day"), moment(calendarHeatmap.selected.date).endOf("day")),
+        var n = d3.timeHours(moment(calendarHeatmap.selected.date).setHours(int1), moment(calendarHeatmap.selected.date).setHours(int2+1)),
+                r = d3.scaleTime().range([2 * calendarHeatmap.settings.label_padding, calendarHeatmap.settings.width]).domain([0, n.length]);
         calendarHeatmap.labels.selectAll(".label-time").remove(), calendarHeatmap.labels.selectAll(".label-time").data(n).enter().append("text").attr("class", "label label-time").attr("font-size", function () {
             return Math.floor(calendarHeatmap.settings.label_padding / 3) + "px"
         }).text(function (a) {
