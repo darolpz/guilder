@@ -27,13 +27,7 @@ class ModuloController extends Controller {
     public function modulo1Action(Request $request) {
         // Falta chequear el año y cuatrimestre
         $em = $this->getDoctrine()->getManager();
-
-        $comision = new Comision();
-        $form = $this->createForm('AppBundle\Form\ComisionType_1', $comision);
-        $form->handleRequest($request);
-
         $materias = $em->getRepository('AppBundle:Materia')->findAll();
-
         return $this->render('modulo/modulo1.html.twig', array(
                     'materias' => $materias,
         ));
@@ -190,14 +184,11 @@ class ModuloController extends Controller {
      */
     public function obtenerComisionesAction(Request $request) {
 
-        $codigo = $request->query->get('codigo');
+        $id = $request->query->get('id');
         $em = $this->getDoctrine()->getManager();
         /* Busco las comisiones que concuerden con el id de la materia */
-        $materia = $em->getRepository('AppBundle:Materia')
-                ->findOneBycodigo($codigo);
-        $idMateria = $materia->getIdmateria();
         $comisiones = $em->getRepository('AppBundle:Comision')
-                ->findBymateriamateria($idMateria);
+                ->findBymateriamateria($id);
         $comiArray = array();
         foreach ($comisiones as $c) {
             /* Para cada comision del array $comisiones recupero los datos relevantes para el usuario
@@ -212,6 +203,8 @@ class ModuloController extends Controller {
             $comision[] = $horario->getFin()->format('H');
             $comision[] = $horario->getFin()->format('i');
             $comision[] = $horario->getDiadia()->getNombre();
+            $materia= $em->getRepository('AppBundle:Materia')
+                    ->findOneByidmateria($id);
             $comision[] = $materia->getNombre(); /* Buscar una mejor manera de pasar esta información */
             $comiArray[] = $comision;
         }

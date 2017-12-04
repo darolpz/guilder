@@ -9,8 +9,6 @@
    <script src="../../scripts/timetable.min.js"></script>
  {% endblock %}
 {% block body %}
-<h2> Módulo 1 </h2>
-
  <div class="hero-unit">
       <h1 id="encabezado">¡Organiza tu cursada!</h1>
     </div>
@@ -30,7 +28,7 @@
                     {% for materia in materias %}   
                     <tr class="table-light" >
                         <td>{{materia.nombre}}</td>
-                        <td><button id="btMateria" type="button" value="{{materia.codigo}}"  class="btn btn-secondary">Añadir</button></td>
+                        <td><button type="button" value="{{materia.idmateria}}"  class="btn btn-secondary">Añadir</button></td>
                     </tr>
                     {% endfor%}
                 </tbody>
@@ -57,7 +55,7 @@
 </div>
             
     <div class="timetable">
-        <aside>
+        <aside> 
             <ul>
                 <li>
                     <span class="row-heading">Lunes</span>
@@ -68,7 +66,7 @@
                 <li><span class="row-heading">Viernes</span></li>
                 <li><span class="row-heading">Sábado</span></li>
         </aside>
-        <section>
+        <section id="time">
             <time>
                 <header>
                     <ul>
@@ -120,34 +118,23 @@
                     </ul>
                 </header>
                 <ul class="room-timeline">
-                    {#<script>#}
-                    <li>
-                        {#<a title="Sightseeing" href="#" class="time-entry" style="width: 10.2941%; left: 10.2941%;">
-                            <small>Sightseeing</small></a>#}
-                    </li>
-                    <li>
-                        
-                    </li>
-                    <li>
-                        
-                    </li>
-                    <li>
-                        
-                    </li>
-                    
                     <li>    
                     </li>
-                    
                     <li>
                     </li>
-{#                    </script>#}
+                    <li>
+                    </li>
+                    <li>
+                    </li>
+                    <li>    
+                    </li>
+                    <li>
+                    </li>
                 </ul>
             </time>
         </section>
     </div>
-                </div>
-                
-    
+</div>
     <script src="//www.google-analytics.com/analytics.js"></script><script src="../scripts/timetable.min.js"></script>
 
     <script>
@@ -157,14 +144,12 @@
         var renderer = new Timetable.Renderer(timetable);
         renderer.draw('.timetable');
     </script>
-
-    
     <script>
         var comisiones;
         $("#bodyMaterias").find("button").click(function(){
             var param = $(this).val();
             {# Realizo un get utilizando AJAX enviando como parametro el codigo de la materia #}
-            $.get("{{url('agregar_comisiones')}}",{codigo:param} ,  function(mydata){
+            $.get("{{url('agregar_comisiones')}}",{id:param} ,  function(mydata){
                 comisiones=$.parseJSON(mydata);
                 {# Remuevo todas las filas menos la cabecera #}
                 $('#bodyComisiones tr:not(:first-child)').remove();
@@ -190,7 +175,20 @@
                 };
             });
         renderer = new Timetable.Renderer(timetable);
-        renderer.draw('.timetable'); 
+        renderer.draw('.timetable');
         };
+    </script>
+    <script>
+        $(document).on('click','.time-entry',function(){
+            var titulo=this.title;
+            var newEvents=[];
+            timetable.events.forEach(function (e){
+                if (e.name!=titulo){
+                    newEvents.push(e);
+                }
+            });
+            timetable.events=newEvents;
+            renderer.draw('.timetable');
+        });
     </script>
 {% endblock %}
