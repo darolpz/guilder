@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<!--Imagen de fondo para referencia-->
+<style type="text/css">
+body {
+	background-image: url(1366x768-2.jpg);
+}
+	
+	#footer {
+	width: 100%;
+	position:fixed;	
+	bottom: 0px;
+	left: 0px;		
+	background-color: darkkhaki;
+	padding-top: 8px;
+	margin-top: 8px;
+	text-align: center;
+	padding-bottom: 8px;
+	}	
+	
+	.social:hover {
+		-webkit-transform:scale(1.1);
+		-moz-transform:scale(1.1);
+		-o-transform:scale(1.1);
+	}
+	.social {
+		-webkit-transform:scale(0.8);
+		-moz-transform:scale(0.8);
+		-o-transform:scale(0.8);
+		-webkit-transition-duration: 0.2s;
+		-moz-transition-duration: 0.2s;
+		-o-transition-duration: 0.2s;
+	}
+	
+	
+	#social-fb:hover{
+		color:#3B5998;
+	}
+	#social-tw:hover{
+		color:#4099FF;
+	}
+	#social-gp:hover{
+		color:#d34836;
+	}
+	#social-em:hover{
+		color:#f39c12;
+	}
+	
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+</head>
+
+
+<style>
+
+	
+
+$('.carousel').carousel({
+  interval: 2000
+})
+	
+.carousel-inner img {
+    width: 100%;
+    max-height: 300px;
+}
+
+.carousel-inner{
+ height: 500px;
+}
+
+.carousel-control.left
+			{
+				background: none;
+			}
+			.carousel-control.right
+			{
+				background: none;
+			}
+
+			
+.carousel-caption
+			{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 10;
+				padding-top: 20px;
+				padding-bottom: 20px;
+				color: #fff;
+				text-align: center;
+				background: rgba(0,0,0,0.4);
+			}
+	
+	
+
+	
+</style>
+
+<body>
+
+
+
+<div class="navbar-wrapper">
+     
+      <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+      <div class="container">
+
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand"><img src="http://universidades.en-la-argentina.com.ar/images/logo_universidades/unaj.png" width=1.2em height=1.2em style="float:left;" alt="">Güilder</a>
+    
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+      <li><a href="{{ path('homepage') }}"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+         <li><a href="{{ path('modulo1') }}"> Módulo 1</a></li> 
+         <li><a href="{{ path('modulo2') }}"> Módulo 2</a></li>
+         <li><a href="{{ path('modulo3') }}"> Módulo 3</a></li>
+		
+		<li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administración
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        <li><a href="{{ path('comision_index') }}">Comisiones</a></li>
+        <li><a href="{{ path('horario_index') }}">Horarios</a></li>
+        <li><a href="{{ path('token_index') }}">Tokens</a></li>
+        </ul>
+      </li>
+        
+		
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+       
+        <li class="social-icons icon-circle list-unstyled list-inline"> <a href="https://twitter.com/"><i class="fa fa-twitter-square"></i></a></li>
+        
+        <li class="social-icons icon-circle list-unstyled list-inline"> <a href="https://twitter.com/" class="btn btn-social-icon  btn-twitter ">
+    <span class = "fa fa-twitter"> </ span>
+  </a></li>
+        
+        
+       <li><a href="{{ path('cuenta') }}"><span class="glyphicon glyphicon-user"></span> </a></li>
+        <li><a href="{{ path('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      
+        <li><a href="{{ path('user_registration') }}"><span class="glyphicon glyphicon-user"></span> Registro</a></li>
+        <li><a href="{{ path('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      
+      </ul>
+    </div>
+   </div><!-- /.navbar-inner -->
+        </div><!-- /.navbar -->
+
+      </div> <!-- /.container -->
+    </div><!-- /.navbar-wrapper -->
+
+       
+<h1 align="center"><font size=6 color="black" face="impact" >Güilder </font></h1>
+<p align="center">&nbsp;</p>
+<p align="center">Güilder es una aplicación desarrollada por estudiantes y para estudiantes, con esta aplicación buscamos ofrecerles a los estudiantes las mejores alternativas de horarios posibles para anotarse en el cuatrimestre que se avecina, esto permitirá tener una mejor visualización y organización de su calendario universitario. Permitiendo brindar a los alumnos la posibilidad de elegir sus preferencias respecto a horarios de futuras cursadas, esto en un futuro podría ser de mucho interés para la universidad logrando que la información alojada en la bases de datos de la esta aplicación sea tomada en cuenta para determinar horarios y comisiones de próximos cuatrimestres.
+Al tratarse de una aplicación para ayudar a todos los alumnos cualquier sugerencia o aporte que tengas será bienvenido, así que te invito a que dejes tu opinión o comentario al respecto en el siguiente link:
+</p>       
+       
+	<p align="center" > <a href="contacto.html"> CONTACTO</a> </p>      
+        
+<div id="footer">
+	<div class="row">
+		
+		<p class="lead">
+			
+			<!-- <li class="social-icons icon-circle list-unstyled list-inline"> </li> -->
+			
+			
+			
+			
+			<a href="facebook.com"> <i id="social-gp" class="fa fa-google-plus-square fa-2x social"> </i></a>
+			<a href="facebook.com"><i id="social-em" class="fa fa-envelope-square fa-2x social"> </i></a>
+			<a href="facebook.com"><i id="social-tw" class="fa fa-twitter-square fa-2x social"> </i></a>
+			<a href="facebook.com"><i id="social-fb" class="fa fa-facebook-square fa-2x social"></i></a>
+			<a href="Untitled-3.html"><i >Inicio</i></a>
+			
+		</p>
+		
+		
+	</div>
+</div>        
+      
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.js"></script> 
+
+
+</body>
+</html>
+
