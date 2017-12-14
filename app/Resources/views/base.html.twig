@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" id="fondoBase">
+<html lang="en">
 
 
     
 
 
     <head>
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('G1negro.ico') }}" />
         <meta charset="UTF-8" />
         <title>{% block title %} Título base {% endblock %}</title>
         {% block bootstrap %}
@@ -368,15 +368,15 @@
                     </div>
                 </div>
                                 
-            {% endblock %} {% block body %}
-            
-            {% endblock %} {% block javascripts %}
-                
-
-            <!--Esto deberia verse debajo del header y arriba de la vista, como en cabecera como
+           <!--Esto deberia verse debajo del header y arriba de la vista, como en cabecera como
             cuando te salta cualquier error-->
-            <div class="container">
+            <div>
                 <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-m-12">
+                            <h1>&nbsp;</h1>
+                        </div>
+                    </div>
                     <!-- El primero es un mensaje de success (verde) y el segundo de alert (rojo). Ambos de Bootstrap  -->
                     {% for mensaje in app.session.flashbag().get('good') %}
                         <div class="alert alert-success">{{mensaje}}</div>
@@ -386,6 +386,13 @@
                     {%endfor%}
                 </div>
             </div>
+                                
+            {% endblock %} {% block body %}
+            
+            {% endblock %} {% block javascripts %}
+                
+
+            
                 
             {% endblock %}
              
@@ -395,7 +402,10 @@
             </div>
             <div id="footer">
                     <div class="row">
-                        <div class="col-md-4 col-md-offset-4">
+                        <div class="col-md-4 text-center">
+                            <img id="profile-img" src="{{ asset('logoA.png') }}" />
+                        </div>
+                        <div class="col-md-4">
                             <div id="contenido">
                                 <p class="lead text-center">
                                     <!-- <li class="social-icons icon-circle list-unstyled list-inline"> </li> -->
@@ -427,7 +437,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p align="center">Güilder es una aplicación desarrollada por estudiantes y para estudiantes, con esta aplicación buscamos ofrecerles a los estudiantes las mejores alternativas de horarios posibles para anotarse en el cuatrimestre que se avecina, esto permitirá tener una mejor visualización y organización de su calendario universitario. Permitiendo brindar a los alumnos la posibilidad de elegir sus preferencias respecto a horarios de futuras cursadas, esto en un futuro podría ser de mucho interés para la universidad logrando que la información alojada en la bases de datos de la esta aplicación sea tomada en cuenta para determinar horarios y comisiones de próximos cuatrimestres.
+                                <p align="justify">Güilder es una aplicación desarrollada por estudiantes y para estudiantes, con esta aplicación buscamos ofrecerles a los estudiantes las mejores alternativas de horarios posibles para anotarse en el cuatrimestre que se avecina, esto permitirá tener una mejor visualización y organización de su calendario universitario. Permitiendo brindar a los alumnos la posibilidad de elegir sus preferencias respecto a horarios de futuras cursadas, esto en un futuro podría ser de mucho interés para la universidad logrando que la información alojada en la bases de datos de la esta aplicación sea tomada en cuenta para determinar horarios y comisiones de próximos cuatrimestres.
 									Al tratarse de una aplicación para ayudar a todos los alumnos cualquier sugerencia o aporte que tengas será bienvenido, así que te invito a que dejes tu opinión enviandonos tu comentario.
 								</p> 
                             </div>
