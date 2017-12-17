@@ -10,7 +10,7 @@
         <meta charset="UTF-8" />
         <title>{% block title %} Título base {% endblock %}</title>
         {% block bootstrap %}
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}"> 
        {# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
         <!-- Latest compiled and minified CSS -->
@@ -20,7 +20,8 @@
 {#        <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>#}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-     
+     	<link rel="stylesheet" href="estilos.css">
+		<link rel="stylesheet" href="fonts.css">
         
         {% endblock %}
         {% block extras %} 
@@ -28,9 +29,39 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
         crossorigin="anonymous"></script>
         <script src="{{ asset('js/bootstrap.min.js')}}"></script>{% endblock %}
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="main.js"></script>
+		<script>
+			$(document).ready(main);
+	 
+			var contador = 1;
+			var aparecer = 0;
+			function main () {
+				$('.menu_bar span').click(function(){
+					if (contador == 1) {
+						$('nav').animate({
+							left: '0'
+						});
+						contador = 0;
+					} else {
 
+						contador = 1;
+						$('nav').animate({
+							left: '-100%'
+						});
+						aparecer = 2;
+					}
+				});
+				
+				// Mostramos y ocultamos submenus
+				$('.submenu').click(function(){
+					$(this).children('.children').slideToggle();
+				});
+			}
+		</script>
 
-
+		
+		</script> 
 
         <style type="text/css">
             /*
@@ -40,7 +71,11 @@
                 background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
             }*/
             * {
-              box-sizing: border-box;
+            	padding:0;
+				margin:0;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+                box-sizing: border-box;
             }
             body {
                 margin: 0;
@@ -61,6 +96,211 @@
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee', GradientType=1 );
                 Copy text
             }
+            /************ 
+			//-------------------------------
+			// CABECERA
+			//-------------------------------
+			************/
+
+			
+			.menu_bar {
+				display:none;
+			}
+			.container1{
+				z-index:1000;
+				width:100%;
+				height: 56px;
+				position: fixed;
+			}
+			header {
+				width: 100%;
+				height: 70px;
+			}
+
+			header nav {
+				background:#023859;
+				z-index:1000;
+				width:100%;
+				height: 56px;
+				padding-right: 115px;
+				padding-left: 115px;
+			}
+
+			header nav ul {
+				list-style:none;
+			}
+
+			header nav ul .derecha{
+				list-style:none;
+				float: right;
+			}
+
+			header nav ul li {
+				display:inline-block;
+				position: relative;
+			}
+			header nav ul li .submenu {
+				display:inline-block;
+				position: relative;
+				text-decoration: none;
+			}
+			header nav ul li a:hover {
+				text-decoration: none;
+				background-color: #ddd;
+	  			color: black;
+			}
+
+			header nav ul li a {
+				color:#fff;
+				display:block;
+				text-decoration:none;
+				padding: 18px;
+				font-size: 14px;
+				text-align: center;
+			}
+
+			header nav ul li a span {
+				margin-right:10px;
+				
+			}
+
+			header nav ul li:hover .children {
+				display:block;
+				
+			}
+
+			header nav ul li .children {
+				display: none;
+				background:#011826;
+				position: absolute;
+				width: 150%;
+				z-index:1000;
+				
+			}
+
+			header nav ul li .children li {
+				display:block;
+				overflow: hidden;
+				border-bottom: 1px solid rgba(255,255,255,.5);
+			}
+
+			header nav ul li .children li a {
+				display: block;
+			}
+
+			header nav ul li .children li a span {
+				float: right;
+				position: relative;
+				top:3px;
+				margin-right:0;
+				margin-left:10px;
+			}
+
+			header nav ul li .caret {
+				position: relative;
+				top:3px;
+				margin-left:10px;
+				margin-right:0px;
+			}
+			.active {
+				background-color: #4CAF50;
+				color: white;
+			}
+			
+			@media screen and (max-width: 900px) {
+				body {
+					padding-top:80px;
+				}
+			
+				.menu_bar {
+					display:block;
+					width:100%;
+					position: fixed;
+					top:0;
+					background-color: #E6344A;
+					z-index:1000;
+				}
+
+				.menu_bar .bt-menu {
+					display: block;
+					padding: 17px;
+					color: #fff;
+					overflow: hidden;
+					font-size: 24px;
+					font-weight: bold;
+					text-decoration: none;
+				}
+				.menu_bar span {
+					float: right;
+					font-size: 40px;
+					display: block;
+					color: #fff;
+				}
+				header nav ul {
+					list-style:none;
+				}
+				header nav ul .derecha{
+					list-style:none;
+					float: none;
+				}
+				header nav {
+					width: 100%;
+					height: calc(100% - 80px);
+					position: fixed;
+					right:100%;
+					margin: 0;
+					overflow: scroll;
+					padding-right: 0;
+					padding-left: 0;
+				}
+
+				header nav ul li {
+					display: block;
+					border-bottom:1px solid rgba(255,255,255,.5);
+				}
+
+				header nav ul li a {
+					display: block;
+				}
+
+				header nav ul li:hover .children {
+					display: none;
+				}
+
+				header nav ul li .children {
+					width: 100%;
+					position: relative;
+				}
+
+				header nav ul li .children li a {
+					margin-left:20px;
+				}
+
+				header nav ul li .caret {
+					float: right;
+				}
+				
+			}
+			/************ 
+			//------------------------------
+			// CONTENIDO
+			//------------------------------
+			************/
+			#main-content {
+				width: 100%;
+				max-width: 1140px;
+				margin: 70px auto;
+				/*box-shadow: 0 0 10px rgba(0,0,0,.1);*/ /* Usar para relizar un recuadro en el contenido de alguno de los módulos*/
+			}
+			#main-content header,
+			#main-content .content {
+				padding: 0px; /* px a no tener en cuenta de los costados*/
+			}
+			/************ 
+			//------------------------------
+			// LOGIN
+			//------------------------------
+			************/
             .panel-primary{
                 text-align: left;
             }
@@ -193,13 +433,12 @@
             .forgot-password:focus{
                 color: rgb(12, 97, 33);
             }
-            #header{
-                top: 0;
-                width: 100%;
-                position:fixed;
-                z-index: 100;
-            }
 
+            /************ 
+			//------------------------------
+			// FOOTER
+			//------------------------------
+			************/
 
             #footer {
                 background: rgba(212,228,239,1);
@@ -258,6 +497,11 @@
                 color:#f39c12;
             }
 
+            /************ 
+			//------------------------------
+			// CAROUSEL
+			//------------------------------
+			************/
         
             $('.carousel').carousel({
               interval: 2000
@@ -317,75 +561,65 @@
         <body > 
             {% block header %}
                                
-                
-            <div class="container">
-                <div id="header">
-                    <div class="row">
-                        <div class="col-md-12 text-center"> 
-                        <!--<div class="col-md-12 col-md-offset-1 text-center">-->
-                            <nav class="navbar navbar-inverse align-items-center transparent navbar-fixed-top navbar-toggleable-sm bg-color">
-                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>                        
-                                        </button>
-                                        <a class="navbar-brand"><img src="http://universidades.en-la-argentina.com.ar/images/logo_universidades/unaj.png" width=1.2em height=1.2em style="float:left;" alt="">Güilder</a>
-                                    
-                                        <div class="collapse navbar-collapse" id="myNavbar">
-                                            <ul class="nav navbar-nav">
-                                                {% block inicio %}<li><a href="{{ path('homepage') }}"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>{% endblock %}
-                                                {% block mod1 %}  <li><a href="{{ path('modulo1') }}"> Organizar Cursada</a></li> {% endblock %}
-                                                {% block mod2 %} <li><a href="{{ path('modulo2') }}"> Historial Horarios</a></li>{% endblock %}
-                                                {% block mod3 %} <li><a href="{{ path('modulo3') }}"> Encuesta</a></li>{% endblock %}
-                                                {% if is_granted('ROLE_ADMIN') %}
-                                                <li class="dropdown">
-                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administración
-                                                    <span class="caret"></span></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="{{ path('comision_index') }}">Comisiones</a></li>
-                                                        <li><a href="{{ path('horario_index') }}">Horarios</a></li>
-                                                        <li><a href="{{ path('token_index') }}">Tokens</a></li>
-                                                        <li><a href="{{ path('user_index') }}">Usuarios</a></li>
-                                                    <li><a href="{{ path('excel') }}">Carga de comisiones</a></li>
-                                                    </ul>
-                                                </li>
+             
+            <div class="container1">
+                <header>
+                	<div class="menu_bar">
+						<ul class="bt-menu">
+							<h>Menú</h>
+							<a href="#" ><span href="javascript:void(0);" style="font-size:25px;" class="icon">&#9776;</span></a>
+						</ul>
+					</div>
+                    <nav>	   
+                        <ul>                    
+                            {% block inicio %}<li><a href="{{ path('homepage') }}"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>{% endblock %}
+                            {% block mod1 %}  <li><a href="{{ path('modulo1') }}"> Organizar Cursada</a></li> {% endblock %}
+                            {% block mod2 %} <li><a href="{{ path('modulo2') }}"> Historial Horarios</a></li>{% endblock %}                
+                            {% block mod3 %} <li><a href="{{ path('modulo3') }}"> Encuesta</a></li>{% endblock %}                
+                            {% if is_granted('ROLE_ADMIN') %}                                
+                            <li class="submenu">
+                                <a href="#" style="text-decoration: none">Administración<span class="caret"></span></a>
+                                <ul class="children">                
+                                    <li><a href="{{ path('comision_index') }}">Comisiones</a></li>                
+                                    <li><a href="{{ path('horario_index') }}">Horarios</a></li>                
+                                    <li><a href="{{ path('token_index') }}">Tokens</a></li>                
+                                    <li><a href="{{ path('user_index') }}">Usuarios</a></li>                
+                                    <li><a href="{{ path('excel') }}">Carga de comisiones</a></li>            	
+                                </ul>                
+                            </li>                                                
 
-                                                {% endif %}
-                                            </ul>
-                                            <ul class="nav navbar-nav navbar-right">
-                                                {% if app.user %}
-                                                <li><a href="{{ path('cuenta_index') }}"><span class="glyphicon glyphicon-user"></span> {{ app.user }}</a></li>
-                                                <li><a href="{{ path('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                                                {% else %}
-                                                <li><a href="{{ path('user_registration') }}"><span class="glyphicon glyphicon-user"></span> Registro</a></li>
-                                                <li><a href="{{ path('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                                                {% endif %}
-                                            </ul>
-                                        </div>
-                                 
-                            </nav>
-                        </div>
-                    </div>
+                            {% endif %}                
+                                        
+                            {% if app.user %}                
+                            <li class="derecha"><a href="{{ path('cuenta_index') }}"><span class="glyphicon glyphicon-user"></span> {{ app.user }}</a></li>                
+                            <li class="derecha"><a href="{{ path('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>               
+                            {% else %}                
+                            <li class="derecha"><a href="{{ path('user_registration') }}"><span class="glyphicon glyphicon-user"></span> Registro</a></li>                
+                            <li class="derecha"><a href="{{ path('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>                
+                            {% endif %}                                
+                        </ul>                
+                    </nav>
+                </header>
                 </div>
-                                
+            <main id="main-content">                   
            <!--Esto deberia verse debajo del header y arriba de la vista, como en cabecera como
             cuando te salta cualquier error-->
-            <div>
-                <div class="col-md-11">
-                    <div class="row">
-                        <div class="col-m-12">
-                            <h1>&nbsp;</h1>
-                        </div>
-                    </div>
-                    <!-- El primero es un mensaje de success (verde) y el segundo de alert (rojo). Ambos de Bootstrap  -->
-                    {% for mensaje in app.session.flashbag().get('good') %}
-                        <div class="alert alert-success">{{mensaje}}</div>
-                    {%endfor%}
-                    {% for mensaje in app.session.flashbag().get('error') %}
-                        <div class="alert alert-danger">{{mensaje}}</div>
-                    {%endfor%}
-                </div>
-            </div>
+	            <div>
+	            <!--<div class="col-md-11">
+	                    <div class="row">
+	                        <div class="col-m-12">
+	                            <h1>&nbsp;</h1>
+	                        </div>
+	                    </div>-->
+	                    <!-- El primero es un mensaje de success (verde) y el segundo de alert (rojo). Ambos de Bootstrap  -->
+	                    {% for mensaje in app.session.flashbag().get('good') %}
+	                        <div class="alert alert-success">{{mensaje}}</div>
+	                    {%endfor%}
+	                    {% for mensaje in app.session.flashbag().get('error') %}
+	                        <div class="alert alert-danger">{{mensaje}}</div>
+	                    {%endfor%}
+	           <!--</div>-->
+	            </div>
                                 
             {% endblock %} {% block body %}
             
@@ -398,8 +632,8 @@
              
             
 
-                
-            </div>
+             
+            </main> 
             <div id="footer">
                     <div class="row">
                         <div class="col-md-4 text-center">
