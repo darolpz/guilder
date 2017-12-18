@@ -8,8 +8,11 @@ export class Comision{
     public inicio:string;
     public fin:string;
     public segundos:number;
+    public idmateria:number;
     
-    constructor(){
-        
+    constructor(idmateria,year,cuatrimestre){
+        this.idmateria=idmateria;
+        this.year=year;
+        this.cuatrimestre=cuatrimestre;
     }
 }

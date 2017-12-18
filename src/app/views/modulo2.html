@@ -2,19 +2,50 @@
     {{title}}
 </h2>
 
-<table *ngIf="materias" class="table table-striped" >
+<form #formProducto="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-producto">
+    <table>
+        <thead>
+            <tr>
+                <th>Materia</th>
+                <th>Año</th>
+                <th>Cuatrimestre</th>
+            </tr>
+            <tr>
+                <td>
+                    <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="comision.idmateria">
+                        <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
+                    </select>
+                </td>
+                <td><input class="form-control" type="number" id="year" #year="ngModel" name="year" [(ngModel)]="comision.year"/></td>
+                <td> <input class="form-control" type="number" id="cuatrimestre" pattern="[1-2]" id="year" #cuatrimestre="ngModel" name="cuatrimestre" [(ngModel)]="comision.cuatrimestre"/></td>
+            </tr>
+        </thead>
+    </table>
+    <input type="submit" value="Consultar comisiones" class="btn btn-success"/>
+</form>
+<hr/>
+
+<table *ngIf="comisiones" class="table table-striped" >
     <thead>
         <tr>
-            <th>año</th>
-            <th>nombre</th>
-            <th>codigo</th>
+            <th scope="col">Numero de comision</th>
+            <th scope="col">Profesor</th>
+            <th scope="col">Año </th>
+            <th scope="col">Cuatrimestre</th>
+            <th scope="col">Dia </th>
+            <th scope="col">Hora de inicio</th>
+            <th scope="col">Hora de fin</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let m of materias">
-            <td>{{m.anio}}</td>
-            <td>{{m.nombre}}</td>
-            <td>{{m.codigo}}</td>
+        <tr *ngFor="let c of comisiones">
+            <td>{{c.numero}}</td>
+            <td>{{c.profesor}}</td>
+            <td>{{c.year}}</td>
+            <td>{{c.cuatrimstre}}</td>
+            <td>{{c.dia}}</td>
+            <td>{{c.inicio}}</td>
+            <td>{{c.fin}}</td>
         </tr>
     </tbody>
 </table>
