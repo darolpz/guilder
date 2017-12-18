@@ -12,9 +12,10 @@ use AppBundle\Entity\Comision;
 use AppBundle\Entity\Horario;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HTTPFoundation\Session\Session;
+use JMS\Serializer\SerializerBuilder;
 
 /**
- * Admin controller.
+ * Api controller.
  *
  * @Route("api")
  */
@@ -84,6 +85,19 @@ class ApiController extends Controller {
 
 
         return new Response($json);
+    }
+    
+        /**
+     * @Route("/getmaterias", name="getmaterias")
+     * @Method({"GET" })
+     */
+    public function getMateriasAction() {
+        $em = $this->getDoctrine()->getManager();
+        $materias = $em->getRepository('AppBundle:Materia')->findAll();
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($materias,'json');
+        return new Response($jsonContent);
+        
     }
 
 }
