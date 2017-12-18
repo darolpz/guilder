@@ -1,0 +1,16 @@
+<div id="content" class="col-lg-10 col-lg-offset-1">
+    <header id="header" class="col-lg-12" [style.background]="header_color">
+    <h1>{{title}}</h1>
+    </header>
+    <nav id="nav">
+        <ul>
+            <li><a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a></li>
+            <li><a [routerLink]="['/modulo2']" [routerLinkActive]="['activado']">Modulo2</a></li>
+            <li><a href="#">Modulo3</a></li>
+            
+        </ul>
+    </nav>
+    <section id="main" class="col-lg-12">
+    <router-outlet></router-outlet>
+    </section>
+</div>

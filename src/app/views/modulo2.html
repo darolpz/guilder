@@ -1,0 +1,20 @@
+<h2>
+    {{title}}
+</h2>
+
+<table *ngIf="materias" class="table table-striped" >
+    <thead>
+        <tr>
+            <th>año</th>
+            <th>nombre</th>
+            <th>codigo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of materias">
+            <td>{{m.anio}}</td>
+            <td>{{m.nombre}}</td>
+            <td>{{m.codigo}}</td>
+        </tr>
+    </tbody>
+</table>
