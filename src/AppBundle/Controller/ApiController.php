@@ -26,10 +26,14 @@ class ApiController extends Controller {
      * @Method({"GET" ,"POST"})
      */
     public function Apim2Action(Request $request) {
+        
+        $json = $request->request->get('json');
+        $data = json_decode($json, true);
 
-        $materia = $request->request->get('materia');
-        $year = $request->request->get('year');
-        $cuatri = $request->request->get('cuatri');
+        $materia = $data['idmateria'];
+        $year = $data['year'];
+        $cuatri = $data['cuatrimestre'];
+        
         $em = $this->getDoctrine()->getManager();
         if ($year == null) {//Caso 1,la comision no tiene año
             if ($cuatri == null) {//no tiene año y no tiene cuatrimestre
@@ -80,11 +84,11 @@ class ApiController extends Controller {
         }
 
 
-        $json = json_encode($comis, JSON_UNESCAPED_UNICODE);
+        $jsonContent = json_encode($comis, JSON_UNESCAPED_UNICODE);
 
 
 
-        return new Response($json);
+        return new Response($jsonContent);
     }
     
         /**

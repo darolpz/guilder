@@ -124,7 +124,9 @@
                 if (!(cuatri == 1 || cuatri == 2 || cuatri == 0))
                     throw alert("Cuatrimestre invalido");
                 
-                $.post("{{url('m2')}}", {materia: mat, year: year, cuatri: cuatri}, function (rta) {
+                var param = JSON.stringify({"idmateria":mat,"year":year,"cuatrimestre":cuatri});
+
+                $.post("{{url('m2')}}", {json: param}, function (rta) {
                     var com = JSON.parse(rta);
 
                     com.forEach(function (dato) {
