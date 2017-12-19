@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Materia } from '../models/materia';
+import { Comision } from '../models/comision';
 
 @Component({
   selector: 'modulo1',
@@ -10,11 +11,22 @@ import { Materia } from '../models/materia';
 export class Modulo1Component{
     public title:string;
     public materias:Materia[];
+    public comision:Comision;
+    public comisiones:Comision[];
+    
+    public actualyear:number;
+    public cuatrimestreactual:number;
+    
+    
     
     constructor(
         private _apiService:ApiService
         ){
-        this.title='Historial de comisiones';
+        this.title='Organizador de cursada';
+        this.actualyear=2017;
+        this.cuatrimestreactual=2;
+        this.comision=new Comision('',this.actualyear,this.cuatrimestreactual);
+        
     }
     
     ngOnInit(){
@@ -28,6 +40,19 @@ export class Modulo1Component{
             console.log(<any>error);
         }
         );
+    }
+    
+    onSubmit(){       
+        this._apiService.getComisiones(this.comision).subscribe(
+            result => {
+                    this.comisiones = result;
+                    console.log(this.comision);
+            },
+            error=>{
+                console.log(<any>error);
+            }
+        );
+
     }
     
 }

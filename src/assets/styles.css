@@ -44,3 +44,7 @@
    text-decoration: none;
    background: #E03137;
 }
+
+.turno{
+    float: right;
+}

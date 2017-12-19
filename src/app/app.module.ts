@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home.component';
 import { ErrorComponent} from './components/error.component';
 import { Modulo1Component } from './components/modulo1.component';
 import { Modulo2Component } from './components/modulo2.component';
+import { Modulo3Component } from './components/modulo3.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { Modulo2Component } from './components/modulo2.component';
     HomeComponent,
     ErrorComponent,
     Modulo1Component,
-    Modulo2Component
+    Modulo2Component,
+    Modulo3Component
   ],
   imports: [
     BrowserModule,

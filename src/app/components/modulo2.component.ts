@@ -10,7 +10,6 @@ import { Comision } from '../models/comision';
 })
 export class Modulo2Component {
     public title:string;
-    public materia:Materia;
     public materias:Materia[];
     public comision:Comision;
     public comisiones:Comision[];
