@@ -23,6 +23,9 @@
      	<link rel="stylesheet" href="estilos.css">
 		<link rel="stylesheet" href="fonts.css">
         
+		<!-- Links para tipografías de texto de Google Fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
         {% endblock %}
         {% block extras %} 
     	<script src="{{ asset('js/jquery-3.2.1.min.js')}}"></script>
@@ -292,10 +295,37 @@
 				margin: 70px auto;
 				/*box-shadow: 0 0 10px rgba(0,0,0,.1);*/ /* Usar para relizar un recuadro en el contenido de alguno de los módulos*/
 			}
-			#main-content header,
+			#main-content .titulo h1{
+				background-color: rgba(223,241,243,1.00);
+				color:#023859;
+				/*color: rgba(162,110,111,1.00);*/
+				padding-bottom: 30px;
+				padding-top: 20px;
+				text-align: center;
+				font-family: 'Montserrat', sans-serif;
+			}
 			#main-content .content {
 				padding: 0px; /* px a no tener en cuenta de los costados*/
 			}
+			/************ 
+			//------------------------------
+			// MÓDULO 1
+			//------------------------------
+			************/
+			.contenedorModulo1{
+				background-color: rgba(179,203,205,1.00);
+			}
+			.containerTablas{
+				max-width: 1140px;
+				height: 520px;
+			}
+			.timetable{
+				height: 345px;
+				width: 100%;
+			}
+
+
+
 			/************ 
 			//------------------------------
 			// LOGIN

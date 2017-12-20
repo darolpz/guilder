@@ -9,11 +9,15 @@
    <script src="../../scripts/timetable.min.js"></script>
  {% endblock %}
 {% block body %}
- <div class="hero-unit">
-      <h1 id="encabezado">¡Organiza tu cursada!</h1>
+<div class=contenedorModulo1>
+    <div class="titulo">
+        <h1>¡Organiza tu cursada!</h1>
     </div>
-<div class="container" >
-<div id="tablas" class="container">
+
+<!-- <div class="container" > -->
+<div class="content">
+<!--<div id="tablas" class="container"> -->
+    <div id="tablas" class="containerTablas">
         
         {#    Tabla de materias con botones  #}
         <div id="tablaMaterias">
@@ -52,9 +56,10 @@
                 </tbody>
             </table>
         </div>
+    </div>
 </div>
-            
-    <div class="timetable">
+<div class="content">     
+    <div class="timetable" >
         <aside> 
             <ul>
                 <li>
@@ -134,6 +139,7 @@
             </time>
         </section>
     </div>
+</div>
 </div>
     <script src="//www.google-analytics.com/analytics.js"></script><script src="../scripts/timetable.min.js"></script>
 
