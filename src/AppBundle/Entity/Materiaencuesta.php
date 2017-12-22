@@ -15,6 +15,13 @@ class Materiaencuesta
     /**
      * @var integer
      *
+     * @ORM\Column(name="turno", type="integer", nullable=false)
+     */
+    private $turno;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="idEncuestaMateria", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -46,6 +53,30 @@ class Materiaencuesta
     private $idmateria;
 
 
+
+    /**
+     * Set turno
+     *
+     * @param integer $turno
+     *
+     * @return Materiaencuesta
+     */
+    public function setTurno($turno)
+    {
+        $this->turno = $turno;
+
+        return $this;
+    }
+
+    /**
+     * Get turno
+     *
+     * @return integer
+     */
+    public function getTurno()
+    {
+        return $this->turno;
+    }
 
     /**
      * Set idencuestamateria
