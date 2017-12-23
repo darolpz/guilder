@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Comision;
+use AppBundle\Entity\Materia;
 use AppBundle\Entity\Horario;
 use AppBundle\Entity\Apiencuesta;
 use AppBundle\Entity\Materiaencuesta;
@@ -114,9 +115,9 @@ class ApiController extends Controller {
         $json = $request->request->get('json');
         $data = json_decode($json, true);
         $helpers = $this->get(Helpers::class);
+        $em = $this->getDoctrine()->getManager();
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         foreach ($data as $d) {
-            $em = $this->getDoctrine()->getManager();
             $materia = $em->getRepository('AppBundle:Materia')->findOneByidmateria($d["idmateria"]);
             settype($d["turno"], "integer");
 
@@ -139,6 +140,43 @@ class ApiController extends Controller {
         );
 
         return $helpers->json($rta);
+    }
+
+    /**
+     * @Route("/resultado", name="resultado")
+     * @Method({"GET" ,"POST"})
+     */
+    public function ResultadoAction(Request $request) {
+        $json = $request->request->get('json');
+        $data = json_decode($json, true);
+        settype($data, "integer");
+        $em = $this->getDoctrine()->getManager();
+        $helpers = $this->get(Helpers::class);
+        
+        $materia = $em->getRepository('AppBundle:Materia')->findOneByidmateria($data);
+        $resultados = $em->getRepository('AppBundle:Materiaencuesta')->findByidmateria($materia);
+        $index1=0;
+        $index2=0;
+        $index3=0;
+        foreach ($resultados as $r) {
+            if($r->getTurno() == 1){
+                $index1++;
+            }
+            if($r->getTurno() == 2){
+                $index2++;
+            }
+            if($r->getTurno() == 3){
+                $index3++;
+            }
+        }
+        
+        $respuesta = array(
+            'materia' => $materia->getNombre(),
+            'Tm' => $index1,
+            'Tt' => $index2,
+            'Tn' => $index3
+        );
+        return $helpers->json($respuesta);
     }
 
 }
