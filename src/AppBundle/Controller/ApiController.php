@@ -10,9 +10,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Comision;
 use AppBundle\Entity\Horario;
+use AppBundle\Entity\Apiencuesta;
+use AppBundle\Entity\Materiaencuesta;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HTTPFoundation\Session\Session;
 use JMS\Serializer\SerializerBuilder;
+use AppBundle\Services\Helpers;
 
 /**
  * Api controller.
@@ -26,14 +29,14 @@ class ApiController extends Controller {
      * @Method({"GET" ,"POST"})
      */
     public function Apim2Action(Request $request) {
-        
+
         $json = $request->request->get('json');
         $data = json_decode($json, true);
 
         $materia = $data['idmateria'];
         $year = $data['year'];
         $cuatri = $data['cuatrimestre'];
-        
+
         $em = $this->getDoctrine()->getManager();
         if ($year == null) {//Caso 1,la comision no tiene año
             if ($cuatri == null) {//no tiene año y no tiene cuatrimestre
@@ -90,8 +93,8 @@ class ApiController extends Controller {
 
         return new Response($jsonContent);
     }
-    
-        /**
+
+    /**
      * @Route("/getmaterias", name="getmaterias")
      * @Method({"GET" })
      */
@@ -99,9 +102,43 @@ class ApiController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $materias = $em->getRepository('AppBundle:Materia')->findAll();
         $serializer = SerializerBuilder::create()->build();
-        $jsonContent = $serializer->serialize($materias,'json');
+        $jsonContent = $serializer->serialize($materias, 'json');
         return new Response($jsonContent);
-        
+    }
+
+    /**
+     * @Route("/encuesta", name="encuesta")
+     * @Method({"GET" ,"POST"})
+     */
+    public function EncuestaAction(Request $request) {
+        $json = $request->request->get('json');
+        $data = json_decode($json, true);
+        $helpers = $this->get(Helpers::class);
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
+        foreach ($data as $d) {
+            $em = $this->getDoctrine()->getManager();
+            $materia = $em->getRepository('AppBundle:Materia')->findOneByidmateria($d["idmateria"]);
+            settype($d["turno"], "integer");
+
+            $materiaencuesta = new Materiaencuesta();
+            $encuesta = new Apiencuesta();
+
+            $encuesta->setCreatedat(new \DateTime(date_default_timezone_get()));
+            $materiaencuesta->setIdencuesta($encuesta);
+            $materiaencuesta->setIdmateria($materia);
+            $materiaencuesta->setTurno($d["turno"]);
+
+            $em->persist($encuesta);
+            $em->persist($materiaencuesta);
+            $em->flush();
+        }
+
+        $rta = array(
+            'status' => 'success',
+            'data' => 'La encuesta ha sido procesada'
+        );
+
+        return $helpers->json($rta);
     }
 
 }

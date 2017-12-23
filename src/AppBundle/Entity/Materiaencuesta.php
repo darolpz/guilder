@@ -24,14 +24,14 @@ class Materiaencuesta
      *
      * @ORM\Column(name="idEncuestaMateria", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idencuestamateria;
 
     /**
      * @var \AppBundle\Entity\Apiencuesta
      *
-     * @ORM\Id
+     *
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Apiencuesta")
      * @ORM\JoinColumns({
@@ -43,7 +43,7 @@ class Materiaencuesta
     /**
      * @var \AppBundle\Entity\Materia
      *
-     * @ORM\Id
+     *
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Materia")
      * @ORM\JoinColumns({
