@@ -9,7 +9,7 @@
                     <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
                 </select>
             </td>
-            <td> <select class="form-control col-lg-4 turno">
+            <td> <select class="form-control col-lg-4" #turno="ngModel" name="turno" [(ngModel)]="materia1.turno">
                     <option value="1">Turno Mañana</option>
                     <option value="2">Turno Tarde</option>
                     <option value="3">Turno Noche</option>
@@ -22,7 +22,7 @@
                     <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
                 </select>
             </td>
-            <td> <select class="form-control col-lg-4 turno">
+            <td> <select class="form-control col-lg-4 turno" #turno="ngModel" name="turno" [(ngModel)]="materia2.turno">
                     <option value="1">Turno Mañana</option>
                     <option value="2">Turno Tarde</option>
                     <option value="3">Turno Noche</option>
@@ -35,7 +35,7 @@
                     <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
                 </select>
             </td>
-            <td> <select class="form-control col-lg-4 turno">
+            <td> <select class="form-control col-lg-4 turno" #turno="ngModel" name="turno" [(ngModel)]="materia3.turno">
                     <option value="1">Turno Mañana</option>
                     <option value="2">Turno Tarde</option>
                     <option value="3">Turno Noche</option>
@@ -48,7 +48,7 @@
                     <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
                 </select>
             </td>
-            <td> <select class="form-control col-lg-4 turno">
+            <td> <select class="form-control col-lg-4 turno" #turno="ngModel" name="turno" [(ngModel)]="materia4.turno">
                     <option value="1">Turno Mañana</option>
                     <option value="2">Turno Tarde</option>
                     <option value="3">Turno Noche</option>
@@ -61,7 +61,7 @@
                     <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
                 </select>
             </td>
-            <td> <select class="form-control col-lg-4 turno">
+            <td> <select class="form-control col-lg-4 turno" #turno="ngModel" name="turno" [(ngModel)]="materia5.turno">
                     <option value="1">Turno Mañana</option>
                     <option value="2">Turno Tarde</option>
                     <option value="3">Turno Noche</option>

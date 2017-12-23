@@ -30,4 +30,12 @@ export class ApiService {
                 
 
     }
+    
+    postEncuesta(materias){
+        let json=JSON.stringify(materias);        
+        let params='json='+json;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'encuesta',params,{headers:headers})
+                .map(res => res.json());
+    }
 }

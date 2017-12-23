@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Materia } from '../models/materia';
 import { Comision } from '../models/comision';
+import { Encuesta } from '../models/encuesta';
 
 @Component({
   selector: 'modulo3',
@@ -13,23 +14,35 @@ import { Comision } from '../models/comision';
 export class Modulo3Component {
     public title:string;
     public materias:Materia[];
-    public comision:Comision;
-    public materia1:Materia;
-    public materia2:Materia;
-    public materia3:Materia;
-    public materia4:Materia;
-    public materia5:Materia;
+    public materias2:Encuesta[];
+    public materia1:Encuesta;
+    public materia2:Encuesta;
+    public materia3:Encuesta;
+    public materia4:Encuesta;
+    public materia5:Encuesta;
+    
+    public encuesta:Array<any>;
+    public turno1;
+    public turno2;
+    public turno3;
+    public turno4;
+    public turno5;
     
     constructor(
         private _apiService:ApiService
         ){
             this.title='Encuesta';
-            this.comision=new Comision('','','');
-            this.materia1=new Materia();
-            this.materia2=new Materia();
-            this.materia3=new Materia();
-            this.materia4=new Materia();
-            this.materia5=new Materia();
+            this.materia1=new Encuesta();
+            this.materia2=new Encuesta();
+            this.materia3=new Encuesta();
+            this.materia4=new Encuesta();
+            this.materia5=new Encuesta();
+            this.materias2=[
+            ];
+            this.encuesta = [
+                
+            ];
+            
         }
         
     ngOnInit(){     
@@ -44,11 +57,33 @@ export class Modulo3Component {
         );
     }
     
-    onSubmit(){
-        console.log(this.materia1.idmateria);
-        console.log(this.materia2.idmateria);
-        console.log(this.materia3.idmateria);
-        console.log(this.materia4.idmateria);
-        console.log(this.materia5.idmateria);
+    onSubmit(){ 
+        this.materias2.push(this.materia1);
+        this.materias2.push(this.materia2);
+        this.materias2.push(this.materia3);
+        this.materias2.push(this.materia4);
+        this.materias2.push(this.materia5);
+        for(var _i = 0; _i <5; _i++){
+            if(this.materias2[_i].idmateria != null){
+                this.encuesta.push(this.materias2[_i]);
+            }
+        }
+     
+        this._apiService.postEncuesta(this.encuesta).subscribe(
+        result => {
+            console.log('Encuesta cargada exitosamente');
+            }
+        error=>{
+            console.log(<any>error);
+        });
+        
+        this.materias2=[];
+        this.encuesta=[];
+
+           
+
+        
+      
+        
     }    
 }
