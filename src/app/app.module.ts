@@ -11,7 +11,7 @@ import { ErrorComponent} from './components/error.component';
 import { Modulo1Component } from './components/modulo1.component';
 import { Modulo2Component } from './components/modulo2.component';
 import { Modulo3Component } from './components/modulo3.component';
-
+import { Modulo4Component } from './components/modulo4.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { Modulo3Component } from './components/modulo3.component';
     ErrorComponent,
     Modulo1Component,
     Modulo2Component,
-    Modulo3Component
+    Modulo3Component,
+    Modulo4Component
   ],
   imports: [
     BrowserModule,

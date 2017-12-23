@@ -1,0 +1,30 @@
+<h2>
+    {{title}}
+</h2>
+
+<div *ngIf="flag; then siFlag else noFlag"></div>
+
+<ng-template #siFlag>
+    <form #formComision="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-encuesta2">
+        <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="encuesta.idmateria">
+            <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
+        </select>
+
+        <input type="submit" value="Enviar encuesta" class="btn btn-success"/>
+    </form>
+</ng-template>
+
+<ng-template #noFlag>
+    <h2>
+        {{respuesta.materia}}
+    </h2>
+    <ul>
+        <li>Turno mañana: {{respuesta.Tm}}</li>
+        <li>Turno mañana: {{respuesta.Tt}}</li>
+        <li>Turno mañana: {{respuesta.Tn}}</li>
+    </ul>
+    
+    <button (click)="negarFlag()" class="btn btn-success">
+        Volver
+    </button>
+</ng-template>

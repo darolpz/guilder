@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Materia } from '../models/materia';
-import { Comision } from '../models/comision';
 import { Encuesta } from '../models/encuesta';
 
 @Component({
@@ -22,11 +21,7 @@ export class Modulo3Component {
     public materia5:Encuesta;
     
     public encuesta:Array<any>;
-    public turno1;
-    public turno2;
-    public turno3;
-    public turno4;
-    public turno5;
+    public flag:boolean;
     
     constructor(
         private _apiService:ApiService
@@ -39,10 +34,9 @@ export class Modulo3Component {
             this.materia5=new Encuesta();
             this.materias2=[
             ];
-            this.encuesta = [
-                
+            this.encuesta = [                
             ];
-            
+            this.flag = true;
         }
         
     ngOnInit(){     
@@ -71,8 +65,9 @@ export class Modulo3Component {
      
         this._apiService.postEncuesta(this.encuesta).subscribe(
         result => {
+            this.flag = false;
             console.log('Encuesta cargada exitosamente');
-            }
+            },
         error=>{
             console.log(<any>error);
         });

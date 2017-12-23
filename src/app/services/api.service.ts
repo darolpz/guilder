@@ -38,4 +38,13 @@ export class ApiService {
         return this._http.post(this.url+'encuesta',params,{headers:headers})
                 .map(res => res.json());
     }
+    
+    getResultados(encuesta){
+        let json=JSON.stringify(encuesta);        
+        let params='json='+json;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'resultado',params,{headers:headers})
+                .map(res => res.json());
+        
+    }
 }
