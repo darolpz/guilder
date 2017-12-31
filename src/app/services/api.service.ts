@@ -8,6 +8,7 @@ import { Comision } from '../models/comision';
 @Injectable()
 export class ApiService {
     public url: string;
+    public identity;
     
     constructor(
     public _http: Http
@@ -46,5 +47,32 @@ export class ApiService {
         return this._http.post(this.url+'resultado',params,{headers:headers})
                 .map(res => res.json());
         
+    }
+    
+    postRegistro(user){
+        let json=JSON.stringify(user);        
+        let params='json='+json;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'registroapi',params,{headers:headers})
+                .map(res => res.json());
+    }
+    
+    login(user){
+        let json=JSON.stringify(user);        
+        let params='json='+json;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'loginapi',params,{headers:headers})
+                .map(res => res.json());
+    }
+    
+    getIdentity(){
+        let identity = JSON.parse(localStorage.getItem('identity'));
+        
+        if(identity != "undefined"){
+            this.identity = identity;
+        }else{
+            this.identity = null
+        }
+        return this.identity;
     }
 }

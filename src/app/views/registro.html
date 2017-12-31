@@ -1,0 +1,28 @@
+<div class="col-md-10"> <h2>
+    {{title}}
+</h2>
+<hr/>
+<form #registroForm="ngForm" (ngSubmit)="onSubmit()" >
+    <p>
+        <label>Usuario</label>
+        <input type="text" class="form-control" name="username" required #username=ngModel [(ngModel)]="usuario.username"/>   
+    </p>
+    <p>
+        <label>Email</label>
+        <input type="email" class="form-control" name="email" required #email=ngModel [(ngModel)]="usuario.email"/>   
+    </p>
+    <p>
+        <label>Contraseña</label>
+        <input type="password" class="form-control" name="pass1" #pass1=ngModel [(ngModel)]="usuario.password" required/>
+    </p>
+    <p>
+        <label>Repita la contraseña</label>
+        <input type="password" class="form-control" name="pass2" #pass2=ngModel [(ngModel)]="pass" required/>
+    </p>
+    <p>
+        <label>Token</label>
+        <input type="text" class="form-control" name="token" #token=ngModel [(ngModel)]="usuario.token" required/>
+    </p>
+    <input type="submit" value="Registrarse" class="btn btn-success" [disabled]="!registroForm.valid"/>
+</form>
+</div>

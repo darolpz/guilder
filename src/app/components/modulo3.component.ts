@@ -12,6 +12,7 @@ import { Encuesta } from '../models/encuesta';
 
 export class Modulo3Component {
     public title:string;
+    public identity;
     public materias:Materia[];
     public materias2:Encuesta[];
     public materia1:Encuesta;
@@ -27,6 +28,7 @@ export class Modulo3Component {
         private _apiService:ApiService
         ){
             this.title='Encuesta';
+            this.identity = this._apiService.getIdentity();
             this.materia1=new Encuesta();
             this.materia2=new Encuesta();
             this.materia3=new Encuesta();
@@ -41,6 +43,7 @@ export class Modulo3Component {
         
     ngOnInit(){     
         console.log('Se ha cargado el componente de modulo 2');
+
         this._apiService.getMaterias().subscribe(
             result => {
                 this.materias = result;
@@ -52,17 +55,19 @@ export class Modulo3Component {
     }
     
     onSubmit(){ 
+
         this.materias2.push(this.materia1);
         this.materias2.push(this.materia2);
         this.materias2.push(this.materia3);
         this.materias2.push(this.materia4);
         this.materias2.push(this.materia5);
+        this.encuesta.push(this.identity);
         for(var _i = 0; _i <5; _i++){
             if(this.materias2[_i].idmateria != null){
                 this.encuesta.push(this.materias2[_i]);
             }
         }
-     
+        
         this._apiService.postEncuesta(this.encuesta).subscribe(
         result => {
             this.flag = false;
