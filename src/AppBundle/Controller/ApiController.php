@@ -14,9 +14,10 @@ use AppBundle\Entity\Horario;
 use AppBundle\Entity\Apiencuesta;
 use AppBundle\Entity\Materiaencuesta;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HTTPFoundation\Session\Session;
 use JMS\Serializer\SerializerBuilder;
 use AppBundle\Services\Helpers;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use AppBundle\Entity\User;
 
 /**
  * Api controller.
@@ -117,23 +118,28 @@ class ApiController extends Controller {
         $helpers = $this->get(Helpers::class);
         $em = $this->getDoctrine()->getManager();
         date_default_timezone_set('America/Argentina/Buenos_Aires');
-        foreach ($data as $d) {
-            $materia = $em->getRepository('AppBundle:Materia')->findOneByidmateria($d["idmateria"]);
-            settype($d["turno"], "integer");
+        $encuesta = new Apiencuesta();
+        $encuesta->setCreatedat(new \DateTime(date_default_timezone_get()));
+        $id = $data[0]["id"];
+        $user = $em->getRepository('AppBundle:User')->findOneByiduser($id);
+        $encuesta->setIduser($user);
+   
+        for ($i = 1;$i<count($data);$i++) {
+            
+        
+            $materia = $em->getRepository('AppBundle:Materia')->findOneByidmateria($data[$i]["idmateria"]);
+            settype($data[$i]["turno"], "integer");
 
             $materiaencuesta = new Materiaencuesta();
-            $encuesta = new Apiencuesta();
-
-            $encuesta->setCreatedat(new \DateTime(date_default_timezone_get()));
             $materiaencuesta->setIdencuesta($encuesta);
             $materiaencuesta->setIdmateria($materia);
-            $materiaencuesta->setTurno($d["turno"]);
-
-            $em->persist($encuesta);
+            $materiaencuesta->setTurno($data[$i]["turno"]);         
+            
             $em->persist($materiaencuesta);
-            $em->flush();
         }
-
+ 
+        $em->persist($encuesta);
+        $em->flush();
         $rta = array(
             'status' => 'success',
             'data' => 'La encuesta ha sido procesada'
@@ -152,24 +158,24 @@ class ApiController extends Controller {
         settype($data, "integer");
         $em = $this->getDoctrine()->getManager();
         $helpers = $this->get(Helpers::class);
-        
+
         $materia = $em->getRepository('AppBundle:Materia')->findOneByidmateria($data);
         $resultados = $em->getRepository('AppBundle:Materiaencuesta')->findByidmateria($materia);
-        $index1=0;
-        $index2=0;
-        $index3=0;
+        $index1 = 0;
+        $index2 = 0;
+        $index3 = 0;
         foreach ($resultados as $r) {
-            if($r->getTurno() == 1){
+            if ($r->getTurno() == 1) {
                 $index1++;
             }
-            if($r->getTurno() == 2){
+            if ($r->getTurno() == 2) {
                 $index2++;
             }
-            if($r->getTurno() == 3){
+            if ($r->getTurno() == 3) {
                 $index3++;
             }
         }
-        
+
         $respuesta = array(
             'materia' => $materia->getNombre(),
             'Tm' => $index1,
@@ -177,6 +183,81 @@ class ApiController extends Controller {
             'Tn' => $index3
         );
         return $helpers->json($respuesta);
+    }
+
+    /**
+     * @Route("/registroapi", name="registroapi")
+     * @Method({"GET" ,"POST"})
+     */
+    public function RegistroApiAction(Request $request, UserPasswordEncoderInterface $passwordEncoder) {
+        $json = $request->request->get('json');
+        $data = json_decode($json, true);
+        $em = $this->getDoctrine()->getManager();
+        $helpers = $this->get(Helpers::class);
+        $user = new User();
+        $user->setRolrol($em->getRepository('AppBundle:Rol')->findOneByrol('ROLE_USER'));
+        $user->setEmail($data["email"]);
+        $user->setUsername($data["username"]);
+        $respuesta = array(
+            'status' => 'error',
+            'code' => '400',
+            'msg' => 'Token is not valid'
+        );
+
+        $token = $em->getRepository('AppBundle:Token')->findOneBytoken($data["token"]);
+        if ($token) {
+            $password = $passwordEncoder->encodePassword($user, $data["password"]);
+            $user->setPassword($password);
+            $em->persist($user);
+            $em->remove($token);
+            $em->flush();
+            $respuesta = array(
+                'status' => 'success',
+                'code' => '200',
+                'msg' => 'Registro completado'
+            );
+        }
+
+        return $helpers->json($respuesta);
+    }
+
+    /**
+     * @Route("/loginapi", name="loginapi")
+     * @Method({"GET" ,"POST"})
+     */
+    public function LoginApiAction(Request $request, UserPasswordEncoderInterface $passwordEncoder) {
+        $json = $request->request->get('json');
+
+        $params = json_decode($json, true);
+        $em = $this->getDoctrine()->getManager();
+        $helpers = $this->get(Helpers::class);
+        $user = new User();
+        $pwd = $passwordEncoder->encodePassword($user, $params["password"]);
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msg' => 'cuenta invalida'
+        );
+        $user = $em->getRepository('AppBundle:User')->findOneByusername($params["username"]);
+        if ($user) {
+
+            if ($passwordEncoder->isPasswordValid($user, $params["password"])) {
+                $rta = array(
+                    'status' => 'success',
+                    'code' => 200,
+                    'msg' => 'login valido',
+                    'data' => $user->datos()
+                );
+            } else {
+                $rta = array(
+                    'status' => 'error',
+                    'code' => 400,
+                    'msg' => 'password incorrecto'
+                );
+            }
+        }
+
+        return $helpers->json($rta);
     }
 
 }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Apiencuesta
  *
- * @ORM\Table(name="apiencuesta")
+ * @ORM\Table(name="apiencuesta", indexes={@ORM\Index(name="idUser", columns={"idUser"})})
  * @ORM\Entity
  */
 class Apiencuesta
@@ -28,6 +28,16 @@ class Apiencuesta
      */
     private $idencuesta;
 
+    /**
+     * @var \AppBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idUser", referencedColumnName="iduser")
+     * })
+     */
+    private $iduser;
+
 
 
     /**
@@ -40,7 +50,7 @@ class Apiencuesta
     public function setCreatedat($createdat)
     {
         $this->createdat = $createdat;
-
+    
         return $this;
     }
 
@@ -62,5 +72,29 @@ class Apiencuesta
     public function getIdencuesta()
     {
         return $this->idencuesta;
+    }
+
+    /**
+     * Set iduser
+     *
+     * @param \AppBundle\Entity\User $iduser
+     *
+     * @return Apiencuesta
+     */
+    public function setIduser(\AppBundle\Entity\User $iduser = null)
+    {
+        $this->iduser = $iduser;
+    
+        return $this;
+    }
+
+    /**
+     * Get iduser
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getIduser()
+    {
+        return $this->iduser;
     }
 }

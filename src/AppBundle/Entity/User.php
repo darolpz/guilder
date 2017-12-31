@@ -16,8 +16,8 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  * @ORM\Entity
  * @UniqueEntity(fields={"username"}, message="Nombre de usuario en uso")
  */
-class User implements UserInterface, \Serializable, AdvancedUserInterface
-{
+class User implements UserInterface, \Serializable, AdvancedUserInterface {
+
     /**
      * @var string
      *
@@ -29,12 +29,11 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=64, nullable=false)
-	 * @Assert\Length(
-	 *     min = 4,
-	 *     minMessage = "La password deberia tener al menos 4 caracteres"
-	 * )
+     * @Assert\Length(
+     *     min = 4,
+     *     minMessage = "La password deberia tener al menos 4 caracteres"
+     * )
      */
-	 
     private $password;
 
     /**
@@ -86,23 +85,21 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      * })
      */
     private $rolrol;
-	
-	
-	/**
+
+    /**
      * @Assert\NotBlank
      * @Validacion\TokenValido
-	 
-     */
-	private $token;
-	public function setToken($token)
-	{
-		$this->token = $token;
-	}
-	public function getToken()
-	{
-		return $this->token;
-	}
 
+     */
+    private $token;
+
+    public function setToken($token) {
+        $this->token = $token;
+    }
+
+    public function getToken() {
+        return $this->token;
+    }
 
     /**
      * Set username
@@ -111,8 +108,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return User
      */
-    public function setUsername($username)
-    {
+    public function setUsername($username) {
         $this->username = $username;
 
         return $this;
@@ -123,8 +119,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return string
      */
-    public function getUsername()
-    {
+    public function getUsername() {
         return $this->username;
     }
 
@@ -135,8 +130,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return User
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
 
         return $this;
@@ -147,8 +141,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return string
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -159,8 +152,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return User
      */
-    public function setIsActive($isActive)
-    {
+    public function setIsActive($isActive) {
         $this->isActive = $isActive;
 
         return $this;
@@ -171,8 +163,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return boolean
      */
-    public function getIsActive()
-    {
+    public function getIsActive() {
         return $this->isActive;
     }
 
@@ -183,8 +174,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return User
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -195,8 +185,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return string
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -207,8 +196,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return User
      */
-    public function setLegajo($legajo)
-    {
+    public function setLegajo($legajo) {
         $this->legajo = $legajo;
 
         return $this;
@@ -219,8 +207,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return integer
      */
-    public function getLegajo()
-    {
+    public function getLegajo() {
         return $this->legajo;
     }
 
@@ -229,8 +216,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return integer
      */
-    public function getIduser()
-    {
+    public function getIduser() {
         return $this->iduser;
     }
 
@@ -241,8 +227,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return User
      */
-    public function setCarreracarrera(\AppBundle\Entity\Carrera $carreracarrera = null)
-    {
+    public function setCarreracarrera(\AppBundle\Entity\Carrera $carreracarrera = null) {
         $this->carreracarrera = $carreracarrera;
 
         return $this;
@@ -253,8 +238,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return \AppBundle\Entity\Carrera
      */
-    public function getCarreracarrera()
-    {
+    public function getCarreracarrera() {
         return $this->carreracarrera;
     }
 
@@ -265,8 +249,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return User
      */
-    public function setRolrol(\AppBundle\Entity\Rol $rolrol = null)
-    {
+    public function setRolrol(\AppBundle\Entity\Rol $rolrol = null) {
         $this->rolrol = $rolrol;
 
         return $this;
@@ -277,39 +260,37 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
      *
      * @return \AppBundle\Entity\Rol
      */
-    public function getRolrol()
-    {
+    public function getRolrol() {
         return $this->rolrol;
     }
-    public function __toString()
-    {
+
+    public function __toString() {
         return $this->username;
     }
-	/**
+
+    /**
      * @var string
-	 * @Assert\Length(
-	 *     min = 4,
-	 *     minMessage = "La password deberia tener al menos 4 caracteres"
-	 * )
+     * @Assert\Length(
+     *     min = 4,
+     *     minMessage = "La password deberia tener al menos 4 caracteres"
+     * )
      */
     private $plainPassword;
-    public function getPlainPassword()
-    {
+
+    public function getPlainPassword() {
         return $this->plainPassword;
     }
 
-    public function setPlainPassword($password)
-    {
+    public function setPlainPassword($password) {
         $this->plainPassword = $password;
     }
-    public function eraseCredentials()
-    {
+
+    public function eraseCredentials() {
         
     }
 
     /** @see \Serializable::serialize() */
-    public function serialize()
-    {
+    public function serialize() {
         return serialize(array(
             $this->iduser,
             $this->username,
@@ -319,58 +300,66 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
             $this->carreracarrera,
             $this->email,
             $this->legajo,
-            // see section on salt below
-            // $this->salt,
+                // see section on salt below
+                // $this->salt,
         ));
     }
 
     /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
-    {
+    public function unserialize($serialized) {
         list (
-            $this->iduser,
-            $this->username,
-            $this->password,
-            $this->isActive,
-            $this->rolrol,
-            $this->carreracarrera,
-            $this->email,
-            $this->legajo,
-            // see section on salt below
-            // $this->salt
-        ) = unserialize($serialized);
+                $this->iduser,
+                $this->username,
+                $this->password,
+                $this->isActive,
+                $this->rolrol,
+                $this->carreracarrera,
+                $this->email,
+                $this->legajo,
+                // see section on salt below
+                // $this->salt
+                ) = unserialize($serialized);
     }
-    public function isAccountNonExpired()
-    {
+
+    public function isAccountNonExpired() {
         return true;
     }
 
-    public function isAccountNonLocked()
-    {
+    public function isAccountNonLocked() {
         return true;
     }
 
-    public function isCredentialsNonExpired()
-    {
+    public function isCredentialsNonExpired() {
         return true;
     }
 
-    public function isEnabled()
-    {
+    public function isEnabled() {
         return $this->isActive;
     }
-    public function getSalt()
-    {
+
+    public function getSalt() {
         return null;
     }
-    public function getRoles()
-    {
+
+    public function getRoles() {
         return [$this->rolrol->getRol()];
     }
-        public function __construct()
-    {
+
+    public function __construct() {
         $this->isActive = true;
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
     }
+
+    public function datos() {
+        return $array = array(
+            'id' => $this->getIduser(),
+            'username' => $this->getUsername(),
+            'email' => $this->getEmail(),
+            'rol' => $this->getRolrol()->getRol(),
+            'iat' => time(),
+            'exp' => time() + (7 * 24 * 60 * 60)
+        );
+    }
+
 }
