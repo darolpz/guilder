@@ -19,6 +19,7 @@ export class Modulo4Component {
     public respuesta;
     
     ngOnInit(){     
+        this.redirectIfUser();
         console.log('Se ha cargado el componente de modulo 4');
         this._apiService.getMaterias().subscribe(
             result => {
@@ -49,7 +50,12 @@ export class Modulo4Component {
             console.log(<any>error);
         });
     }
-    
+        redirectIfUser() {
+        let identity = this._apiService.getIdentity();
+        if (identity == null || identity.rol == 'ROLE_USER') {
+            window.location.href = '/';
+        }
+    }
     negarFlag(){
         this.flag=!this.flag;
     }

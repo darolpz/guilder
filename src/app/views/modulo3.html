@@ -1,85 +1,91 @@
-<h2>
-    {{title}}
-</h2>
+<div class="panel panel-primary" id="panel">
+    <div class="panel-heading">
+        <h2>
+            {{title}}
+        </h2>
+    </div>
+    <div class="panel-body">
+        <div *ngIf="flag; then siFlag else noFlag"></div>
 
-<div *ngIf="flag; then siFlag else noFlag"></div>
+        <ng-template #siFlag>
+            <form #formEncuesta="ngForm" (ngSubmit)="onSubmit()" class="col-lg-4" id="form-encuesta">
+                <table>
+                    <tr>
+                        <td> <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="materia1.idmateria">
+                                <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
+                            </select>
+                        </td>
+                        <td> <select class="form-control col-lg-4" #turno="ngModel" name="turno" [(ngModel)]="materia1.turno">
+                                <option value="1">Turno Mañana</option>
+                                <option value="2">Turno Tarde</option>
+                                <option value="3">Turno Noche</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <hr/>
+                    <tr>
+                        <td> <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="materia2.idmateria">
+                                <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
+                            </select>
+                        </td>
+                        <td> <select class="form-control col-lg-4 turno" #turno="ngModel" name="turno" [(ngModel)]="materia2.turno">
+                                <option value="1">Turno Mañana</option>
+                                <option value="2">Turno Tarde</option>
+                                <option value="3">Turno Noche</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <hr/>
+                    <tr>
+                        <td> <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="materia3.idmateria">
+                                <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
+                            </select>
+                        </td>
+                        <td> <select class="form-control col-lg-4 turno" #turno="ngModel" name="turno" [(ngModel)]="materia3.turno">
+                                <option value="1">Turno Mañana</option>
+                                <option value="2">Turno Tarde</option>
+                                <option value="3">Turno Noche</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <hr/>
+                    <tr>
+                        <td> <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="materia4.idmateria">
+                                <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
+                            </select>
+                        </td>
+                        <td> <select class="form-control col-lg-4 turno" #turno="ngModel" name="turno" [(ngModel)]="materia4.turno">
+                                <option value="1">Turno Mañana</option>
+                                <option value="2">Turno Tarde</option>
+                                <option value="3">Turno Noche</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <hr/>
+                    <tr>
+                        <td> <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="materia5.idmateria">
+                                <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
+                            </select>
+                        </td>
+                        <td> <select class="form-control col-lg-4 turno" #turno="ngModel" name="turno" [(ngModel)]="materia5.turno">
+                                <option value="1">Turno Mañana</option>
+                                <option value="2">Turno Tarde</option>
+                                <option value="3">Turno Noche</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <hr/>
+                <input type="submit" value="Enviar encuesta" class="btn btn-success"/>
+            </form>
 
-<ng-template #siFlag>
-    <form #formEncuesta="ngForm" (ngSubmit)="onSubmit()" class="col-lg-4" id="form-encuesta">
-        <table>
-            <tr>
-                <td> <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="materia1.idmateria">
-                        <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
-                    </select>
-                </td>
-                <td> <select class="form-control col-lg-4" #turno="ngModel" name="turno" [(ngModel)]="materia1.turno">
-                        <option value="1">Turno Mañana</option>
-                        <option value="2">Turno Tarde</option>
-                        <option value="3">Turno Noche</option>
-                    </select>
-                </td>
-            </tr>
-            <hr/>
-            <tr>
-                <td> <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="materia2.idmateria">
-                        <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
-                    </select>
-                </td>
-                <td> <select class="form-control col-lg-4 turno" #turno="ngModel" name="turno" [(ngModel)]="materia2.turno">
-                        <option value="1">Turno Mañana</option>
-                        <option value="2">Turno Tarde</option>
-                        <option value="3">Turno Noche</option>
-                    </select>
-                </td>
-            </tr>
-            <hr/>
-            <tr>
-                <td> <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="materia3.idmateria">
-                        <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
-                    </select>
-                </td>
-                <td> <select class="form-control col-lg-4 turno" #turno="ngModel" name="turno" [(ngModel)]="materia3.turno">
-                        <option value="1">Turno Mañana</option>
-                        <option value="2">Turno Tarde</option>
-                        <option value="3">Turno Noche</option>
-                    </select>
-                </td>
-            </tr>
-            <hr/>
-            <tr>
-                <td> <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="materia4.idmateria">
-                        <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
-                    </select>
-                </td>
-                <td> <select class="form-control col-lg-4 turno" #turno="ngModel" name="turno" [(ngModel)]="materia4.turno">
-                        <option value="1">Turno Mañana</option>
-                        <option value="2">Turno Tarde</option>
-                        <option value="3">Turno Noche</option>
-                    </select>
-                </td>
-            </tr>
-            <hr/>
-            <tr>
-                <td> <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="materia5.idmateria">
-                        <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
-                    </select>
-                </td>
-                <td> <select class="form-control col-lg-4 turno" #turno="ngModel" name="turno" [(ngModel)]="materia5.turno">
-                        <option value="1">Turno Mañana</option>
-                        <option value="2">Turno Tarde</option>
-                        <option value="3">Turno Noche</option>
-                    </select>
-                </td>
-            </tr>
-        </table>
-        <hr/>
-        <input type="submit" value="Enviar encuesta" class="btn btn-success"/>
-    </form>
+        </ng-template>
 
-</ng-template>
+        <ng-template #noFlag>
+            <h2>
+                Encuesta respondida
+            </h2>
+        </ng-template>
 
-<ng-template #noFlag>
-    <h2>
-        Encuesta respondida
-    </h2>
-</ng-template>
+    </div>
+</div>

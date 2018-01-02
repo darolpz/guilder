@@ -23,10 +23,13 @@
                         <span class='glyphicon glyphicon-home' aria-hidden='true'></span>Home</a></li>
                 <li><a [routerLink]="['/modulo1']" [routerLinkActive]="['activado']">Modulo1</a></li>
                 <li><a [routerLink]="['/modulo2']" [routerLinkActive]="['activado']">Modulo2</a></li>
-                <li><a [routerLink]="['/modulo3']" [routerLinkActive]="['activado']">Modulo3</a></li>
-                <li><a [routerLink]="['/modulo4']" [routerLinkActive]="['activado']">Modulo4</a></li>
-                <li *ngIf="identity && identity.rol == 'ROLE_ADMIN'">
-                    <a  [routerLink]="['/']" [routerLinkActive]="['activado']">Administracion</a></li>
+                <li *ngIf="identity"><a [routerLink]="['/modulo3']" [routerLinkActive]="['activado']">Modulo3</a></li>
+                <li *ngIf="identity && identity.rol == 'ROLE_ADMIN'" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administracion <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a [routerLink]="['/modulo4']" [routerLinkActive]="['activado']">Modulo4</a></li>
+                    </ul>
+                </li>
 
             </ul>
             <ul class='nav navbar-nav navbar-right' *ngIf="!identity">
@@ -55,7 +58,7 @@
         
     </div>
     </header>
-    <section id="main" class="col-lg-10 col-lg-offset-1">
+    <div class="container"  class="col-lg-10 col-lg-offset-1">
         <router-outlet></router-outlet>
-    </section>
+    </div>
 </div>

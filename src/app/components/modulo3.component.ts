@@ -41,7 +41,8 @@ export class Modulo3Component {
             this.flag = true;
         }
         
-    ngOnInit(){     
+    ngOnInit(){
+        this.redirectIfLog();     
         console.log('Se ha cargado el componente de modulo 2');
 
         this._apiService.getMaterias().subscribe(
@@ -53,7 +54,12 @@ export class Modulo3Component {
             }
         );
     }
-    
+    redirectIfLog() {
+        let identity = this._apiService.getIdentity();
+        if (identity == null) {
+            window.location.href = '/home';
+        }
+    }
     onSubmit(){ 
 
         this.materias2.push(this.materia1);

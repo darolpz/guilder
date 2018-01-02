@@ -1,33 +1,39 @@
-<h2>
-    {{title}}
-</h2>
-<form #formComision="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-comision">
-    <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="comision.idmateria">
-        <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
-    </select>
-    <input type="submit" value="Consultar comisiones" class="btn btn-success"/>
-</form>
+<div class="panel panel-primary" id="panel">
+    <div class="panel-heading">
+        <h2>
+            {{title}}
+        </h2>
+    </div>
+    <div class="panel-body">
+        <form #formComision="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-comision">
+            <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="comision.idmateria">
+                <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
+            </select>
+            <input type="submit" value="Consultar comisiones" class="btn btn-success"/>
+        </form>
 
 
-<table *ngIf="comisiones" class="table table-striped" >
-    <thead>
-        <tr>
-            <th scope="col">Numero de comision</th>
-            <th scope="col">Profesor</th>
-            <th scope="col">Dia </th>
-            <th scope="col">Hora de inicio</th>
-            <th scope="col">Hora de fin</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let c of comisiones">
-            <td>{{c.numero}}</td>
-            <td>{{c.profesor}}</td>
-            <td>{{c.dia}}</td>
-            <td>{{c.inicio}}</td>
-            <td>{{c.fin}}</td>
-            <td><button>Agregar</button></td>
-        </tr>
-    </tbody>
-</table>
+        <table *ngIf="comisiones" class="table table-striped" >
+            <thead>
+                <tr>
+                    <th scope="col">Numero de comision</th>
+                    <th scope="col">Profesor</th>
+                    <th scope="col">Dia </th>
+                    <th scope="col">Hora de inicio</th>
+                    <th scope="col">Hora de fin</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of comisiones">
+                    <td>{{c.numero}}</td>
+                    <td>{{c.profesor}}</td>
+                    <td>{{c.dia}}</td>
+                    <td>{{c.inicio}}</td>
+                    <td>{{c.fin}}</td>
+                    <td><button>Agregar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

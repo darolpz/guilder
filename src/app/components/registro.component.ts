@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { User } from '../models/user';
 
@@ -17,7 +18,8 @@ export class RegistroComponent {
     public identity;
     
     constructor(
-        private _apiService:ApiService
+        private _apiService:ApiService,
+        private _router: Router
         ){
         this.title = 'Registro';
         this.usuario = new User();
@@ -25,8 +27,16 @@ export class RegistroComponent {
     }
     
     ngOnInit(){
-        
+        this.redirectIfLog();
     }
+    
+    redirectIfLog() {
+        let identity = this._apiService.getIdentity();
+        if (identity != null) {
+            this._router.navigate(["/"]);
+        }
+    }
+    
     onSubmit(){
         if(this.usuario.password == this.pass){
             this._apiService.postRegistro(this.usuario).subscribe(

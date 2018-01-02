@@ -1,17 +1,21 @@
-<div class="col-md-10"> <h2>
-    {{title}}
-</h2>
-<hr/>
-<form #registroForm="ngForm" (ngSubmit)="onSubmit()" >
-    <p>
-        <label>Usuario</label>
-        <input type="text" class="form-control" name="username" required #username=ngModel [(ngModel)]="usuario.username"/>   
-    </p>
-    <p>
-        <label>Contraseña</label>
-        <input type="password" class="form-control" name="pass1" #pass1=ngModel [(ngModel)]="usuario.password" required/>
-    </p>
+<div class="panel panel-primary" id="panel">
+    <div class="panel-heading">
+        <h2>
+            {{title}}
+        </h2>
+    </div>
+    <div class="panel-body">
+        <form #registroForm="ngForm" (ngSubmit)="onSubmit()" >
+            <p>
+                <label>Usuario</label>
+                <input type="text" class="form-control" name="username" required #username=ngModel [(ngModel)]="usuario.username"/>   
+            </p>
+            <p>
+                <label>Contraseña</label>
+                <input type="password" class="form-control" name="pass1" #pass1=ngModel [(ngModel)]="usuario.password" required/>
+            </p>
 
-    <input type="submit" value="Acceder" class="btn btn-success" [disabled]="!registroForm.valid"/>
-</form>
+            <input type="submit" value="Acceder" class="btn btn-success" [disabled]="!registroForm.valid"/>
+        </form>
+    </div>
 </div>
