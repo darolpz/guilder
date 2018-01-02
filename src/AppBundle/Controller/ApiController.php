@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Comision;
 use AppBundle\Entity\Materia;
 use AppBundle\Entity\Horario;
+use AppBundle\Entity\Token;
 use AppBundle\Entity\Apiencuesta;
 use AppBundle\Entity\Materiaencuesta;
 use Symfony\Component\HttpFoundation\Response;
@@ -123,21 +124,21 @@ class ApiController extends Controller {
         $id = $data[0]["id"];
         $user = $em->getRepository('AppBundle:User')->findOneByiduser($id);
         $encuesta->setIduser($user);
-   
-        for ($i = 1;$i<count($data);$i++) {
-            
-        
+
+        for ($i = 1; $i < count($data); $i++) {
+
+
             $materia = $em->getRepository('AppBundle:Materia')->findOneByidmateria($data[$i]["idmateria"]);
             settype($data[$i]["turno"], "integer");
 
             $materiaencuesta = new Materiaencuesta();
             $materiaencuesta->setIdencuesta($encuesta);
             $materiaencuesta->setIdmateria($materia);
-            $materiaencuesta->setTurno($data[$i]["turno"]);         
-            
+            $materiaencuesta->setTurno($data[$i]["turno"]);
+
             $em->persist($materiaencuesta);
         }
- 
+
         $em->persist($encuesta);
         $em->flush();
         $rta = array(
@@ -258,6 +259,77 @@ class ApiController extends Controller {
         }
 
         return $helpers->json($rta);
+    }
+
+    /**
+     * @Route("/gettokens", name="gettokens")
+     * @Method({"GET"})
+     */
+    public function getTokensAction() {
+        $em = $this->getDoctrine()->getManager();
+        $tokens = $em->getRepository('AppBundle:Token')->findAll();
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($tokens, 'json');
+        return new Response($jsonContent);
+    }
+
+    /**
+     * @Route("/deletetoken", name="deletetoken")
+     * @Method({"GET","POST"})
+     */
+    public function deleteTokensAction(Request $request) {
+        $json = $request->request->get('json');
+        $id = json_decode($json, true);
+        $helpers = $this->get(Helpers::class);
+        $em = $this->getDoctrine()->getManager();
+        $token = $em->getRepository('AppBundle:Token')->findOneByidtoken($id);
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msj' => 'token no encontrado'
+        );
+        if ($token) {
+            $em->remove($token);
+            $em->flush();
+            $rta = array(
+                'status' => 'success',
+                'code' => 200,
+                'msj' => 'token eliminado'
+            );
+        }
+        return $helpers->json($rta);
+    }
+
+    /**
+     * @Route("/createtoken", name="createtoken")
+     * @Method({"GET","POST"})
+     */
+    public function createTokensAction() {
+
+        $em = $this->getDoctrine()->getManager();
+        $helpers = $this->get(Helpers::class);
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msj' => 'token no creado'
+        );
+        
+        $random = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 0, 5);
+        if(!$em->getRepository('AppBundle:Token')->findOneBytoken($random)) {
+            $token = new Token();
+            $token->setCreado(new \DateTime(date_default_timezone_get()));
+            $token->setToken($random);
+            $em->persist($token);
+            $em->flush();
+            $rta = array(
+                'status' => 'success',
+                'code' => 200,
+                'msj' => 'token creado',
+                'data' => $token
+            );
+        }
+        return $helpers->json($rta);
+        
     }
 
 }
