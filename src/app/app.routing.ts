@@ -10,6 +10,8 @@ import { Modulo3Component } from './components/modulo3.component';
 import { Modulo4Component } from './components/modulo4.component';
 import { RegistroComponent } from './components/registro.component';
 import { LoginComponent } from './components/login.component';
+import { TokenComponent } from './components/token.component';
+
 
 
 const appRoutes: Routes = [
@@ -22,6 +24,7 @@ const appRoutes: Routes = [
         {path: 'registro', component: RegistroComponent},
         {path: 'login', component: LoginComponent},
         {path: 'login/:id', component:LoginComponent},
+        {path: 'token', component:TokenComponent},
 	{path: '**', component: ErrorComponent}
 ];
 

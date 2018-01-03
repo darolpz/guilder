@@ -14,6 +14,7 @@ import { Modulo3Component } from './components/modulo3.component';
 import { Modulo4Component } from './components/modulo4.component';
 import { RegistroComponent } from './components/registro.component';
 import { LoginComponent } from './components/login.component';
+import { TokenComponent } from './components/token.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LoginComponent } from './components/login.component';
     Modulo3Component,
     Modulo4Component,
     RegistroComponent,
-    LoginComponent
+    LoginComponent,
+    TokenComponent
   ],
   imports: [
     BrowserModule,

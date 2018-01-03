@@ -75,4 +75,19 @@ export class ApiService {
         }
         return this.identity;
     }
+    
+    getTokens(){
+        return this._http.get(this.url+'gettokens').map(res => res.json());
+    }
+    deleteToken(id){
+        let json = JSON.stringify(id);
+        let param = 'json='+json;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'deletetoken',param,{headers:headers})
+            .map(res => res.json());
+    }
+    
+    createToken(){
+        return this._http.get(this.url+'createtoken').map(res => res.json());
+    }
 }

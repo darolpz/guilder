@@ -1,0 +1,29 @@
+<div class="panel panel-primary" id="panel">
+    <div class="panel-heading">
+        <h2>
+            {{title}}
+        </h2>
+    </div>
+    <div class="panel-body">
+     
+        <button style='margin-left: 40%' href="#" class="btn btn-success" (click)="createToken()">Crear nuevo token </button>
+        <hr/>
+      
+        <table *ngIf="tokens" class="table table-striped" >
+            <thead>
+                <tr>
+                    <th>Token</th>
+                    <th>Fecha de creacion</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let t of tokens">
+                    <td>{{t.token}}</td>
+                    <td>{{t.creado|date: 'dd/MM/yyyy HH:mm'}}</td>
+                    <td><button class="btn btn-danger" (click)="deleteToken(t.idtoken)">Eliminar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
