@@ -1,0 +1,97 @@
+{
+  "_from": "angular2-calendar-heatmap",
+  "_id": "angular2-calendar-heatmap@0.1.6",
+  "_inBundle": false,
+  "_integrity": "sha512-FWH+IYOjzhWjDt6HIHvdzZg0RWjf+kvQQRigXZtdnVjKEWaju6rW4M6Y64BigaaWsfeDcGe+maNieKRp492CEA==",
+  "_location": "/angular2-calendar-heatmap",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "angular2-calendar-heatmap",
+    "name": "angular2-calendar-heatmap",
+    "escapedName": "angular2-calendar-heatmap",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular2-calendar-heatmap/-/angular2-calendar-heatmap-0.1.6.tgz",
+  "_shasum": "0c97f39bded1ce4954a241e31a962832a04b3842",
+  "_spec": "angular2-calendar-heatmap",
+  "_where": "C:\\xampp\\htdocs\\guilderangular",
+  "author": {
+    "name": "g1eb",
+    "email": "mail@g1eb.com",
+    "url": "https://g1eb.com"
+  },
+  "bugs": {
+    "url": "https://github.com/g1eb/angular2-calendar-heatmap/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Angular component for d3.js calendar heatmap graph.",
+  "devDependencies": {
+    "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@types/d3": "^4.11.0",
+    "@types/node": "^6.0.60",
+    "concurrently": "^3.4.0",
+    "core-js": "^2.4.1",
+    "cssmin": "^0.4.3",
+    "minifier": "^0.8.1",
+    "rollup": "^0.42.0",
+    "rxjs": "5.1.0",
+    "systemjs": "0.19.40",
+    "typescript": "^2.5.3",
+    "zone.js": "^0.8.4"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "homepage": "https://github.com/g1eb/angular2-calendar-heatmap#readme",
+  "jsnext:main": "dist/calendar-heatmap.js",
+  "keywords": [
+    "angular",
+    "angular2",
+    "angularjs",
+    "component",
+    "calendar",
+    "heatmap",
+    "graph",
+    "visualization",
+    "chart",
+    "time",
+    "d3js",
+    "d3"
+  ],
+  "license": "MIT",
+  "main": "dist/calendar-heatmap.umd.js",
+  "module": "dist/calendar-heatmap.js",
+  "name": "angular2-calendar-heatmap",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "d3": "^4.11.0",
+    "moment": "^2.19.1",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g1eb/angular2-calendar-heatmap.git"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run transpile && npm run bundle:fesm && npm run bundle:umd",
+    "bundle:fesm": "rollup -f es -e @angular/core -g @angular/core:_angular_core,moment:moment,d3/index:d3 dist/calendar-heatmap.component.js -o dist/calendar-heatmap.js",
+    "bundle:umd": "rollup -f umd -n CalendarHeatmap -e @angular/core -g @angular/core:_angular_core,moment:moment,d3/index:d3 dist/calendar-heatmap.component.js -o dist/calendar-heatmap.umd.js",
+    "clean": "rm -rf dist/*",
+    "transpile": "ngc -p tsconfig.json"
+  },
+  "typings": "dist/calendar-heatmap.d.ts",
+  "version": "0.1.6"
+}
