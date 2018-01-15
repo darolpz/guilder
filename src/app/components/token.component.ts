@@ -74,7 +74,7 @@ export class TokenComponent {
     redirectIfUser() {
         let identity = this._apiService.getIdentity();
         if (identity == null || identity.rol == 'ROLE_USER') {
-            window.location.href = '/';
+            this._router.navigate(['/']);
         }
     }
 }

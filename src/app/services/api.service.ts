@@ -66,7 +66,7 @@ export class ApiService {
     }
     
     getIdentity(){
-        let identity = JSON.parse(localStorage.getItem('identity'));
+        let identity = JSON.parse(localStorage.getItem('guilderidentity'));
         
         if(identity != "undefined"){
             this.identity = identity;
