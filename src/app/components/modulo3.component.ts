@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { Materia } from '../models/materia';
 import { Encuesta } from '../models/encuesta';
@@ -26,8 +25,7 @@ export class Modulo3Component {
     public flag:boolean;
     
     constructor(
-        private _apiService:ApiService,
-        private _router: Router
+        private _apiService:ApiService
         ){
             this.title='Encuesta';
             this.identity = this._apiService.getIdentity();
@@ -59,7 +57,7 @@ export class Modulo3Component {
     redirectIfLog() {
         let identity = this._apiService.getIdentity();
         if (identity == null) {
-            this._router.navigate(['/']);
+            window.location.href = '/home';
         }
     }
     onSubmit(){ 

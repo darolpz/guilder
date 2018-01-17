@@ -3,10 +3,6 @@ import { ApiService } from '../services/api.service';
 import { Materia } from '../models/materia';
 import { Comision } from '../models/comision';
 
-declare var $:any;
-import * as timetable from 'timetable';
-declare var timetable: any;
- 
 @Component({
   selector: 'modulo1',
   templateUrl: '../views/modulo1.html',
@@ -30,8 +26,6 @@ export class Modulo1Component{
         this.actualyear=2017;
         this.cuatrimestreactual=2;
         this.comision=new Comision('',this.actualyear,this.cuatrimestreactual);
-        
-       
         
     }
     
@@ -59,7 +53,6 @@ export class Modulo1Component{
             }
         );
 
-        
     }
     
 }

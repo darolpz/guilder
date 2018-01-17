@@ -15,7 +15,6 @@ import { Modulo4Component } from './components/modulo4.component';
 import { RegistroComponent } from './components/registro.component';
 import { LoginComponent } from './components/login.component';
 import { TokenComponent } from './components/token.component';
-import { CalendarHeatmap } from 'angular2-calendar-heatmap';
 
 
 @NgModule({
@@ -29,8 +28,7 @@ import { CalendarHeatmap } from 'angular2-calendar-heatmap';
     Modulo4Component,
     RegistroComponent,
     LoginComponent,
-    TokenComponent,
-    CalendarHeatmap
+    TokenComponent
   ],
   imports: [
     BrowserModule,
