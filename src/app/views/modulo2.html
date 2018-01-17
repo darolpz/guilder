@@ -54,4 +54,11 @@
         </table>
 
     </div>
+    <calendar-heatmap
+      [data]="data"
+      [color]="color"
+      [overview]="overview"
+      (handler)="print($event)">
+    </calendar-heatmap>
+
 </div>

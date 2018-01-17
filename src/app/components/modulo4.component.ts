@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { Materia } from '../models/materia';
 import { Comision } from '../models/comision';
 import { Encuesta } from '../models/encuesta';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'modulo4',
@@ -32,7 +33,9 @@ export class Modulo4Component {
     }
     
     constructor(
-        private _apiService:ApiService
+        private _apiService:ApiService,
+        private _router: Router
+        
         ){
             this.encuesta=new Encuesta();
             this.title="Modulo 4";
@@ -53,7 +56,7 @@ export class Modulo4Component {
         redirectIfUser() {
         let identity = this._apiService.getIdentity();
         if (identity == null || identity.rol == 'ROLE_USER') {
-            window.location.href = '/';
+            this._router.navigate(['/']);
         }
     }
     negarFlag(){

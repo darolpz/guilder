@@ -34,7 +34,7 @@ export class LoginComponent {
             response => {
                 if(response.code == 200){
                     this.identity = response.data;
-                    localStorage.setItem('identity',JSON.stringify(this.identity));
+                    localStorage.setItem('guilderidentity',JSON.stringify(this.identity));
                     window.location.href = '/';
 
             }},
@@ -57,7 +57,7 @@ export class LoginComponent {
         this._route.params.forEach((params: Params) => {
             let logout = +params['id'];
             if (logout == 1) {
-                localStorage.removeItem('identity');
+                localStorage.removeItem('guilderidentity');
                 this.identity = null;
 
                 window.location.href = '/login';
