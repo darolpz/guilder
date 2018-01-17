@@ -5,6 +5,12 @@
         </h2>
     </div>
     <div class="panel-body">
+        <div class="alert alert-danger" *ngIf="status=='1'">
+        La cuenta ingresada es invalida
+        </div>
+        <div class="alert alert-danger" *ngIf="status=='2'">
+        La contraseña ingresada no corresponde con su cuenta
+        </div>
         <form #registroForm="ngForm" (ngSubmit)="onSubmit()" >
             <p>
                 <label>Usuario</label>

@@ -1,0 +1,28 @@
+<div class="panel panel-primary" id="panel">
+    <div class="panel-heading">
+        <h2>
+            {{title}}
+        </h2>
+    </div>
+    <div class="panel-body">
+        <div class="alert alert-danger" *ngIf="flag=='1'">
+            Contraseña incorrecta
+        </div>
+        <div class="alert alert-success" *ngIf="flag=='2'">
+            Email actualizada correctamente
+        </div>
+        <form #ChangeEmailForm="ngForm" (ngSubmit)="onSubmit()" >
+            <p>
+                <label>Email</label>
+                <input type="email" class="form-control" name="changeEmail" required #changeEmail=ngModel [(ngModel)]="email"/>   
+            </p>
+            <p>
+                <label>Contraseña</label>
+                <input type="password" class="form-control" name="pass" #changeEmailPass=ngModel [(ngModel)]="pass" required/>
+            </p>
+            <input type="submit" value="Actualizar email" class="btn btn-success" [disabled]="!ChangeEmailForm.valid"/>
+            <a type="button" class="btn btn-primary " [routerLink]="['/settings']">Volver </a>
+        </form>
+
+    </div>
+</div>

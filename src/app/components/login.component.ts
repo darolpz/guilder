@@ -16,6 +16,7 @@ export class LoginComponent {
     public identity;
     public usuario: User;
     public token;
+    public status:number;
 
     constructor(
         private _apiService: ApiService,
@@ -24,6 +25,7 @@ export class LoginComponent {
     ) {
         this.title = 'Accede';
         this.usuario = new User();
+        this.status = 0;
     }
     ngOnInit() {
         this.logout();
@@ -36,8 +38,14 @@ export class LoginComponent {
                     this.identity = response.data;
                     localStorage.setItem('guilderidentity',JSON.stringify(this.identity));
                     window.location.href = '/';
-
-            }},
+                }else{
+                    if (response.msg == 'cuenta invalida'){
+                            this.status = 1;
+                        }else{
+                            this.status = 2;
+                        }
+                    }
+            },
             error => {
                 console.log(<any> error);
             }

@@ -17,7 +17,7 @@ export class ApiService {
     }
     
     getMaterias(){
-        return this._http.get(this.url+'getmaterias').map(res => res.json());
+        return this._http.get(this.url+'getMaterias').map(res => res.json());
         
     }
     
@@ -53,7 +53,7 @@ export class ApiService {
         let json=JSON.stringify(user);        
         let params='json='+json;
         let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-        return this._http.post(this.url+'registroapi',params,{headers:headers})
+        return this._http.post(this.url+'registro',params,{headers:headers})
                 .map(res => res.json());
     }
     
@@ -61,7 +61,7 @@ export class ApiService {
         let json=JSON.stringify(user);        
         let params='json='+json;
         let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-        return this._http.post(this.url+'loginapi',params,{headers:headers})
+        return this._http.post(this.url+'login',params,{headers:headers})
                 .map(res => res.json());
     }
     
@@ -77,17 +77,31 @@ export class ApiService {
     }
     
     getTokens(){
-        return this._http.get(this.url+'gettokens').map(res => res.json());
+        return this._http.get(this.url+'getTokens').map(res => res.json());
     }
     deleteToken(id){
         let json = JSON.stringify(id);
         let param = 'json='+json;
         let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-        return this._http.post(this.url+'deletetoken',param,{headers:headers})
+        return this._http.post(this.url+'deleteToken',param,{headers:headers})
             .map(res => res.json());
     }
     
     createToken(){
-        return this._http.get(this.url+'createtoken').map(res => res.json());
+        return this._http.get(this.url+'createToken').map(res => res.json());
+    }
+    
+    changeEmail(email,pass,id){
+        let param = 'id='+id+'&pass='+pass+'&email='+email;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'changeEmail',param,{headers:headers})
+            .map(res => res.json());
+    }
+    
+    changePass(oldpass,newpass,id){
+        let param = 'id='+id+'&oldpass='+oldpass+'&newpass='+newpass;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'changePass',param,{headers:headers})
+            .map(res => res.json());
     }
 }

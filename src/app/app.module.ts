@@ -16,6 +16,9 @@ import { RegistroComponent } from './components/registro.component';
 import { LoginComponent } from './components/login.component';
 import { TokenComponent } from './components/token.component';
 import { CalendarHeatmap } from 'angular2-calendar-heatmap';
+import { SettingsComponent } from './components/settings.component';
+import { ChangeEmailComponent } from './components/change-email.component';
+import { ChangePassComponent } from './components/change-pass.component';
 
 
 
@@ -31,7 +34,10 @@ import { CalendarHeatmap } from 'angular2-calendar-heatmap';
     RegistroComponent,
     LoginComponent,
     TokenComponent,
-    CalendarHeatmap
+    SettingsComponent,
+    CalendarHeatmap,
+    ChangeEmailComponent,
+    ChangePassComponent
 
   ],
   imports: [

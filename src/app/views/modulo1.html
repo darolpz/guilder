@@ -6,14 +6,16 @@
     </div>
     <div class="panel-body">
         <form #formComision="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-comision">
-            <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="comision.idmateria">
+            <p><select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="comision.idmateria">
                 <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
             </select>
             <input type="submit" value="Consultar comisiones" class="btn btn-success"/>
+            </p>
+        
         </form>
 
 
-        <table *ngIf="comisiones" class="table table-striped" >
+        <table *ngIf="comisiones" class="table table-striped tabla" >
             <thead>
                 <tr>
                     <th scope="col">Numero de comision</th>
@@ -21,7 +23,7 @@
                     <th scope="col">Dia </th>
                     <th scope="col">Hora de inicio</th>
                     <th scope="col">Hora de fin</th>
-                    <th></th>
+                    <th>Accion</th>
                 </tr>
             </thead>
             <tbody>

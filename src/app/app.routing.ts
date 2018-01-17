@@ -11,7 +11,9 @@ import { Modulo4Component } from './components/modulo4.component';
 import { RegistroComponent } from './components/registro.component';
 import { LoginComponent } from './components/login.component';
 import { TokenComponent } from './components/token.component';
-
+import { SettingsComponent } from './components/settings.component';
+import { ChangeEmailComponent } from './components/change-email.component';
+import { ChangePassComponent } from './components/change-pass.component';
 
 
 const appRoutes: Routes = [
@@ -25,6 +27,9 @@ const appRoutes: Routes = [
         {path: 'login', component: LoginComponent},
         {path: 'login/:id', component:LoginComponent},
         {path: 'token', component:TokenComponent},
+        {path: 'settings', component:SettingsComponent},
+        {path: 'change-pass', component:ChangePassComponent},
+        {path: 'change-email', component:ChangeEmailComponent},
 	{path: '**', component: ErrorComponent}
 ];
 

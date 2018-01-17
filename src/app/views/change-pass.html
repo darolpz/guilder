@@ -1,0 +1,35 @@
+<div class="panel panel-primary" id="panel">
+    <div class="panel-heading">
+        <h2>
+            {{title}}
+        </h2>
+    </div>
+    <div class="panel-body">
+        <div class="alert alert-danger" *ngIf="flag=='1'">
+        Las contraseñas no coinciden
+        </div>
+        <div class="alert alert-danger" *ngIf="flag=='2'">
+        Las contraseñas ingresada no corresponde con la contraseña de usuario
+        </div>
+        <div class="alert alert-success" *ngIf="flag=='3'">
+        Contraseña actualizada correctamente
+        </div>
+        
+        <form #ChangePassForm="ngForm" (ngSubmit)="onSubmit()" >
+            <p>
+                <label>Contraseña Antigua</label>
+                <input type="password" class="form-control" name="oldpass" #oldPass=ngModel [(ngModel)]="oldpass" required/>
+            </p>
+            <p>
+                <label>Contraseña nueva</label>
+                <input type="password" class="form-control" name="newpass1" #newPass1=ngModel [(ngModel)]="newpass" required/>
+            </p>
+            <p>
+                <label>Repita la contraseña</label>
+                <input type="password" class="form-control" name="newpass2" #newPass2=ngModel [(ngModel)]="newpass2" required/>
+            </p>
+            <input type="submit" value="Actualizar Password" class="btn btn-success" [disabled]="!ChangePassForm.valid"/>
+            <a type="button" class="btn btn-primary " [routerLink]="['/settings']">Volver </a>
+        </form>
+    </div>
+</div>
