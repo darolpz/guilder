@@ -98,7 +98,7 @@ class ApiController extends Controller {
     }
 
     /**
-     * @Route("/getmaterias", name="getmaterias")
+     * @Route("/getMaterias", name="getmaterias")
      * @Method({"GET" })
      */
     public function getMateriasAction() {
@@ -187,7 +187,7 @@ class ApiController extends Controller {
     }
 
     /**
-     * @Route("/registroapi", name="registroapi")
+     * @Route("/registro", name="apiRegistro")
      * @Method({"GET" ,"POST"})
      */
     public function RegistroApiAction(Request $request, UserPasswordEncoderInterface $passwordEncoder) {
@@ -223,7 +223,7 @@ class ApiController extends Controller {
     }
 
     /**
-     * @Route("/loginapi", name="loginapi")
+     * @Route("/login", name="apiLogin")
      * @Method({"GET" ,"POST"})
      */
     public function LoginApiAction(Request $request, UserPasswordEncoderInterface $passwordEncoder) {
@@ -233,7 +233,6 @@ class ApiController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $helpers = $this->get(Helpers::class);
         $user = new User();
-        $pwd = $passwordEncoder->encodePassword($user, $params["password"]);
         $rta = array(
             'status' => 'error',
             'code' => 400,
@@ -262,7 +261,7 @@ class ApiController extends Controller {
     }
 
     /**
-     * @Route("/gettokens", name="gettokens")
+     * @Route("/getTokens", name="getTokens")
      * @Method({"GET"})
      */
     public function getTokensAction() {
@@ -274,7 +273,7 @@ class ApiController extends Controller {
     }
 
     /**
-     * @Route("/deletetoken", name="deletetoken")
+     * @Route("/deleteToken", name="deleteToken")
      * @Method({"GET","POST"})
      */
     public function deleteTokensAction(Request $request) {
@@ -301,7 +300,7 @@ class ApiController extends Controller {
     }
 
     /**
-     * @Route("/createtoken", name="createtoken")
+     * @Route("/createToken", name="createToken")
      * @Method({"GET","POST"})
      */
     public function createTokensAction() {
@@ -332,4 +331,185 @@ class ApiController extends Controller {
         
     }
 
+    /**
+     * @Route("/changePass", name="changepass")
+     * @Method({"GET","POST"})
+     */
+    public function changePassAction(Request $request, UserPasswordEncoderInterface $passwordEncoder){
+        $id = $request->request->get('id');
+        $oldpass = $request->request->get('oldpass');
+        $newpass = $request->request->get('newpass');
+        $em = $this->getDoctrine()->getManager();
+        $helpers = $this->get(Helpers::class);
+        $user = $em->getRepository('AppBundle:User')->findOneByiduser($id);
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msj' => 'Contraseña invalida'
+        );
+        if($passwordEncoder->isPasswordValid($user, $oldpass)){
+            
+            $pwd = $passwordEncoder->encodePassword($user, $newpass);
+            $user->setPassword($pwd);
+            $em->persist($user);
+            $em->flush();
+            
+            $rta = array(
+            'status' => 'success',
+            'code' => 200,
+            'msj' => 'Contraseña actualizada'
+        );
+        }
+        
+        return $helpers->json($rta);
+    }
+    
+     /**
+     * @Route("/changeEmail", name="changeemail")
+     * @Method({"GET","POST"})
+     */
+    public function changeEmailAction(Request $request, UserPasswordEncoderInterface $passwordEncoder){
+        $id = $request->request->get('id');
+        $pass = $request->request->get('pass');
+        $email = $request->request->get('email');
+        $em = $this->getDoctrine()->getManager();
+        $helpers = $this->get(Helpers::class);
+        $user = $em->getRepository('AppBundle:User')->findOneByiduser($id);
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msj' => 'Contraseña invalida'
+        );
+        if($passwordEncoder->isPasswordValid($user, $pass)){
+
+            $user->setEmail($email);
+            $em->persist($user);
+            $em->flush();
+            
+            $rta = array(
+            'status' => 'success',
+            'code' => 200,
+            'msj' => 'Contraseña actualizada'
+        );
+        }
+        
+        return $helpers->json($rta);
+    }
+    
+    /**
+     * @Route("/allComisions", name="allComisions")
+     * @Method({"GET"})
+     */
+    public function getAllComisionsAction(){
+        $em = $this->getDoctrine()->getManager();
+        $comisiones = $em->getRepository('AppBundle:Comision')->findAll();
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($comisiones, 'json');
+        return new Response($jsonContent);
+    }
+    
+    /**
+     * @Route("/getUsers", name="getUsers")
+     * @Method({"GET"})
+     */
+    public function getUserssAction(){
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('AppBundle:User')->findAll();
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($users, 'json');
+        return new Response($jsonContent);
+    }
+    /**
+     * @Route("/getHorarios", name="getHorarios")
+     * @Method({"GET"})
+     */
+    public function getHorariosAction(){
+        $em = $this->getDoctrine()->getManager();
+        $horarios = $em->getRepository('AppBundle:Horario')->findAll();
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($horarios, 'json');
+        return new Response($jsonContent);
+    }
+    
+    /**
+     * @Route("/deleteComision", name="deleteComision")
+     * @Method({"GET","POST"})
+     */
+    public function deleteComisionAction(Request $request){
+        $id = $request->request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $helpers = $this->get(Helpers::class);
+        $comision = $em->getRepository('AppBundle:Comision')->findOneByidcomision($id);
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msj' => 'Comision invalida '
+        );
+        if($comision){
+            $horario = $em->getRepository('AppBundle:Horario')->findOneBycomisioncomision($comision);
+            $em->remove($horario);
+            $em->remove($comision);
+            $em->flush();
+            $rta = array(
+                'status' => 'success',
+                'code' => '200',
+                'msg' => 'Comision borrada exitosamente '
+            );
+        }
+        
+        return $helpers->json($rta); 
+    }
+    /**
+     * @Route("/deleteHorario", name="deleteHorario")
+     * @Method({"GET","POST"})
+     */
+    public function deleteHorarioAction(Request $request){
+        $id = $request->request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $helpers = $this->get(Helpers::class);
+        $horario = $em->getRepository('AppBundle:Horario')->findOneByidhorario($id);
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msj' => 'Horario invalida '
+        );
+        if($horario){         
+            $em->remove($horario);
+            $em->flush();
+            $rta = array(
+                'status' => 'success',
+                'code' => '200',
+                'msg' => 'Horario borrado exitosamente '
+            );
+        }
+        
+        return $helpers->json($rta); 
+    }
+    
+    /**
+     * @Route("/deleteUser", name="deleteUser")
+     * @Method({"GET","POST"})
+     */
+    public function deleteUserAction(Request $request){
+        $id = $request->request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $helpers = $this->get(Helpers::class);
+        $user = $em->getRepository('AppBundle:User')->findOneByiduser($id);
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msj' => 'Usuario invalida '
+        );
+        if($user){         
+            $em->remove($user);
+            $em->flush();
+            $rta = array(
+                'status' => 'success',
+                'code' => '200',
+                'msg' => 'Usuario borrado exitosamente '
+            );
+        }
+        
+        return $helpers->json($rta); 
+    }
 }
