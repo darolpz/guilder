@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/xampp/htdocs/guilderangular/src/app/components/change-email.component.ts</file>
             <file>file:/C:/xampp/htdocs/guilderangular/src/app/services/api.service.ts</file>
+            <file>file:/C:/xampp/htdocs/guilderangular/src/app/app.component.html</file>
+            <file>file:/C:/xampp/htdocs/guilderangular/src/app/views/modulo3.html</file>
             <file>file:/C:/xampp/htdocs/guilderangular/src/app/components/login.component.ts</file>
-            <file>file:/C:/xampp/htdocs/guilderangular/src/app/app.component.ts</file>
+            <file>file:/C:/xampp/htdocs/guilderangular/src/app/views/login.html</file>
             <file>file:/C:/xampp/htdocs/guilderangular/src/app/components/change-pass.component.ts</file>
         </group>
     </open-files>

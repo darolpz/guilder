@@ -104,4 +104,35 @@ export class ApiService {
         return this._http.post(this.url+'changePass',param,{headers:headers})
             .map(res => res.json());
     }
+    
+    getAllComisions(){
+        return this._http.get(this.url+'allComisions').map(res => res.json());
+    }
+    
+    getUsers(){
+        return this._http.get(this.url+'getUsers').map(res => res.json());
+    }
+    getHorarios(){
+        return this._http.get(this.url+'getHorarios').map(res => res.json());
+    }
+    
+    deleteComision(id){
+        let param = 'id='+id;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'deleteComision',param,{headers:headers})
+            .map(res => res.json());
+    }
+    
+    deleteHorario(id){
+        let param = 'id='+id;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'deleteHorario',param,{headers:headers})
+            .map(res => res.json());
+    }
+    deleteUser(id){
+        let param = 'id='+id;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'deleteUser',param,{headers:headers})
+            .map(res => res.json());
+    }
 }

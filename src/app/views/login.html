@@ -1,6 +1,6 @@
 <div class="panel panel-primary" id="panel">
     <div class="panel-heading">
-        <h2>
+        <h2 class="panel-title">
             {{title}}
         </h2>
     </div>
@@ -10,6 +10,9 @@
         </div>
         <div class="alert alert-danger" *ngIf="status=='2'">
         La contraseña ingresada no corresponde con su cuenta
+        </div>
+        <div class="alert alert-success" *ngIf="status=='3'">
+        Se ha autenticado correctamente
         </div>
         <form #registroForm="ngForm" (ngSubmit)="onSubmit()" >
             <p>

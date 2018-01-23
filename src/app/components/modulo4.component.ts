@@ -34,8 +34,7 @@ export class Modulo4Component {
     
     constructor(
         private _apiService:ApiService,
-        private _router: Router
-        
+        private _router: Router      
         ){
             this.encuesta=new Encuesta();
             this.title="Modulo 4";

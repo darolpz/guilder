@@ -14,6 +14,9 @@ import { TokenComponent } from './components/token.component';
 import { SettingsComponent } from './components/settings.component';
 import { ChangeEmailComponent } from './components/change-email.component';
 import { ChangePassComponent } from './components/change-pass.component';
+import { ComisionesComponent } from './components/comisiones.component';
+import { UsersComponent } from './components/users.component';
+import { HorariosComponent } from './components/horarios.component';
 
 
 const appRoutes: Routes = [
@@ -30,6 +33,9 @@ const appRoutes: Routes = [
         {path: 'settings', component:SettingsComponent},
         {path: 'change-pass', component:ChangePassComponent},
         {path: 'change-email', component:ChangeEmailComponent},
+        {path: 'comisiones', component:ComisionesComponent},       
+        {path: 'users', component:UsersComponent}, 
+        {path: 'horarios', component:HorariosComponent}, 
 	{path: '**', component: ErrorComponent}
 ];
 

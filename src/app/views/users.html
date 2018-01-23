@@ -1,0 +1,40 @@
+<div class="panel panel-primary" id="panel">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            {{title}}
+        </h2>
+    </div>
+    <div class="panel-body">
+        <div class="alert alert-success" *ngIf="status=='1'">
+        Usuario borrado correctamente
+        </div>
+        <div class="alert alert-success" *ngIf="status=='2'">
+        El usuario no pudo ser borrada
+        </div>
+        
+        <div class='loader col-md-12' *ngIf="loading == 'show'">
+            <img src="assets/img/ajax-loader.gif"/>
+        </div>
+        <table *ngIf="filas" class="table table-striped" >
+            <thead>
+                <tr>
+                    <th>Nombre de usuario</th>
+                    <th>Rol</th>
+                    <th>Id</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let f of filas">
+                    <td>{{f.username}}</td>
+                    <td>{{f.rolrol.rol}}</td>
+                    <td>{{f.iduser}}</td>
+                    <td><button class="btn btn-success" >Editar</button>
+                        <button class="btn btn-danger" (click)="borrarUser(f.iduser)">Borrar</button></td>
+                    
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

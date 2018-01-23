@@ -36,6 +36,7 @@ export class LoginComponent {
             response => {
                 if(response.code == 200){
                     this.identity = response.data;
+                    this.status = 3;
                     localStorage.setItem('guilderidentity',JSON.stringify(this.identity));
                     window.location.href = '/';
                 }else{

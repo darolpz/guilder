@@ -1,21 +1,24 @@
 <div class="panel panel-primary" id="panel">
     <div class="panel-heading">
-        <h2>
+        <h2 class="panel-title">
             {{title}}
         </h2>
     </div>
     <div class="panel-body">
+    
         <div *ngIf="flag; then siFlag else noFlag"></div>
 
         <ng-template #siFlag>
-            <form #formEncuesta="ngForm" (ngSubmit)="onSubmit()" class="col-lg-4" id="form-encuesta">
+            
+            <h2 class="col-md-10">¿Que materias desea cursar durante el proximo cuatrimestre?</h2>
+            <form #formEncuesta="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12" id="form-encuesta">
                 <table>
                     <tr>
                         <td> <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="materia1.idmateria">
                                 <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
                             </select>
                         </td>
-                        <td> <select class="form-control col-lg-4" #turno="ngModel" name="turno" [(ngModel)]="materia1.turno">
+                        <td> <select class="form-control col-lg-12" #turno="ngModel" name="turno" [(ngModel)]="materia1.turno">
                                 <option value="1">Turno Mañana</option>
                                 <option value="2">Turno Tarde</option>
                                 <option value="3">Turno Noche</option>

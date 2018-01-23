@@ -1,0 +1,51 @@
+<div class="panel panel-primary" id="panel">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            {{title}}
+        </h2>
+    </div>
+    <div class="panel-body">
+     
+        <div class="alert alert-success" *ngIf="status=='1'">
+        Comision borrada correctamente
+        </div>
+        <div class="alert alert-success" *ngIf="status=='2'">
+        La comision no pudo ser borrada
+        </div>
+        
+        <button style='margin-left: 40%' href="#" class="btn btn-success">Crear nueva comision} </button>
+        <hr/>
+        
+        <div class='loader col-md-12' *ngIf="loading == 'show'">
+            <img src="assets/img/ajax-loader.gif"/>
+        </div>
+        <table *ngIf="filas" class="table table-striped" >
+            <thead>
+                <tr>
+                    <th>Materia</th>
+                    <th>Numero de comision</th>
+                    <th>Profesor</th>
+                    <th>Cuatrimestre</th>
+                    <th>Año</th>
+                    <th>Id</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let f of filas">
+                    <td>{{f.materiamateria.nombre}}</td>
+                    <td>{{f.numero}}</td>
+                    <td>{{f.profesor}}</td>
+                    <td>{{f.cuatrimestre}}</td>
+                    <td>{{f.year}}</td>
+                    <td>{{f.idcomision}}</td>
+                    <td><button class="btn btn-success" >Editar</button>
+                        <button class="btn btn-danger" (click)="borrarComision(f.idcomision)">Borrar</button></td>
+                    
+                    
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
