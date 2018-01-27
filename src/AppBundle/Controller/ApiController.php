@@ -643,4 +643,112 @@ class ApiController extends Controller {
         return $helpers->json($rta);
     }
     
+    /**
+     * @Route("/getHour", name="getHour")
+     * @Method({"GET","POST"})
+     */
+    public function getHourAction(Request $request){
+        $id = $request->request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $horario = $em->getRepository('AppBundle:Horario')->findOneByIdhorario($id);    
+        $helpers = $this->get(Helpers::class);
+        
+        $rta = array(
+            'inicio' => $horario->getInicio()->format('H:i'),
+            'fin' => $horario->getFin()->format('H:i'),
+            'dia' => $horario->getDiadia()->getNombre(),
+            'comision' => $horario->getComisioncomision()->getIdcomision()
+        );
+        return $helpers->json($rta);
+        
+    }
+    
+    /**
+     * @Route("/editHour", name="editHour")
+     * @Method({"GET","POST"})
+     */
+    public function editHourAction(Request $request){
+        $json = $request->request->get('json');
+        $data = json_decode($json, true);
+        $id = $request->request->get('id');
+        $helpers = $this->get(Helpers::class);
+        $em = $this->getDoctrine()->getManager();
+        
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msj' => 'No se ha podido modificar la comision '
+        );
+
+        $horario = $em->getRepository('AppBundle:Horario')->findOneByidhorario($id);
+        $dia = $em->getRepository('AppBundle:Dia')->findOneBynombre($data["dia"]);
+        $comision = $em->getRepository('AppBundle:Comision')->findOneByidcomision($data["comision"]);
+        if($horario && $dia && $comision){
+            
+            $inicio = date_create_from_format('H:i',$data["inicio"]);
+            $fin = date_create_from_format('H:i',$data["fin"]);
+            $horario->setDiadia($dia);
+            $horario->setComisioncomision($comision);
+            $horario->setInicio($inicio);
+            $horario->setFin($fin);
+            
+            $em->persist($horario);
+            $em->flush();
+
+            $rta = array(
+                'status' => 'success',
+                'code' => 200,
+                'msj' => 'La comision se ha modificado exitosamente '
+            );
+        }
+
+        return $helpers->json($rta);
+    }
+    
+    /**
+     * @Route("/getUser", name="getUser")
+     * @Method({"GET","POST"})
+     */
+    public function getUserAction(Request $request){
+        $id = $request->request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:User')->findOneByIduser($id);
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($user, 'json');
+        return new Response($jsonContent);
+    }
+
+    /**
+     * @Route("/editUser", name="editUser")
+     * @Method({"GET","POST"})
+     */
+    public function editUserAction(Request $request){
+        $json = $request->request->get('json');
+        $data = json_decode($json, true);
+        $id = $request->request->get('id');
+        $helpers = $this->get(Helpers::class);
+        $em = $this->getDoctrine()->getManager();
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msj' => 'No se ha podido modificar la comision '
+        );
+        $user = $em->getRepository('AppBundle:User')->findOneByIduser($id);
+        $rol = $em->getRepository('AppBundle:Rol')->findOneByrol($data["rol"]);
+
+        if($user && $rol){
+            $user->setRolrol($rol);
+            
+            $em->persist($user);
+            $em->flush();
+            
+            $rta = array(
+                'status' => 'success',
+                'code' => 200,
+                'msj' => 'La comision se ha modificado exitosamente '
+            );
+        }
+
+        return $helpers->json($rta);
+    }
 }
