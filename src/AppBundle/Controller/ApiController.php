@@ -447,7 +447,9 @@ class ApiController extends Controller {
         );
         if($comision){
             $horario = $em->getRepository('AppBundle:Horario')->findOneBycomisioncomision($comision);
-            $em->remove($horario);
+            if($horario){
+                $em->remove($horario);
+            }
             $em->remove($comision);
             $em->flush();
             $rta = array(
@@ -512,4 +514,133 @@ class ApiController extends Controller {
         
         return $helpers->json($rta); 
     }
+    
+    /**
+     * @Route("/createComision", name="createComision")
+     * @Method({"GET","POST"})
+     */
+    public function createComsionAction(Request $request){
+        $json = $request->request->get('json');
+        $data = json_decode($json, true);
+        $em = $this->getDoctrine()->getManager();
+        $helpers = $this->get(Helpers::class);
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msj' => 'No se ha podido crear la comision '
+        );
+        $materia = $em->getRepository('AppBundle:Materia')->findOneByidmateria($data["idmateria"]);
+        if($materia){
+            $comision = new Comision();
+            $comision->setCuatrimestre($data["cuatrimestre"]);
+            $comision->setMateriamateria($materia);
+            $comision->setNumero($data["numero"]);
+            $comision->setProfesor($data["profesor"]);
+            $comision->setYear($data["year"]);
+            
+            $rta = array(
+                'status' => 'success',
+                'code' => '200',
+                'msg' => 'Comision creada exitosamente '
+            );
+            $em->persist($comision);
+            $em->flush();
+        }
+        
+        return $helpers->json($rta); 
+    }
+    
+    /**
+     * @Route("/createHour", name="createHour")
+     * @Method({"GET","POST"})
+     */
+    public function createHourAction(Request $request){
+        $json = $request->request->get('json');
+        $data = json_decode($json, true);
+        $em = $this->getDoctrine()->getManager();
+        $helpers = $this->get(Helpers::class);
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msj' => 'No se ha podido crear el horario '
+        );
+        
+        $dia = $em->getRepository('AppBundle:Dia')->findOneBynombre($data["dia"]);
+        $inicio = date_create_from_format('H:i',$data["inicio"]);
+        $fin = date_create_from_format('H:i',$data["fin"]);
+        $comision = $em->getRepository('AppBundle:Comision')->findOneByidcomision($data["comision"]);
+        if($inicio && $fin && $comision && $dia){
+            $horario = new Horario();
+            $horario->setComisioncomision($comision);
+            $horario->setDiadia($dia);
+            $horario->setInicio($inicio);
+            $horario->setFin($fin);
+            
+            $em->persist($horario);
+            $em->flush();
+            
+            $rta = array(
+                'status' => 'success',
+                'code' => '200',
+                'msg' => 'Horario creada exitosamente '
+            );
+        }
+
+        return $helpers->json($rta);
+    }
+    
+    /**
+     * @Route("/getComision", name="getComision")
+     * @Method({"GET","POST"})
+     */
+    public function getComisionAction(Request $request){
+        $id = $request->request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $comision = $em->getRepository('AppBundle:Comision')->findOneByIdcomision($id);
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($comision, 'json');
+        return new Response($jsonContent);
+        
+    }
+    
+    /**
+     * @Route("/editComision", name="editComision")
+     * @Method({"GET","POST"})
+     */
+    public function editComisionAction(Request $request){
+        $json = $request->request->get('json');
+        $data = json_decode($json, true);
+        $id = $request->request->get('id');
+        $helpers = $this->get(Helpers::class);
+        $em = $this->getDoctrine()->getManager();
+        
+        $rta = array(
+            'status' => 'error',
+            'code' => 400,
+            'msj' => 'No se ha podido modificar la comision '
+        );
+
+        $comision = $em->getRepository('AppBundle:Comision')->findOneByidcomision($id);
+        $materia = $em->getRepository('AppBundle:Materia')->findOneByidmateria($data["idmateria"]);
+        if($comision && $materia){
+            
+            $comision->setNumero($data["numero"]);
+            $comision->setProfesor($data["profesor"]);
+            $comision->setCuatrimestre($data["cuatrimestre"]);
+            $comision->setYear($data["year"]);
+            $comision->setMateriamateria($materia);
+            
+            $em->persist($comision);
+            $em->flush();
+            
+            $rta = array(
+                'status' => 'success',
+                'code' => 200,
+                'msj' => 'La comision se ha modificado exitosamente '
+            );
+        }
+
+        return $helpers->json($rta);
+    }
+    
 }
