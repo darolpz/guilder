@@ -1,4 +1,8 @@
-export class Comision{
+
+import { Materia } from './materia';
+
+
+    export class Comision{
     public numero:number;
     public profesor:string;
     public year:number;
@@ -9,6 +13,7 @@ export class Comision{
     public fin:string;
     public segundos:number;
     public idmateria:number;
+    public materiamateria:Materia;
     
     constructor(idmateria,year,cuatrimestre){
         this.idmateria=idmateria;

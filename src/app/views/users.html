@@ -29,7 +29,7 @@
                     <td>{{f.username}}</td>
                     <td>{{f.rolrol.rol}}</td>
                     <td>{{f.iduser}}</td>
-                    <td><button class="btn btn-success" >Editar</button>
+                    <td><button class="btn btn-success"[routerLink]="['/edit-user',f.iduser]" >Editar</button>
                         <button class="btn btn-danger" (click)="borrarUser(f.iduser)">Borrar</button></td>
                     
                     

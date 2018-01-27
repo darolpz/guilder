@@ -11,6 +11,12 @@
         <div class="alert alert-danger" *ngIf="status=='2'">
             No se ha podido generar la Horario
         </div>
+        <div class="alert alert-success" *ngIf="status=='3'">
+            Horario actualizado exitosamente
+        </div>
+        <div class="alert alert-danger" *ngIf="status=='4'">
+            No se ha podido actualizar el Horario
+        </div>
 
         <div class='loader col-md-12' *ngIf="loading == 'show'">
             <img src="assets/img/ajax-loader.gif"/>
@@ -45,7 +51,7 @@
                     </select>
                 </p>
 
-                <input type="submit" value="Crear Comision" class="btn btn-success" [disabled]="!NewHourForm.valid"/>
+                <input type="submit" value="{{title}}" class="btn btn-success" [disabled]="!NewHourForm.valid"/>
                 <a type="button" class="btn btn-primary " [routerLink]="['/comisions']">Volver </a>
             </form>
         </div>

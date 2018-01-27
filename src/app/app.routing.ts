@@ -21,6 +21,8 @@ import { UploadComponent } from './components/upload.component';
 import { NewComisionComponent } from './components/new-comision.component';
 import { NewHourComponent } from './components/new-hour.component';
 import { EditComisionComponent } from './components/edit-comision.component';
+import { EditHourComponent } from './components/edit-hour.component';
+import { EditUserComponent } from './components/edit-user.component';
 
 
 const appRoutes: Routes = [
@@ -44,6 +46,8 @@ const appRoutes: Routes = [
         {path: 'new-comision', component:NewComisionComponent},
         {path: 'new-hour', component:NewHourComponent},
         {path: 'edit-comision/:id', component:EditComisionComponent},
+        {path: 'edit-hour/:id', component:EditHourComponent},
+        {path: 'edit-user/:id', component:EditUserComponent},
 	{path: '**', component: ErrorComponent}
 ];
 

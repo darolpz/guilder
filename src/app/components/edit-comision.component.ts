@@ -7,7 +7,7 @@ import { Materia } from '../models/materia';
 
 @Component({
     selector: 'edit-comision',
-    templateUrl: '../views/edit-comision.html',
+    templateUrl: '../views/new-comision.html',
     providers: [ApiService]
 })
 export class EditComisionComponent {
@@ -29,7 +29,7 @@ export class EditComisionComponent {
     ngOnInit(){
       this.redirectIfUser(); 
       this.getComision();
-      console.log('Se ha cargado el componente de administracion de edicion de comisiones');
+      console.log('Se ha cargado el componente de edicion de comisiones');
         this.loading = 'show';
         this._apiService.getMaterias().subscribe(
             response => {
@@ -54,7 +54,8 @@ export class EditComisionComponent {
                 this._apiService.getComision(id).subscribe(
                     response => {                 
                             this.loading = 'hide';
-                            this.comision = response; 
+                            this.comision = response;
+                            this.comision.idmateria = this.comision.materiamateria.idmateria; 
                     },
                     error => {
                         console.log(<any>error);
@@ -65,14 +66,13 @@ export class EditComisionComponent {
     onSubmit(){
         this._route.params.forEach((params: Params) =>{
             let id = +params['id']; 
-            this.comision.idmateria = this.comision.materiamateria.idmateria;
             this._apiService.editComision(id,this.comision).subscribe(
             response => {
                 if(response.code == 200){
-                    this.status = 1;
-                    window.location.href = '/';
+                    this.status = 3;
+                    window.location.href = '/comisions';
                 }else{
-                    this.status = 2;
+                    this.status = 4;
                 }
             },
             error => {

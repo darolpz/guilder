@@ -26,6 +26,8 @@ import { UploadComponent } from './components/upload.component';
 import { NewComisionComponent } from './components/new-comision.component';
 import { NewHourComponent } from './components/new-hour.component';
 import { EditComisionComponent } from './components/edit-comision.component';
+import { EditHourComponent } from './components/edit-hour.component';
+import { EditUserComponent } from './components/edit-user.component';
 
 
 
@@ -53,7 +55,9 @@ import { EditComisionComponent } from './components/edit-comision.component';
     UploadComponent,
     NewComisionComponent,
     NewHourComponent,
-    EditComisionComponent
+    EditComisionComponent,
+    EditHourComponent,
+    EditUserComponent
 
   ],
   imports: [

@@ -39,7 +39,7 @@
                     <td>{{f.comisioncomision.materiamateria.nombre}}</td>
                     <td>{{f.comisioncomision.profesor}}</td>
                     <td>{{f.idhorario}}</td>
-                    <td><button class="btn btn-success" >Editar</button>
+                    <td><button class="btn btn-success" [routerLink]="['/edit-hour',f.idhorario]">Editar</button>
                         <button class="btn btn-danger" (click)="borrarHorario(f.idhorario)">Borrar</button></td>
                     
                     

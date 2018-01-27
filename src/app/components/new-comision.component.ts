@@ -55,7 +55,7 @@ export class NewComisionComponent {
             response => {
                 if(response.code == 200){
                     this.status = 1;
-                    window.location.href = '/';
+                    window.location.href = '/comisions';
                 }else{
                     this.status = 2;
                 }

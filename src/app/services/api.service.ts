@@ -166,4 +166,34 @@ export class ApiService {
         return this._http.post(this.url+'editComision',param,{headers:headers})
             .map(res => res.json());
     }
+    
+    getHour(id){     
+        let params='id='+id;       
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'getHour',params,{headers:headers})
+                .map(res => res.json());
+    }
+    
+    editHour(id,hour){
+        let json = JSON.stringify(hour);
+        let param = 'json='+json+'&id='+id;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'editHour',param,{headers:headers})
+            .map(res => res.json());
+    }
+    
+    getUser(id){     
+        let params='id='+id;       
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'getUser',params,{headers:headers})
+                .map(res => res.json());
+    }
+    
+    editUser(id,user){
+        let json = JSON.stringify(user);
+        let param = 'json='+json+'&id='+id;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'editUser',param,{headers:headers})
+            .map(res => res.json());
+    }
 }
