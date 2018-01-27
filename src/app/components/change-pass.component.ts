@@ -28,6 +28,7 @@ export class ChangePassComponent {
     
     ngOnInit(){
         this.redirectIfNotLog();
+        console.log('Se ha cargado el componente de cambio de password');
 
     }
     

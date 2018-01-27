@@ -21,6 +21,7 @@ export class SettingsComponent {
     
     ngOnInit(){
         this.redirectIfNotLog();
+        console.log('Se ha cargado el componente de ajustes');
     }
     
     redirectIfNotLog() {

@@ -14,9 +14,13 @@ import { TokenComponent } from './components/token.component';
 import { SettingsComponent } from './components/settings.component';
 import { ChangeEmailComponent } from './components/change-email.component';
 import { ChangePassComponent } from './components/change-pass.component';
-import { ComisionesComponent } from './components/comisiones.component';
+import { ComisionsComponent } from './components/comisions.component';
 import { UsersComponent } from './components/users.component';
 import { HorariosComponent } from './components/horarios.component';
+import { UploadComponent } from './components/upload.component';
+import { NewComisionComponent } from './components/new-comision.component';
+import { NewHourComponent } from './components/new-hour.component';
+import { EditComisionComponent } from './components/edit-comision.component';
 
 
 const appRoutes: Routes = [
@@ -33,9 +37,13 @@ const appRoutes: Routes = [
         {path: 'settings', component:SettingsComponent},
         {path: 'change-pass', component:ChangePassComponent},
         {path: 'change-email', component:ChangeEmailComponent},
-        {path: 'comisiones', component:ComisionesComponent},       
+        {path: 'comisions', component:ComisionsComponent},       
         {path: 'users', component:UsersComponent}, 
-        {path: 'horarios', component:HorariosComponent}, 
+        {path: 'horarios', component:HorariosComponent},
+        {path: 'upload', component:UploadComponent},
+        {path: 'new-comision', component:NewComisionComponent},
+        {path: 'new-hour', component:NewHourComponent},
+        {path: 'edit-comision/:id', component:EditComisionComponent},
 	{path: '**', component: ErrorComponent}
 ];
 

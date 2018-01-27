@@ -19,9 +19,14 @@ import { CalendarHeatmap } from 'angular2-calendar-heatmap';
 import { SettingsComponent } from './components/settings.component';
 import { ChangeEmailComponent } from './components/change-email.component';
 import { ChangePassComponent } from './components/change-pass.component';
-import { ComisionesComponent } from './components/comisiones.component';
+import { ComisionsComponent } from './components/comisions.component';
 import { UsersComponent } from './components/users.component';
 import { HorariosComponent } from './components/horarios.component';
+import { UploadComponent } from './components/upload.component';
+import { NewComisionComponent } from './components/new-comision.component';
+import { NewHourComponent } from './components/new-hour.component';
+import { EditComisionComponent } from './components/edit-comision.component';
+
 
 
 
@@ -42,9 +47,13 @@ import { HorariosComponent } from './components/horarios.component';
     CalendarHeatmap,
     ChangeEmailComponent,
     ChangePassComponent,
-    ComisionesComponent,
+    ComisionsComponent,
     UsersComponent,
-    HorariosComponent
+    HorariosComponent,
+    UploadComponent,
+    NewComisionComponent,
+    NewHourComponent,
+    EditComisionComponent
 
   ],
   imports: [

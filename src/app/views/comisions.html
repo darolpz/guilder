@@ -9,11 +9,11 @@
         <div class="alert alert-success" *ngIf="status=='1'">
         Comision borrada correctamente
         </div>
-        <div class="alert alert-success" *ngIf="status=='2'">
+        <div class="alert alert-danger" *ngIf="status=='2'">
         La comision no pudo ser borrada
         </div>
         
-        <button style='margin-left: 40%' href="#" class="btn btn-success">Crear nueva comision} </button>
+        <button style='margin-left: 40%' class="btn btn-success" [routerLink]="['/new-comision']">Crear nueva comision </button>
         <hr/>
         
         <div class='loader col-md-12' *ngIf="loading == 'show'">
@@ -39,7 +39,7 @@
                     <td>{{f.cuatrimestre}}</td>
                     <td>{{f.year}}</td>
                     <td>{{f.idcomision}}</td>
-                    <td><button class="btn btn-success" >Editar</button>
+                    <td><button class="btn btn-success" [routerLink]="['/edit-comision',f.idcomision]">Editar</button>
                         <button class="btn btn-danger" (click)="borrarComision(f.idcomision)">Borrar</button></td>
                     
                     

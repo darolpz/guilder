@@ -4,13 +4,13 @@ import {ApiService} from '../services/api.service';
 
 
 @Component({
-    selector: 'comisiones',
-    templateUrl: '../views/comisiones.html',
+    selector: 'comisions',
+    templateUrl: '../views/comisions.html',
     providers: [ApiService]
 })
 
 
-export class ComisionesComponent {
+export class ComisionsComponent {
      public title:string;
      public filas:Array<any>;
      public loading;
@@ -25,6 +25,7 @@ export class ComisionesComponent {
      
     ngOnInit(){
         this.redirectIfUser();
+        console.log('Se ha cargado el componente de administracion de comisiones');
         this.loading='show';
         this._apiService.getAllComisions().subscribe(
             response => {
@@ -48,7 +49,7 @@ export class ComisionesComponent {
             response => {
                 if(response.code == 200){                  
                     this.status = 1;
-                    window.location.href = '/comisiones';
+                    window.location.href = '/comisions';
                 }else{
                     this.status = 2;
                 }

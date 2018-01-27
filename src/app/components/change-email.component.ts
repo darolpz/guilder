@@ -16,6 +16,7 @@ export class ChangeEmailComponent {
     public pass:string;
     public id;
     public flag:number;
+    
     constructor(
         private _apiService:ApiService,
         private _router: Router
@@ -26,6 +27,7 @@ export class ChangeEmailComponent {
     
     ngOnInit(){
         this.redirectIfNotLog();
+        console.log('Se ha cargado el componente de actualizacion de email');
     }
     
     redirectIfNotLog() {

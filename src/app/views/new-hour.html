@@ -1,0 +1,53 @@
+<div class="panel panel-primary" id="panel">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            {{title}}
+        </h2>
+    </div>
+    <div class="panel-body">
+        <div class="alert alert-success" *ngIf="status=='1'">
+            Horario creada exitosamente
+        </div>
+        <div class="alert alert-danger" *ngIf="status=='2'">
+            No se ha podido generar la Horario
+        </div>
+
+        <div class='loader col-md-12' *ngIf="loading == 'show'">
+            <img src="assets/img/ajax-loader.gif"/>
+        </div>
+        <div class='center'>
+            <form #NewHourForm="ngForm" (ngSubmit)="onSubmit()" *ngIf=" loading == 'hide'" class='col-md-6' style='margin-left: 25%'>
+
+                <p>
+                    <label>Hora inicial</label>
+                    <br/>
+                    <input type='time' class='form-control' value=”00:00:00″ required #inicio="ngModel" name="inicio" [(ngModel)]="horario.inicio">
+
+                </p>
+
+                <p>
+                    <label>Hora final</label>
+                    <br/>
+                    <input type='time' class='form-control' value = ”23:59:00″ required #fin="ngModel" name="fin" [(ngModel)]="horario.fin">
+                </p>
+                <p>
+                    <label>Comision:</label>
+                    <select class="form-control " #idcomision="ngModel" name="idcomision" [(ngModel)]="horario.comision" required>
+                        <option *ngFor="let c of comisiones" value={{c.idcomision}}>{{c.materiamateria.nombre}}-Comision {{c.numero}}-{{c.cuatrimestre}}º cuatrimestre {{c.year}}</option>
+                    </select> 
+                </p>
+                <p>
+                    <label>Dia:</label>
+                    <select class="form-control" #dia="ngModel" name="dia" [(ngModel)]="horario.dia">
+                        <option>Lunes</option><option>Martes</option>
+                        <option>Miércoles</option><option>Jueves</option>
+                        <option>Viernes</option><option>Sábado</option>
+                    </select>
+                </p>
+
+                <input type="submit" value="Crear Comision" class="btn btn-success" [disabled]="!NewHourForm.valid"/>
+                <a type="button" class="btn btn-primary " [routerLink]="['/comisions']">Volver </a>
+            </form>
+        </div>
+    </div>
+</div>

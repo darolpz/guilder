@@ -12,7 +12,7 @@ export class ErrorComponent {
     }
 
     ngOnInit() {
-        console.log('Componente error cargado');
+        console.log('Se ha cargado el componente error');
     }
 
 }

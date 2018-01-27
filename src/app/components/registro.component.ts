@@ -28,6 +28,7 @@ export class RegistroComponent {
     
     ngOnInit(){
         this.redirectIfLog();
+        console.log('Se ha cargado el componente de registro');
     }
     
     redirectIfLog() {

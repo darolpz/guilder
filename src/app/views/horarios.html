@@ -13,7 +13,7 @@
         La comision no pudo ser borrada
         </div>
         
-        <button style='margin-left: 40%' href="#" class="btn btn-success">Crear nuevo horario </button>
+        <button style='margin-left: 40%' [routerLink]="['/new-hour']" class="btn btn-success">Crear nuevo horario </button>
         <hr/>
         
         <div class='loader col-md-12' *ngIf="loading == 'show'">
@@ -24,6 +24,7 @@
                 <tr>
                     <th>Hora inicial</th>
                     <th>Hora final</th>
+                    <th>Dia</th>
                     <th>Materia</th>
                     <th>Profesor</th>
                     <th>Id</th>
@@ -34,6 +35,7 @@
                 <tr *ngFor="let f of filas">
                     <td>{{f.inicio|date: 'HH:mm'}}</td>
                     <td>{{f.fin|date: 'HH:mm'}}</td>
+                    <td>{{f.diadia.nombre}}</td>
                     <td>{{f.comisioncomision.materiamateria.nombre}}</td>
                     <td>{{f.comisioncomision.profesor}}</td>
                     <td>{{f.idhorario}}</td>

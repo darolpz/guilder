@@ -65,7 +65,7 @@ export class Modulo2Component {
     }
     
     ngOnInit(){     
-        console.log('Se ha cargado el componente de modulo 2');
+        console.log('Se ha cargado el componente de historial de materias');
         this._apiService.getMaterias().subscribe(
             result => {
                 this.materias = result;

@@ -135,4 +135,35 @@ export class ApiService {
         return this._http.post(this.url+'deleteUser',param,{headers:headers})
             .map(res => res.json());
     }
+    
+    createComision(comision){
+        let json = JSON.stringify(comision);
+        let param = 'json='+json;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'createComision',param,{headers:headers})
+            .map(res => res.json());
+    }
+    
+    createHour(hour){
+        let json = JSON.stringify(hour);
+        let param = 'json='+json;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'createHour',param,{headers:headers})
+            .map(res => res.json());
+    }
+    
+    getComision(id){     
+        let params='id='+id;       
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'getComision',params,{headers:headers})
+                .map(res => res.json());
+    }
+    
+    editComision(id,comision){
+        let json = JSON.stringify(comision);
+        let param = 'json='+json+'&id='+id;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.post(this.url+'editComision',param,{headers:headers})
+            .map(res => res.json());
+    }
 }

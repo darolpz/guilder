@@ -24,6 +24,7 @@ export class TokenComponent {
     }
 
     ngOnInit() {
+        console.log('Se ha cargado el componente de administracion de tokens');
         this.redirectIfUser();
         this._apiService.getTokens().subscribe(
             response => {

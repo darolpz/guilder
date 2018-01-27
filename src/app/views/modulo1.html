@@ -6,11 +6,11 @@
     </div>
     <div class="panel-body">
         <form #formComision="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-comision">
-            <p><select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="comision.idmateria">
+            <select class="form-control " #idmateria="ngModel" name="idmateria" [(ngModel)]="comision.idmateria">
                 <option *ngFor="let m of materias" value={{m.idmateria}}>{{m.nombre}}</option>
             </select>
             <input type="submit" value="Consultar comisiones" class="btn btn-success"/>
-            </p>
+
         
         </form>
 

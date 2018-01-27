@@ -26,6 +26,7 @@ export class HorariosComponent {
          
     ngOnInit(){
         this.redirectIfUser();
+        console.log('Se ha cargado el componente de administracion de horarios');
         this.loading='show';
         this._apiService.getHorarios().subscribe(
             response => {

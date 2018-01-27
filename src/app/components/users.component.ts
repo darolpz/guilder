@@ -26,6 +26,7 @@ export class UsersComponent {
          
     ngOnInit(){
         this.redirectIfUser();
+        console.log('Se ha cargado el componente de administracion de usuarios');
         this.loading='show';
         this._apiService.getUsers().subscribe(
             response => {

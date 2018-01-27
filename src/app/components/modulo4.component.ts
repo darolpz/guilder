@@ -21,7 +21,7 @@ export class Modulo4Component {
     
     ngOnInit(){     
         this.redirectIfUser();
-        console.log('Se ha cargado el componente de modulo 4');
+        console.log('Se ha cargado el componente de resultados de encuesta');
         this._apiService.getMaterias().subscribe(
             result => {
                 this.materias = result;
