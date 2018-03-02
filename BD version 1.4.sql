@@ -200,6 +200,30 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8;
 
+-- -----------------------------------------------------
+-- Table `proyecto`.`calendario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`calendario`(
+	`idcalendario` INT(11) NOT NULL AUTO_INCREMENT,
+	`comision_idcomision` INT(11) NOT NULL,
+	`user_iduser` INT (11) NOT NULL,
+	PRIMARY KEY (`idcalendario`),
+	INDEX `fk_calendario_comision_idx` (`comision_idcomision` ASC),
+	INDEX `fk_calendario_user_idx` (`user_iduser` ASC),
+	CONSTRAINT `fk_calendario_comision`
+		FOREIGN KEY (`comision_idcomision`)
+		REFERENCES `proyecto`.`comision` (`idcomision`)
+		ON DELETE NO ACTION
+    	ON UPDATE NO ACTION,
+    CONSTRAINT `fk_calendario_user`
+    	FOREIGN KEY (`user_iduser`)
+    	REFERENCES `proyecto`.`user` (`iduser`)
+    	ON DELETE NO ACTION
+    	ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT =1
+DEFAULT CHARACTER SET= utf8;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

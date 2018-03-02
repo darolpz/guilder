@@ -62,9 +62,7 @@
     <div class="timetable" >
         <aside> 
             <ul>
-                <li>
-                    <span class="row-heading">Lunes</span>
-                </li>
+                <li><span class="row-heading">Lunes</span></li>
                 <li><span class="row-heading">Martes</span></li>
                 <li><span class="row-heading">Miércoles</span></li>
                 <li><span class="row-heading">Jueves</span></li>
@@ -140,6 +138,9 @@
         </section>
     </div>
 </div>
+                <div>
+                    {#<button type="button" onclick="guardarTabla()"  class="btn btn-secondary">Guardar horario</button>#}
+                </div>
 </div>
     <script src="//www.google-analytics.com/analytics.js"></script><script src="../scripts/timetable.min.js"></script>
 
@@ -196,5 +197,14 @@
             timetable.events=newEvents;
             renderer.draw('.timetable');
         });
+    </script>
+    <script>
+        function guardarTabla(){
+            
+            var eventos=timetable.events;
+            alert(eventos);
+            
+            
+        }
     </script>
 {% endblock %}

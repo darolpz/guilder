@@ -216,5 +216,12 @@ class ModuloController extends Controller {
         $response->setContent($jsondata);
         return $response;
     }
-
+    
+    /**
+     * @Route("/guardar_horario", name="guardar_horario")
+     * @Method({"GET"})
+     */
+    public function guardarTablaAction (Request $request){
+        
+    }
 }
