@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Materia } from '../models/materia';
 import { Comision } from '../models/comision';
+var timeTable = require("../../assets/timetable.min.js");
 
 @Component({
   selector: 'modulo1',
@@ -31,7 +32,7 @@ export class Modulo1Component{
     
     ngOnInit(){
         console.log('Se ha cargado el listado de materias');
-        
+        console.log(timeTable);
         this._apiService.getMaterias().subscribe(
         result => {
                 this.materias = result;

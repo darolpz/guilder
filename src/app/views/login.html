@@ -5,13 +5,13 @@
         </h2>
     </div>
     <div class="panel-body">
-        <div class="alert alert-danger" *ngIf="status=='1'">
+        <div class="alert alert-danger" *ngIf="status==1">
         La cuenta ingresada es invalida
         </div>
-        <div class="alert alert-danger" *ngIf="status=='2'">
+        <div class="alert alert-danger" *ngIf="status==2">
         La contraseña ingresada no corresponde con su cuenta
         </div>
-        <div class="alert alert-success" *ngIf="status=='3'">
+        <div class="alert alert-success" *ngIf="status==3">
         Se ha autenticado correctamente
         </div>
         <form #registroForm="ngForm" (ngSubmit)="onSubmit()" >

@@ -5,10 +5,10 @@
         </h2>
     </div>
     <div class="panel-body">
-        <div class="alert alert-danger" *ngIf="flag=='1'">
+        <div class="alert alert-danger" *ngIf="flag==1">
             Contraseña incorrecta
         </div>
-        <div class="alert alert-success" *ngIf="flag=='2'">
+        <div class="alert alert-success" *ngIf="flag==2">
             Email actualizada correctamente
         </div>
         <form #ChangeEmailForm="ngForm" (ngSubmit)="onSubmit()" >

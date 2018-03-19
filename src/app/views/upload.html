@@ -1,16 +1,58 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div class="panel panel-primary" id="panel">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            {{title}}
+        </h2>
+    </div>
+    <div class="panel-body">
+
+        <form #formExcel="ngForm" (ngSubmit)="onSubmit()" class="col-md-6">
+                <div>
+                    <label >Año</label>
+                    <input type="number" class='form-control' required />
+                </div>
+                <div>
+                    <label >Archivo excel</label>
+                    <input type="file" class="form-control" (change)="fileChangeEvent($event)" required/>
+                    
+                </div>
+
+            <hr/>
+            <input type="submit" value="{{title}}" [disabled]="!formExcel.valid" class="btn btn-success"/>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+            Especificaciones
+        </button>
+        </form>
+        <br/>
+
+        <!-- Button trigger modal -->
+        
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Especificaciones</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Para cargar datos con archivos excel se necesita que los headers tengan el siguiente formato(sin importar el orden):<p>
+                        <p>Header 'Código' para identificar la materia</p>
+                        <p>Header 'Cuatrimestre' para identificar el cuatrimestre al que corresnde la comision</p>
+                        <p>Header 'Comisión' para identificar el numero de comision</p>
+                        <p>Header 'Docente' para identificar al profesor de la catedra</p>
+                        <p>Header 'Dia' para identificar el dia en el que se dicta la materia<b>(IMPORTANTE: Dia no debe llevar tilde)</b></p>
+                        <p>Header 'Hora Inicio' para identificar el horario de inicio del dictado de la materia<b>(Formato HH:mm)</b></p>
+                        <p>Header 'Hora Final' para identificar el horario final del dictado de la materia<b>(Formato HH:mm)</b></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
